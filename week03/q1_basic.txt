@@ -20,7 +20,28 @@ drwxrwxr-x. 2 student112 student112     6 Mar  9 06:50 scripts
 student112@linux-server1:~$
 ## cd ..
 student112@linux-server1:/home$
-## 
+## mkdir mydir
+student112@linux-server1:~$ ls
+README.txt  documents  exercises  mydir  myfile.txt  projects  scripts
+## rmdir mydir
+student112@linux-server1:~$ ls
+README.txt  documents  exercises  myfile.txt  projects  scripts
+## touch file.txt
+student112@linux-server1:~$ ls
+README.txt  documents  exercises  file.txt  myfile.txt  projects  scripts
+## cp file.txt file1.txt
+student112@linux-server1:~$ ls
+README.txt  exercises  file1.txt   projects
+documents   file.txt   myfile.txt  scripts
+##  mv file1.txt file2.txt
+student112@linux-server1:~$ ls
+README.txt  exercises  file2.txt   projects
+documents   file.txt   myfile.txt  scripts
+## rm file2.txt
+student112@linux-server1:~$ ls
+README.txt  documents  exercises  file.txt  myfile.txt  projects  scripts
+
+
 
 
 
