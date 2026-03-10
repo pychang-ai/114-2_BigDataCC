@@ -1,11 +1,32 @@
-# 第 3 週作業：首次登入 Linux 環境與虛擬化觀念
+姓名：測試學生
+學號：T0000001
 
-繳交期限：2026/03/16
+=== whoami ===
+student101
 
-請在本資料夾中建立以下三個檔案：
-- q1_basic.txt（SSH 連線與基本指令，40 分）
-- q2_fileops.txt（檔案操作實作，40 分）
-- q3_compare.txt（虛擬化技術比較，20 分）
+=== hostname ===
+linux-server1
 
-完成後發 Pull Request 回老師的 Repo 繳交。
-PR 標題格式：學號_姓名_week03
+=== pwd ===
+/home/student101
+
+=== uname -a ===
+Linux linux-server1 5.15.0-1053-aws #58-Ubuntu SMP x86_64 GNU/Linux
+
+=== date ===
+Mon Mar 10 08:30:00 UTC 2026
+
+=== ls / ===
+bin boot dev etc home lib lib64 media mnt opt proc root run sbin srv sys tmp usr var
+
+=== ls -la ~ ===
+total 32
+drwxr-xr-x 5 student101 student101 4096 Mar 10 08:00 .
+drwxr-xr-x 1 root       root       4096 Mar 10 06:00 ..
+-rw-r--r-- 1 student101 student101  220 Mar 10 06:00 .bash_logout
+-rw-r--r-- 1 student101 student101 3771 Mar 10 06:00 .bashrc
+-rw-r--r-- 1 student101 student101  807 Mar 10 06:00 .profile
+-rw-r--r-- 1 student101 student101  230 Mar 10 08:00 README.txt
+drwxr-xr-x 2 student101 student101 4096 Mar 10 06:00 documents
+drwxr-xr-x 2 student101 student101 4096 Mar 10 06:00 exercises
+drwxr-xr-x 2 student101 student101 4096 Mar 10 06:00 scripts
