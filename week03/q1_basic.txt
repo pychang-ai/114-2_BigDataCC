@@ -1,1 +1,18 @@
-
+## ls
+README.txt  documents  exercises  projects  scripts
+## pwd
+/home/student222
+## ls -la
+total 36
+drwxr-x---. 7 student222 student222   175 Mar 10 03:12 .
+drwxr-xr-x. 1 root       root       16384 Mar 10 03:13 ..
+-rw-------. 1 student222 student222     3 Mar 10 03:12 .bash_history
+-rw-r--r--. 1 student222 student222   220 Jan  6  2022 .bash_logout
+-rw-r--r--. 1 student222 student222  3771 Jan  6  2022 .bashrc
+drwx------. 2 student222 student222    34 Mar 10 03:07 .cache
+-rw-r--r--. 1 student222 student222   807 Jan  6  2022 .profile
+-rw-rw-r--. 1 student222 student222   189 Mar  9 06:57 README.txt
+drwxrwxr-x. 2 student222 student222     6 Mar  9 06:57 documents
+drwxr-xr-x. 2 student222 student222    83 Mar  9 06:57 exercises
+drwxrwxr-x. 2 student222 student222     6 Mar  9 06:57 projects
+drwxrwxr-x. 2 student222 student222     6 Mar  9 06:57 scripts
