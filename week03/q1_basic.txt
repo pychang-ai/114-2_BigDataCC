@@ -1,0 +1,83 @@
+ ##pwd
+/home
+ ## ls
+student207@linux-server2:/home$ ls
+student101  student112  student123  student204  student215  student226
+student102  student113  student124  student205  student216  student227
+student103  student114  student125  student206  student217  student228
+student104  student115  student126  student207  student218  student229
+student105  student116  student127  student208  student219  student230
+student106  student117  student128  student209  student220  ta01
+student107  student118  student129  student210  student221  ta02
+student108  student119  student130  student211  student222
+student109  student120  student201  student212  student223
+student110  student121  student202  student213  student224
+student111  student122  student203  student214  student225
+
+## li - la
+total 224
+drwxr-xr-x. 1 root       root       16384 Mar 10 03:13 ./
+drwxr-xr-x. 1 root       root          51 Mar  9 06:57 ../
+drwxr-x---. 7 student101 student101   154 Mar 10 03:16 student101/
+drwxr-x---. 7 student102 student102   154 Mar 10 03:16 student102/
+drwxr-x---. 7 student103 student103   154 Mar 10 03:16 student103/
+drwxr-x---. 7 student104 student104   154 Mar 10 03:16 student104/
+drwxr-x---. 7 student105 student105   154 Mar 10 03:16 student105/
+drwxr-x---. 7 student106 student106   154 Mar 10 03:16 student106/
+drwxr-x---. 7 student107 student107   154 Mar 10 03:16 student107/
+drwxr-x---. 7 student108 student108   154 Mar 10 03:16 student108/
+drwxr-x---. 7 student109 student109   154 Mar 10 03:16 student109/
+drwxr-x---. 7 student110 student110   154 Mar 10 03:16 student110/
+drwxr-x---. 7 student111 student111   154 Mar 10 03:16 student111/
+drwxr-x---. 7 student112 student112   154 Mar 10 03:16 student112/
+drwxr-x---. 7 student113 student113   154 Mar 10 03:16 student113/
+drwxr-x---. 7 student114 student114   154 Mar 10 03:16 student114/
+drwxr-x---. 7 student115 student115   154 Mar 10 03:16 student115/
+drwxr-x---. 7 student116 student116   154 Mar 10 03:16 student116/
+drwxr-x---. 7 student117 student117   154 Mar 10 03:16 student117/
+drwxr-x---. 7 student118 student118   154 Mar 10 03:16 student118/
+drwxr-x---. 7 student119 student119   154 Mar 10 03:16 student119/
+drwxr-x---. 7 student120 student120   154 Mar 10 03:16 student120/
+drwxr-x---. 7 student121 student121   154 Mar 10 03:16 student121/
+drwxr-x---. 7 student122 student122   154 Mar 10 03:16 student122/
+drwxr-x---. 7 student123 student123   154 Mar 10 03:16 student123/
+drwxr-x---. 7 student124 student124   154 Mar 10 03:16 student124/
+drwxr-x---. 7 student125 student125   154 Mar 10 03:16 student125/
+drwxr-x---. 7 student126 student126   154 Mar 10 03:16 student126/
+drwxr-x---. 7 student127 student127   154 Mar 10 03:16 student127/
+drwxr-x---. 7 student128 student128   154 Mar 10 03:16 student128/
+drwxr-x---. 7 student129 student129   154 Mar 10 03:16 student129/
+drwxr-x---. 7 student130 student130   154 Mar 10 03:16 student130/
+drwxr-x---. 7 student201 student201   175 Mar  9 07:16 student201/
+drwxr-x---. 7 student202 student202   175 Mar 10 08:10 student202/
+drwxr-x---. 7 student203 student203 16384 Mar 10 08:05 student203/
+drwxr-x---. 9 student204 student204 16384 Mar 10 08:06 student204/
+drwxr-x---. 7 student205 student205   154 Mar 10 03:16 student205/
+drwxr-x---. 7 student206 student206   154 Mar 10 03:16 student206/
+drwxr-x---. 7 student207 student207   154 Mar 10 07:17 student207/
+drwxr-x---. 9 student208 student208 16384 Mar 10 08:12 student208/
+drwxr-x---. 7 student209 student209 16384 Mar 10 08:11 student209/
+drwxr-x---. 7 student210 student210   175 Mar 10 08:14 student210/
+drwxr-x---. 7 student211 student211   154 Mar 10 03:16 student211/
+drwxr-x---. 9 student212 student212 16384 Mar 10 07:27 student212/
+drwxr-x---. 9 student213 student213 16384 Mar 10 08:00 student213/
+drwxr-x---. 8 student214 student214 16384 Mar 10 07:18 student214/
+drwxr-x---. 7 student215 student215   186 Mar 10 07:40 student215/
+drwxr-x---. 9 student216 student216 16384 Mar 10 08:05 student216/
+drwxr-x---. 9 student217 student217 16384 Mar 10 08:10 student217/
+drwxr-x---. 7 student218 student218 16384 Mar 10 08:04 student218/
+drwxr-x---. 9 student219 student219 16384 Mar 10 07:22 student219/
+drwxr-x---. 7 student220 student220 16384 Mar 10 07:46 student220/
+drwxr-x---. 7 student221 student221 16384 Mar 10 08:09 student221/
+drwxr-x---. 7 student222 student222   175 Mar 10 03:12 student222/
+drwxr-x---. 7 student223 student223   154 Mar 10 03:16 student223/
+drwxr-x---. 7 student224 student224   154 Mar 10 03:16 student224/
+drwxr-x---. 7 student225 student225   154 Mar 10 03:16 student225/
+drwxr-x---. 7 student226 student226   154 Mar 10 03:16 student226/
+drwxr-x---. 7 student227 student227   154 Mar 10 03:16 student227/
+drwxr-x---. 7 student228 student228   154 Mar 10 03:16 student228/
+drwxr-x---. 7 student229 student229   154 Mar 10 03:16 student229/
+drwxr-x---. 7 student230 student230   154 Mar 10 03:16 student230/
+drwxr-x---. 3 ta01       ta01          92 Mar 10 03:12 ta01/
+drwxr-x---. 3 ta02       ta02          71 Mar 10 03:16 ta02/
+student207@linux-server2:/home$
