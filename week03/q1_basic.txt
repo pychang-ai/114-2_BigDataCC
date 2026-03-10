@@ -1,0 +1,41 @@
+## pwd
+student208@linux-server2:~/practice$ pwd
+/home/student208/practice
+##ls
+student208@linux-server2:~/practice$ ls
+a.txt  b.txt  c.txt
+##ls -la
+student208@linux-server2:~/practice$ ll
+total 16
+drwxrwxr-x. 2 student208 student208    45 Mar 10 07:21 ./
+drwxr-x---. 9 student208 student208 16384 Mar 10 07:18 ../
+-rw-rw-r--. 1 student208 student208     0 Mar 10 07:20 a.txt
+-rw-rw-r--. 1 student208 student208     0 Mar 10 07:20 b.txt
+-rw-rw-r--. 1 student208 student208     0 Mar 10 07:21 c.txt
+## cd ~
+student208@linux-server2:~/practice$ cd ~
+student208@linux-server2:~$ pwd
+/home/student208
+## cd ..
+student208@linux-server2:~$ cd ..
+student208@linux-server2:/home$ pwd
+/home
+##mkdir
+mkdir mydir
+student208@linux-server2:~$ ls
+README.txt  documents  exercises  mydir  myfile  projects  scripts
+##練習：
+mkdir practice
+student208@linux-server2:~$ cd
+student208@linux-server2:~$ cd pr
+-bash: cd: pr: No such file or directory
+student208@linux-server2:~$ cd pr
+practice/ projects/
+student208@linux-server2:~$ cd practice
+student208@linux-server2:~/practice$ touch a.txt
+student208@linux-server2:~/practice$ touch b.txt
+student208@linux-server2:~/practice$ touch c.txt
+student208@linux-server2:~/practice$ ls
+a.txt  b.txt  c.txt
+student208@linux-server2:~/practice$ ll
+total 16
