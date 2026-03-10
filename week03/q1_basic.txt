@@ -1,0 +1,22 @@
+## pwd
+student218@linux-server2:~$ pwd
+/home/student218
+## ls
+student218@linux-server2:~$ ls
+' myfile'   README.txt   documents   exercises   myfile.txt   projects   scripts
+## ls -la
+student218@linux-server2:~$ ls -la
+total 32
+-rw-rw-r--. 1 student218 student218     0 Mar 10 07:09 ' myfile'
+drwxr-x---. 7 student218 student218   187 Mar 10 07:34  .
+drwxr-xr-x. 1 root       root       16384 Mar 10 03:13  ..
+-rw-r--r--. 1 student218 student218   220 Jan  6  2022  .bash_logout
+-rw-r--r--. 1 student218 student218  3771 Jan  6  2022  .bashrc
+drwx------. 2 student218 student218    34 Mar 10 03:16  .cache
+-rw-r--r--. 1 student218 student218   807 Jan  6  2022  .profile
+-rw-rw-r--. 1 student218 student218   189 Mar  9 06:57  README.txt
+drwxrwxr-x. 2 student218 student218     6 Mar  9 06:57  documents
+drwxr-xr-x. 2 student218 student218    83 Mar  9 06:57  exercises
+-rw-rw-r--. 1 student218 student218     0 Mar 10 07:34  myfile.txt
+drwxrwxr-x. 2 student218 student218     6 Mar  9 06:57  projects
+drwxrwxr-x. 2 student218 student218     6 Mar  9 06:57  scripts
