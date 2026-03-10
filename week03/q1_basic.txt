@@ -1,1 +1,22 @@
-
+## pwd
+student208@linux-server2:~/practice$ pwd
+/home/student208/practice
+##ls
+student208@linux-server2:~/practice$ ls
+a.txt  b.txt  c.txt
+##ls -la
+student208@linux-server2:~/practice$ ll
+total 16
+drwxrwxr-x. 2 student208 student208    45 Mar 10 07:21 ./
+drwxr-x---. 9 student208 student208 16384 Mar 10 07:18 ../
+-rw-rw-r--. 1 student208 student208     0 Mar 10 07:20 a.txt
+-rw-rw-r--. 1 student208 student208     0 Mar 10 07:20 b.txt
+-rw-rw-r--. 1 student208 student208     0 Mar 10 07:21 c.txt
+## cd ~
+student208@linux-server2:~/practice$ cd ~
+student208@linux-server2:~$ pwd
+/home/student208
+## cd ..
+student208@linux-server2:~$ cd ..
+student208@linux-server2:/home$ pwd
+/home
