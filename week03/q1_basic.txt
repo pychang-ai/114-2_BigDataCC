@@ -1,0 +1,59 @@
+========================================
+ 練習 1：Linux 基本指令
+ 對應教科書：第3章 Linux系統管理 Bash Shell
+========================================
+
+【1.1 檔案與目錄操作】
+
+  pwd           顯示目前所在目錄
+  ls            列出目錄內容
+  ls -la        列出詳細資訊（含隱藏檔）
+  cd ~          回到家目錄
+  cd ..         回到上層目錄
+  mkdir mydir   建立目錄
+  rmdir mydir   移除空目錄
+  touch file.txt  建立空檔案
+  cp file1 file2  複製檔案
+  mv file1 file2  移動或重新命名檔案
+  rm file.txt     刪除檔案
+
+  練習：
+  1. 在家目錄建立一個 practice 目錄
+  2. 進入 practice 目錄
+  3. 建立三個空檔案：a.txt, b.txt, c.txt
+  4. 用 ls -la 查看檔案列表
+  5. 將 a.txt 複製為 d.txt
+  6. 將 b.txt 改名為 e.txt
+  7. 刪除 c.txt
+
+【1.2 檢視檔案內容】
+
+  cat file      顯示檔案全部內容
+  head file     顯示檔案前 10 行
+  tail file     顯示檔案後 10 行
+  less file     分頁瀏覽（按 q 離開）
+  wc file       統計行數、字數、位元組數
+
+  練習：
+  1. 執行 cat /etc/passwd 查看系統帳號
+  2. 執行 head -5 /etc/passwd 查看前 5 行
+  3. 執行 wc -l /etc/passwd 統計行數
+
+【1.3 搜尋與過濾】
+
+  grep "keyword" file    在檔案中搜尋關鍵字
+  find /path -name "*.txt"  搜尋檔案
+  which command          查詢指令位置
+
+  練習：
+  1. 用 grep 在 /etc/passwd 中搜尋自己的帳號
+  2. 用 find 搜尋家目錄中所有 .txt 檔
+
+【1.4 系統資訊】
+
+  whoami        顯示目前登入的使用者名稱
+  hostname      顯示主機名稱
+  uname -a      顯示系統核心資訊
+  df -h         顯示磁碟使用量
+  free -h       顯示記憶體使用量
+  top           即時顯示系統程序（按 q 離開）
