@@ -1,1 +1,6 @@
+##pwd
+student216@linux-server2:~$ pwd
+/home/student216
+##ls
+README.txt  documents  exercises  mydir  myfile  myfile.txt  practice  projects  scripts
 
