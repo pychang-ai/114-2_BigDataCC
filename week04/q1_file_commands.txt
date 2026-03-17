@@ -27,4 +27,49 @@ cat /etc/passwd | head -5
 cat /etc/passwd | tail -3
 wc -l /etc/passwd
 
-（貼上結果）
+（貼上結果） 
+任務1:
+week04
+├── dir1
+│   ├── file1.txt
+│   └── subdir1
+│       └── file2.txt
+└── dir2
+    └── file3.txt
+任務2:
+echo -e "\n=== 任務 2：寫入檔案內容 ===" >> ~/week04/q1_file_commands.txt
+
+echo 'echo "Hello Linux" > ~/week04/dir1/file1.txt' >> ~/week04/q1_file_commands.txt
+echo "Hello Linux" > ~/week04/dir1/file1.txt
+
+echo 'echo "Bash Shell Practice" > ~/week04/dir1/subdir1/file2.txt' >> ~/week04/q1_file_commands.txt
+echo "Bash Shell Practice" > ~/week04/dir1/subdir1/file2.txt
+
+echo 'echo "Week 04 Assignment" > ~/week04/dir2/file3.txt' >> ~/week04/q1_file_commands.txt
+echo "Week 04 Assignment" > ~/week04/dir2/file3.txt
+
+# 顯示檔案內容
+echo "cat ~/week04/dir1/file1.txt" >> ~/week04/q1_file_commands.txt
+cat ~/week04/dir1/file1.txt >> ~/week04/q1_file_commands.txt
+
+echo "cat ~/week04/dir1/subdir1/file2.txt" >> ~/week04/q1_file_commands.txt
+cat ~/week04/dir1/subdir1/file2.txt >> ~/week04/q1_file_commands.txt
+
+echo "cat ~/week04/dir2/file3.txt" >> ~/week04/q1_file_commands.txt
+cat ~/week04/dir2/file3.txt >> ~/week04/q1_file_commands.txt
+    任務三:
+    echo -e "\n=== 任務 3：檔案內容檢視 ===" >> ~/week04/q1_file_commands.txt
+
+echo "cat /etc/passwd | head -5" >> ~/week04/q1_file_commands.txt
+cat /etc/passwd | head -5 >> ~/week04/q1_file_commands.txt
+
+echo "cat /etc/passwd | tail -3" >> ~/week04/q1_file_commands.txt
+cat /etc/passwd | tail -3 >> ~/week04/q1_file_commands.txt
+
+echo "wc -l /etc/passwd" >> ~/week04/q1_file_commands.txt
+wc -l /etc/passwd >> ~/week04/q1_file_commands.txt
+
+# -----------------------------------------
+# 完成訊息
+# -----------------------------------------
+echo -e "\n✅ Q1 作業指令與輸出已全部存入 ~/week04/q1_file_commands.txt"

@@ -3,10 +3,22 @@
 
 Q1：請說明管線符號 | 的功能，並舉一個實際使用的例子。
 A1：
-
+管線符號 |（pipe）的功能是 將前一個指令的輸出直接傳給下一個指令作為輸入，可以將多個指令串起來處理資料，而不需要先將輸出存成檔案。
+cat /etc/passwd | grep bash
 Q2：請說明 > 和 >> 的差異，各舉一個使用情境。
 A2：
+覆寫檔案
+功能：將指令輸出寫入檔案，如果檔案已存在，會被清空覆蓋。
+echo "Hello Linux" > ~/week04/file.txt
+追加檔案
+功能：將指令輸出追加到檔案末尾，不會覆蓋原有內容。
+範例情境：記錄日誌或將資料累積到檔案
+範例情境：建立新的檔案或清空舊檔再寫入內容
 
+date >> ~/week04/file.txt
 Q3：請寫出一行指令，找出 /etc/passwd 中有多少個使用者的 shell 是 /bin/bash。
     提示：可以結合 grep 和 wc 指令。
 A3：
+grep /bin/bash /etc/passwd | wc -l
+grep /bin/bash /etc/passwd → 找出所有 shell 為 /bin/bash 的使用者行
+| wc -l → 計算這些行的數量，即使用 /bin/bash 的使用者數

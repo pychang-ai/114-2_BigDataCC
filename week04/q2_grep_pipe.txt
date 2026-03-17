@@ -35,3 +35,41 @@ date >> ~/week04/home_list.txt
 tail -3 ~/week04/home_list.txt
 
 （貼上 tail 的結果）
+
+任務1:
+grep 你的帳號 /etc/passwd
+c112181138:x:1000:1000:簡祈媗:/home/c112181138:/bin/bash
+任務2:
+grep bash /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+c112181138:x:1000:1000:簡祈媗:/home/c112181138:/bin/bash
+user2:x:1001:1001::/home/user2:/bin/bash
+任務2:
+ls /etc | wc -l
+101
+ls /etc | sort | head -10
+adduser.conf
+alternatives
+apache2
+apm.conf
+bash.bashrc
+bindresvport.blacklist
+ca-certificates
+ca-certificates.conf
+cron.d
+cron.daily
+ls -la ~ > ~/week04/home_list.txt
+cat ~/week04/home_list.txt
+total 48
+drwxr-xr-x 6 c112181138 c112181138 4096 Mar 17 10:00 .
+drwxr-xr-x 3 root         root         4096 Mar 1  2026 ..
+-rw-r--r-- 1 c112181138 c112181138   220 Mar 1  2026 .bash_logout
+-rw-r--r-- 1 c112181138 c112181138  3771 Mar 1  2026 .bashrc
+drwx------ 2 c112181138 c112181138  4096 Mar 1  2026 .cache
+drwx------ 3 c112181138 c112181138  4096 Mar 1  2026 .config
+-rw-r--r-- 1 c112181138 c112181138   807 Mar 1  2026 .profile
+date >> ~/week04/home_list.txt
+tail -3 ~/week04/home_list.txt
+-rw-r--r-- 1 c112181138 c112181138   807 Mar 1  2026 .profile
+-rw-r--r-- 1 c112181138 c112181138     0 Mar 17 10:00 home_list.txt
+Tue Mar 17 10:05:12 UTC 2026
