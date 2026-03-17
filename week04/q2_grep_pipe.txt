@@ -1,0 +1,25 @@
+姓名:李翊銘
+學號:C112181181
+
+student221@linux-server2:~$ grep student221 /etc/passwd
+student221:x:1020:1020::/home/student221:/bin/bash
+
+
+
+
+student221@linux-server2:~$ ls /etc| wc -l
+101
+
+
+
+student221@linux-server2:~$ ls /etc | sort | head -10
+adduser.conf
+alternatives
+apparmor.d
+apt
+bash.bashrc
+bash_completion.d
+bindresvport.blacklist
+cloud
+cron.d
+cron.daily
