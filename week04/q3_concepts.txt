@@ -1,12 +1,15 @@
-姓名：
-學號：
+姓名：傅瀚鋌
+學號：C112181112
 
 Q1：請說明管線符號 | 的功能，並舉一個實際使用的例子。
-A1：
+A1：先用 ls -l 列出檔案，再把結果交給 grep 篩選出包含 .txt 的檔案。
 
 Q2：請說明 > 和 >> 的差異，各舉一個使用情境。
-A2：
-
+A2：> 和 >> 都是輸出重導向符號，但差異在於是否覆蓋原檔案：
+>：**覆蓋（overwrite）**檔案內容（如果檔案存在會清空再寫入）
+>>：**追加（append）**內容到檔案尾端（保留原本內容）
+echo "Hello" > file.txt將 Hello 寫入 file.txt，原內容會被覆蓋
+echo "World" >> file.txt將 World 加到 file.txt 最後面，不會刪除原內容
 Q3：請寫出一行指令，找出 /etc/passwd 中有多少個使用者的 shell 是 /bin/bash。
     提示：可以結合 grep 和 wc 指令。
-A3：
+A3：grep "/bin/bash" /etc/passwd | wc -l
