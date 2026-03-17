@@ -1,0 +1,23 @@
+##pwd
+/home/student106
+
+## ls
+README.txt   exercises  'my file.txt'   scripts documents    file.txt    projects
+
+## ls -la
+total 36
+drwxr-x---. 7 student106 student106   189 Mar 10 07:17  .
+drwxr-xr-x. 1 root       root       16384 Mar 10 03:13  ..
+-rw-r--r--. 1 student106 student106   220 Jan  6  2022  .bash_logout
+-rw-r--r--. 1 student106 student106  3771 Jan  6  2022  .bashrc
+drwx------. 2 student106 student106    34 Mar 10 03:16  .cache
+-rw-r--r--. 1 student106 student106   807 Jan  6  2022  .profile
+-rw-rw-r--. 1 student106 student106   189 Mar  9 06:50  README.txt
+drwxrwxr-x. 2 student106 student106     6 Mar  9 06:50  documents
+drwxr-xr-x. 2 student106 student106    83 Mar  9 06:50  exercises
+-rw-rw-r--. 1 student106 student106     0 Mar 10 07:17  file.txt
+-rw-rw-r--. 1 student106 student106    37 Mar 10 07:07 'my file.txt'
+drwxrwxr-x. 2 student106 student106     6 Mar  9 06:50  projects
+drwxrwxr-x. 2 student106 student106     6 Mar  9 06:50  scripts
+
+
