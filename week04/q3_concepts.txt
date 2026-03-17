@@ -1,36 +1,20 @@
-=== 任務 3：重導向 ===
-將 ls -la ~ 的結果存入檔案：
-ls -la ~ > ~/week04/home_list.txt
-cat ~/week04/home_list.txt
-
-（貼上 cat 的結果）
-student117@linux-server1:~$ ls -la ~ > ~/week04/home_list.txt
-student117@linux-server1:~$ cat ~/week04/home_list.txt
-total 36
-drwxr-x---. 8 student117 student117   189 Mar 17 07:15 .
-drwxr-xr-x. 1 root       root       16384 Mar 10 03:13 ..
--rw-------. 1 student117 student117    29 Mar 10 08:26 .bash_history
--rw-r--r--. 1 student117 student117   220 Jan  6  2022 .bash_logout
--rw-r--r--. 1 student117 student117  3771 Jan  6  2022 .bashrc
-drwx------. 2 student117 student117    34 Mar 10 03:16 .cache
--rw-r--r--. 1 student117 student117   807 Jan  6  2022 .profile
--rw-rw-r--. 1 student117 student117   189 Mar  9 06:50 README.txt
-drwxrwxr-x. 2 student117 student117     6 Mar  9 06:50 documents
-drwxr-xr-x. 2 student117 student117    83 Mar  9 06:50 exercises
-drwxrwxr-x. 2 student117 student117     6 Mar  9 06:50 projects
-drwxrwxr-x. 2 student117 student117     6 Mar  9 06:50 scripts
-drwxrwxr-x. 4 student117 student117    51 Mar 17 07:27 week04
-student117@linux-server1:~$
-
-將目前日期追加到檔案：
-date >> ~/week04/home_list.txt
-tail -3 ~/week04/home_list.txt
 
 
-student117@linux-server1:~$ date >> ~/week04/home_list.txt
-student117@linux-server1:~$ tail -3 ~/week04/home_list.txt
-drwxrwxr-x. 2 student117 student117     6 Mar  9 06:50 scripts
-drwxrwxr-x. 4 student117 student117    51 Mar 17 07:27 week04
-Tue Mar 17 07:27:29 UTC 2026
-student117@linux-server1:~$
+姓名:陽痿
+學號:C112181114
+Q1：請說明管線符號 | 的功能，並舉一個實際使用的例子。
+A1：功能： 將前一個指令的「輸出」傳送給後一個指令作為「輸入」（資料接龍）。
+例子： ls -l | grep ".txt"（列出所有檔案後，只篩選出副檔名為 .txt 的檔案）。
 
+Q2：請說明 > 和 >> 的差異，各舉一個使用情境。
+A2：
+> (覆蓋)： 將輸出寫入檔案，若檔案已存在則覆蓋原有內容。
+
+情境： 每天重新產生一份全新的當日報表檔案。
+
+>> (累加)： 將輸出寫入檔案，若檔案已存在則接續在末尾。
+
+情境： 在 Log 紀錄檔中持續寫入新的伺服器存取狀態。
+Q3：請寫出一行指令，找出 /etc/passwd 中有多少個使用者的 shell 是 /bin/bash。
+    提示：可以結合 grep 和 wc 指令。
+A3：grep -c "/bin/bash" /etc/passwd
