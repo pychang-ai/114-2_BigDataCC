@@ -1,1 +1,15 @@
 
+姓名：
+學號：
+
+Q1：請說明管線符號 | 的功能，並舉一個實際使用的例子。
+A1：將前一個指令的輸出傳遞給下一個指令作為輸入
+例如 ls -l | grep ".txt"就是先用 ls -l 列出檔案清單，再透過 grep 篩選出檔名包含 .txt 的檔案
+
+Q2：請說明 > 和 >> 的差異，各舉一個使用情境。
+A2：>會清空原本內容再寫入 >>則是將內容加在原檔案後面，不會刪除原內容
+例如echo "Hello" > file.txt就是將 "Hello" 寫入 file.txt 若檔案已存在就會被覆蓋，若是將>改為>>則會把 "World" 加到 file.txt 的最後面
+
+Q3：請寫出一行指令，找出 /etc/passwd 中有多少個使用者的 shell 是 /bin/bash。
+    提示：可以結合 grep 和 wc 指令。
+A3：grep "/bin/bash" /etc/passwd | wc -l
