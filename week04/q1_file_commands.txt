@@ -11,6 +11,15 @@ touch ~/week04/dir2/file3.txt
 tree ~/week04
 
 （貼上 tree 的輸出結果）
+student101@linux-server1:~$ tree ~/week04
+/home/student101/week04
+|-- dir1
+|   |-- file1.txt
+|   `-- subdir1
+|       `-- file2.txt
+`-- dir2
+    `-- file3.txt
+
 
 === 任務 2：寫入檔案內容 ===
 請執行以下指令：
