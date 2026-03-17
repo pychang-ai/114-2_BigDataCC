@@ -1,0 +1,37 @@
+姓名：
+學號：
+
+=== 任務 1：grep 搜尋 ===
+在 /etc/passwd 中搜尋你的帳號名稱：
+grep 你的帳號 /etc/passwd
+
+（貼上結果）
+
+搜尋所有包含 "bash" 的行：
+grep bash /etc/passwd
+
+（貼上結果）
+
+=== 任務 2：管線操作 ===
+列出 /etc 目錄下的檔案數量：
+ls /etc | wc -l
+
+（貼上結果）
+
+列出 /etc 目錄下的前 10 個檔案名稱（按字母排序）：
+ls /etc | sort | head -10
+
+（貼上結果）
+
+=== 任務 3：重導向 ===
+將 ls -la ~ 的結果存入檔案：
+ls -la ~ > ~/week04/home_list.txt
+cat ~/week04/home_list.txt
+
+（貼上 cat 的結果）
+
+將目前日期追加到檔案：
+date >> ~/week04/home_list.txt
+tail -3 ~/week04/home_list.txt
+
+（貼上 tail 的結果）
