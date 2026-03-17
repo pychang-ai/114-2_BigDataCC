@@ -2,14 +2,20 @@
 學號：C112181103
 
 Q1：請說明管線符號 | 的功能，並舉一個實際使用的例子。
-A1：
+A1：功能： 管線（Pipe）的功能是將前一個指令的 「標準輸出 (stdout)」 直接傳遞給後一個指令當作 「標準輸入 (stdin)」。它能讓你像組樂高一樣，把多個小工具串接起來完成複雜的任務。
+
+實際例子：
+ls -l /etc | less
 
 Q2：請說明 > 和 >> 的差異，各舉一個使用情境。
-A2：
+A2：符號,功能,使用情境舉例
+>,覆蓋（Overwrite）：會清空目標檔案原本的內容，寫入新資料。,"初始化設定： echo ""hostname=MyServer"" > config.txt。當你想重新設定某個檔案，確保裡面沒有舊資料時使用。"
+>>,累加（Append）：保留原本內容，將新資料接在檔案最後面。,"記錄日誌（Log）： echo ""Backup completed at $(date)"" >> backup.log。當你想持續記錄操作歷程而不刪除舊紀錄時使用。"
 
 Q3：請寫出一行指令，找出 /etc/passwd 中有多少個使用者的 shell 是 /bin/bash。
     提示：可以結合 grep 和 wc 指令。
-A3：
+A3：student107@linux-server1:~$ grep "/bin/bash" /etc/passwd | wc -l
+63
 ```
 
 ### 評分標準
