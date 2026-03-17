@@ -1,0 +1,13 @@
+姓名：黃薏庭
+學號：C112181103
+
+=== 任務 1：grep 搜尋 ===
+在 /etc/passwd 中搜尋你的帳號名稱：
+grep 你的帳號 /etc/passwd
+
+（貼上結果）
+
+搜尋所有包含 "bash" 的行：
+grep bash /etc/passwd
+
+（貼上結果）
