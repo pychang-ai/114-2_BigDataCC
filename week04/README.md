@@ -48,6 +48,9 @@ tree ~/week04
 
 （貼上 tree 的輸出結果）
 
+
+
+
 === 任務 2：寫入檔案內容 ===
 請執行以下指令：
 echo "Hello Linux" > ~/week04/dir1/file1.txt
