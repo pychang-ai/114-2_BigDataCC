@@ -1,0 +1,47 @@
+姓名：陳意欣
+學號：C112181102
+
+=== 步驟 1：mkdir week03test ===
+
+無輸出
+
+=== 步驟 2：cd week03test ===
+
+student106@linux-server1:~$ cd week03test
+student106@linux-server1:~/week03test$
+
+=== 步驟 3：建立三個檔案 ===
+使用的指令：
+
+touch hello.txt vm.txt test.txt
+
+=== 步驟 4：ls -l ===
+
+student106@linux-server1:~/week03test$ ls -l
+total 0
+-rw-rw-r--. 1 student106 student106 0 Mar 18 08:50 hello.txt
+-rw-rw-r--. 1 student106 student106 0 Mar 18 08:50 test.txt
+-rw-rw-r--. 1 student106 student106 0 Mar 18 08:50 vm.txt
+student106@linux-server1:~/week03test$
+
+
+=== 步驟 5：cp hello.txt hello_backup.txt ===
+
+
+=== 步驟 6：mv vm.txt virtualization.txt ===
+
+
+=== 步驟 7：ls -l（最終結果） ===
+
+student106@linux-server1:~/week03test$ ls -l
+total 0
+-rw-rw-r--. 1 student106 student106 0 Mar 18 08:50 hello.txt
+-rw-rw-r--. 1 student106 student106 0 Mar 18 08:51 hello_backup.txt
+-rw-rw-r--. 1 student106 student106 0 Mar 18 08:50 test.txt
+-rw-rw-r--. 1 student106 student106 0 Mar 18 08:50 virtualization.txt
+student106@linux-server1:~/week03test$
+
+
+=== 問答 ===
+Q：最終目錄中有哪些檔案？和步驟 4 相比，發生了什麼變化？
+A：檔案變多了，也改名了。
