@@ -1,0 +1,80 @@
+## 第 1 題：SSH 連線與基本指令（40 分）
+
+SSH 連線到 Linux 練習環境，依序執行以下 7 個指令，將結果存入 `week03/q1_basic.txt`：
+
+```
+whoami
+hostname
+pwd
+uname -a
+date
+ls /
+ls -la ~
+```
+
+q1_basic.txt 格式：
+```
+姓名：蔡孟洹
+學號：C112181145
+
+=== whoami ===
+student213@linux-server2:~$ whoami
+student213
+
+（貼上執行結果）
+
+=== hostname ===
+student213@linux-server2:~$ hostname
+linux-server2
+
+（貼上執行結果）
+
+=== pwd ===
+（貼上執行結果）
+student213@linux-server2:~$ pwd
+/home/student213
+
+=== uname -a ===
+student213@linux-server2:~$ uname -a
+Linux linux-server2 6.1.163-186.299.amzn2023.x86_64 #1 SMP PREEMPT_DYNAMIC Tue Feb 24 16:35:42 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
+
+（貼上執行結果）
+
+=== date ===
+student213@linux-server2:~$ date
+Wed Mar 18 08:19:30 UTC 2026
+
+（貼上執行結果）
+
+=== ls / ===
+student213@linux-server2:~$ ls /
+bin   dev  home  lib32  libx32  mnt  proc  run   srv  tmp  var
+boot  etc  lib   lib64  media   opt  root  sbin  sys  usr
+
+（貼上執行結果）
+
+=== ls -la ~ ===
+student213@linux-server2:~$ ls -la ~
+total 60
+drwxr-x---. 11 student213 student213 16384 Mar 17 06:54  .
+drwxr-xr-x.  1 root       root       16384 Mar 10 03:13  ..
+-rw-------.  1 student213 student213  1219 Mar 17 07:36  .bash_history
+-rw-r--r--.  1 student213 student213   220 Jan  6  2022  .bash_logout
+-rw-r--r--.  1 student213 student213  3771 Jan  6  2022  .bashrc
+drwx------.  2 student213 student213    34 Mar 10 03:16  .cache
+-rw-rw-r--.  1 student213 student213    55 Mar 17 06:39  .gitconfig
+-rw-r--r--.  1 student213 student213   807 Jan  6  2022  .profile
+-rw-rw-r--.  1 student213 student213   189 Mar  9 06:57  README.txt
+drwxrwxr-x.  2 student213 student213     6 Mar  9 06:57  documents
+drwxr-xr-x.  2 student213 student213    83 Mar  9 06:57  exercises
+-rw-rw-r--.  1 student213 student213     0 Mar 10 07:17  file.txt
+drwxrwxr-x.  2 student213 student213     6 Mar 17 05:57  joe
+-rw-rw-r--.  1 student213 student213    32 Mar 10 07:08 'my file.txt'
+drwxrwxr-x.  2 student213 student213     6 Mar 10 07:17  mydir
+drwxrwxr-x.  2 student213 student213     6 Mar 10 07:19  pratcice
+drwxrwxr-x.  2 student213 student213     6 Mar  9 06:57  projects
+drwxrwxr-x.  2 student213 student213     6 Mar  9 06:57  scripts
+drwxrwxr-x.  4 student213 student213    51 Mar 17 07:13  week04
+
+（貼上執行結果）
+```
