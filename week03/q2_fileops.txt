@@ -1,1 +1,44 @@
+姓名：蔡异堤
+學號：C112181144
 
+=== 步驟 1：mkdir week03test ===
+（無輸出）
+
+=== 步驟 2：cd week03test ===
+student212@linux-server2:~/week03test$
+
+=== 步驟 3：建立三個檔案 ===
+使用的指令：
+student212@linux-server2:~/week03test$ touch hello.txt
+student212@linux-server2:~/week03test$ touch learning.txt
+student212@linux-server2:~/week03test$ touch vm.txt
+
+
+=== 步驟 4：ls -l ===
+student212@linux-server2:~/week03test$ ls -l
+total 0
+-rw-rw-r--. 1 student212 student212 0 Mar 18 09:00 hello.txt
+-rw-rw-r--. 1 student212 student212 0 Mar 18 09:01 learning.txt
+-rw-rw-r--. 1 student212 student212 0 Mar 18 09:01 vm.txt
+
+
+=== 步驟 5：cp hello.txt hello_backup.txt ===
+student212@linux-server2:~/week03test$ cp hello.txt hello_backup.txt
+（無輸出）
+
+=== 步驟 6：mv vm.txt virtualization.txt ===
+student212@linux-server2:~/week03test$ mv vm.txt virtualization.txt
+（無輸出）
+
+=== 步驟 7：ls -l（最終結果） ===
+student212@linux-server2:~/week03test$ ls -l
+total 0
+-rw-rw-r--. 1 student212 student212 0 Mar 18 09:00 hello.txt
+-rw-rw-r--. 1 student212 student212 0 Mar 18 09:02 hello_backup.txt
+-rw-rw-r--. 1 student212 student212 0 Mar 18 09:01 learning.txt
+-rw-rw-r--. 1 student212 student212 0 Mar 18 09:01 virtualization.txt
+
+
+=== 問答 ===
+Q：最終目錄中有哪些檔案？和步驟 4 相比，發生了什麼變化？
+A：4個檔案；複製hello.txt並命名hello_backup.txt和重新命名vm.txt為virtualization.txt 
