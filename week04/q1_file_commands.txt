@@ -1,0 +1,57 @@
+姓名：劉家样
+學號：C111181141
+
+=== 任務 1：建立目錄結構 ===
+請執行以下指令並貼上結果：
+mkdir -p ~/week04/dir1/subdir1
+mkdir -p ~/week04/dir2
+touch ~/week04/dir1/file1.txt
+touch ~/week04/dir1/subdir1/file2.txt
+touch ~/week04/dir2/file3.txt
+tree ~/week04
+
+/home/spes1/week04
+├── dir1
+│   ├── file1.txt
+│   └── subdir1
+│       └── file2.txt
+├── dir2
+│   └── file3.txt
+├── q1_file_commands.txt
+└── q1_file_commands.txt.save
+
+4 directories, 5 files
+
+=== 任務 2：寫入檔案內容 ===
+請執行以下指令：
+echo "Hello Linux" > ~/week04/dir1/file1.txt
+echo "Bash Shell Practice" > ~/week04/dir1/subdir1/file2.txt
+echo "Week 04 Assignment" > ~/week04/dir2/file3.txt
+
+用 cat 查看三個檔案的內容並貼上結果：
+
+spes1@Yang:~/week04$ cat ~/week04/dir1/file1.txt
+Hello Linux
+spes1@Yang:~/week04$ cat ~/week04/dir1/subdir1/file2.txt
+Bash Shell Practice
+spes1@Yang:~/week04$ cat ~/week04/dir2/file3.txt
+Week 04 Assignment
+
+=== 任務 3：檔案內容檢視指令 ===
+請執行以下指令並貼上結果：
+cat /etc/passwd | head -5
+cat /etc/passwd | tail -3
+wc -l /etc/passwd
+
+spes1@Yang:~/week04$ cat /etc/passwd | head -5
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+spes1@Yang:~/week04$ cat /etc/passwd | tail -3
+landscape:x:104:105::/var/lib/landscape:/usr/sbin/nologin
+polkitd:x:990:990:User for polkitd:/:/usr/sbin/nologin
+spes1:x:1000:1000:,,,:/home/spes1:/bin/bash
+spes1@Yang:~/week04$ wc -l /etc/passwd
+28 /etc/passwd

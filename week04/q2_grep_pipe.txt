@@ -1,0 +1,60 @@
+姓名：劉家样
+學號：C111181141
+
+=== 任務 1：grep 搜尋 ===
+在 /etc/passwd 中搜尋你的帳號名稱：
+grep 你的帳號 /etc/passwd
+
+spes1:x:1000:1000:,,,:/home/spes1:/bin/bash
+
+搜尋所有包含 "bash" 的行：
+grep bash /etc/passwd
+
+root:x:0:0:root:/root:/bin/bash
+spes1:x:1000:1000:,,,:/home/spes1:/bin/bash
+
+=== 任務 2：管線操作 ===
+列出 /etc 目錄下的檔案數量：
+ls /etc | wc -l
+
+168
+
+列出 /etc 目錄下的前 10 個檔案名稱（按字母排序）：
+ls /etc | sort | head -10
+
+PackageKit
+X11
+adduser.conf
+alternatives
+apparmor
+apparmor.d
+apport
+apt
+bash.bashrc
+bash_completion
+
+=== 任務 3：重導向 ===
+將 ls -la ~ 的結果存入檔案：
+ls -la ~ > ~/week04/home_list.txt
+cat ~/week04/home_list.txt
+
+total 36
+drwxr-x--- 5 spes1 spes1 4096 Mar 23 21:27 .
+drwxr-xr-x 3 root  root  4096 Mar 23 21:22 ..
+-rw------- 1 spes1 spes1  118 Mar 23 21:27 .bash_history
+-rw-r--r-- 1 spes1 spes1  220 Mar 23 21:22 .bash_logout
+-rw-r--r-- 1 spes1 spes1 3771 Mar 23 21:22 .bashrc
+drwx------ 2 spes1 spes1 4096 Mar 23 21:22 .cache
+drwxr-xr-x 3 spes1 spes1 4096 Mar 23 21:25 .local
+-rw-rw-r-- 1 spes1 spes1    0 Mar 23 21:22 .motd_shown
+-rw-r--r-- 1 spes1 spes1  807 Mar 23 21:22 .profile
+-rw-r--r-- 1 spes1 spes1    0 Mar 23 21:23 .sudo_as_admin_successful
+drwxr-xr-x 4 spes1 spes1 4096 Mar 23 22:28 week04
+
+將目前日期追加到檔案：
+date >> ~/week04/home_list.txt
+tail -3 ~/week04/home_list.txt
+
+-rw-r--r-- 1 spes1 spes1    0 Mar 23 21:23 .sudo_as_admin_successful
+drwxr-xr-x 4 spes1 spes1 4096 Mar 23 22:28 week04
+Mon Mar 23 22:28:55 CST 2026
