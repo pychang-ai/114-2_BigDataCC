@@ -1,0 +1,20 @@
+李翊丞
+C111181134
+
+
+student101@linux-server1:~$ nano ~/intro.txt
+student101@linux-server1:~$ cat ~/intro.txt
+name:LEE ICHENG
+number:C111181134
+school:NKUST
+Tue Mar 24 06:51:14 UTC 2026
+
+
+student101@linux-server1:~$ date
+Tue Mar 24 07:06:26 UTC 2026
+student101@linux-server1:~$
+
+
+Crtl+O  Ctrl+X Ctrl+U Ctrl+K
+
+
