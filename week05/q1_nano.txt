@@ -16,7 +16,7 @@ student203@linux-server2:~$ cat ~/intro.txt
 系所：海事資訊科技系
 興趣：打籃球、看電影
 修這門課的期望：學會 Linux 和 Docker
-今天的日期:$(date)
+今天日期:$(date)
 
 
 === 任務 3：說明你使用了哪些 nano 快捷鍵 ===
@@ -24,3 +24,8 @@ Ctrl + O	Write Out (儲存)	會詢問檔名，按 Enter 即可存檔。
 Ctrl + X	Exit (離開)	離開編輯器。若未存檔會詢問是否存檔。
 Ctrl + K	Cut Text (剪下)	剪下目前游標所在的那一行。
 Ctrl + U	Uncut Text (貼上)	貼上剛才剪下的內容。
+Ctrl + W	搜尋	Where Is，搜尋文字
+Ctrl + C	顯示游標位置	顯示目前在第幾行第幾欄
+Ctrl + G	顯示說明	Help，顯示完整快捷鍵說明
+Ctrl + A	移到行首	游標跳到該行最前面
+Ctrl + E	移到行尾	游標跳到該行最後面
