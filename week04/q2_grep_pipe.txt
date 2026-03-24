@@ -1,9 +1,14 @@
 姓名:李翊銘
 學號:C112181181
+=== 任務 1：grep 搜尋 ===
+在 /etc/passwd 中搜尋你的帳號名稱：
+grep 你的帳號 /etc/passwd
 
 student221@linux-server2:~$ grep student221 /etc/passwd
 student221:x:1020:1020::/home/student221:/bin/bash
 
+搜尋所有包含 "bash" 的行：
+grep bash /etc/passwd
 
 student216:x:1015:1015::/home/student216:/bin/bash
 student217:x:1016:1016::/home/student217:/bin/bash
@@ -53,11 +58,15 @@ student128:x:1059:1059::/home/student128:/bin/bash
 student129:x:1060:1060::/home/student129:/bin/bash
 student130:x:1061:1061::/home/student130:/bin/bash
 
+=== 任務 2：管線操作 ===
+列出 /etc 目錄下的檔案數量：
+ls /etc | wc -l
 
 student221@linux-server2:~$ ls /etc| wc -l
 101
 
-
+列出 /etc 目錄下的前 10 個檔案名稱（按字母排序）：
+ls /etc | sort | head -10
 
 student221@linux-server2:~$ ls /etc | sort | head -10
 adduser.conf
@@ -71,6 +80,10 @@ cloud
 cron.d
 cron.daily
 
+=== 任務 3：重導向 ===
+將 ls -la ~ 的結果存入檔案：
+ls -la ~ > ~/week04/home_list.txt
+cat ~/week04/home_list.txt
 
 total 736
 drwxr-x---. 8 student221 student221  16384 Mar 17 06:44 .
@@ -90,6 +103,9 @@ drwxrwxr-x. 2 student221 student221      6 Mar  9 06:57 projects
 drwxrwxr-x. 2 student221 student221      6 Mar  9 06:57 scripts
 drwxrwxr-x. 4 student221 student221     51 Mar 17 06:56 week04
 
+將目前日期追加到檔案：
+date >> ~/week04/home_list.txt
+tail -3 ~/week04/home_list.txt
 
 student221@linux-server2:~$ date >> ~/week04/home_list.txt
 student221@linux-server2:~$ tail -3 ~/week04/home_list.txt
