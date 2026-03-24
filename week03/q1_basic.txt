@@ -2,39 +2,24 @@
 學號：C112181114
 
 === 任務 1：建立目錄結構 ===
-=== 任務 1：建立目錄結構 ===
-=== 任務 1：建立目錄結構 ===
-student117@linux-server1:~$ ll
-total 32
-drwxr-x---. 7 student117 student117   154 Mar 10 03:16 ./
-drwxr-xr-x. 1 root       root       16384 Mar 10 03:13 ../
--rw-r--r--. 1 student117 student117   220 Jan  6  2022 .bash_logout
--rw-r--r--. 1 student117 student117  3771 Jan  6  2022 .bashrc
-drwx------. 2 student117 student117    34 Mar 10 03:16 .cache/
--rw-r--r--. 1 student117 student117   807 Jan  6  2022 .profile
--rw-rw-r--. 1 student117 student117   189 Mar  9 06:50 README.txt
-drwxrwxr-x. 2 student117 student117     6 Mar  9 06:50 documents/
-drwxr-xr-x. 2 student117 student117    83 Mar  9 06:50 exercises/
-drwxrwxr-x. 2 student117 student117     6 Mar  9 06:50 projects/
-drwxrwxr-x. 2 student117 student117     6 Mar  9 06:50 scripts/
-student117@linux-server1:~$ ll -la
-total 32
-drwxr-x---. 7 student117 student117   154 Mar 10 03:16 ./
-drwxr-xr-x. 1 root       root       16384 Mar 10 03:13 ../
--rw-r--r--. 1 student117 student117   220 Jan  6  2022 .bash_logout
--rw-r--r--. 1 student117 student117  3771 Jan  6  2022 .bashrc
-drwx------. 2 student117 student117    34 Mar 10 03:16 .cache/
--rw-r--r--. 1 student117 student117   807 Jan  6  2022 .profile
--rw-rw-r--. 1 student117 student117   189 Mar  9 06:50 README.txt
-drwxrwxr-x. 2 student117 student117     6 Mar  9 06:50 documents/
-drwxr-xr-x. 2 student117 student117    83 Mar  9 06:50 exercises/
-drwxrwxr-x. 2 student117 student117     6 Mar  9 06:50 projects/
-drwxrwxr-x. 2 student117 student117     6 Mar  9 06:50 scripts/
-student117@linux-server1:~$ ls
-README.txt  documents  exercises  projects  scripts
-student117@linux-server1:~$ cd..
--bash: cd..: command not found
-student117@linux-server1:~$ whoami
-student117
-student117@linux-server1:~$ pwd
-/home/student117
+mkdir -p project/src project/bin project/docs
+ls -R project
+
+=== 任務 2：建立檔案 ===
+touch project/src/main.c
+ls project/src
+
+=== 任務 3：複製檔案 ===
+cp project/src/main.c project/bin/
+ls project/bin
+
+=== 任務 4：移動檔案 ===
+mv project/bin/main.c project/docs/
+ls project/docs
+
+=== 任務 5：刪除檔案 ===
+rm project/docs/main.c
+ls project/docs
+
+=== 任務 6：顯示目前路徑 ===
+pwd
