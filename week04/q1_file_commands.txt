@@ -31,7 +31,6 @@ echo "Week 04 Assignment" > ~/week04/dir2/file3.txt
 
 用 cat 查看三個檔案的內容並貼上結果：
 
-
 Hello Linux
 Bash Shell Practice
 Week 04 Assignment
@@ -41,8 +40,6 @@ Week 04 Assignment
 cat /etc/passwd | head -5
 cat /etc/passwd | tail -3
 wc -l /etc/passwd
-
-
 
 root:x:0:0:root:/root:/bin/bash
 daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin

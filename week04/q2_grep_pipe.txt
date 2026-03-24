@@ -7,8 +7,6 @@ grep 你的帳號 /etc/passwd
 
 student112:x:1011:1011::/home/student112:/bin/bash
 
-
-
 搜尋所有包含 "bash" 的行：
 grep bash /etc/passwd
 
@@ -83,8 +81,6 @@ student230:x:1061:1061::/home/student230:/bin/bash
 ls /etc | wc -l
 
 101
-
-
 
 列出 /etc 目錄下的前 10 個檔案名稱（按字母排序）：
 ls /etc | sort | head -10
