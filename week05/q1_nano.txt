@@ -1,5 +1,5 @@
-姓名:李翊銘
-學號:C112181181
+姓名:楊邦齊
+學號:C112181114
 
 === 任務 1：用 nano 建立 intro.txt ===
 請用 nano 建立 ~/intro.txt，輸入以下內容（替換為你的真實資訊）：
@@ -12,11 +12,11 @@
 儲存後用 cat 顯示內容：
 cat ~/intro.txt
 
-student221@linux-server2:~$ cat ~/intro.txt
+student117@linux-server2:~$ cat ~/intro.txt
 
-姓名：李翊銘
+姓名：楊邦齊
 
-學號：C112181181
+學號：C112181114
 
 系所：海事資訊科技系
 
@@ -25,33 +25,33 @@ student221@linux-server2:~$ cat ~/intro.txt
 修這門課的期望：學會 Linux 和 Docker以及其他不會的東西
 
 ### 作業第 1 題：用 vi 建立自我介紹
-student221@linux-server2:~$ vi ~/intro.txt
-student221@linux-server2:~$ vi ~/intro.txt
-student221@linux-server2:~$ cat ~/intro.txt
-姓名：李翊銘
-學號：C112181101
+student117@linux-server2:~$ vi ~/intro.txt
+student117@linux-server2:~$ vi ~/intro.txt
+student117@linux-server2:~$ cat ~/intro.txt
+姓名：楊邦齊
+學號：C112181114
 系所：海事資訊科技系
 興趣：打籃球、看電影
 修這門課的期望：學會 Linux 和 Docker
 日期：Tue Mar 24 06:35:02 UTC 2026
-姓名：李翊銘
-學號：C112181181
+姓名：楊邦齊
+學號：C112181114
 系所：海事資訊科技系
 興趣：打籃球、看電影
 修這門課的期望：學會 Linux 和 Docker
 
 
-student221@linux-server2:~$ vi ~/intro.txt
-student221@linux-server2:~$ cat ~/intro.txt
-姓名：李翊銘
-學號：C112181101
+student117@linux-server2:~$ vi ~/intro.txt
+student117@linux-server2:~$ cat ~/intro.txt
+姓名：楊邦齊
+學號：C112181114
 系所：海事資訊科技系
 興趣：打籃球、看電影
 修這門課的期望：學會 Linux 和 Docker
 日期：Tue Mar 24 06:35:02 UTC 2026
 Vi版本
-姓名：李翊銘
-學號：C112181181
+姓名：楊邦齊
+學號：C112181114
 系所：海事資訊科技系
 興趣：打籃球、看電影
 修這門課的期望：學會 Linux 和 Docker
@@ -61,25 +61,25 @@ Vi版本
   今天日期：（用 date 指令查到的日期）
 
 儲存後用 cat 顯示完整內容：
-student221@linux-server2:~$ cat ~/intro.txt
-姓名：李翊銘
-學號：C112181181
+student117@linux-server2:~$ cat ~/intro.txt
+姓名：楊邦齊
+學號：C112181114
 系所：海事資訊科技系
 興趣：打籃球、看電影
 修這門課的期望：學會 Linux 和 Docker
 日期：Tue Mar 24 06:35:02 UTC 2026
-student221@linux-server2:~$ vi ~/intro.txt
-student221@linux-server2:~$ cat ~/intro.txt
+student117@linux-server2:~$ vi ~/intro.txt
+student117@linux-server2:~$ cat ~/intro.txt
 
-姓名：李翊銘
-學號：C112181101
+姓名：楊邦齊
+學號：C112181114
 系所：海事資訊科技系
 興趣：打籃球、看電影
 修這門課的期望：學會 Linux 和 Docker
 日期：Tue Mar 24 06:35:02 UTC 2026
 Vi版本
-姓名：李翊銘
-學號：C112181181
+姓名：楊邦齊
+學號：C112181114
 系所：海事資訊科技系
 興趣：打籃球、看電影
 修這門課的期望：學會 Linux 和 Docker
