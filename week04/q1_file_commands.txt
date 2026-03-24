@@ -12,11 +12,11 @@ tree ~/week04
 
 /home/spes1/week04
 ├── dir1
-│   ├── file1.txt
-│   └── subdir1
-│       └── file2.txt
+│   ├── file1.txt
+│   └── subdir1
+│       └── file2.txt
 ├── dir2
-│   └── file3.txt
+│   └── file3.txt
 ├── q1_file_commands.txt
 └── q1_file_commands.txt.save
 
