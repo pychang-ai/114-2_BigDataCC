@@ -74,8 +74,6 @@ student228:x:1059:1059::/home/student228:/bin/bash
 student229:x:1060:1060::/home/student229:/bin/bash
 student230:x:1061:1061::/home/student230:/bin/bash
 
-
-
 === 任務 2：管線操作 ===
 列出 /etc 目錄下的檔案數量：
 ls /etc | wc -l
@@ -95,8 +93,6 @@ bindresvport.blacklist
 cloud
 cron.d
 cron.daily
-
-
 
 === 任務 3：重導向 ===
 將 ls -la ~ 的結果存入檔案：
@@ -121,8 +117,6 @@ drwxrwxr-x. 2 student112 student112     6 Mar  9 06:50 projects
 drwxrwxr-x. 2 student112 student112     6 Mar  9 06:50 scripts
 drwxrwxr-x. 4 student112 student112    51 Mar 17 07:48 week04
 -rw-rw-r--. 1 student112 student112   468 Mar 17 06:28 wget-log
-
-
 
 將目前日期追加到檔案：
 date >> ~/week04/home_list.txt
