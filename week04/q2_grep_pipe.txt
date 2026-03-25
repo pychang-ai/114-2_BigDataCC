@@ -140,3 +140,4 @@ tail -3 ~/week04/home_list.txt
 drwxrwxr-x.  2 student101 student101      6 Mar  9 06:49 scripts
 drwxrwxr-x.  4 student101 student101     51 Mar 25 14:11 week04
 Wed Mar 25 14:12:02 UTC 2026
+

@@ -58,4 +58,3 @@ student229:x:1060:1060::/home/student229:/bin/bash
 student230:x:1061:1061::/home/student230:/bin/bash
 student101@linux-server1:~$ wc -l /etc/passwd
 82 /etc/passwd
-
