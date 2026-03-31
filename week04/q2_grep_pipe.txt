@@ -1,3 +1,6 @@
+姓名：凌賜桐
+學號：C112181110
+
 ##
 student113@linux-server1:~$ ls /etc | wc -l
 101
