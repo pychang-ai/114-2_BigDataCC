@@ -1,0 +1,67 @@
+姓名：李翊丞
+學號：C111181134
+
+=== 任務 1：探索 Linux 目錄結構 ===
+執行以下指令：
+ls /
+
+bin                boot  etc   init  lib.usr-is-merged  lost+found  mnt  proc  run   sbin.usr-is-merged  srv  tmp  var
+bin.usr-is-merged  dev   home  lib   lib64              media       opt  root  sbin  snap                sys  usr
+
+請從上面的結果中，說明以下 5 個目錄各是做什麼的：
+/home：使用者的家目錄
+/etc：系統設定檔目錄
+/var：動態資料目錄
+/tmp：暫存目錄
+/usr：應用程式目錄
+
+=== 任務 2：查看空間與檔案統計 ===
+查看自己家目錄佔用多少空間：
+du -sh ~
+
+20K     /home/user
+
+計算自己家目錄下有多少個檔案：
+find ~ -type f | wc -l
+
+6
+
+計算自己家目錄下有多少個目錄：
+find ~ -type d | wc -l
+
+2
+
+=== 任務 3：chown 與 chgrp 實作 ===
+請依序執行以下指令並貼上每步的結果：
+
+步驟 1：建立測試檔案並查看預設擁有者
+touch ~/week06_test.txt
+echo "Ownership Test" > ~/week06_test.txt
+ls -l ~/week06_test.txt
+-rw-r--r-- 1 user user 15 Mar 31 15:54 /home/user/week06_test.txt
+
+步驟 2：建立測試用的使用者和群組
+sudo useradd -m tempuser
+sudo groupadd tempgroup
+（貼上結果）
+
+步驟 3：用 chown 改變擁有者
+sudo chown tempuser ~/week06_test.txt
+ls -l ~/week06_test.txt
+（貼上結果，觀察擁有者欄位的變化）
+
+步驟 4：用 chgrp 改變群組
+sudo chgrp tempgroup ~/week06_test.txt
+ls -l ~/week06_test.txt
+（貼上結果，觀察群組欄位的變化）
+
+步驟 5：用 chown 一次改回自己
+sudo chown $(whoami):$(whoami) ~/week06_test.txt
+ls -l ~/week06_test.txt
+（貼上結果，確認擁有者和群組都改回來了）
+
+步驟 6：清理
+rm ~/week06_test.txt
+sudo userdel -r tempuser
+sudo groupdel tempgroup
+（貼上結果）
