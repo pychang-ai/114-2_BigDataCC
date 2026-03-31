@@ -235,10 +235,19 @@ A3：
 請在 Windows 的 PowerShell 或 CMD 中執行以下指令，貼上結果：
 
 wsl --list --verbose
-（貼上結果）
+PS C:\Users\Teacher> wsl --list --verbose
+  NAME      STATE           VERSION
+* Ubuntu    Stopped         2
 
 wsl --version
-（貼上結果）
+PS C:\Users\Teacher> wsl --version
+WSL 版本： 2.6.3.0
+核心版本： 6.6.87.2-1
+WSLg 版本： 1.0.71
+MSRDC 版本： 1.2.6353
+Direct3D 版本： 1.611.1-81528511
+DXCore 版本： 10.0.26100.1-240331-1435.ge-release
+Windows 版本： 10.0.26200.8037
 
 請回答：你的 WSL 版本是多少？安裝的 Linux 發行版叫什麼名稱？
 
