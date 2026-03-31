@@ -106,10 +106,38 @@ cron.daily
 ls -la ~ > ~/week04/home_list.txt
 cat ~/week04/home_list.txt
 
-（貼上 cat 的結果）
+total 756
+drwxr-x---. 11 student101 student101  16384 Mar 24 07:08 .
+drwxr-xr-x.  1 root       root        16384 Mar 10 03:13 ..
+-rw-------.  1 student101 student101   5288 Mar 25 09:23 .bash_history
+-rw-r--r--.  1 student101 student101    220 Jan  6  2022 .bash_logout
+-rw-r--r--.  1 student101 student101   3771 Jan  6  2022 .bashrc
+drwx------.  2 student101 student101     34 Mar  9 06:51 .cache
+-rw-rw-r--.  1 student101 student101     53 Mar 17 06:31 .gitconfig
+drwxrwxr-x.  3 student101 student101     19 Mar 24 06:45 .local
+-rw-r--r--.  1 student101 student101    807 Jan  6  2022 .profile
+-rw-------.  1 student101 student101    758 Mar 17 07:27 .viminfo
+-rw-rw-r--.  1 student101 student101    171 Mar 17 06:26 .wget-hsts
+-rw-rw-r--.  1 student101 student101    189 Mar  9 06:49 README.txt
+drwxrwxr-x.  2 student101 student101     45 Mar 17 06:12 c123456
+drwxrwxr-x.  2 student101 student101      6 Mar  9 06:49 documents
+drwxr-xr-x.  2 student101 student101     83 Mar  9 06:49 exercises
+-rw-rw-r--.  1 student101 student101      0 Mar 17 06:07 file000.txt
+-rw-rw-r--.  1 student101 student101     78 Mar 24 06:52 intro.txt
+-rw-rw-r--.  1 student101 student101 688430 Jan 14 12:51 koala.png
+-rwxrwxr-x.  1 student101 student101    487 Mar 24 06:58 my_script.sh
+-rw-rw-r--.  1 student101 student101     27 Mar 10 07:06 myfile.txt
+drwxrwxr-x.  2 student101 student101     58 Mar 10 07:20 practice
+drwxrwxr-x.  2 student101 student101      6 Mar  9 06:49 projects
+drwxrwxr-x.  2 student101 student101      6 Mar  9 06:49 scripts
+drwxrwxr-x.  4 student101 student101     51 Mar 25 14:11 week04
+
 
 將目前日期追加到檔案：
 date >> ~/week04/home_list.txt
 tail -3 ~/week04/home_list.txt
 
-（貼上 tail 的結果）
+drwxrwxr-x.  2 student101 student101      6 Mar  9 06:49 scripts
+drwxrwxr-x.  4 student101 student101     51 Mar 25 14:11 week04
+Wed Mar 25 14:12:02 UTC 2026
+
