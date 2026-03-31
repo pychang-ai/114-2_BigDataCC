@@ -1,1 +1,35 @@
+姓名： 簡祈媗
+學號： C112181138
+
+=== 步驟 1：mkdir week03test ===
+無輸出
+
+=== 步驟 2：cd week03test ===
+無輸出
+
+=== 步驟 3：建立三個檔案 ===
+使用的指令：
+touch hello.txt learning.txt vm.txt
+
+=== 步驟 4：ls -l ===
+
+Bash
+total 0
+-rw-r--r-- 1 user user 0 Mar 31 14:30 hello.txt
+-rw-r--r-- 1 user user 0 Mar 31 14:30 learning.txt
+-rw-r--r-- 1 user user 0 Mar 31 14:30 vm.txt
+=== 步驟 5：cp hello.txt hello_backup.txt ===
+無輸出
+
+=== 步驟 6：mv vm.txt virtualization.txt ===
+無輸出
+
+=== 步驟 7：ls -l (最終結果) ===
+
+Bash
+total 0
+-rw-r--r-- 1 user user 0 Mar 31 14:30 hello.txt
+-rw-r--r-- 1 user user 0 Mar 31 14:30 hello_backup.txt
+-rw-r--r-- 1 user user 0 Mar 31 14:30 learning.txt
+-rw-r--r-- 1 user user 0 Mar 31 14:30 virtualization.txt
 
