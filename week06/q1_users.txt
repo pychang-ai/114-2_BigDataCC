@@ -1,17 +1,17 @@
-姓名：
-學號：
+姓名：蔡异堤
+學號：C112181144
 
 === 任務 1：查看自己的身份資訊 ===
 請依序執行以下三個指令並貼上結果：
 
 whoami
-（貼上結果）
+（IRIS）
 
 id
-（貼上結果）
+（uid=1000(IRIS) gid=1000(IRIS) groups=1000(IRIS),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),100(users)）
 
 groups
-（貼上結果）
+IRIS adm cdrom sudo dip plugdev users
 
 請回答：你的 UID 是多少？你屬於哪些群組？
 
@@ -19,40 +19,40 @@ groups
 執行以下指令：
 cat /etc/passwd | grep 你的帳號
 
-（貼上結果）
+（IRIS:x:1000:1000::/home/IRIS:/bin/bash）
 
 請將這行用 : 拆成 7 個欄位，逐一說明每個欄位的意義：
-欄位 1（帳號名稱）：
-欄位 2（密碼欄位）：
-欄位 3（UID）：
-欄位 4（GID）：
-欄位 5（描述）：
-欄位 6（家目錄）：
-欄位 7（Shell）：
+欄位 1（帳號名稱）：使用者登入系統時所輸入的名稱。在系統中必須是唯一的。
+欄位 2（密碼欄位）：早期存放加密密碼，現在基於安全考量，密碼加密後改存放在 /etc/shadow 中，此處僅以 x 作為佔位符。
+欄位 3（UID）：使用者識別碼 (User ID)。系統內部實際上是透過這個數字來辨識使用者。通常 0 是 root，1-999 是系統帳號，1000 以上是一般使用者。
+欄位 4（GID）：群組識別碼 (Group ID)。代表該使用者所屬的主要群組。對應到 /etc/group 檔案中的資訊。
+欄位 5（描述）：使用者資訊 (GECOS)。通常紀錄使用者的全名、辦公室電話等。若未填寫則會留白，有時會看到多個逗號隔開。
+欄位 6（家目錄）：使用者登入後預設進入的目錄。也是存放個人設定檔（如 .bashrc）的地方。
+欄位 7（Shell）：使用者登入後啟動的 直譯器 (Shell)。常見為 /bin/bash。若顯示 /usr/sbin/nologin 則代表該帳號禁止登入。
 
 === 任務 3：建立使用者與群組 ===
 請依序執行以下指令並貼上每步的結果：
 
 步驟 1：建立使用者 week06user（-m 建立家目錄）
 sudo useradd -m week06user
-（貼上結果，或說明「無輸出表示成功」）
+（無輸出表示成功）
 
 步驟 2：建立群組 week06group
 sudo groupadd week06group
-（貼上結果）
+（無輸出表示成功）
 
 步驟 3：將 week06user 加入 week06group
 sudo usermod -aG week06group week06user
-（貼上結果）
+（無輸出表示成功）
 
 步驟 4：驗證使用者和群組
 id week06user
-（貼上結果）
+（uid=1001(week06user) gid=1001(week06user) groups=1001(week06user),1002(week06group)）
 
 cat /etc/group | grep week06group
-（貼上結果）
+（week06group:x:1002:week06user）
 
 步驟 5：清理（刪除測試用的使用者和群組）
 sudo userdel -r week06user
 sudo groupdel week06group
-（貼上結果）
+（無輸出表示成功）

@@ -1,34 +1,36 @@
-姓名：
-學號：
+姓名：蔡异堤
+學號：C112181144
 
 === 任務 1：探索 Linux 目錄結構 ===
 執行以下指令：
 ls /
 
-（貼上結果）
+（eacheriris@U11:/mnt/c/Windows/system32$ ls /
+bin   dev  home  lib    lib64   lost+found  mnt  proc  run   snap  sys  usr
+boot  etc  init  lib32  libx32  media       opt  root  sbin  srv   tmp  var
 
 請從上面的結果中，說明以下 5 個目錄各是做什麼的：
-/home：
-/etc：
-/var：
-/tmp：
-/usr：
+/home：使用者的家目錄：存放一般使用者的個人檔案與設定（例如你的 IRIS 資料夾就在這）。每個使用者在這裡都有獨立空間，就像 Windows 的 C:\Users。
+/etc：系統設定檔目錄：存放系統所有的設定檔案（例如你之前查的 /etc/passwd）。如果你要更改網路設定、密碼規則或軟體參數，通常都在這裡。
+/var：變動資料目錄 (Variable)：存放系統運作中經常變動的檔案，例如系統日誌 (Log)、快取檔案 (Cache) 或資料庫檔案。
+/tmp：暫存目錄 (Temporary)：存放系統或程式暫時使用的檔案。通常在系統重新啟動後，這個目錄下的內容會被清空。
+/usr：使用者軟體資源 (User Resource)：存放系統安裝的應用程式、函式庫與說明文件。它的地位類似於 Windows 的 Program Files，是 Linux 中體積最大的目錄之一。
 
 === 任務 2：查看空間與檔案統計 ===
 查看自己家目錄佔用多少空間：
 du -sh ~
 
-（貼上結果）
+（8.0K    /home/eacheriris）
 
 計算自己家目錄下有多少個檔案：
 find ~ -type f | wc -l
 
-（貼上結果）
+（8）
 
 計算自己家目錄下有多少個目錄：
 find ~ -type d | wc -l
 
-（貼上結果）
+（3）
 
 === 任務 3：chown 與 chgrp 實作 ===
 請依序執行以下指令並貼上每步的結果：
@@ -37,30 +39,30 @@ find ~ -type d | wc -l
 touch ~/week06_test.txt
 echo "Ownership Test" > ~/week06_test.txt
 ls -l ~/week06_test.txt
-（貼上結果，注意看擁有者和群組欄位）
+（-rw-r--r-- 1 eacheriris eacheriris 15 Mar 31 16:21 /home/eacheriris/week06_test.txt）
 
 步驟 2：建立測試用的使用者和群組
 sudo useradd -m tempuser
 sudo groupadd tempgroup
-（貼上結果）
+（無輸出表示成功））
 
 步驟 3：用 chown 改變擁有者
 sudo chown tempuser ~/week06_test.txt
 ls -l ~/week06_test.txt
-（貼上結果，觀察擁有者欄位的變化）
+（-rw-r--r-- 1 tempuser eacheriris 15 Mar 31 16:21 /home/eacheriris/week06_test.txt）
 
 步驟 4：用 chgrp 改變群組
 sudo chgrp tempgroup ~/week06_test.txt
 ls -l ~/week06_test.txt
-（貼上結果，觀察群組欄位的變化）
+（-rw-r--r-- 1 tempuser tempgroup 15 Mar 31 16:21 /home/eacheriris/week06_test.txt）
 
 步驟 5：用 chown 一次改回自己
 sudo chown $(whoami):$(whoami) ~/week06_test.txt
 ls -l ~/week06_test.txt
-（貼上結果，確認擁有者和群組都改回來了）
+（-rw-r--r-- 1 eacheriris eacheriris 15 Mar 31 16:21 /home/eacheriris/week06_test.txt）
 
 步驟 6：清理
 rm ~/week06_test.txt
 sudo userdel -r tempuser
 sudo groupdel tempgroup
-（貼上結果）
+（userdel: tempuser mail spool (/var/mail/tempuser) not found）

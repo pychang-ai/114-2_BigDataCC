@@ -1,13 +1,41 @@
-姓名：
-學號：
+姓名：蔡异堤
+學號：C112181144
 
 Q1：chown 和 chmod 有什麼不同？請分別說明它們的功能，並各舉一個使用情境。
 A1：
+chown (Change Owner)
+
+功能： 用來更改檔案或目錄的擁有者 (Owner) 或所屬群組 (Group)。
+
+使用情境： 當一位員工離職，你需要將他留下的專案檔案全部移交給新進員工時。
+
+指令範例： sudo chown newUser file.txt
+
+chmod (Change Mode)
+
+功能： 用來更改檔案或目錄的存取權限（讀 r、寫 w、執行 x）。
+
+使用情境： 你寫好了一個 Python 腳本，發現無法執行，你需要賦予該檔案「執行權」時。
+
+指令範例： chmod +x script.py
 
 Q2：你和 3 位同學要合作做專題，需要在 Linux 上建立一個共用資料夾，
     讓組員都能讀寫檔案，但其他人不能存取。
     請寫出你會使用的指令（提示：需要建立群組、設定目錄的群組和權限）。
 A2：
+建立專案群組：
+sudo groupadd project_team
+
+將組員加入群組（以同學 A 為例）：
+sudo usermod -aG project_team studentA
+
+建立共用資料夾並更改所屬群組：
+mkdir /home/common_project
+sudo chown :project_team /home/common_project
+
+設定權限（擁有者與群組全開，其他人完全封鎖）：
+chmod 770 /home/common_project
+(註：770 代表 rwxrwx---，最後一個 0 確保了其他人無法進入)
 
 Q3：Linux 判斷權限時，是按什麼順序檢查的？
     假設一個檔案的權限是 rwxr-x---，擁有者是 alice，群組是 project。
@@ -16,3 +44,7 @@ Q3：Linux 判斷權限時，是按什麼順序檢查的？
     (b) bob（屬於 project 群組）能做什麼？
     (c) charlie（不屬於 project 群組）能做什麼？
 A3：
+擁有者 (Owner) $\rightarrow$ 
+2. 群組 (Group) $\rightarrow$
+ 3. 其他人 (Others)一旦身分符合，就不會再往下檢查。
+ 分析權限 rwxr-x--- (擁有者: alice, 群組: project)：(a) alice (擁有者)：匹配第一層「Owner (rwx)」。能做什麼： 可以讀取 (r)、修改/寫入 (w)、以及執行 (x) 該檔案。(b) bob (屬於 project 群組)：alice 不匹配，進入第二層匹配「Group (r-x)」。能做什麼： 可以讀取 (r) 以及執行 (x) 該檔案，但不能修改內容 (沒有 w)。(c) charlie (不屬於 project 群組)：前兩層皆不匹配，進入第三層「Others (---)」。能做什麼： 什麼都不能做。無法讀取、無法執行、也無法修改。
