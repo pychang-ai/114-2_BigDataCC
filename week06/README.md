@@ -128,8 +128,8 @@ ls /
 === 任務 2：查看空間與檔案統計 ===
 查看自己家目錄佔用多少空間：
 du -sh ~
-
-（貼上結果）
+student217@linux-server2:~$ du -sh ~
+80K     /home/student217
 
 計算自己家目錄下有多少個檔案：
 find ~ -type f | wc -l
