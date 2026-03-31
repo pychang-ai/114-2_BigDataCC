@@ -1,2 +1,64 @@
 姓名：凌賜桐
 學號：C112181110
+
+=== 任務 1：查看自己的身份資訊 ===
+u306@U7:/mnt/c/Users/Teacher$ whoami
+u306
+
+u306@U7:/mnt/c/Users/Teacher$ id
+uid=1000(u306) gid=1000(u306) groups=1000(u306),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),100(users)
+
+u306@U7:/mnt/c/Users/Teacher$ groups
+u306 adm cdrom sudo dip plugdev users
+
+您的 UID： 1000
+您所屬的群組包含： u306, adm, cdrom, sudo, dip, plugdev, users
+
+=== 任務 2：解讀 /etc/passwd ===
+
+u306@U7:/mnt/c/Users/Teacher$ cat /etc/passwd | grep u306
+u306:x:1000:1000:,,,:/home/u306:/bin/bash
+
+欄位 1（帳號名稱）：u306
+使用者的登入名稱。
+
+欄位 2（密碼欄位）：x
+密碼佔位符。這表示為了安全性，實際的加密密碼已經移至 /etc/shadow 檔案中儲存。
+
+欄位 3（UID）：1000
+使用者識別碼 (User ID)。系統用來辨識這個使用者的唯一數字，通常一般使用者的 UID 從 1000 開始。
+
+欄位 4（GID）：1000
+主要群組識別碼 (Group ID)。系統用來辨識此使用者所屬預設（主要）群組的數字。
+
+欄位 5（描述）：,,,
+使用者資訊（又稱 GECOS 欄位）。通常用來記錄使用者的全名、辦公室分機、電話等額外資訊。這裡的逗號表示這些細項資料目前是空白的。
+
+欄位 6（家目錄）：/home/u306
+使用者登入系統後，預設進入的個人專屬工作目錄。
+
+欄位 7（Shell）：/bin/bash
+使用者登入後預設使用的命令列直譯器（Shell 程式），這裡使用的是 Bash。
+
+=== 任務 3：建立使用者與群組 ===
+步驟 1：建立使用者 week06user（-m 建立家目錄）
+u306@U7:/mnt/c/Users/Teacher$ sudo useradd -m week06user
+[sudo] password for u306:
+u306@U7:/mnt/c/Users/Teacher$
+
+步驟 2：建立群組 week06group
+u306@U7:/mnt/c/Users/Teacher$ sudo groupadd week06group
+
+步驟 3：將 week06user 加入 week06group
+u306@U7:/mnt/c/Users/Teacher$ sudo usermod -aG week06group week06user
+步驟 4：驗證使用者和群組
+u306@U7:/mnt/c/Users/Teacher$ id week06user
+uid=1002(week06user) gid=1002(week06user) groups=1002(week06user),1003(week06group)
+
+u306@U7:/mnt/c/Users/Teacher$ cat /etc/group | grep week06group
+week06group:x:1003:week06user
+
+步驟 5：清理（刪除測試用的使用者和群組）
+u306@U7:/mnt/c/Users/Teacher$ sudo userdel -r week06user
+sudo groupdel week06group
+userdel: week06user mail spool (/var/mail/week06user) not found

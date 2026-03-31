@@ -1,2 +1,31 @@
 姓名：凌賜桐
 學號：C112181110
+
+Q1：chown 和 chmod 有什麼不同？請分別說明它們的功能，並各舉一個使用情境。
+A1：
+chown（改主人）： 更改檔案的擁有者或群組。
+情境： 把 root 建的檔案擁有權轉給自己（sudo chown u306 file）。
+chmod（改權限）： 更改檔案的讀(r)、寫(w)、執行(x)權限。
+情境： 讓程式腳本可以被執行（chmod +x script.sh）。
+
+Q2：你和 3 位同學要合作做專題，需要在 Linux 上建立一個共用資料夾，
+    讓組員都能讀寫檔案，但其他人不能存取。
+    請寫出你會使用的指令（提示：需要建立群組、設定目錄的群組和權限）。
+A2：
+建立群組：sudo groupadd ros_team
+將組員加入群組：sudo usermod -aG ros_team 組員帳號
+建立共用資料夾：sudo mkdir /opt/ros_project
+將資料夾群組改為該專案群組：sudo chown :ros_team /opt/ros_project
+設定權限（僅擁有者與群組可讀寫執行）：sudo chmod 770 /opt/ros_project
+
+Q3：Linux 判斷權限時，是按什麼順序檢查的？
+    假設一個檔案的權限是 rwxr-x---，擁有者是 alice，群組是 project。
+    請回答以下三個人分別能做什麼操作：
+    (a) alice（擁有者）能做什麼？
+    (b) bob（屬於 project 群組）能做什麼？
+    (c) charlie（不屬於 project 群組）能做什麼？
+A3：
+檢查順序： 擁有者 (User) ➔ 群組 (Group) ➔ 其他人 (Others)。比對符合就停止。
+(a) alice (擁有者, rwx)： 可讀、可寫、可執行。
+(b) bob (群組, r-x)： 可讀、可執行（不能寫入）。
+(c) charlie (其他人, ---)： 無任何權限（被拒絕存取）。
