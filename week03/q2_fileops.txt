@@ -33,3 +33,13 @@ total 0
 -rw-r--r-- 1 user user 0 Mar 31 14:30 learning.txt
 -rw-r--r-- 1 user user 0 Mar 31 14:30 virtualization.txt
 
+最終目錄中有哪些檔案？和步驟 4 相比，發生了什麼變化？
+
+A：
+最終目錄共有 4 個檔案：hello.txt、hello_backup.txt、learning.txt、virtualization.txt。
+
+主要變化：
+
+新增檔案：執行 cp 後，多了一個 hello_backup.txt 備份檔。
+
+檔案更名：執行 mv 後，原本的 vm.txt 已更名為 virtualization.txt。
