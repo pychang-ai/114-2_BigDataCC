@@ -99,7 +99,7 @@ bindresvport.blacklist
 cloud
 cron.d
 cron.daily
-
+ 
 
 === 任務 3：重導向 ===
 將 ls -la ~ 的結果存入檔案：

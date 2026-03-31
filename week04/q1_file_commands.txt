@@ -39,7 +39,6 @@ Week 04 Assignment
 
 
 
-
 === 任務 3：檔案內容檢視指令 ===
 請執行以下指令並貼上結果：
 cat /etc/passwd | head -5
