@@ -1,34 +1,43 @@
-姓名：
-學號：
+姓名：蘇千皓
+學號：c112181128
 
 === 任務 1：探索 Linux 目錄結構 ===
 執行以下指令：
 ls /
 
 （貼上結果）
+student202@linux-server2:~$ ls /
+bin   dev  home  lib32  libx32  mnt  proc  run   srv  tmp  var
+boot  etc  lib   lib64  media   opt  root  sbin  sys  usr
 
 請從上面的結果中，說明以下 5 個目錄各是做什麼的：
-/home：
-/etc：
-/var：
-/tmp：
-/usr：
+/home：這是存放一般使用者個人資料的地方
+/etc：存放所有系統層級的設定檔
+/var：存放系統運作過程中經常變動的檔案
+/tmp：供系統或應用程式存放臨時使用的檔案
+/usr：存放系統軟體資源
 
 === 任務 2：查看空間與檔案統計 ===
 查看自己家目錄佔用多少空間：
 du -sh ~
 
 （貼上結果）
+student202@linux-server2:~$ du -sh ~
+80K     /home/student202
 
 計算自己家目錄下有多少個檔案：
 find ~ -type f | wc -l
 
 （貼上結果）
+student202@linux-server2:~$ find ~ -type f | wc -l
+17
 
 計算自己家目錄下有多少個目錄：
 find ~ -type d | wc -l
 
 （貼上結果）
+student202@linux-server2:~$ find ~ -type d | wc -l
+14
 
 === 任務 3：chown 與 chgrp 實作 ===
 請依序執行以下指令並貼上每步的結果：

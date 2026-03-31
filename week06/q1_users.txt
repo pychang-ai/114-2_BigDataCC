@@ -50,19 +50,24 @@ sudo useradd -m week06user
 步驟 2：建立群組 week06group
 sudo groupadd week06group
 （貼上結果）
+無輸出表示成功
 
 步驟 3：將 week06user 加入 week06group
 sudo usermod -aG week06group week06user
 （貼上結果）
+無輸出表示成功
 
 步驟 4：驗證使用者和群組
 id week06user
 （貼上結果）
+uid=1001(week06user) gid=1001(week06user)
 
 cat /etc/group | grep week06group
 （貼上結果）
+week06group:x:1002:week06user
 
 步驟 5：清理（刪除測試用的使用者和群組）
 sudo userdel -r week06user
 sudo groupdel week06group
 （貼上結果）
+無輸出表示成功
