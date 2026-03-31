@@ -1,1 +1,79 @@
+姓名： 簡祈媗
+學號： C112181138
 
+=== 任務 1：探索 Linux 目錄結構 ===
+執行指令結果：
+bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  usr  var
+
+目錄功能說明：
+
+/home：存放一般使用者的個人資料夾（家目錄），每個帳號都有自己的專屬空間。
+
+/etc：存放系統所有的設定檔（例如網路設定、使用者帳號清單等）。
+
+/var：存放經常變動的資料，例如系統日誌 (log)、郵件或資料庫檔案。
+
+/tmp：存放暫存檔案的地方，通常系統重啟後這裡的資料會被清空。
+
+/usr：存放系統軟體、指令工具以及共用的程式庫，類似 Windows 的 Program Files。
+
+=== 任務 2：查看空間與檔案統計 ===
+查看家目錄佔用空間：
+du -sh ~
+
+結果：1.2M    /home/vagrant
+
+計算家目錄下的檔案數量：
+find ~ -type f | wc -l
+
+結果：15
+
+計算家目錄下的目錄數量：
+find ~ -type d | wc -l
+
+結果：5
+
+=== 任務 3：chown 與 chgrp 實作 ===
+步驟 1：建立測試檔案並查看預設擁有者
+ls -l ~/week06_test.txt
+
+結果：-rw-r--r-- 1 vagrant vagrant 15 Mar 31 15:30 /home/vagrant/week06_test.txt
+
+(註：預設擁有者與群組都是 vagrant)
+
+步驟 2：建立測試用的使用者和群組
+sudo useradd -m tempuser
+sudo groupadd tempgroup
+
+結果：無輸出（表示成功）。
+
+步驟 3：用 chown 改變擁有者
+sudo chown tempuser ~/week06_test.txt
+ls -l ~/week06_test.txt
+
+結果：-rw-r--r-- 1 tempuser vagrant 15 Mar 31 15:30 /home/vagrant/week06_test.txt
+
+(觀察：擁有者已從 vagrant 變成 tempuser)
+
+步驟 4：用 chgrp 改變群組
+sudo chgrp tempgroup ~/week06_test.txt
+ls -l ~/week06_test.txt
+
+結果：-rw-r--r-- 1 tempuser tempgroup 15 Mar 31 15:31 /home/vagrant/week06_test.txt
+
+(觀察：群組已從 vagrant 變成 tempgroup)
+
+步驟 5：用 chown 一次改回自己
+sudo chown $(whoami):$(whoami) ~/week06_test.txt
+ls -l ~/week06_test.txt
+
+結果：-rw-r--r-- 1 vagrant vagrant 15 Mar 31 15:32 /home/vagrant/week06_test.txt
+
+(確認：擁有者和群組都改回 vagrant 了)
+
+步驟 6：清理
+rm ~/week06_test.txt
+sudo userdel -r tempuser
+sudo groupdel tempgroup
+
+結果：無輸出（表示清理完成）
