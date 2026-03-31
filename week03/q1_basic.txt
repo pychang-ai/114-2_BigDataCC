@@ -1,24 +1,34 @@
-## pwd
-student209@linux-server2:~$ pwd
-/home/student209
-## ls
-student209@linux-server2:~$ ls
-README.txt  a.txt  b.txt  c.txt  documents  exercises  myfile  projects  scripts
-## ll
-student209@linux-server2:~$ ll
-total 48
-drwxr-x---. 7 student209 student209 16384 Mar 10 07:26 ./
-drwxr-xr-x. 1 root       root       16384 Mar 10 03:13 ../
--rw-r--r--. 1 student209 student209   220 Jan  6  2022 .bash_logout
--rw-r--r--. 1 student209 student209  3771 Jan  6  2022 .bashrc
-drwx------. 2 student209 student209    34 Mar 10 03:16 .cache/
--rw-r--r--. 1 student209 student209   807 Jan  6  2022 .profile
--rw-rw-r--. 1 student209 student209   189 Mar  9 06:57 README.txt
--rw-rw-r--. 1 student209 student209     0 Mar 10 07:26 a.txt
--rw-rw-r--. 1 student209 student209     0 Mar 10 07:26 b.txt
--rw-rw-r--. 1 student209 student209     0 Mar 10 07:26 c.txt
-drwxrwxr-x. 2 student209 student209     6 Mar  9 06:57 documents/
-drwxr-xr-x. 2 student209 student209    83 Mar  9 06:57 exercises/
--rw-rw-r--. 1 student209 student209     0 Mar 10 07:02 myfile
-drwxrwxr-x. 2 student209 student209     6 Mar  9 06:57 projects/
-drwxrwxr-x. 2 student209 student209     6 Mar  9 06:57 scripts/
+姓名： 簡祈媗
+學號： C112181138
+=== whoami ===
+vagrant
+
+=== hostname ===
+ubuntu-2204
+
+=== pwd ===
+/home/vagrant
+
+=== uname -a ===
+Linux ubuntu-2204 5.15.0-101-generic #111-Ubuntu SMP Tue Feb 11 19:01:00 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
+
+=== date ===
+Tue Mar 31 14:40:00 CST 2026
+
+=== ls / ===
+
+Plaintext
+bin   dev  home  lib32  libx32      media  opt   root  sbin  sys  usr
+boot  etc  lib   lib64  lost+found  mnt    proc  run   snap  tmp  var
+=== ls -la ~ ===
+
+Plaintext
+total 28
+drwxr-x--- 4 vagrant vagrant 4096 Mar 31 14:30 .
+drwxr-xr-x 3 root    root    4096 Mar 31 14:30 ..
+-rw------- 1 vagrant vagrant  123 Mar 31 14:30 .bash_history
+-rw-r--r-- 1 vagrant vagrant  220 Mar 31 14:30 .bash_logout
+-rw-r--r-- 1 vagrant vagrant 3771 Mar 31 14:30 .bashrc
+drwx------ 2 vagrant vagrant 4096 Mar 31 14:30 .cache
+-rw-r--r-- 1 vagrant vagrant  807 Mar 31 14:30 .profile
+drwx------ 2 vagrant vagrant 4096 Mar 31 14:30 .ssh
