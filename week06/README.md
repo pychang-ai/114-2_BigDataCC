@@ -128,8 +128,8 @@ ls /
 === 任務 2：查看空間與檔案統計 ===
 查看自己家目錄佔用多少空間：
 du -sh ~
-student217@linux-server2:~$ du -sh ~
-80K     /home/student217
+
+（貼上結果）
 
 計算自己家目錄下有多少個檔案：
 find ~ -type f | wc -l
@@ -196,21 +196,7 @@ sudo groupdel tempgroup
 姓名：
 學號：
 
-Q1：chown 和 chmod 有什麼不同？請分別說明它們的功能，並各舉一個使用情境。
-A1：
-
-Q2：你和 3 位同學要合作做專題，需要在 Linux 上建立一個共用資料夾，
-    讓組員都能讀寫檔案，但其他人不能存取。
-    請寫出你會使用的指令（提示：需要建立群組、設定目錄的群組和權限）。
-A2：
-
-Q3：Linux 判斷權限時，是按什麼順序檢查的？
-    假設一個檔案的權限是 rwxr-x---，擁有者是 alice，群組是 project。
-    請回答以下三個人分別能做什麼操作：
-    (a) alice（擁有者）能做什麼？
-    (b) bob（屬於 project 群組）能做什麼？
-    (c) charlie（不屬於 project 群組）能做什麼？
-A3：
+![alt text](image.png)
 ```
 
 ### 評分標準
