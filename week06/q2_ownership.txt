@@ -1,0 +1,84 @@
+姓名：黄威智
+學號：C112181107
+
+=== 任務 1：探索 Linux 目錄結構 ===
+執行以下指令：
+ls /
+
+u306@U17:/mnt/c/Windows/system32$ ls /
+bin                boot  etc   init  lib.usr-is-merged  lost+found  mnt  proc  run   sbin.usr-is-merged  srv  tmp  var
+bin.usr-is-merged  dev   home  lib   lib64              media       opt  root  sbin  snap                sys  usr
+u306@U17:/mnt/c/Windows/system32$
+
+請從上面的結果中，說明以下 5 個目錄各是做什麼的：
+/home：使用者家目錄
+/etc：系統設定檔目錄
+/var：動態資料目錄
+/tmp：暫存目錄
+/usr：使用者程式與資源目錄
+
+=== 任務 2：查看空間與檔案統計 ===
+查看自己家目錄佔用多少空間：
+du -sh ~
+
+36K     /home/u306
+
+計算自己家目錄下有多少個檔案：
+find ~ -type f | wc -l
+u306@U19:/mnt/c/Windows/system32$ find ~ -type f | wc -l
+7
+
+計算自己家目錄下有多少個目錄：
+find ~ -type d | wc -l
+
+u306@U19:/mnt/c/Windows/system32$ find ~ -type d | wc -l
+4
+
+=== 任務 3：chown 與 chgrp 實作 ===
+請依序執行以下指令並貼上每步的結果：
+
+步驟 1：建立測試檔案並查看預設擁有者
+touch ~/week06_test.txt
+echo "Ownership Test" > ~/week06_test.txt
+ls -l ~/week06_test.txt
+
+u306@U17:/mnt/c/Windows/system32$ touch ~/week06_test.txt
+u306@U17:/mnt/c/Windows/system32$ echo "Ownership Test" > ~/week06_test.txt
+u306@U17:/mnt/c/Windows/system32$ ls -l ~/week06_test.txt
+-rw-r--r-- 1 u306 u306 15 Mar 31 14:38 /home/u306/week06_test.txt
+
+步驟 2：建立測試用的使用者和群組
+sudo useradd -m tempuser
+sudo groupadd tempgroup
+ 
+無輸出表示成功
+
+步驟 3：用 chown 改變擁有者
+sudo chown tempuser ~/week06_test.txt
+ls -l ~/week06_test.txt
+
+u306@U17:/mnt/c/Windows/system32$ ls -l ~/week06_test.txt
+-rw-r--r-- 1 tempuser u306 15 Mar 31 14:38 /home/u306/week06_test.txt）
+
+步驟 4：用 chgrp 改變群組
+sudo chgrp tempgroup ~/week06_test.txt
+ls -l ~/week06_test.txt
+
+u306@U17:/mnt/c/Windows/system32$ ls -l ~/week06_test.txt
+-rw-r--r-- 1 tempuser tempgroup 15 Mar 31 14:38 /home/u306/week06_test.txt
+
+步驟 5：用 chown 一次改回自己
+sudo chown $(whoami):$(whoami) ~/week06_test.txt
+ls -l ~/week06_test.txt
+
+u306@U19:/mnt/c/Windows/system32$ ls -l ~/week06_test.txt
+-rw-r--r-- 1 u306 u306 15 Mar 31 14:38 /home/u306/week06_test.txt
+
+步驟 6：清理
+rm ~/week06_test.txt
+sudo userdel -r tempuser
+sudo groupdel tempgroup
+
+u306@U17:/mnt/c/Windows/system32$ sudo userdel -r tempuser
+userdel: tempuser mail spool (/var/mail/tempuser) not found
+u306@U17:/mnt/c/Windows/system32$ sudo groupdel tempgroup
