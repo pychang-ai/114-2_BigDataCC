@@ -1,5 +1,5 @@
-姓名：李翊銘
-學號：C112181181
+姓名：楊邦齊
+學號：C112181114
 
 === 任務 1：查看 WSL 環境資訊 ===
 請在 Windows 的 PowerShell 或 CMD 中執行以下指令，貼上結果：
@@ -44,7 +44,7 @@ Windows 內部版本：10.0.26200.8037
 步驟 1：查看 Windows 桌面的檔案
 ls /mnt/c/Users/teacher/Desktop/ | head -10
 
-u306@U18:/mnt/c/Windows/system32$ ls /mnt/c/Users/teacher/Desktop/ | head -10
+u306@U20:/mnt/c/Windows/system32$ ls /mnt/c/Users/teacher/Desktop/ | head -10
 114-2_BigDataCC
 Anaconda Navigator.lnk
 Android Studio.lnk
@@ -65,15 +65,15 @@ WSL:/mnt/c/Users/teacher/Desktop/
 === 任務 3：檔案互通 — 從 WSL 建立檔案到 Windows ===
 
 步驟 1：在 WSL 中建立一個檔案到 Windows 桌面
-echo "我的學號是 C112181181，這個檔案從 WSL 建立" > /mnt/c/Users/teacher/Desktop/wsl_hello.txt
+echo "我的學號是 C112181114，這個檔案從 WSL 建立" > /mnt/c/Users/teacher/Desktop/wsl_hello.txt
 
 無輸出
 
 步驟 2：在 WSL 中確認檔案已建立
 cat /mnt/c/Users/teacher/Desktop/wsl_hello.txt
 
-u306@U18:/mnt/c/Windows/system32$ cat /mnt/c/Users/teacher/Desktop/wsl_hello.txt
-我的學號是 C112181181，這個檔案從 WSL 建立
+u306@U20:/mnt/c/Windows/system32$ cat /mnt/c/Users/teacher/Desktop/wsl_hello.txt
+我的學號是 C112181114，這個檔案從 WSL 建立
 
 步驟 3：從 WSL 打開 Windows 檔案總管查看家目錄
 explorer.exe ~

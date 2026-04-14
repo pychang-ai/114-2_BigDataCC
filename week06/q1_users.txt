@@ -6,15 +6,15 @@
 
 whoami
 
-u306@U18:/mnt/c/Windows/system32$ whoami
+u306@U20:/mnt/c/Windows/system32$ whoami
 u306
 id
 
-u306@U18:/mnt/c/Windows/system32$ id
+u306@U20:/mnt/c/Windows/system32$ id
 uid=1000(u306) gid=1000(u306) groups=1000(u306),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),100(users)
 groups
 
-u306@U18:/mnt/c/Windows/system32$ groups
+u306@U20:/mnt/c/Windows/system32$ groups
 u306 adm cdrom sudo dip plugdev users
 請回答：你的 UID 是多少？你屬於哪些群組？
 UID:1000
@@ -37,7 +37,7 @@ users (系统的普通用户标准群组)
 執行以下指令：
 cat /etc/passwd | grep 你的帳號
 
-u306@U18:/mnt/c/Windows/system32$ cat /etc/passwd | grep u306
+u306@U20:/mnt/c/Windows/system32$ cat /etc/passwd | grep u306
 u306:x:1000:1000:,,,:/home/u306:/bin/bash
 
 
@@ -78,4 +78,4 @@ sudo userdel -r week06user
 sudo groupdel week06group
 
 userdel: week06user mail spool (/var/mail/week06user) not found
-無輸出表示成功  
+無輸出表示成功

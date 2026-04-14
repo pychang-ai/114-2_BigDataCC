@@ -23,19 +23,19 @@ echo "========================================="
 === 任務 2：設定權限並執行 ===
 chmod +x ~/my_script.sh
 （貼上 ls -l ~/my_script.sh 的結果，確認有 x 權限）
-student117@linux-server2:~$ ls -l ~/my_script.sh
--rwxrwxr-x. 1 student117 student117 486 Mar 24 06:50 /home/student117/my_script.sh
+student221@linux-server2:~$ ls -l ~/my_script.sh
+-rwxrwxr-x. 1 student221 student221 486 Mar 24 06:50 /home/student221/my_script.sh
 === 任務 3：執行結果 ===
 ./my_script.sh
 
-student117@linux-server2:~$ ./my_script.sh
+student221@linux-server2:~$ ./my_script.sh
 =========================================
   系統資訊報告
 =========================================
-使用者：student117
+使用者：student221
 主機名稱：linux-server2
 目前日期：Tue Mar 24 06:51:21 UTC 2026
-目前目錄：/home/student117
+目前目錄：/home/student221
 =========================================
 磁碟使用量：
 Filesystem      Size  Used Avail Use% Mounted on
@@ -50,16 +50,16 @@ Mem:           7.6Gi       465Mi       6.0Gi       0.0Ki       1.2Gi       6.9Gi
 Swap:             0B          0B          0B
 =========================================
 Vi版本
-student117@linux-server2:~$ vi ~/my_script.sh
-student117@linux-server2:~$ chmod +x ~/my_script.sh
-student117@linux-server2:~$ ./my_script.sh
+student221@linux-server2:~$ vi ~/my_script.sh
+student221@linux-server2:~$ chmod +x ~/my_script.sh
+student221@linux-server2:~$ ./my_script.sh
 =========================================
   系統資訊報告
 =========================================
-使用者：student117
+使用者：student221
 主機名稱：linux-server2
 目前日期：Tue Mar 24 07:26:46 UTC 2026
-目前目錄：/home/student117
+目前目錄：/home/student221
 =========================================
 磁碟使用量：
 Filesystem      Size  Used Avail Use% Mounted on
@@ -76,10 +76,10 @@ Swap:             0B          0B          0B
 =========================================
   系統資訊報告
 =========================================
-使用者：student117
+使用者：student221
 主機名稱：linux-server2
 目前日期：Tue Mar 24 07:26:46 UTC 2026
-目前目錄：/home/student117
+目前目錄：/home/student221
 =========================================
 磁碟使用量：
 Filesystem      Size  Used Avail Use% Mounted on
@@ -93,4 +93,4 @@ shm              64M     0   64M   0% /dev/shm
 Mem:           7.6Gi       458Mi       6.0Gi       0.0Ki       1.2Gi       6.9Gi
 Swap:             0B          0B          0B
 =========================================
-student117@linux-server2:~$
+student221@linux-server2:~$
