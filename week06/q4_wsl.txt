@@ -1,0 +1,84 @@
+姓名：楊宗燁
+學號：C112181126
+
+=== 任務 1：查看 WSL 環境資訊 ===
+請在 Windows 的 PowerShell 或 CMD 中執行以下指令，貼上結果：
+
+wsl --list --verbose
+
+PS C:\Windows\system32> wsl --list --verbose
+  NAME      STATE           VERSION
+* Ubuntu    Running         2
+wsl --version
+
+PS C:\Windows\system32> wsl --version
+WSL 版本： 2.6.3.0
+核心版本： 6.6.87.2-1
+WSLg 版本： 1.0.71
+MSRDC 版本： 1.2.6353
+Direct3D 版本： 1.611.1-81528511
+DXCore 版本： 10.0.26100.1-240331-1435.ge-release
+Windows 版本： 10.0.26200.8037
+PS C:\Windows\system32>
+
+請回答：你的 WSL 版本是多少？安裝的 Linux 發行版叫什麼名稱？
+
+你的 WSL 版本是多少？
+你的 WSL 主要版本是 2 (由 VERSION 欄位顯示)。
+更詳細的軟體版本資訊如下：
+
+WSL 版本：2.6.3.0
+
+核心 (Kernel) 版本：6.6.87.2-1
+
+Windows 內部版本：10.0.26200.8037
+
+安裝的 Linux 發行版叫什麼名稱？
+你安裝的發行版名稱是 Ubuntu。
+
+在輸出結果中，NAME 欄位下顯示為 Ubuntu，且前方有一個星號 *，代表它是你系統中的預設 (Default) 分發版本。
+
+=== 任務 2：檔案互通 — 從 WSL 存取 Windows ===
+以下操作在 WSL 終端機中執行：
+
+步驟 1：查看 Windows 桌面的檔案
+ls /mnt/c/Users/teacher/Desktop/ | head -10
+
+u306@U19:/mnt/c/Windows/system32$ ls /mnt/c/Users/teacher/Desktop/ | head -10
+114-2_BigDataCC
+Anaconda Navigator.lnk
+Android Studio.lnk
+Arduino IDE.lnk
+Docker Desktop.lnk
+Excel.lnk
+GIT
+IDLE (Python 3.13 64-bit).lnk
+Jupyter Notebook.lnk
+LINE.lnk
+
+步驟 2：查看 Windows 和 WSL 的路徑對應
+請將你自己 Windows 桌面的路徑，用兩種格式寫出來：
+Windows 路徑：（例如 C:\Users\小明\Desktop）
+WSL 路徑：（例如 /mnt/c/Users/小明/Desktop）
+WINDOWS:C:\Users\Teacher\Desktop
+WSL:/mnt/c/Users/teacher/Desktop/
+=== 任務 3：檔案互通 — 從 WSL 建立檔案到 Windows ===
+
+步驟 1：在 WSL 中建立一個檔案到 Windows 桌面
+echo "我的學號是 C112181126，這個檔案從 WSL 建立" > /mnt/c/Users/teacher/Desktop/wsl_hello.txt
+
+無輸出
+
+步驟 2：在 WSL 中確認檔案已建立
+cat /mnt/c/Users/teacher/Desktop/wsl_hello.txt
+
+u306@U19:/mnt/c/Windows/system32$ cat /mnt/c/Users/teacher/Desktop/wsl_hello.txt
+我的學號是 C112181126，這個檔案從 WSL 建立
+
+步驟 3：從 WSL 打開 Windows 檔案總管查看家目錄
+explorer.exe ~
+
+看到一個ARDUINO資料夾
+
+步驟 4：清理 — 刪除桌面上的測試檔案
+rm /mnt/c/Users/teacher/Desktop/wsl_hello.txt
