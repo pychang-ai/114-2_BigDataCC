@@ -1,0 +1,61 @@
+姓名：楊蘭歡
+學號：C112181121
+
+Q1：chown 和 chmod 有什麼不同？請分別說明它們的功能，並各舉一個使用情境。
+A1：
+
+chown (Change Owner)
+
+功能： 用來變更檔案或目錄的**「所有者 (Owner)」或「所屬群組 (Group)」**。它決定了這個檔案「屬於誰」。
+
+使用情境： 當管理員 (root) 幫使用者 u306 建立了一個設定檔，但該檔案目前所有者是 root，導致 u306 無法修改。此時管理員需執行 sudo chown u306 file.txt 將所有權移交給該使用者。
+
+chmod (Change Mode)
+
+功能： 用來變更檔案或目錄的**「存取權限 (Permissions)」**。它決定了使用者（擁有者、群組成員或其他所有人）對檔案「能做什麼」（讀 r、寫 w、執行 x）。
+
+使用情境： 你寫了一個 Shell 腳本 backup.sh，但系統預設它不可執行。你需要執行 chmod +x backup.sh 來賦予自己執行該腳本的權限。
+
+Q2：你和 3 位同學要合作做專題，需要在 Linux 上建立一個共用資料夾，讓組員都能讀寫檔案，但其他人不能存取。請寫出你會使用的指令（提示：需要建立群組、設定目錄的群組和權限）。
+A2：
+
+假設專題名稱為 project，資料夾路徑為 /common_project，操作步驟如下：
+
+建立專題群組：
+sudo groupadd project
+
+將組員（包含你自己）加入群組： (假設組員帳號為 user1, user2, user3)
+sudo usermod -aG project u306
+sudo usermod -aG project user1 (以此類推)
+
+建立共用資料夾：
+sudo mkdir /common_project
+
+變更資料夾的所屬群組：
+sudo chown :project /common_project
+
+設定權限：（擁有者與群組皆可讀寫執行，其他人完全不能存取）
+sudo chmod 770 /common_project
+
+Q3：Linux 判斷權限時，是按什麼順序檢查的？假設一個檔案的權限是 rwxr-x---，擁有者是 alice，群組是 project。請回答以下三個人分別能做什麼操作：(a) alice (b) bob (c) charlie。
+A3：
+
+檢查順序：
+Linux 遵循 「最先匹配原則」：
+
+先檢查是否為擁有者 (Owner)，若是則應用其權限，不再往下看。
+
+若非擁有者，檢查是否屬於群組 (Group)，若是則應用其權限。
+
+若以上皆非，應用其他人 (Others) 的權限。
+
+針對權限 rwxr-x--- 的操作分析：
+
+(a) alice (擁有者，對應 rwx)：
+具備完整權限。可以讀取 (r) 檔案內容、修改 (w) 檔案內容，以及將檔案作為程式執行 (x)。
+
+(b) bob (屬於 project 群組，對應 r-x)：
+可以讀取 (r) 檔案內容和執行 (x) 檔案，但不能修改 (w) 檔案內容。
+
+(c) charlie (不屬於 project 群組，對應 ---)：
+沒有任何權限。無法讀取、無法寫入、也無法執行該檔案。
