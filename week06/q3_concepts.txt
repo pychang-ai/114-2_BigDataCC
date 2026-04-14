@@ -16,7 +16,7 @@ A2：建立群組：sudo groupadd pro_team
 設定權限（擁有者與群組可讀寫執行，其他人完全無法存取）：chmod 770 project_shared
 
 Q3：Linux 判斷權限時，是按什麼順序檢查的？
-    假設一個檔案的權限是 rwxr-x---，擁有者是 alice，群組是 project。
+    假設一個檔案的權限是 rwxr-x---，擁有者是 alice，群組是 project
     請回答以下三個人分別能做什麼操作：
     (a) alice（擁有者）能做什麼？
     (b) bob（屬於 project 群組）能做什麼？

@@ -60,6 +60,7 @@ XuanZhi64
 自訂 Office 範本
 
 
+
 步驟 4：清理 — 刪除桌面上的測試檔案
 rm /mnt/c/Users/你的Windows帳號/Desktop/wsl_hello.txt
 無輸出
