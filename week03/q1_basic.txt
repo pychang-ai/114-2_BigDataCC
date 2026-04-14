@@ -1,21 +1,39 @@
-student210@linux-server2:~$ ll -la
-total 32
-drwxr-x---. 7 student210 student210   154 Mar 10 03:16 ./
-drwxr-xr-x. 1 root       root       16384 Mar 10 03:13 ../
--rw-r--r--. 1 student210 student210   220 Jan  6  2022 .bash_logout
--rw-r--r--. 1 student210 student210  3771 Jan  6  2022 .bashrc
-drwx------. 2 student210 student210    34 Mar 10 03:16 .cache/
--rw-r--r--. 1 student210 student210   807 Jan  6  2022 .profile
--rw-rw-r--. 1 student210 student210   189 Mar  9 06:57 README.txt
-drwxrwxr-x. 2 student210 student210     6 Mar  9 06:57 documents/
-drwxr-xr-x. 2 student210 student210    83 Mar  9 06:57 exercises/
-drwxrwxr-x. 2 student210 student210     6 Mar  9 06:57 projects/
-drwxrwxr-x. 2 student210 student210     6 Mar  9 06:57 scripts/
-student210@linux-server2:~$ ls
-README.txt  documents  exercises  projects  scripts
-student210@linux-server2:~$ pwd
-/home/student210
-student210@linux-server2:~$ cd..
--bash: cd..: command not found
-student210@linux-server2:~$ whoami
-student210
+姓名：劉振宏
+學號：C11218181
+
+=== whoami ===
+student221
+
+=== hostname ===
+linux-server2
+
+=== pwd ===
+/home/student221
+
+=== uname -a ===
+Linux linux-server2 6.1.163-186.299.amzn2023.x86_64 #1 SMP PREEMPT_DYNAMIC Tue Feb 24 16:35:42 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
+
+=== date ===
+Tue Mar 24 05:49:25 UTC 2026
+
+=== ls / ===
+bin  boot  dev  etc  home  lib  lib32  lib64  libx32  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+
+=== ls -la ~ ===
+total 736
+drwxr-x---. 8 student221 student221  16384 Mar 17 06:44 .
+drwxr-xr-x. 1 root       root        16384 Mar 10 03:13 ..
+-rw-------. 1 student221 student221   1246 Mar 17 07:29 .bash_history
+-rw-r--r--. 1 student221 student221    220 Jan  6  2022 .bash_logout
+-rw-r--r--. 1 student221 student221   3771 Jan  6  2022 .bashrc
+drwx------. 2 student221 student221     34 Mar 10 03:16 .cache
+-rw-r--r--. 1 student221 student221    807 Jan  6  2022 .profile
+-rw-rw-r--. 1 student221 student221    171 Mar 17 06:40 .wget-hsts
+-rw-rw-r--. 1 student221 student221    189 Mar  9 06:57 README.txt
+drwxrwxr-x. 2 student221 student221      6 Mar  9 06:57 documents
+drwxr-xr-x. 2 student221 student221     83 Mar  9 06:57 exercises
+-rw-rw-r--. 1 student221 student221 688430 Jan 14 12:51 koala.png
+-rw-rw-r--. 1 student221 student221     32 Mar 10 07:07 myfile..txt
+drwxrwxr-x. 2 student221 student221      6 Mar  9 06:57 projects
+drwxrwxr-x. 2 student221 student221      6 Mar  9 06:57 scripts
+drwxrwxr-x. 4 student221 student221     51 Mar 17 06:56 week04
