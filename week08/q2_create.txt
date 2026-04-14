@@ -5,7 +5,17 @@
 CREATE DATABASE port_db;
 SHOW DATABASES;
 USE port_db;
-（貼上每步結果）
+mysql> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| port_db            |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
 
 === 任務 2：建立 ships 資料表 ===
 CREATE TABLE ships (
@@ -15,12 +25,23 @@ CREATE TABLE ships (
     tonnage INT,
     arrival_date DATE
 );
-（貼上結果）
+e INT    ->     id INT AUTO_INCREMENT PRIMARY KEY,
+,
+    ar    ->     ship_name VARCHAR(100) NOT NULL,
+rival_d    ->     ship_type VARCHAR(50),
+    ->     tonnage INT,
+    ->     arrival_date DATE
+    -> );
 
 查看表結構：
 SHOW TABLES;
 DESCRIBE ships;
-（貼上結果）
++-------------------+
+| Tables_in_port_db |
++-------------------+
+| ships             |
++-------------------+
+1 row in set (0.00 sec)
 
 === 任務 3：自己建立第二張表 crew ===
 請自行寫出 CREATE TABLE 語句，建立 crew 表，需包含以下欄位：
@@ -30,9 +51,24 @@ DESCRIBE ships;
 - ship_id：整數（對應 ships 表的 id）
 - salary：小數（DECIMAL(10,2)）
 
-（貼上你寫的 CREATE TABLE 語句）
-（貼上 DESCRIBE crew; 的結果）
+（CREATE TABLE crew (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    rank VARCHAR(30),
+    ship_id INT,
+    salary DECIMAL(10,2)
+);
++--------------+--------------+------+-----+---------+----------------+
+| Field        | Type         | Null | Key | Default | Extra          |
++--------------+--------------+------+-----+---------+----------------+
+MAL(| id           | int          | NO   | PRI | NULL    | auto_increment |
+| ship_name    | varchar(100) | NO   |     | NULL    |                |
+| ship_type    | varchar(50)  | YES  |     | NULL    |                |
+| tonnage      | int          | YES  |     | NULL    |                |
+| arrival_date | date         | YES  |     | NULL    |                |
++--------------+--------------+------+-----+---------+----------------+
+5 rows in set (0.01 sec)
 
 請回答：
 Q：為什麼 crew 表的 ship_id 要對應 ships 表的 id？這樣設計有什麼好處？
-A：
+A：因為 crew 表中的 ship_id 是用來表示每位船員所屬的船隻，而 ships 表的 id 是每艘船的唯一識別碼，將兩者對應可以建立資料之間的關聯（關聯式資料庫的設計）。
