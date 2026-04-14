@@ -1,0 +1,110 @@
+姓名：王馥柔
+學號：C112181150
+
+=== 任務 1：確認 WSL 環境 ===
+在 Windows PowerShell 中執行：
+wsl --list --verbose
+（貼上結果）
+  NAME      STATE           VERSION
+* Ubuntu    Stopped         2
+PS C:\Windows\system32>
+
+=== 任務 2：安裝 MySQL ===
+進入 WSL 後依序執行，貼上每步結果：
+
+步驟 1：更新套件庫
+sudo apt update && sudo apt upgrade -y
+（貼上最後幾行結果即可）
+Processing triggers for rsyslog (8.2312.0-3ubuntu9.1) ...
+Processing triggers for man-db (2.12.0-4build2) ...
+Processing triggers for dbus (1.14.10-4ubuntu4.1) ...
+Processing triggers for install-info (7.1-3build2) ...
+Processing triggers for hicolor-icon-theme (0.17-2) ...
+
+步驟 2：安裝 MySQL Server
+sudo apt install -y mysql-server
+（貼上最後幾行結果即可）
+done!
+update-alternatives: using /var/lib/mecab/dic/ipadic-utf8 to provide /var/lib/mecab/dic/debian (mecab-dictionary) in auto mode
+Setting up libhtml-parser-perl:amd64 (3.81-1build3) ...
+Setting up libhttp-message-perl (6.45-1ubuntu1) ...
+Setting up mysql-server-8.0 (8.0.45-0ubuntu0.24.04.1) ...
+update-alternatives: using /etc/mysql/mysql.cnf to provide /etc/mysql/my.cnf (my.cnf) in auto mode
+Renaming removed key_buffer and myisam-recover options (if present)
+mysqld will log errors to /var/log/mysql/error.log
+mysqld is running as pid 5566
+Created symlink /etc/systemd/system/multi-user.target.wants/mysql.service → /usr/lib/systemd/system/mysql.service.
+Setting up libcgi-pm-perl (4.63-1) ...
+Setting up libhtml-template-perl (2.97-2) ...
+Setting up mysql-server (8.0.45-0ubuntu0.24.04.1) ...
+Setting up libcgi-fast-perl (1:2.17-1) ...
+Processing triggers for man-db (2.12.0-4build2) ...
+Processing triggers for libc-bin (2.39-0ubuntu8.7) ...
+/sbin/ldconfig.real: /usr/lib/wsl/lib/libcuda.so.1 is not a symbolic link
+sudo service mysql start
+
+
+步驟 3：啟動 MySQL 服務
+步驟 4：確認 MySQL 正在運行
+sudo service mysql status
+（貼上結果，應顯示 running）
+● mysql.service - MySQL Community Server
+     Loaded: loaded (/usr/lib/systemd/system/mysql.service; enabled; preset: enabled)
+     Active: active (running) since Tue 2026-04-14 13:51:43 CST; 1min 55s ago
+    Process: 5737 ExecStartPre=/usr/share/mysql/mysql-systemd-start pre (code=exited, status=0/SUCCESS)
+   Main PID: 5746 (mysqld)
+     Status: "Server is operational"
+      Tasks: 37 (limit: 9275)
+     Memory: 351.7M (peak: 379.5M)
+        CPU: 1.133s
+     CGroup: /system.slice/mysql.service
+             └─5746 /usr/sbin/mysqld
+
+Apr 14 13:51:42 U39 systemd[1]: Starting mysql.service - MySQL Community Server...
+Apr 14 13:51:43 U39 systemd[1]: Started mysql.service - MySQL Community Server.
+
+
+=== 任務 3：登入 MySQL ===
+
+步驟 1：用 sudo 登入 MySQL（WSL 預設不需要密碼）
+sudo mysql
+（貼上登入成功畫面，應顯示 Welcome to the MySQL monitor）
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.0.45-0ubuntu0.24.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2026, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql>
+
+步驟 2：確認版本
+SELECT VERSION();
+（貼上結果）
++-------------------------+
+| VERSION()               |
++-------------------------+
+| 8.0.45-0ubuntu0.24.04.1 |
++-------------------------+
+1 row in set (0.00 sec)
+
+mysql>
+步驟 3：查看預設資料庫
+SHOW DATABASES;
+（貼上結果）
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+4 rows in set (0.00 sec)
+
+mysql>
