@@ -1,0 +1,37 @@
+姓名：楊宗燁
+學號：C112181126
+
+=== 步驟 1：mkdir week03test ===
+無輸出
+
+=== 步驟 2：cd week03test ===
+無輸出
+
+=== 步驟 3：建立三個檔案 ===
+使用的指令：
+echo "Hello! 歡迎使用 MobaXterm。這是一個測試檔案。" > hello.txt
+echo "學習目標：掌握 SSH 連線、SFTP 傳輸與多標籤管理。" > learning.txt
+echo "虛擬機配置：Ubuntu 22.04, 2GB RAM, 20GB Disk。" > vm.txt
+
+=== 步驟 4：ls -l ===
+total 12
+-rw-rw-r--. 1 student123 student123 60 Mar 24 05:53 hello.txt
+-rw-rw-r--. 1 student123 student123 68 Mar 24 05:53 learning.txt
+-rw-rw-r--. 1 student123 student123 54 Mar 24 05:53 vm.txt
+
+=== 步驟 5：cp hello.txt hello_backup.txt ===
+無輸出
+
+=== 步驟 6：mv vm.txt virtualization.txt ===
+無輸出
+=== 步驟 7：ls -l（最終結果） ===
+total 16
+-rw-rw-r--. 1 student123 student123 60 Mar 24 05:53 hello.txt
+-rw-rw-r--. 1 student123 student123 60 Mar 24 05:54 hello_backup.txt
+-rw-rw-r--. 1 student123 student123 68 Mar 24 05:53 learning.txt
+-rw-rw-r--. 1 student123 student123 54 Mar 24 05:53 virtualization.txt
+
+=== 問答 ===
+Q：最終目錄中有哪些檔案？和步驟 4 相比，發生了什麼變化？
+A：hello.txt被複製一份並改名hello_backup.txt
+vm.txt被改名virtualization.txt

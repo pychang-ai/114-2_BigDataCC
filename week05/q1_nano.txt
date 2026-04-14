@@ -1,0 +1,46 @@
+姓名：楊宗燁
+學號：C112181126
+
+=== 任務 1：用 nano 建立 intro.txt ===
+請用 nano 建立 ~/intro.txt，輸入以下內容（替換為你的真實資訊）：
+  姓名：XXX
+  學號：XXX
+  系所：XXX
+  興趣：XXX
+  修這門課的期望：XXX
+
+儲存後用 cat 顯示內容：
+cat ~/intro.txt
+
+（貼上結果）
+Name:jack
+SID:C112181126
+Departmrnt:DMIT
+Interest:play game
+Expectation:learn linux
+
+=== 任務 2：nano 快捷鍵操作 ===
+用 nano 開啟 ~/intro.txt，在最後面新增一行：
+  今天日期：（用 date 指令查到的日期）
+
+儲存後用 cat 顯示完整內容：
+（貼上結果）
+Name:jack
+SID:C112181126
+Departmrnt:DMIT
+Interest:play game
+Expectation:learn linux
+Day:2026-03-24
+date
+
+=== 任務 3：說明你使用了哪些 nano 快捷鍵 ===
+（例如：Ctrl+O 儲存、Ctrl+X 離開，至少列出 4 個）
+| Ctrl+O | 儲存 | Write Out，儲存目前的檔案 |
+| Ctrl+X | 離開 | Exit，離開 nano |
+| Ctrl+K | 剪下整行 | Cut，剪下游標所在的整行 |
+| Ctrl+U | 貼上 | Uncut，貼上剛才剪下的內容 |
+| Ctrl+W | 搜尋 | Where Is，搜尋文字 |
+| Ctrl+C | 顯示游標位置 | 顯示目前在第幾行第幾欄 |
+| Ctrl+G | 顯示說明 | Help，顯示完整快捷鍵說明 |
+| Ctrl+A | 移到行首 | 游標跳到該行最前面 |
+| Ctrl+E | 移到行尾 | 游標跳到該行最後面 |
