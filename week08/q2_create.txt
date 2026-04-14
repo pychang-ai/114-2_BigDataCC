@@ -1,0 +1,81 @@
+姓名：[請填寫姓名]
+學號：[請填寫學號]
+
+=== 任務 1：建立資料庫 ===
+mysql> CREATE DATABASE port_db;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| port_db            |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql> USE port_db;
+Database changed
+
+=== 任務 2：建立 ships 資料表 ===
+mysql> CREATE TABLE ships (
+    ->     id INT AUTO_INCREMENT PRIMARY KEY,
+    ->     ship_name VARCHAR(100) NOT NULL,
+    ->     ship_type VARCHAR(50),
+    ->     tonnage INT,
+    ->     arrival_date DATE
+    -> );
+Query OK, 0 rows affected (0.02 sec)
+
+查看表結構：
+mysql> SHOW TABLES;
++-------------------+
+| Tables_in_port_db |
++-------------------+
+| ships             |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> DESCRIBE ships;
++--------------+--------------+------+-----+---------+----------------+
+| Field        | Type         | Null | Key | Default | Extra          |
++--------------+--------------+------+-----+---------+----------------+
+| id           | int          | NO   | PRI | NULL    | auto_increment |
+| ship_name    | varchar(100) | NO   |     | NULL    |                |
+| ship_type    | varchar(50)  | YES  |     | NULL    |                |
+| tonnage      | int          | YES  |     | NULL    |                |
+| arrival_date | date         | YES  |     | NULL    |                |
++--------------+--------------+------+-----+---------+----------------+
+5 rows in set (0.01 sec)
+
+=== 任務 3：自己建立第二張表 crew ===
+mysql> CREATE TABLE crew (
+    ->     id INT AUTO_INCREMENT PRIMARY KEY,
+    ->     name VARCHAR(50) NOT NULL,
+    ->     rank VARCHAR(30),
+    ->     ship_id INT,
+    ->     salary DECIMAL(10,2)
+    -> );
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> DESCRIBE crew;
++---------+---------------+------+-----+---------+----------------+
+| Field   | Type          | Null | Key | Default | Extra          |
++---------+---------------+------+-----+---------+----------------+
+| id      | int           | NO   | PRI | NULL    | auto_increment |
+| name    | varchar(50)   | NO   |     | NULL    |                |
+| rank    | varchar(30)   | YES  |     | NULL    |                |
+| ship_id | int           | YES  |     | NULL    |                |
+| salary  | decimal(10,2) | YES  |     | NULL    |                |
++---------+---------------+------+-----+---------+----------------+
+5 rows in set (0.01 sec)
+
+請回答：
+Q：為什麼 crew 表的 ship_id 要對應 ships 表的 id？這樣設計有什麼好處？
+A：這是關聯式資料庫設計中的「外鍵 (Foreign Key)」概念。將 crew 表的 ship_id 指向 ships 表的 id，可以建立船員與船舶之間的「多對一」關聯。好處包含：
+1. 減少資料冗餘：不需要在每位船員的紀錄中重複填寫船名、船型等資訊，節省儲存空間。
+2. 維護資料一致性：當船舶資訊（如船名更改）需要更新時，只需要修改 ships 表中的一筆資料，所有對應的船員紀錄都會自動參照到最新資訊，避免資料不一致。
+3. 方便關聯查詢：之後可以利用 JOIN 語法輕鬆把船員跟所屬的船舶詳細資料連接在一起查詢。
