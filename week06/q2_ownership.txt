@@ -43,25 +43,27 @@ ls -l ~/week06_test.txt
 步驟 2：建立測試用的使用者和群組
 sudo useradd -m tempuser
 sudo groupadd tempgroup
-（貼上結果）
+無輸出
 
 步驟 3：用 chown 改變擁有者
 sudo chown tempuser ~/week06_test.txt
 ls -l ~/week06_test.txt
-（貼上結果，觀察擁有者欄位的變化）
+-rw-r--r-- 1 tempuser user 15 Mar 31 15:54 /home/user/week06_test.txt
 
 步驟 4：用 chgrp 改變群組
 sudo chgrp tempgroup ~/week06_test.txt
 ls -l ~/week06_test.txt
-（貼上結果，觀察群組欄位的變化）
+-rw-r--r-- 1 tempuser tempgroup 15 Mar 31 15:54 /home/user/week06_test.txt
 
 步驟 5：用 chown 一次改回自己
 sudo chown $(whoami):$(whoami) ~/week06_test.txt
 ls -l ~/week06_test.txt
-（貼上結果，確認擁有者和群組都改回來了）
+-rw-r--r-- 1 tempuser tempgroup 15 Mar 31 15:54 /home/user/week06_test.txt
 
 步驟 6：清理
 rm ~/week06_test.txt
 sudo userdel -r tempuser
 sudo groupdel tempgroup
-（貼上結果）
+
+rm: remove write-protected regular file '/home/user/week06_test.txt'? y
+userdel: tempuser mail spool (/var/mail/tempuser) not found
