@@ -1,0 +1,50 @@
+姓名：廖紹凱
+學號：C112181124
+
+=== 任務 1：建立 Shell Script ===
+請用 nano 建立 ~/my_script.sh，內容如下：
+
+#!/bin/bash
+echo "========================================="
+echo "  系統資訊報告"
+echo "========================================="
+echo "使用者：$(whoami)"
+echo "主機名稱：$(hostname)"
+echo "目前日期：$(date)"
+echo "目前目錄：$(pwd)"
+echo "========================================="
+echo "磁碟使用量："
+df -h | head -5
+echo "========================================="
+echo "記憶體使用量："
+free -h
+echo "========================================="
+
+=== 任務 2：設定權限並執行 ===
+chmod +x ~/my_script.sh
+（貼上 ls -l ~/my_script.sh 的結果，確認有 x 權限）
+student122@linux-server1:~$ ls -l ~/my_script.sh
+-rwxrwxr-x. 1 student122 student122 470 Mar 24 07:25 /home/student122/my_script.sh
+
+=== 任務 3：執行結果 ===
+./my_script.sh
+
+student122@linux-server1:~$ ./my_script.sh
+===========================================
+System Information Report
+=========================================
+User:student122
+Hostname:linux-server1
+Current Date:Tue Mar 24 07:28:10 UTC 2026
+Current Directory:/home/student122
+=========================================
+Disk Usage:
+Filesystem      Size  Used Avail Use% Mounted on
+overlay          30G  2.6G   28G   9% /
+tmpfs            64M     0   64M   0% /dev
+shm              64M     0   64M   0% /dev/shm
+/dev/nvme0n1p1   30G  2.6G   28G   9% /etc/hosts
+============================================
+Memory usage: free -h
+==========================================
+ 
