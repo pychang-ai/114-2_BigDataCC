@@ -1,0 +1,36 @@
+姓名：林柏呈
+學號：C112181130
+
+Q1：chown 和 chmod 有什麼不同？請分別說明它們的功能，並各舉一個使用情境。
+A1：chown 與 chmod 的區別
+chown (Change Owner)：
+功能：修改檔案或目錄的「擁有者」或「所屬群組」。
+情境：管理員幫新員工 alice 建立了一個專案目錄，需要把該目錄的控制權交還給她：sudo chown alice:alice /project。
+chmod (Change Mode)：
+功能：修改檔案或目錄的「存取權限」（讀、寫、執行）。
+情境：你寫好了一個 shell 腳本 script.sh，需要賦予它執行權限才能跑起來：chmod +x script.sh。
+
+
+Q2：你和 3 位同學要合作做專題，需要在 Linux 上建立一個共用資料夾，
+    讓組員都能讀寫檔案，但其他人不能存取。
+    請寫出你會使用的指令（提示：需要建立群組、設定目錄的群組和權限）。
+A2：建立共用資料夾的指令步驟
+假設專案名稱為 top-secret，組員群組名稱為 students：
+建立群組：sudo groupadd students
+將組員加入群組：sudo usermod -aG students <帳號名稱>
+建立目錄：mkdir /common_project
+變更目錄所屬群組：sudo chgrp students /common_project
+設定權限（群組可讀寫，其他人無權限）：chmod 770 /common_project
+
+Q3：Linux 判斷權限時，是按什麼順序檢查的？
+    假設一個檔案的權限是 rwxr-x---，擁有者是 alice，群組是 project。
+    請回答以下三個人分別能做什麼操作：
+    (a) alice（擁有者）能做什麼？
+    (b) bob（屬於 project 群組）能做什麼？
+    (c) charlie（不屬於 project 群組）能做什麼？
+A3：權限檢查順序與案例分析
+檢查順序：Linux 採取「匹配即停止」原則。順序為：擁有者 (User) → 群組 (Group) → 其他人 (Others)。一旦符合身分，系統就只看該層級的權限，不再往下遞補。
+針對權限 rwxr-x---（擁有者 alice, 群組 project）：
+(a) alice：匹配到「擁有者」，權限為 rwx。她可以讀取、修改、執行該檔案。
+(b) bob：匹配到「群組」，權限為 r-x。他可以讀取、執行檔案，但不能修改內容。
+(c) charlie：匹配到「其他人」，權限為 ---。他完全無法存取（讀不到也進不去）。
