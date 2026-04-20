@@ -1,0 +1,13 @@
+姓名：李翊丞
+學號：C111181134
+
+Q1：請說明管線符號 | 的功能，並舉一個實際使用的例子。
+A1：管線符號（Pipe）的作用是「接力」。它會將前一個指令的輸出（Output），直接變成後一個指令的輸入（Input）
+ls /etc | grep "test"
+
+Q2：請說明 > 和 >> 的差異，各舉一個使用情境。
+A2：> 是覆蓋  >>是累加  date > time.txt  echo "備份完成" >> backup.log
+
+Q3：請寫出一行指令，找出 /etc/passwd 中有多少個使用者的 shell 是 /bin/bash。
+    提示：可以結合 grep 和 wc 指令 
+A3：grep "/bin/bash" /etc/passwd | wc -l
