@@ -1,0 +1,83 @@
+```
+姓名：吳宣縈
+學號：C112181149
+
+=== 任務 1：確認 WSL 環境 ===
+wsl --list --verbose
+Command 'wsl' not found, but can be installed with:
+sudo apt install wsl
+
+=== 任務 2：安裝 MySQL ===
+步驟 1：更新套件庫
+Processing triggers for rsyslog (8.2312.0-3ubuntu9.1) ...
+Processing triggers for man-db (2.12.0-4build2) ...
+Processing triggers for dbus (1.14.10-4ubuntu4.1) ...
+Processing triggers for install-info (7.1-3build2) ...
+Processing triggers for hicolor-icon-theme (0.17-2) ...
+
+步驟 2：安裝 MySQL Server
+Setting up libcgi-pm-perl (4.63-1) ...
+Setting up libhtml-template-perl (2.97-2) ...
+Setting up mysql-server (8.0.45-0ubuntu0.24.04.1) ...
+Setting up libcgi-fast-perl (1:2.17-1) ...
+Processing triggers for man-db (2.12.0-4build2) ...
+Processing triggers for libc-bin (2.39-0ubuntu8.7) ...
+/sbin/ldconfig.real: /usr/lib/wsl/lib/libcuda.so.1 is not a symbolic link
+
+步驟 3：啟動 MySQL 服務
+sudo service mysql start
+
+步驟 4：確認 MySQL 正在運行
+mysql.service - MySQL Community Server
+     Loaded: loaded (/usr/lib/systemd/system/mysql.service; enabled; preset>
+     Active: active (running) since Tue 2026-04-14 14:59:48 CST; 8s ago
+    Process: 7309 ExecStartPre=/usr/share/mysql/mysql-systemd-start pre (co>
+   Main PID: 7318 (mysqld)
+     Status: "Server is operational"
+      Tasks: 38 (limit: 9275)
+     Memory: 363.8M (peak: 379.7M)
+        CPU: 452ms
+     CGroup: /system.slice/mysql.service
+             └─7318 /usr/sbin/mysqld
+
+Apr 14 14:59:47 U13 systemd[1]: Starting mysql.service - MySQL Community Se>
+Apr 14 14:59:48 U13 systemd[1]: Started mysql.service - MySQL Community Ser>
+lines 1-14/14 (END)
+
+=== 任務 3：登入 MySQL ===
+
+步驟 1：用 sudo 登入 MySQL（WSL 預設不需要密碼）
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.0.45-0ubuntu0.24.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2026, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql>
+步驟 2：確認版本
+mysql> SELECT VERSION();
++-------------------------+
+| VERSION()               |
++-------------------------+
+| 8.0.45-0ubuntu0.24.04.1 |
++-------------------------+
+1 row in set (0.00 sec)
+
+
+步驟 3：查看預設資料庫
+mysql> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+4 rows in set (0.01 sec)

@@ -1,0 +1,39 @@
+```
+姓名：吳宣縈
+學號：C112181149
+
+Q1：chown 和 chmod 有什麼不同？請分別說明它們的功能，並各舉一個使用情境。
+A1：
+chown：
+功能： 用來修改檔案或目錄的「擁有者」或「所屬群組」。
+情境： 當管理員建立了一個新網頁檔案，需要將該檔案移交給網頁維護員管理時，會使用 sudo chown www-data:www-data index.html。
+chmod ：
+功能： 用來修改檔案或目錄的「存取權限」。
+情境： 當你寫好了一個 shell 腳本（.sh），發現無法執行時，會使用 chmod +x script.sh 來賦予自己執行的權限。
+
+Q2：你和 3 位同學要合作做專題，需要在 Linux 上建立一個共用資料夾，
+    讓組員都能讀寫檔案，但其他人不能存取。
+    請寫出你會使用的指令（提示：需要建立群組、設定目錄的群組和權限）。
+A2：假設共用資料夾名稱為 project_share，組員帳號為 user1, user2, user3：
+建立專題群組：
+sudo groupadd project_team
+將組員加入群組：
+sudo usermod -aG project_team user1 (以此類推加入所有人)
+建立並設定資料夾群組：
+mkdir project_share
+sudo chown :project_team project_share
+設定權限：
+chmod 770 project_share
+
+Q3：Linux 判斷權限時，是按什麼順序檢查的？
+    假設一個檔案的權限是 rwxr-x---，擁有者是 alice，群組是 project。
+    請回答以下三個人分別能做什麼操作：
+    (a) alice（擁有者）能做什麼？
+    (b) bob（屬於 project 群組）能做什麼？
+    (c) charlie（不屬於 project 群組）能做什麼？
+A3：
+Owner (擁有者)： 先看是不是 alice 本人。如果是，直接套用 Owner 權限。
+Group (群組)： 如果不是本人，再看是否屬於 project 群組。如果是，套用 Group 權限。
+Others (其他人)： 如果以上皆非，則套用 Others 權限。
+
+```

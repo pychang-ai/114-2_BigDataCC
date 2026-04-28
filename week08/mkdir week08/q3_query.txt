@@ -1,0 +1,137 @@
+```
+姓名：吳宣縈
+學號：C112181149
+
+=== 任務 1：新增船舶資料 ===
+執行以下指令新增 5 筆船舶資料：
+
+mysql> INSERT INTO ships (ship_name, ship_type, tonnage, arrival_date) VALUES
+ver Given', 'Containe    -> ('Ever Given', 'Container', 220940, '2026-04-10'),
+    -> ('Yang Ming Wish', 'Container', 150000, '2026-04-11'),
+    -> ('Formosa 1', 'Bulk', 85000, '2026-04-12'),
+    -> ('Ocean Star', 'Tanker', 95000, '2026-04-13'),
+    -> ('Kaohsiung Express', 'Container', 180000, '2026-04-14');
+ * FROM ships;Query OK, 5 rows affected (0.01 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql>
+mysql> SELECT * FROM ships;
++----+-------------------+-----------+---------+--------------+
+| id | ship_name         | ship_type | tonnage | arrival_date |
++----+-------------------+-----------+---------+--------------+
+|  1 | Ever Given        | Container |  220940 | 2026-04-10   |
+|  2 | Yang Ming Wish    | Container |  150000 | 2026-04-11   |
+|  3 | Formosa 1         | Bulk      |   85000 | 2026-04-12   |
+|  4 | Ocean Star        | Tanker    |   95000 | 2026-04-13   |
+|  5 | Kaohsiung Express | Container |  180000 | 2026-04-14   |
++----+-------------------+-----------+---------+--------------+
+5 rows in set (0.00 sec)
+
+=== 任務 2：新增船員資料 ===
+mysql> INSERT INTO crew (name, `rank`, ship_id, salary) VALUES
+onkey D    -> ('Monkey D. Luffy', 'Captain', 1, 50000.00),
+    -> ('Roronoa Zoro', 'Officer', 1, 45000.00),
+    -> 'Office('Nami', 'Officer', 1, 48000.00),
+    -> ('Tony Tony Chopper', 'Crew', 1, 50.00),
+    -> ck Spar('Jack Sparrow', 'Captain', 2, 55000.00),
+    -> ('Joshamee Gibbs', 'Officer', 2, 35000.00),
+    -> ('James Bond', 'Engineer', 3, 60000.00),
+    -> ('Montgomery Scott', 'Engineer', 3, 65000.00);
+Query OK, 8 rows affected (0.01 sec)
+Records: 8  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM crew;
++----+-------------------+----------+---------+----------+
+| id | name              | rank     | ship_id | salary   |
++----+-------------------+----------+---------+----------+
+|  1 | Monkey D. Luffy   | Captain  |       1 | 50000.00 |
+|  2 | Roronoa Zoro      | Officer  |       1 | 45000.00 |
+|  3 | Nami              | Officer  |       1 | 48000.00 |
+|  4 | Tony Tony Chopper | Crew     |       1 |    50.00 |
+|  5 | Jack Sparrow      | Captain  |       2 | 55000.00 |
+|  6 | Joshamee Gibbs    | Officer  |       2 | 35000.00 |
+|  7 | James Bond        | Engineer |       3 | 60000.00 |
+|  8 | Montgomery Scott  | Engineer |       3 | 65000.00 |
++----+-------------------+----------+---------+----------+
+8 rows in set (0.00 sec)
+
+=== 任務 3：條件查詢 ===
+請寫出 SQL 並貼上結果：
+
+Q1：查詢噸位大於 100000 的船舶，按噸位由大到小排序
+mysql> SELECT * FROM ships
+    -> WHERE tonnage > 100000
+    -> ORDER BY tonnage DESC;
++----+-------------------+-----------+---------+--------------+
+| id | ship_name         | ship_type | tonnage | arrival_date |
++----+-------------------+-----------+---------+--------------+
+|  1 | Ever Given        | Container |  220940 | 2026-04-10   |
+|  5 | Kaohsiung Express | Container |  180000 | 2026-04-14   |
+|  2 | Yang Ming Wish    | Container |  150000 | 2026-04-11   |
++----+-------------------+-----------+---------+--------------+
+3 rows in set (0.00 sec)
+
+Q2：查詢薪水大於 50000 的船員，按薪水由高到低排序
+mysql> SELECT * FROM crew
+    -> WHERE salary > 50000
+    -> ORDER BY salary DESC;
++----+------------------+----------+---------+----------+
+| id | name             | rank     | ship_id | salary   |
++----+------------------+----------+---------+----------+
+|  8 | Montgomery Scott | Engineer |       3 | 65000.00 |
+|  7 | James Bond       | Engineer |       3 | 60000.00 |
+|  5 | Jack Sparrow     | Captain  |       2 | 55000.00 |
++----+------------------+----------+---------+----------+
+3 rows in set (0.00 sec)
+
+Q3：查詢所有貨櫃船（ship_type = 'Container'）的船名和噸位
+mysql> SELECT ship_name, tonnage
+    -> FROM ships
+    -> WHERE ship_type = 'Container';
++-------------------+---------+
+| ship_name         | tonnage |
++-------------------+---------+
+| Ever Given        |  220940 |
+| Yang Ming Wish    |  150000 |
+| Kaohsiung Express |  180000 |
++-------------------+---------+
+3 rows in set (0.00 sec)
+
+=== 任務 4：修改與刪除 ===
+
+步驟 1：將 Ever Given 的噸位改為 221000
+mysql> UPDATE ships
+ge = 221    -> SET tonnage = 221000
+    -> WHERE ship_name = 'Ever Given';
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 1  Changed: 0  Warnings: 0
+
+步驟 2：刪除 crew 表中薪水最低的那筆資料
+mysql> DELETE FROM crew
+    -> ORDER BY salary ASC
+    -> LIMIT 1;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT * FROM crew;
++----+------------------+----------+---------+----------+
+| id | name             | rank     | ship_id | salary   |
++----+------------------+----------+---------+----------+
+|  1 | Monkey D. Luffy  | Captain  |       1 | 50000.00 |
+|  2 | Roronoa Zoro     | Officer  |       1 | 45000.00 |
+|  3 | Nami             | Officer  |       1 | 48000.00 |
+|  5 | Jack Sparrow     | Captain  |       2 | 55000.00 |
+|  6 | Joshamee Gibbs   | Officer  |       2 | 35000.00 |
+|  7 | James Bond       | Engineer |       3 | 60000.00 |
+|  8 | Montgomery Scott | Engineer |       3 | 65000.00 |
++----+------------------+----------+---------+----------+
+7 rows in set (0.00 sec)
+
+請回答：
+Q：為什麼 UPDATE 和 DELETE 一定要加 WHERE 條件？不加會怎樣？
+A：
+如果不加 WHERE 條件，該指令會對全資料表的所有資料生效。
+UPDATE 不加 WHERE：會導致整張表的所有紀錄都被更新為同一個數值。
+DELETE 不加 WHERE：會直接清空整張表的所有資料，這在實務上是非常嚴重的災難。
+```
+
+---
