@@ -1,0 +1,58 @@
+姓名：王馥柔
+學號：C112181150
+=== 任務 1：grep 搜尋 ===
+在 /etc/passwd 中搜尋你的帳號名稱：
+grep 你的帳號 /etc/passwd
+
+（貼上結果）
+student218:x:1017:1017:student218:/home/student218:/bin/bash
+搜尋所有包含 "bash" 的行：
+grep bash /etc/passwd
+
+（貼上結果）
+root:x:0:0:root:/root:/bin/bash
+student218:x:1017:1017:student218:/home/student218:/bin/bash
+seq:x:1000:1000:seq:/home/seq:/bin/bash
+=== 任務 2：管線操作 ===
+列出 /etc 目錄下的檔案數量：
+ls /etc | wc -l
+
+（貼上結果）
+84
+列出 /etc 目錄下的前 10 個檔案名稱（按字母排序）：
+ls /etc | sort | head -10
+
+（貼上結果）
+adduser.conf
+alternatives
+apparmor
+apparmor.d
+apt
+bash.bashrc
+bash_completion
+bash_completion.d
+bindresvport.whitelist
+binfmt.d
+=== 任務 3：重導向 ===
+將 ls -la ~ 的結果存入檔案：
+ls -la ~ > ~/week04/home_list.txt
+cat ~/week04/home_list.txt
+
+（貼上 cat 的結果）
+total 64
+drwxr-x--- 8 student218 student218 4096 Mar 24 05:40 .
+drwxr-xr-x 4 root       root       4096 Mar 20 10:15 ..
+-rw------- 1 student218 student218  824 Mar 24 05:42 .bash_history
+-rw-r--r-- 1 student218 student218  220 Mar 20 10:15 .bash_logout
+-rw-r--r-- 1 student218 student218 3771 Mar 20 10:15 .bashrc
+drwx------ 2 student218 student218 4096 Mar 22 14:10 .cache
+drwxrwxr-x 4 student218 student218 4096 Mar 24 05:38 week04
+
+將目前日期追加到檔案：
+date >> ~/week04/home_list.txt
+tail -3 ~/week04/home_list.txt
+
+（貼上 tail 的結果）
+-rw-rw-r-- 1 student218 student218   20 Mar 24 05:45 file3.txt
+-rw-rw-r-- 1 student218 student218 1240 Mar 24 05:50 home_list.txt
+Tue Mar 31 14:40:08 CST 2026

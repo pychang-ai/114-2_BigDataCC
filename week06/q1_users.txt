@@ -1,0 +1,58 @@
+姓名：王馥柔
+學號：C112181150
+=== 任務 1：查看自己的身份資訊 ===
+請依序執行以下三個指令並貼上結果：
+
+whoami
+（貼上結果）
+student218
+id
+（貼上結果）
+uid=1017(student218) gid=1017(student218) groups=1017(student218)
+groups
+（貼上結果）
+student218
+請回答：你的 UID 是多少？你屬於哪些群組？
+UID 是 1017。
+目前僅屬於 student218 群組（群組 ID 為 1017）。
+
+=== 任務 2：解讀 /etc/passwd ===
+執行以下指令：
+cat /etc/passwd | grep 你的帳號
+
+（貼上結果）
+
+請將這行用 : 拆成 7 個欄位，逐一說明每個欄位的意義：
+欄位 1（帳號名稱）：登入系統時使用的使用者名稱
+欄位 2（密碼欄位）：早期存放加密密碼
+欄位 3（UID）：系統辨識使用者的唯一數字代碼
+欄位 4（GID）：使用者的主要群組代碼（通常與 UID 相同）
+欄位 5（描述）：使用者的備註資訊，例如真實姓名、電話或辦公室編號
+欄位 6（家目錄）：使用者登入後預設進入的資料夾路徑
+欄位 7（Shell）：使用者登入後所使用的指令解釋器環境（通常為 bash）
+=== 任務 3：建立使用者與群組 ===
+請依序執行以下指令並貼上每步的結果：
+
+步驟 1：建立使用者 week06user（-m 建立家目錄）
+sudo useradd -m week06user
+（貼上結果，或說明「無輸出表示成功」）
+
+步驟 2：建立群組 week06group
+sudo groupadd week06group
+（貼上結果）
+
+步驟 3：將 week06user 加入 week06group
+sudo usermod -aG week06group week06user
+（貼上結果）
+
+步驟 4：驗證使用者和群組
+id week06user
+（貼上結果）
+
+cat /etc/group | grep week06group
+（貼上結果）
+
+步驟 5：清理（刪除測試用的使用者和群組）
+sudo userdel -r week06user
+sudo groupdel week06group
+（貼上結果）

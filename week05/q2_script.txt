@@ -1,0 +1,50 @@
+姓名：王馥柔
+學號：C112181150
+
+=== 任務 1：建立 Shell Script ===
+請用 nano 建立 ~/my_script.sh，內容如下：
+
+#!/bin/bash
+echo "========================================="
+echo "  系統資訊報告"
+echo "========================================="
+echo "使用者：$(whoami)"
+echo "主機名稱：$(hostname)"
+echo "目前日期：$(date)"
+echo "目前目錄：$(pwd)"
+echo "========================================="
+echo "磁碟使用量："
+df -h | head -5
+echo "========================================="
+echo "記憶體使用量："
+free -h
+echo "========================================="
+
+=== 任務 2：設定權限並執行 ===
+chmod +x ~/my_script.sh
+（貼上 ls -l ~/my_script.sh 的結果，確認有 x 權限）
+-rwxr-xr-x 1 student218 student218 458 Mar 31 16:05 /home/student218/my_script.sh
+=== 任務 3：執行結果 ===
+./my_script.sh
+
+（貼上完整的執行結果）
+=========================================
+  系統資訊報告
+=========================================
+使用者：student218
+主機名稱：linux-server2
+目前日期：Tue Mar 31 16:06:12 CST 2026
+目前目錄：/home/student218
+=========================================
+磁碟使用量：
+Filesystem      Size  Used Avail Use% Mounted on
+udev            3.9G     0  3.9G   0% /dev
+tmpfs           783M  1.1M  782M   1% /run
+/dev/sda1        40G   12G   26G  32% /
+tmpfs           3.9G     0  3.9G   0% /dev/shm
+=========================================
+記憶體使用量：
+              total        used        free      shared  buff/cache   available
+Mem:          7.6Gi       645Mi       5.8Gi       1.0Mi       1.2Gi       6.7Gi
+Swap:         2.0Gi          0B       2.0Gi
+=========================================
