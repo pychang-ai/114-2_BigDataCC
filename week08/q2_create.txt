@@ -1,0 +1,89 @@
+姓名：黃亭睿
+學號：C112181129
+
+=== 任務 1：建立資料庫 ===
+mysql> CREATE DATABASE port_db;
+SHOW DATABASES;
+USE port_db;Query OK, 1 row affected (0.05 sec)
+
+mysql> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| port_db            |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql> USE port_db;
+Database changed
+
+=== 任務 2：建立 ships 資料表 ===
+mysql> USE port_db;
+Database changed
+mysql> CREATE TABLE ships (
+    ->     id INT AUTO_INCREMENT PRIMARY KEY,
+    ->     ship_name VARCHAR(100) NOT NULL,
+    ->     ship_type VARCHAR(50),
+    ->     tonnage INT,
+    ->     arrival_date DATE
+    -> );
+Query OK, 0 rows affected (0.02 sec)
+查看表結構：
+mysql> SHOW TABLES;
+ESCRIBE ships;+-------------------+
+| Tables_in_port_db |
++-------------------+
+| ships             |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> DESCRIBE ships;
++--------------+--------------+------+-----+---------+----------------+
+| Field        | Type         | Null | Key | Default | Extra          |
++--------------+--------------+------+-----+---------+----------------+
+| id           | int          | NO   | PRI | NULL    | auto_increment |
+| ship_name    | varchar(100) | NO   |     | NULL    |                |
+| ship_type    | varchar(50)  | YES  |     | NULL    |                |
+| tonnage      | int          | YES  |     | NULL    |                |
+| arrival_date | date         | YES  |     | NULL    |                |
++--------------+--------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+
+=== 任務 3：自己建立第二張表 crew ===
+mysql> CREATE TABLE crew (
+    ->     id INT AUTO_INCREMENT PRIMARY KEY,
+    ->     name VARCHAR(50) NOT NULL,
+    ->     `rank` VARCHAR(30), -- 使用反引號包裹
+    ->     ship_id INT,
+    -> lary DE    salary DECIMAL(10,2),
+    ->     FOREIGN KEY (ship_id) REFERENCES ships(id)
+    -> );
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> DESCRIBE crew;
++---------+---------------+------+-----+---------+----------------+
+| Field   | Type          | Null | Key | Default | Extra          |
++---------+---------------+------+-----+---------+----------------+
+| id      | int           | NO   | PRI | NULL    | auto_increment |
+| name    | varchar(50)   | NO   |     | NULL    |                |
+| rank    | varchar(30)   | YES  |     | NULL    |                |
+| ship_id | int           | YES  | MUL | NULL    |                |
+| salary  | decimal(10,2) | YES  |     | NULL    |                |
++---------+---------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+
+請回答：
+Q：為什麼 crew 表的 ship_id 要對應 ships 表的 id？這樣設計有什麼好處？
+A：這種設計稱為 「外鍵（Foreign Key）」 關聯，它是關聯式資料庫的核心邏輯。將 crew.ship_id 指向 ships.id 的主要好處包括：
+
+資料完整性 (Data Integrity)： 確保每個船員都隸屬於一艘「真實存在」的船。如果沒有這個關聯，資料庫裡可能會出現「在幽靈船上工作」的船員。
+
+減少資料冗餘 (Reduce Redundancy)： 我們不需要在 crew 表裡重複輸入船的名字、噸位或類型。只要有一個 ship_id，就能透過 JOIN 查詢找到該船的所有詳細資訊，節省存儲空間。
+
+易於維護： 如果某艘船要改名字（例如從 "Merry" 改成 "Sunny"），我們只需要在 ships 表中修改一筆資料，所有關聯的船員資料會自動「對應」到新的名字，不需要逐一修改船員表。
+
+建立邏輯關聯： 清楚地定義了「一對多（One-to-Many）」的關係——一艘船可以擁有多名船員，但一名船員（通常）只屬於一艘船。
