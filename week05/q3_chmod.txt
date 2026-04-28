@@ -1,0 +1,55 @@
+姓名:鄒閔旭
+學號:C112181141
+A1
+
+chmod 755
+
+擁有者：rwx（讀、寫、執行）
+群組：r-x（讀、執行）
+其他人：r-x（讀、執行）
+A2
+
+chmod 644
+
+擁有者：rw-（讀、寫）
+群組：r--（只讀）
+其他人：r--（只讀）
+
+👉 差別：
+755 可以執行，644 不行
+
+A3
+要 ./hello.sh → 必須有 x（執行權限）
+沒有 x 會 Permission denied
+
+👉 不加 x 的替代方式：
+
+bash hello.sh
+student117@linux-server2:~$ cat week05/q3_chmod.txt
+姓名:鄒閔旭
+學號:C112181141
+A1
+
+chmod 755
+
+擁有者：rwx（讀、寫、執行）
+群組：r-x（讀、執行）
+其他人：r-x（讀、執行）
+A2
+
+chmod 644
+
+擁有者：rw-（讀、寫）
+群組：r--（只讀）
+其他人：r--（只讀）
+
+👉 差別：
+755 可以執行，644 不行
+
+A3
+要 ./hello.sh → 必須有 x（執行權限）
+沒有 x 會 Permission denied
+
+👉 不加 x 的替代方式：
+
+bash hello.sh

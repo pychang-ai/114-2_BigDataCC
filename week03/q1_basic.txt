@@ -1,0 +1,25 @@
+姓名：陽邦齊
+學號：C112181114
+
+=== 任務 1：建立目錄結構 ===
+mkdir -p project/src project/bin project/docs
+ls -R project
+
+=== 任務 2：建立檔案 ===
+touch project/src/main.c
+ls project/src
+
+=== 任務 3：複製檔案 ===
+cp project/src/main.c project/bin/
+ls project/bin
+
+=== 任務 4：移動檔案 ===
+mv project/bin/main.c project/docs/
+ls project/docs
+
+=== 任務 5：刪除檔案 ===
+rm project/docs/main.c
+ls project/docs
+
+=== 任務 6：顯示目前路徑 ===
+pwd
