@@ -137,6 +137,12 @@ prefix: /Users/username/anaconda3/envs/week10
 
 === 任務 5：清理暫存 ===
 conda clean --all -y
+(C112181145_w10) u306@U53:/mnt/c/Windows/system32$ conda clean --all -y
+Will remove 249 (517.7 MB) tarball(s).
+Will remove 1 index cache(s).
+Will remove 16 (13.3 MB) package(s).
+There are no tempfile(s) to remove.
+There are no logfile(s) to remove.
 （貼上結果，記錄釋放的空間大小，例如 "Removed XX MB"）
 
 === 任務 6：觀念回答 ===
