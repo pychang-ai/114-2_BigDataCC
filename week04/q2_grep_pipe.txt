@@ -1,0 +1,114 @@
+姓名:李翊銘
+學號:C112181181
+=== 任務 1：grep 搜尋 ===
+在 /etc/passwd 中搜尋你的帳號名稱：
+grep 你的帳號 /etc/passwd
+
+student221@linux-server2:~$ grep student221 /etc/passwd
+student221:x:1020:1020::/home/student221:/bin/bash
+
+搜尋所有包含 "bash" 的行：
+grep bash /etc/passwd
+
+student216:x:1015:1015::/home/student216:/bin/bash
+student217:x:1016:1016::/home/student217:/bin/bash
+student218:x:1017:1017::/home/student218:/bin/bash
+student219:x:1018:1018::/home/student219:/bin/bash
+student220:x:1019:1019::/home/student220:/bin/bash
+student221:x:1020:1020::/home/student221:/bin/bash
+student222:x:1021:1021::/home/student222:/bin/bash
+student223:x:1022:1022::/home/student223:/bin/bash
+student224:x:1023:1023::/home/student224:/bin/bash
+student225:x:1024:1024::/home/student225:/bin/bash
+student226:x:1025:1025::/home/student226:/bin/bash
+student227:x:1026:1026::/home/student227:/bin/bash
+student228:x:1027:1027::/home/student228:/bin/bash
+student229:x:1028:1028::/home/student229:/bin/bash
+student230:x:1029:1029::/home/student230:/bin/bash
+ta01:x:1030:1030::/home/ta01:/bin/bash
+ta02:x:1031:1031::/home/ta02:/bin/bash
+student101:x:1032:1032::/home/student101:/bin/bash
+student102:x:1033:1033::/home/student102:/bin/bash
+student103:x:1034:1034::/home/student103:/bin/bash
+student104:x:1035:1035::/home/student104:/bin/bash
+student105:x:1036:1036::/home/student105:/bin/bash
+student106:x:1037:1037::/home/student106:/bin/bash
+student107:x:1038:1038::/home/student107:/bin/bash
+student108:x:1039:1039::/home/student108:/bin/bash
+student109:x:1040:1040::/home/student109:/bin/bash
+student110:x:1041:1041::/home/student110:/bin/bash
+student111:x:1042:1042::/home/student111:/bin/bash
+student112:x:1043:1043::/home/student112:/bin/bash
+student113:x:1044:1044::/home/student113:/bin/bash
+student114:x:1045:1045::/home/student114:/bin/bash
+student115:x:1046:1046::/home/student115:/bin/bash
+student116:x:1047:1047::/home/student116:/bin/bash
+student117:x:1048:1048::/home/student117:/bin/bash
+student118:x:1049:1049::/home/student118:/bin/bash
+student119:x:1050:1050::/home/student119:/bin/bash
+student120:x:1051:1051::/home/student120:/bin/bash
+student121:x:1052:1052::/home/student121:/bin/bash
+student122:x:1053:1053::/home/student122:/bin/bash
+student123:x:1054:1054::/home/student123:/bin/bash
+student124:x:1055:1055::/home/student124:/bin/bash
+student125:x:1056:1056::/home/student125:/bin/bash
+student126:x:1057:1057::/home/student126:/bin/bash
+student127:x:1058:1058::/home/student127:/bin/bash
+student128:x:1059:1059::/home/student128:/bin/bash
+student129:x:1060:1060::/home/student129:/bin/bash
+student130:x:1061:1061::/home/student130:/bin/bash
+
+=== 任務 2：管線操作 ===
+列出 /etc 目錄下的檔案數量：
+ls /etc | wc -l
+
+student221@linux-server2:~$ ls /etc| wc -l
+101
+
+列出 /etc 目錄下的前 10 個檔案名稱（按字母排序）：
+ls /etc | sort | head -10
+
+student221@linux-server2:~$ ls /etc | sort | head -10
+adduser.conf
+alternatives
+apparmor.d
+apt
+bash.bashrc
+bash_completion.d
+bindresvport.blacklist
+cloud
+cron.d
+cron.daily
+
+=== 任務 3：重導向 ===
+將 ls -la ~ 的結果存入檔案：
+ls -la ~ > ~/week04/home_list.txt
+cat ~/week04/home_list.txt
+
+total 736
+drwxr-x---. 8 student221 student221  16384 Mar 17 06:44 .
+drwxr-xr-x. 1 root       root        16384 Mar 10 03:13 ..
+-rw-------. 1 student221 student221     43 Mar 10 08:09 .bash_history
+-rw-r--r--. 1 student221 student221    220 Jan  6  2022 .bash_logout
+-rw-r--r--. 1 student221 student221   3771 Jan  6  2022 .bashrc
+drwx------. 2 student221 student221     34 Mar 10 03:16 .cache
+-rw-r--r--. 1 student221 student221    807 Jan  6  2022 .profile
+-rw-rw-r--. 1 student221 student221    171 Mar 17 06:40 .wget-hsts
+-rw-rw-r--. 1 student221 student221    189 Mar  9 06:57 README.txt
+drwxrwxr-x. 2 student221 student221      6 Mar  9 06:57 documents
+drwxr-xr-x. 2 student221 student221     83 Mar  9 06:57 exercises
+-rw-rw-r--. 1 student221 student221 688430 Jan 14 12:51 koala.png
+-rw-rw-r--. 1 student221 student221     32 Mar 10 07:07 myfile..txt
+drwxrwxr-x. 2 student221 student221      6 Mar  9 06:57 projects
+drwxrwxr-x. 2 student221 student221      6 Mar  9 06:57 scripts
+drwxrwxr-x. 4 student221 student221     51 Mar 17 06:56 week04
+
+將目前日期追加到檔案：
+date >> ~/week04/home_list.txt
+tail -3 ~/week04/home_list.txt
+
+student221@linux-server2:~$ date >> ~/week04/home_list.txt
+student221@linux-server2:~$ tail -3 ~/week04/home_list.txt
+drwxrwxr-x. 2 student221 student221      6 Mar  9 06:57 scripts
+drwxrwxr-x. 4 student221 student221     51 Mar 17 06:56 week04
+Tue Mar 17 06:57:06 UTC 2026
