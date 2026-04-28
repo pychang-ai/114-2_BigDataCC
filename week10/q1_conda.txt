@@ -1,0 +1,112 @@
+姓名：邱奕豪
+學號：C112181135
+
+=== 任務 1：確認 Conda 版本 ===
+conda --version
+（貼上結果）
+conda 26.1.1
+
+conda info
+（貼上結果，至少包含 conda version、active environment、base environment 三行）
+     active environment : base
+    active env location : /home/u306/miniconda3
+            shell level : 1
+       user config file : /home/u306/.condarc
+ populated config files : /home/u306/miniconda3/.condarc
+                          /home/u306/miniconda3/condarc.d/anaconda-auth.yml
+          conda version : 26.1.1
+    conda-build version : not installed
+         python version : 3.13.12.final.0
+                 solver : libmamba (default)
+       virtual packages : __archspec=1=skylake
+                          __conda=26.1.1=0
+                          __cuda=12.4=0
+                          __glibc=2.39=0
+                          __linux=6.6.87.2=0
+                          __unix=0=0
+       base environment : /home/u306/miniconda3  (writable)
+
+=== 任務 2：建立新環境 ===
+建立一個名為「學號_w10」的環境，Python 版本指定為 3.11
+（例如學號 A11218001 → A11218001_w10）
+
+conda create -n [你的學號]_w10 python=3.11 -y
+（貼上最後幾行結果，看到 "done" 字樣）
+Downloading and Extracting Packages:
+
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+#
+# To activate this environment, use
+#
+#     $ conda activate C112181135_w10
+#
+# To deactivate an active environment, use
+#
+#     $ conda deactivate
+
+conda env list
+（貼上結果，確認環境出現在清單中）
+# conda environments:
+#
+# * -> active
+# + -> frozen
+base                 *   /home/u306/miniconda3
+C112181135_w10           /home/u306/miniconda3/envs/C112181135_w10
+bigdatacc                /home/u306/miniconda3/envs/bigdatacc
+
+=== 任務 3：啟動環境並安裝套件 ===
+conda activate [你的學號]_w10
+（貼上提示符變化，例如：(A11218001_w10) user@host:~$）
+(C112181135_w10) u306@U45:/mnt/c/Windows/system32$
+
+conda install pandas numpy matplotlib -y
+（貼上最後幾行結果）
+Downloading and Extracting Packages:
+
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+
+conda list | head -20
+（貼上結果，確認 pandas、numpy、matplotlib 都在）
+# packages in environment at /home/u306/miniconda3/envs/C112181135_w10:
+#
+# Name                     Version          Build                  Channel
+_libgcc_mutex              0.1              main
+_openmp_mutex              5.1              1_gnu
+aom                        3.13.2           h664349e_0
+blas                       1.0              mkl
+bzip2                      1.0.8            h5eee18b_6
+ca-certificates            2026.3.19        h06a4308_0
+cairo                      1.18.4           h44eff21_0
+contourpy                  1.3.3            py311hdb19cb5_0
+cycler                     0.12.1           py311h06a4308_0
+cyrus-sasl                 2.1.28           h83b0a09_4
+dav1d                      1.5.3            h3e43c27_0
+expat                      2.7.5            h7354ed3_0
+fontconfig                 2.15.0           h2c49b7f_0
+fonttools                  4.62.1           py311h47b2149_0
+freetype                   2.14.1           hf5b9546_0
+fribidi                    1.0.16           h9fb5f84_0
+graphite2                  1.3.14           h295c915_1
+
+=== 任務 4：匯出環境設定檔 ===
+conda env export > week10/environment.yml
+cat week10/environment.yml
+（貼上 environment.yml 完整內容）
+
+=== 任務 5：清理暫存 ===
+conda clean --all -y
+（貼上結果，記錄釋放的空間大小，例如 "Removed XX MB"）
+
+=== 任務 6：觀念回答 ===
+Q1：為什麼不要直接在 base 環境安裝專案套件？這樣做有什麼壞處？
+A1：
+
+Q2：conda install 和 pip install 有什麼差異？什麼情況下會建議用 pip？
+A2：
+
+Q3：environment.yml 的用途是什麼？換電腦時要怎麼用它快速重建環境？
+A3：
