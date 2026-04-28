@@ -267,7 +267,7 @@ Will remove 599 (1.26 GB) tarball(s).
 Will remove 1 index cache(s).
 Will remove 20 (1.3 MB) package(s).
 There are no tempfile(s) to remove.
-There are no logfile(s) to remove.
+There are no logfile(s) to remove. 
 
 === 任務 6：觀念回答 ===
 Q1：為什麼不要直接在 base 環境安裝專案套件？這樣做有什麼壞處？
