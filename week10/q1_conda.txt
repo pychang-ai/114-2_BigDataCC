@@ -1,5 +1,5 @@
-姓名：李翊銘
-學號：C112181181
+姓名：梁峻浤
+學號：C112181154
 
 === 任務 1：確認 Conda 版本 ===
 conda --version
@@ -45,7 +45,7 @@ conda info
 建立一個名為「學號_w10」的環境，Python 版本指定為 3.11
 （例如學號 A11218001 → A11218001_w10）
 
-conda create -n [C112181181]_w10 python=3.11 -y
+conda create -n [C112181154]_w10 python=3.11 -y
 （貼上最後幾行結果，看到 "done" 字樣）
 The following NEW packages will be INSTALLED:
 
@@ -73,10 +73,10 @@ conda env list
 # + -> frozen
                          C:\Users\Teacher\anaconda3
 base                 *   C:\Users\Teacher\miniconda3
-[C112181181]_w10         C:\Users\Teacher\miniconda3\envs\[C112181181]_w10
+[C112181181]_w10         C:\Users\Teacher\miniconda3\envs\[C112181154]_w10
 
 === 任務 3：啟動環境並安裝套件 ===
-conda activate [C112181181]_w10
+conda activate [C112181154]_w10
 （貼上提示符變化，例如：(A11218001_w10) user@host:~$）
 ([C112181181]_w10) PS C:\Users\Teacher>
 conda install pandas numpy matplotlib -y
@@ -150,7 +150,7 @@ done
 
 conda list | head -20
 （貼上結果，確認 pandas、numpy、matplotlib 都在）
-# packages in environment at C:\Users\Teacher\miniconda3\envs\[C112181181]_w10:
+# packages in environment at C:\Users\Teacher\miniconda3\envs\[C1121811854_w10:
 #
 # Name                     Version          Build                  Channel
 blas                       1.0              mkl
@@ -257,7 +257,7 @@ dependencies:
   - xz=5.8.2=h53af0af_0
   - zlib=1.3.1=h1c6eee0_1
   - zstd=1.5.7=h56299aa_0
-prefix: C:\Users\Teacher\miniconda3\envs\[C112181181]_w10
+prefix: C:\Users\Teacher\miniconda3\envs\[C112181154]_w10
 === 任務 5：清理暫存 ===
 conda clean --all -y
 （貼上結果，記錄釋放的空間大小，例如 "Removed XX MB"）
