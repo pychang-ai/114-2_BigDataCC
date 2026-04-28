@@ -1,0 +1,140 @@
+姓名：宋經翔
+學號：C112181118
+
+=== 任務 1：確認 Conda 版本 ===
+conda --version
+（貼上結果）
+conda 26.1.1
+
+conda info
+（貼上結果，至少包含 conda version、active environment、base environment 三行）
+active environment : None
+       user config file : /home/u306/.condarc
+ populated config files : /home/u306/miniconda3/.condarc
+                          /home/u306/miniconda3/condarc.d/anaconda-auth.yml
+          conda version : 26.1.1
+    conda-build version : not installed
+         python version : 3.13.12.final.0
+                 solver : libmamba (default)
+       virtual packages : __archspec=1=skylake
+                          __conda=26.1.1=0
+                          __cuda=12.4=0
+                          __glibc=2.39=0
+                          __linux=6.6.87.2=0
+                          __unix=0=0
+       base environment : /home/u306/miniconda3  (writable)
+      conda av data dir : /home/u306/miniconda3/etc/conda
+  conda av metadata url : None
+           channel URLs : https://repo.anaconda.com/pkgs/main/linux-64
+                          https://repo.anaconda.com/pkgs/main/noarch
+                          https://repo.anaconda.com/pkgs/r/linux-64
+                          https://repo.anaconda.com/pkgs/r/noarch
+          package cache : /home/u306/miniconda3/pkgs
+                          /home/u306/.conda/pkgs
+       envs directories : /home/u306/miniconda3/envs
+                          /home/u306/.conda/envs
+    temporary directory : /tmp
+               platform : linux-64
+             user-agent : conda/26.1.1 requests/2.32.5 CPython/3.13.12 Linux/6.6.87.2-microsoft-standard-WSL2 ubuntu/24.04.4 glibc/2.39 solver/libmamba conda-libmamba-solver/25.11.0 libmambapy/2.3.2 aau/0.7.5 c/. s/. e/.
+                UID:GID : 1000:1000
+             netrc file : None
+           offline mode : False
+
+=== 任務 2：建立新環境 ===
+建立一個名為「學號_w10」的環境，Python 版本指定為 3.11
+（例如學號 A11218001 → A11218001_w10）
+
+conda create -n [你的學號]_w10 python=3.11 -y
+（貼上最後幾行結果，看到 "done" 字樣）
+Downloading and Extracting Packages:
+
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+#
+# To activate this environment, use
+#
+#     $ conda activate C112181118_w10
+#
+# To deactivate an active environment, use
+#
+#     $ conda deactivate
+
+conda env list
+（貼上結果，確認環境出現在清單中）
+# conda environments:
+#
+# * -> active
+# + -> frozen
+base                     /home/u306/miniconda3
+C112181118_W10       *   /home/u306/miniconda3/envs/C112181118_W10
+C112181118_w10           /home/u306/miniconda3/envs/C112181118_w10
+
+
+=== 任務 3：啟動環境並安裝套件 ===
+conda activate [你的學號]_w10
+（貼上提示符變化，例如：(A11218001_w10) user@host:~$）
+(C112181118_w10) u306@U42:~$ 
+
+conda install pandas numpy matplotlib -y
+（貼上最後幾行結果）
+Downloading and Extracting Packages:
+                                                                                                                                                                                
+Preparing transaction: done                                                                                                                                                     
+Verifying transaction: done                                                                                                                                                     
+Executing transaction: done    
+
+conda list | head -20
+（貼上結果，確認 pandas、numpy、matplotlib 都在）
+# packages in environment at /home/u306/miniconda3:
+#
+# Name                      Version          Build               Channel
+_libgcc_mutex               0.1              main
+_openmp_mutex               5.1              1_gnu
+anaconda-anon-usage         0.7.5            pyhb46e38b_100
+anaconda-auth               0.13.0           py313h06a4308_0
+anaconda-cli-base           0.8.1            py313h06a4308_0
+annotated-types             0.6.0            py313h06a4308_1
+anyio                       4.10.0           py313h06a4308_0
+archspec                    0.2.5            pyhd3eb1b0_0
+boltons                     25.0.0           py313h06a4308_0
+brotlicffi                  1.2.0.0          py313h7354ed3_0
+bzip2                       1.0.8            h5eee18b_6
+c-ares                      1.34.6           hd44998d_0
+ca-certificates             2025.12.2        h06a4308_0
+certifi                     2026.01.04       py313h06a4308_0
+pandas                     3.0.2            py311h86c3e14_0
+numpy                      2.4.4            py311h08c6c3d_1
+numpy-base                 2.4.4            py311h00548fb_1
+matplotlib                 3.10.8           py311h06a4308_0
+matplotlib-base            3.10.8           py311h8a257da_0
+
+
+
+
+=== 任務 4：匯出環境設定檔 ===
+conda env export > week10/environment.yml
+cat week10/environment.yml
+（貼上 environment.yml 完整內容）
+cat week10/environment.yml
+-bash: week10/environment.yml: No such file or directory
+cat: week10/environment.yml: No such file or directory
+
+=== 任務 5：清理暫存 ===
+conda clean --all -y
+（貼上結果，記錄釋放的空間大小，例如 "Removed XX MB"）
+Will remove 249 (517.7 MB) tarball(s).
+Will remove 1 index cache(s).
+Will remove 16 (13.3 MB) package(s).
+There are no tempfile(s) to remove.
+There are no logfile(s) to remove.
+
+=== 任務 6：觀念回答 ===
+Q1：為什麼不要直接在 base 環境安裝專案套件？這樣做有什麼壞處？
+A1：不要在 base 安裝套件，因為容易讓所有專案共用同一環境，造成版本衝突與系統混亂
+
+Q2：conda install 和 pip install 有什麼差異？什麼情況下會建議用 pip？
+A2：conda 會管理套件及其相依的系統函式庫，pip 只管 Python 套件；通常優先用 conda，不足再用 pip
+
+Q3：environment.yml 的用途是什麼？換電腦時要怎麼用它快速重建環境？
+A3：environment.yml 用來記錄整個環境設定；換電腦時用 conda env create -f environment.yml 可快速重建相同環境
