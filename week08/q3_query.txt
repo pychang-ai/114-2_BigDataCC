@@ -146,4 +146,3 @@ DELETE 不加 WHERE
 例如：
 DELETE FROM crew;
 所有船員資料會被清空
-

@@ -112,4 +112,3 @@ SELECT *
 FROM crew, ships
 WHERE crew.ship_id = ships.id;
 只會顯示「兩邊都有對應」的資料
-
