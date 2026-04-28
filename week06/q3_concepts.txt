@@ -1,0 +1,64 @@
+姓名：
+學號：
+
+Q1：chown 和 chmod 有什麼不同？請分別說明它們的功能，並各舉一個使用情境。
+A1：這兩個指令的主要區別在於「對象」不同：chown 改變的是檔案的主人，而 chmod 改變的是檔案的使用規則。
+
+chown (Change Owner)
+
+功能： 用於更改檔案或目錄的「擁有者 (Owner)」或「所屬群組 (Group)」。
+
+使用情境： 當你（root 管理員）幫新進員工 user1 建立了一個設定檔，但該檔案目前屬於 root，你需要將所有權移交給他，讓他能完全控制該檔案。
+
+範例： chown user1:user1 config.txt
+
+chmod (Change Mode)
+
+功能： 用於更改檔案或目錄的「存取權限」，即誰可以讀取 (r)、寫入 (w) 或執行 (x)。
+
+使用情境： 你寫了一個 shell 腳本 script.sh，預設無法執行，你需要開啟執行權限才能跑這個程式。
+
+範例： chmod +x script.sh
+
+Q2：你和 3 位同學要合作做專題，需要在 Linux 上建立一個共用資料夾，
+    讓組員都能讀寫檔案，但其他人不能存取。
+    請寫出你會使用的指令（提示：需要建立群組、設定目錄的群組和權限）。
+A2：假設共用資料夾名稱為 project_folder，步驟如下：
+
+建立專題群組（假設群組名為 students）：
+sudo groupadd students
+
+將組員加入群組：
+sudo usermod -aG students user1 (以此類推加入所有人)
+
+更改資料夾的群組歸屬：
+sudo chown :students project_folder
+
+設定權限（讓擁有者與群組成員可讀寫、進入，其他人完全無法存取）：
+chmod 770 project_folder
+(註：770 代表 rwxrwx---)
+
+Q3：Linux 判斷權限時，是按什麼順序檢查的？
+    假設一個檔案的權限是 rwxr-x---，擁有者是 alice，群組是 project。
+    請回答以下三個人分別能做什麼操作：
+    (a) alice（擁有者）能做什麼？
+    (b) bob（屬於 project 群組）能做什麼？
+    (c) charlie（不屬於 project 群組）能做什麼？
+A3：Linux 判斷權限的順序為：擁有者 (Owner) > 群組 (Group) > 其他人 (Others)。一旦符合身分，系統就會套用該層級的權限，不再往下檢查。
+
+針對權限 rwxr-x--- (擁有者: alice, 群組: project)：
+
+(a) alice：
+符合「擁有者」身分，具備 rwx 權限。
+
+可讀取內容、修改/刪除檔案、執行該檔案。
+
+(b) bob：
+不具備擁有者身分，但符合「群組 (project)」成員身分，套用 r-x 權限。
+
+可讀取內容、執行該檔案，但「不能」修改或刪除。
+
+(c) charlie：
+既非擁有者也非群組成員，套用「其他人」權限 ---。
+
+完全無法讀取、寫入或執行該檔案。
