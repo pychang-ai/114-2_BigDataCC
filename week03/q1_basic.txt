@@ -1,0 +1,23 @@
+##pwd
+student216@linux-server2:~$ pwd
+/home/student216
+##ls
+README.txt  documents  exercises  mydir  myfile  myfile.txt  practice  projects  scripts
+##ls -1
+README.txt
+documents
+exercises
+mydir
+myfile
+myfile.txt
+practice
+projects
+scripts
+##cat README.txt
+歡迎使用 Linux 練習環境！
+你的帳號：student216
+伺服器編號：2
+
+練習檔案位於 /opt/exercises/
+請從第1個練習開始：
+  cat /opt/exercises/01_basic_commands.txt

@@ -1,0 +1,84 @@
+姓名：林秉賢
+學號：C112181148
+
+Q1：chown 和 chmod 有什麼不同？請分別說明它們的功能，並各舉一個使用情境。
+A1：
+
+chown（change owner）
+功能：用來修改檔案或目錄的擁有者（user）或群組（group）
+使用情境：
+系統管理員將某個檔案的擁有者改給另一位使用者
+例：
+chown alice file.txt
+
+chmod（change mode）
+功能：用來修改檔案或目錄的存取權限（讀 r、寫 w、執行 x）
+使用情境：
+設定某個檔案讓群組可以讀寫
+例：
+chmod 664 file.txt
+Q2：你和 3 位同學要合作做專題，需要在 Linux 上建立一個共用資料夾，
+    讓組員都能讀寫檔案，但其他人不能存取。
+    請寫出你會使用的指令（提示：需要建立群組、設定目錄的群組和權限）。
+A2：
+
+# 1. 建立群組
+groupadd project
+
+# 2. 將使用者加入群組
+usermod -aG project user1
+usermod -aG project user2
+usermod -aG project user3
+usermod -aG project user4
+
+# 3. 建立共用資料夾
+mkdir /home/project_folder
+
+# 4. 設定群組擁有者
+chown :project /home/project_folder
+
+# 5. 設定權限（群組可讀寫執行，其他人無權限）
+chmod 770 /home/project_folder
+
+# （加分）6. 設定 SGID，讓新檔案繼承群組
+chmod g+s /home/project_folder
+
+Q3：Linux 判斷權限時，是按什麼順序檢查的？
+    假設一個檔案的權限是 rwxr-x---，擁有者是 alice，群組是 project。
+    請回答以下三個人分別能做什麼操作：
+    (a) alice（擁有者）能做什麼？
+    (b) bob（屬於 project 群組）能做什麼？
+    (c) charlie（不屬於 project 群組）能做什麼？
+A3：
+
+🔹 權限判斷順序
+
+Linux 判斷權限順序為：
+
+擁有者（user）
+群組（group）
+其他人（others）
+🔹 權限分析
+
+檔案權限：rwxr-x---
+
+owner：rwx（讀、寫、執行）
+group：r-x（讀、執行）
+others：---（無權限）
+🔹 各使用者權限
+
+(a) alice（擁有者）
+
+可讀（r）、可寫（w）、可執行（x）
+👉 可做所有操作
+
+(b) bob（屬於 project 群組）
+
+可讀（r）、可執行（x）
+不可寫（w）
+👉 可以查看與執行，但不能修改
+
+(c) charlie（不屬於 project 群組）
+
+沒有任何權限
+👉 無法讀、寫或執行
