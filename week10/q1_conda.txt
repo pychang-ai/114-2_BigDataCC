@@ -1,5 +1,5 @@
-姓名：李翊銘
-學號：C112181181
+姓名：郭哲安
+學號：C112181147
 
 === 任務 1：確認 Conda 版本 ===
 conda --version
@@ -45,7 +45,7 @@ conda info
 建立一個名為「學號_w10」的環境，Python 版本指定為 3.11
 （例如學號 A11218001 → A11218001_w10）
 
-conda create -n [C112181181]_w10 python=3.11 -y
+conda create -n [C112181147]_w10 python=3.11 -y
 （貼上最後幾行結果，看到 "done" 字樣）
 The following NEW packages will be INSTALLED:
 
@@ -73,12 +73,12 @@ conda env list
 # + -> frozen
                          C:\Users\Teacher\anaconda3
 base                 *   C:\Users\Teacher\miniconda3
-[C112181181]_w10         C:\Users\Teacher\miniconda3\envs\[C112181181]_w10
+[C112181147]_w10         C:\Users\Teacher\miniconda3\envs\[C112181181]_w10
 
 === 任務 3：啟動環境並安裝套件 ===
-conda activate [C112181181]_w10
+conda activate [C112181147]_w10
 （貼上提示符變化，例如：(A11218001_w10) user@host:~$）
-([C112181181]_w10) PS C:\Users\Teacher>
+([C11218114]_w10) PS C:\Users\Teacher>
 conda install pandas numpy matplotlib -y
                                            Total:       271.8 MB
 
@@ -174,7 +174,7 @@ lcms2                      2.16             hb4a4139_0
 conda env export > week10/environment.yml
 cat week10/environment.yml
 （貼上 environment.yml 完整內容）
-name: '[C112181181]_w10'
+name: '[C112181147]_w10'
 channels:
   - defaults
 dependencies:
