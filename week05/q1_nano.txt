@@ -1,0 +1,32 @@
+姓名：何品賢
+學號：C112181113
+
+=== 任務 1：用 nano 建立 intro.txt ===
+
+student116@linux-server1:~$
+nano ~/intro.txt
+student116@linux-server1:~$ cat ~/intro.txt
+姓名：何品賢
+學號：C112181113
+系所：海事資訊科技系
+興趣：看動漫、聽音樂
+修這門課的期望：學習Linux
+
+=== 任務 2：nano 快捷鍵操作 ===
+
+student116@linux-serverecho "今天日期：$(date)" >> ~/intro.txto.txt
+student116@linux-servercat ~/intro.txt
+姓名：何品賢
+學號：C112181113
+系所：海事資訊科技系
+興趣：看動漫、聽音樂
+修這門課的期望：學習Linux
+
+今天日期：Tue Mar 24 07:19:03 UTC 2026
+
+=== 任務 3：說明你使用了哪些 nano 快捷鍵 ===
+
+1. Ctrl + O
+2. Ctrl + X
+3. Ctrl + R
+4. Ctrl + K

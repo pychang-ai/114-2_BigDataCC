@@ -1,0 +1,58 @@
+姓名：何品賢
+學號：C112181113
+
+=== 任務 1：查看 WSL 環境資訊 ===
+請在 Windows 的 PowerShell 或 CMD 中執行以下指令，貼上結果：
+
+PS C:\Windows\system32> wsl --list --verbose
+  NAME            STATE           VERSION
+* Ubuntu          Running         2
+  Ubuntu-20.04    Running         2
+PS C:\Windows\system32> wsl --version
+WSL 版本： 2.6.3.0
+核心版本： 6.6.87.2-1
+WSLg 版本： 1.0.71
+MSRDC 版本： 1.2.6353
+Direct3D 版本： 1.611.1-81528511
+DXCore 版本： 10.0.26100.1-240331-1435.ge-release
+Windows 版本： 10.0.26200.8037
+
+請回答：你的 WSL 版本是多少？安裝的 Linux 發行版叫什麼名稱？
+WSL 版本：2.6.3.0
+Linux 發行版名稱：Ubuntu-20.04
+
+=== 任務 2：檔案互通 — 從 WSL 存取 Windows ===
+以下操作在 WSL 終端機中執行：
+
+步驟 1：查看 Windows 桌面的檔案
+u306@U6:/mnt/c/Windows/system32$ ls /mnt/c/Users/Teacher/Desktop/ | head -10
+Anaconda Navigator.lnk
+Android Studio.lnk
+Arduino IDE.lnk
+Docker Desktop.lnk
+Excel.lnk
+GIT
+IDLE (Python 3.13 64-bit).lnk
+Jupyter Notebook.lnk
+LINE.lnk
+MIT App Inventor.url
+
+步驟 2：查看 Windows 和 WSL 的路徑對應
+Windows 路徑：C:\Users\Teacher\Desktop
+WSL 路徑：/mnt/c/Users/Teacher/Desktop
+
+=== 任務 3：檔案互通 — 從 WSL 建立檔案到 Windows ===
+
+步驟 1：在 WSL 中建立一個檔案到 Windows 桌面
+u306@U6:/mnt/c/Windows/system32$ echo "我的學號是 C112181113，這個檔案從 WSL 建立" > /mnt/c/Users/Teacher/Desktop/wsl_hello.txt
+無輸出表示成功
+
+步驟 2：在 WSL 中確認檔案已建立
+u306@U6:/mnt/c/Windows/system32$ cat /mnt/c/Users/Teacher/Desktop/wsl_hello.txt
+我的學號是 C112181113，這個檔案從 WSL 建立
+
+步驟 3：從 WSL 打開 Windows 檔案總管查看家目錄
+week06\image.png
+
+步驟 4：清理 — 刪除桌面上的測試檔案
+u306@U6:/mnt/c/Windows/system32$ rm /mnt/c/Users/Teacher/Desktop/wsl_hello.txt

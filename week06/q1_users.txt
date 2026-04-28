@@ -1,0 +1,76 @@
+姓名：何品賢
+學號：C11218111
+
+=== 任務 1：查看自己的身份資訊 ===
+
+u306@U6:/mnt/c/Windows/system32$ whoami
+u306
+u306@U6:/mnt/c/Windows/system32$ id
+uid=1000(u306) gid=1000(u306) groups=1000(u306),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),100(users)
+u306@U6:/mnt/c/Windows/system32$ 
+u306 adm cdrom sudo dip plugdev users
+
+UID 是 1000。
+
+請回答：你的 UID 是多少？你屬於哪些群組？
+UID 是 1000。
+屬於的群組有：u306、adm、cdrom、sudo、dip、plugdev、users
+
+=== 任務 2：解讀 /etc/passwd ===
+
+u306@U6:/mnt/c/Windows/system32$ cat /etc/passwd | grep u306
+u306:x:1000:1000:,,,:/home/u306:/bin/bash
+
+請將這行用 : 拆成 7 個欄位，逐一說明每個欄位的意義：
+
+欄位 1（帳號名稱）：u306
+代表登入系統時使用的使用者名稱。
+
+欄位 2（密碼欄位）：x
+表示密碼不直接存放在 /etc/passwd，而是存放在較安全的 /etc/shadow。
+
+欄位 3（UID）：1000
+使用者的 ID 編號。Linux 用這個數字辨識使用者。1000 通常是一般使用者的第一個帳號。
+
+欄位 4（GID）：1000
+主要群組的 ID 編號。代表這個使用者預設所屬的主要群組。
+
+欄位 5（描述）：,,,
+這是使用者的描述資訊欄位，通常可放姓名、電話、辦公室等資料；你這裡沒有填，所以是空的。
+
+欄位 6（家目錄）：/home/u306
+這是使用者登入後的預設目錄，也就是個人資料夾的位置。
+
+欄位 7（Shell）：/bin/bash
+表示這個使用者登入後預設使用的指令介面是 bash。
+
+=== 任務 3：建立使用者與群組 ===
+
+步驟 1：建立使用者 week06user（-m 建立家目錄）
+
+u306@U6:/mnt/c/Windows/system32$ sudo useradd -m week06user
+useradd: user 'week06user' already exists
+
+步驟 2：建立群組 week06group
+
+u306@U6:/mnt/c/Windows/system32$ sudo groupadd week06group
+groupadd: group 'week06group' already exists
+
+步驟 3：將 week06user 加入 week06group
+
+u306@U6:/mnt/c/Windows/system32$ sudo usermod -aG week06group week06user
+
+步驟 4：驗證使用者和群組
+
+u306@U6:/mnt/c/Windows/system32$ id week06user
+uid=1001(week06user) gid=1001(week06user) groups=1001(week06user),1002(week06group)
+
+u306@U6:/mnt/c/Windows/system32$ cat /etc/group | grep week06group
+week06group:x:1002:week06user
+
+步驟 5：清理（刪除測試用的使用者和群組）
+
+u306@U6:/mnt/c/Windows/system32$ sudo userdel -r week06user
+userdel: user 'week06user' does not exist
+u306@U6:/mnt/c/Windows/system32$ sudo groupdel week06group
+groupdel: group 'week06group' does not exist

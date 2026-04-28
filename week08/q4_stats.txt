@@ -1,0 +1,177 @@
+姓名：何品賢
+學號：C112181113
+
+=== 任務 1：統計函數 ===
+請寫出 SQL 並貼上結果：
+
+Q1：查詢船舶總數、平均噸位、最大噸位、最小噸位
+（貼上 SQL 語句）
+SELECT COUNT(*) AS ship_count,
+       AVG(tonnage) AS average_tonnage,
+       MAX(tonnage) AS max_tonnage,
+       MIN(tonnage) AS min_tonnage
+FROM ships;
+
+（貼上結果）
+--------------
+SELECT COUNT(*) AS ship_count,
+       AVG(tonnage) AS average_tonnage,
+       MAX(tonnage) AS max_tonnage,
+       MIN(tonnage) AS min_tonnage
+FROM ships
+--------------
+
++------------+-----------------+-------------+-------------+
+| ship_count | average_tonnage | max_tonnage | min_tonnage |
++------------+-----------------+-------------+-------------+
+|          5 |     146200.0000 |      221000 |       85000 |
++------------+-----------------+-------------+-------------+
+1 row in set (0.00 sec)
+
+Bye
+
+Q2：查詢噸位最大的前 3 艘船（使用 ORDER BY + LIMIT）
+（貼上 SQL 語句）
+SELECT * FROM ships
+ORDER BY tonnage DESC
+LIMIT 3;
+
+（貼上結果）
+--------------
+SELECT * FROM ships
+ORDER BY tonnage DESC
+LIMIT 3
+--------------
+
++----+-------------------+-----------+---------+--------------+
+| id | ship_name         | ship_type | tonnage | arrival_date |
++----+-------------------+-----------+---------+--------------+
+|  1 | Ever Given        | Container |  221000 | 2026-04-10   |
+|  5 | Kaohsiung Express | Container |  180000 | 2026-04-14   |
+|  2 | Yang Ming Wish    | Container |  150000 | 2026-04-11   |
++----+-------------------+-----------+---------+--------------+
+3 rows in set (0.00 sec)
+
+Bye
+
+=== 任務 2：GROUP BY 分組統計 ===
+
+Q3：統計每種船型（ship_type）的船舶數量和平均噸位
+（貼上 SQL 語句）
+SELECT ship_type,
+       COUNT(*) AS ship_count,
+       AVG(tonnage) AS average_tonnage
+FROM ships
+GROUP BY ship_type;
+
+（貼上結果）
+--------------
+SELECT ship_type,
+       COUNT(*) AS ship_count,
+       AVG(tonnage) AS average_tonnage
+FROM ships
+GROUP BY ship_type
+--------------
+
++-----------+------------+-----------------+
+| ship_type | ship_count | average_tonnage |
++-----------+------------+-----------------+
+| Container |          3 |     183666.6667 |
+| Bulk      |          1 |      85000.0000 |
+| Tanker    |          1 |      95000.0000 |
++-----------+------------+-----------------+
+3 rows in set (0.01 sec)
+
+Bye
+
+Q4：統計每種職位（rank）的船員人數和平均薪水
+（貼上 SQL 語句）
+SELECT `rank`,
+       COUNT(*) AS crew_count,
+       AVG(salary) AS average_salary
+FROM crew
+GROUP BY `rank`;
+
+（貼上結果）
+--------------
+SELECT `rank`,
+       COUNT(*) AS crew_count,
+       AVG(salary) AS average_salary
+FROM crew
+GROUP BY `rank`
+--------------
+
++----------+------------+----------------+
+| rank     | crew_count | average_salary |
++----------+------------+----------------+
+| Captain  |          2 |   89000.000000 |
+| Officer  |          2 |   63000.000000 |
+| Engineer |          2 |   60000.000000 |
+| Crew     |          1 |   48000.000000 |
++----------+------------+----------------+
+4 rows in set (0.00 sec)
+
+Bye
+
+=== 任務 3：LEFT JOIN 多表查詢 ===
+
+Q5：查詢每位船員的姓名、職位、薪水，以及他所屬的船名
+提示：用 LEFT JOIN 把 crew 和 ships 接起來
+（貼上 SQL 語句）
+SELECT c.name, c.`rank`, c.salary, s.ship_name
+FROM crew AS c
+LEFT JOIN ships AS s ON c.ship_id = s.id
+ORDER BY c.id;
+
+（貼上結果）
+--------------
+SELECT c.name, c.`rank`, c.salary, s.ship_name
+FROM crew AS c
+LEFT JOIN ships AS s ON c.ship_id = s.id
+ORDER BY c.id
+--------------
+
++------------+----------+----------+----------------+
+| name       | rank     | salary   | ship_name      |
++------------+----------+----------+----------------+
+| Chen Ming  | Captain  | 90000.00 | Ever Given     |
+| Lin Mei    | Officer  | 65000.00 | Ever Given     |
+| Wang Jie   | Engineer | 62000.00 | Yang Ming Wish |
+| Zhang Ting | Crew     | 48000.00 | Yang Ming Wish |
+| Lee Han    | Captain  | 88000.00 | Formosa 1      |
+| Huang Yi   | Officer  | 61000.00 | Formosa 1      |
+| Wu En      | Engineer | 58000.00 | Ocean Star     |
++------------+----------+----------+----------------+
+7 rows in set (0.00 sec)
+
+Bye
+
+Q6：找出沒有任何船員的船舶
+提示：LEFT JOIN + WHERE ... IS NULL
+（貼上 SQL 語句）
+SELECT s.*
+FROM ships AS s
+LEFT JOIN crew AS c ON s.id = c.ship_id
+WHERE c.id IS NULL;
+
+（貼上結果）
+--------------
+SELECT s.*
+FROM ships AS s
+LEFT JOIN crew AS c ON s.id = c.ship_id
+WHERE c.id IS NULL
+--------------
+
++----+-------------------+-----------+---------+--------------+
+| id | ship_name         | ship_type | tonnage | arrival_date |
++----+-------------------+-----------+---------+--------------+
+|  5 | Kaohsiung Express | Container |  180000 | 2026-04-14   |
++----+-------------------+-----------+---------+--------------+
+1 row in set (0.00 sec)
+
+Bye
+
+請回答：
+Q：LEFT JOIN 和直接查兩張表（SELECT * FROM crew, ships WHERE ...）有什麼不同？
+   提示：想想「沒有船員的船」在兩種寫法下會不會出現。
+A：LEFT JOIN 會保留左邊資料表的所有資料，即使右邊資料表沒有對應資料，也會顯示左邊資料，右邊欄位則為 NULL。直接查兩張表再用 WHERE 連接通常等同 INNER JOIN，只會顯示兩邊都有配對成功的資料，所以像「沒有船員的船」這種沒有對應船員資料的船舶不會出現在結果中。
