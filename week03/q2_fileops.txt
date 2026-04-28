@@ -1,0 +1,53 @@
+姓名：宋經翔
+學號：C11218118
+
+=== 步驟 1：mkdir week03test ===
+（貼上結果，無輸出則寫「無輸出」）
+
+=== 步驟 2：cd week03test ===
+（貼上結果）
+
+=== 步驟 3：建立三個檔案 ===
+使用的指令：
+（寫出你用的指令）
+touch file1.txt file2.txt file3.txt
+
+=== 步驟 4：ls -l ===
+（貼上結果）
+total 0
+-rw-rw-r--. 1 student114 student114 0 Mar 24 08:18 file1.txt
+-rw-rw-r--. 1 student114 student114 0 Mar 24 08:18 file2.txt
+-rw-rw-r--. 1 student114 student114 0 Mar 24 08:18 file3.txt
+
+
+=== 步驟 5：cp hello.txt hello_backup.txt ===
+（貼上結果）
+student114@linux-server1:~/week03test$ cp hello.txt hello_backup.txt
+
+
+=== 步驟 6：mv vm.txt virtualization.txt ===
+（貼上結果）
+student114@linux-server1:~/week03test$ mv vm.txt virtualization.txt
+
+
+=== 步驟 7：ls -l（最終結果） ===
+（貼上結果）
+total 0
+-rw-rw-r--. 1 student114 student114 0 Mar 24 08:18 file1.txt
+-rw-rw-r--. 1 student114 student114 0 Mar 24 08:18 file2.txt
+-rw-rw-r--. 1 student114 student114 0 Mar 24 08:18 file3.txt
+-rw-rw-r--. 1 student114 student114 0 Mar 24 08:20 hello.txt
+-rw-rw-r--. 1 student114 student114 0 Mar 24 08:21 hello_backup.txt
+-rw-rw-r--. 1 student114 student114 0 Mar 24 08:22 virtualization.txt
+
+
+=== 問答 ===
+Q：最終目錄中有哪些檔案？和步驟 4 相比，發生了什麼變化？
+A:最終目錄中有以下檔案：
+file1.txt、file2.txt、file3.txt、hello.txt、hello_backup.txt、virtualization.txt。
+
+和步驟 4 相比，發生了以下變化：
+
+hello.txt 被複製成 hello_backup.txt
+vm.txt 被重新命名為 virtualization.txt
+其他檔案保持不變，沒有新增或刪除
