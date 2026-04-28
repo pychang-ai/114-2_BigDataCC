@@ -1,0 +1,98 @@
+姓名:梁峻浤
+學號:C112181154
+
+=== 任務 1：用 nano 建立 intro.txt ===
+請用 nano 建立 ~/intro.txt，輸入以下內容（替換為你的真實資訊）：
+  姓名：XXX
+  學號：XXX
+  系所：XXX
+  興趣：XXX
+  修這門課的期望：XXX
+
+儲存後用 cat 顯示內容：
+cat ~/intro.txt
+
+student221@linux-server2:~$ cat ~/intro.txt
+
+姓名：梁峻浤
+
+學號：C112181154
+
+系所：海事資訊科技系
+
+興趣：打籃球、看電影、打遊戲、看影片、研究新奇事物
+
+修這門課的期望：學會 Linux 和 Docker以及其他不會的東西
+
+### 作業第 1 題：用 vi 建立自我介紹
+student221@linux-server2:~$ vi ~/intro.txt
+student221@linux-server2:~$ vi ~/intro.txt
+student221@linux-server2:~$ cat ~/intro.txt
+姓名：梁峻浤
+學號：C112181101
+系所：海事資訊科技系
+興趣：打籃球、看電影
+修這門課的期望：學會 Linux 和 Docker
+日期：Tue Mar 24 06:35:02 UTC 2026
+姓名：梁峻浤
+學號：C112181154
+系所：海事資訊科技系
+興趣：打籃球、看電影
+修這門課的期望：學會 Linux 和 Docker
+
+
+student221@linux-server2:~$ vi ~/intro.txt
+student221@linux-server2:~$ cat ~/intro.txt
+姓名：梁峻浤
+學號：C112181101
+系所：海事資訊科技系
+興趣：打籃球、看電影
+修這門課的期望：學會 Linux 和 Docker
+日期：Tue Mar 24 06:35:02 UTC 2026
+Vi版本
+姓名：梁峻浤
+學號：C112181154
+系所：海事資訊科技系
+興趣：打籃球、看電影
+修這門課的期望：學會 Linux 和 Docker
+
+=== 任務 2：nano 快捷鍵操作 ===
+用 nano 開啟 ~/intro.txt，在最後面新增一行：
+  今天日期：（用 date 指令查到的日期）
+
+儲存後用 cat 顯示完整內容：
+student221@linux-server2:~$ cat ~/intro.txt
+姓名：梁峻浤
+學號：C112181154
+系所：海事資訊科技系
+興趣：打籃球、看電影
+修這門課的期望：學會 Linux 和 Docker
+日期：Tue Mar 24 06:35:02 UTC 2026
+student221@linux-server2:~$ vi ~/intro.txt
+student221@linux-server2:~$ cat ~/intro.txt
+
+姓名：梁峻浤
+學號：C112181101
+系所：海事資訊科技系
+興趣：打籃球、看電影
+修這門課的期望：學會 Linux 和 Docker
+日期：Tue Mar 24 06:35:02 UTC 2026
+Vi版本
+姓名：梁峻浤
+學號：C112181154
+系所：海事資訊科技系
+興趣：打籃球、看電影
+修這門課的期望：學會 Linux 和 Docker
+今天日期：2026-03-24
+
+
+=== 任務 3：說明你使用了哪些 nano 快捷鍵 ===
+（例如：Ctrl+O 儲存、Ctrl+X 離開，至少列出 4 個）
+Ctrl+X離開 Ctrl+O 儲存 Ctrl+K剪切 Ctrl+G幫助
+=== 任務 3：說明你使用了哪些 vi 快捷鍵 ===
+1. i 進入插入模式
+2. Esc 回到一般模式
+3. :wq 儲存並離開
+4. G 跳到最後一行
+5. o 在下方新增一行
+6. dd 刪除整行
