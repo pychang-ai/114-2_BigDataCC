@@ -1,0 +1,111 @@
+姓名：楊蘭歡
+學號：C112181121
+
+=== 任務 1：確認 WSL 環境 ===
+在 Windows PowerShell 中執行：
+wsl --list --verbose
+  NAME      STATE           VERSION
+* Ubuntu    Stopped         2
+
+=== 任務 2：安裝 MySQL ===
+進入 WSL 後依序執行，貼上每步結果：
+
+步驟 1：更新套件庫
+sudo apt update && sudo apt upgrade -y
+Processing triggers for libc-bin (2.39-0ubuntu8.7) ...
+/sbin/ldconfig.real: /usr/lib/wsl/lib/libcuda.so.1 is not a symbolic link
+
+Processing triggers for rsyslog (8.2312.0-3ubuntu9.1) ...
+Processing triggers for man-db (2.12.0-4build2) ...
+Processing triggers for dbus (1.14.10-4ubuntu4.1) ...
+Processing triggers for install-info (7.1-3build2) ...
+Processing triggers for hicolor-icon-theme (0.17-2) ...
+
+步驟 2：安裝 MySQL Server
+sudo apt install -y mysql-server
+update-alternatives: using /var/lib/mecab/dic/ipadic-utf8 to provide /var/lib/mecab/dic/debian (mecab-dictionary) in auto mode
+Setting up libhtml-parser-perl:amd64 (3.81-1build3) ...
+Setting up libhttp-message-perl (6.45-1ubuntu1) ...
+Setting up mysql-server-8.0 (8.0.45-0ubuntu0.24.04.1) ...
+update-alternatives: using /etc/mysql/mysql.cnf to provide /etc/mysql/my.cnf (my.cnf) in auto mode
+Renaming removed key_buffer and myisam-recover options (if present)
+mysqld will log errors to /var/log/mysql/error.log
+mysqld is running as pid 5342
+Created symlink /etc/systemd/system/multi-user.target.wants/mysql.service → /usr/lib/systemd/system/mysql.service.
+Setting up libcgi-pm-perl (4.63-1) ...
+Setting up libhtml-template-perl (2.97-2) ...
+Setting up mysql-server (8.0.45-0ubuntu0.24.04.1) ...
+Setting up libcgi-fast-perl (1:2.17-1) ...
+Processing triggers for man-db (2.12.0-4build2) ...
+Processing triggers for libc-bin (2.39-0ubuntu8.7) ...
+/sbin/ldconfig.real: /usr/lib/wsl/lib/libcuda.so.1 is not a symbolic link
+
+
+步驟 3：啟動 MySQL 服務
+sudo service mysql start
+無
+
+步驟 4：確認 MySQL 正在運行
+sudo service mysql status
+● mysql.service - MySQL Community Server
+     Loaded: loaded (/usr/lib/systemd/system/mysql.service; enabled; preset: enabled)
+     Active: active (running) since Tue 2026-04-14 13:25:10 CST; 54s ago
+    Process: 5512 ExecStartPre=/usr/share/mysql/mysql-systemd-start pre (code=exited, status=0/SUCCESS)
+   Main PID: 5521 (mysqld)
+     Status: "Server is operational"
+      Tasks: 38 (limit: 9275)
+     Memory: 364.2M (peak: 379.8M)
+        CPU: 633ms
+     CGroup: /system.slice/mysql.service
+             └─5521 /usr/sbin/mysqld
+
+Apr 14 13:25:10 U30 systemd[1]: Starting mysql.service - MySQL Community Server...
+Apr 14 13:25:10 U30 systemd[1]: Started mysql.service - MySQL Community Server.
+
+=== 任務 3：設定密碼並登入 ===
+
+步驟 1：進入 MySQL 設定密碼
+sudo mysql
+（進入後執行以下 SQL）
+
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'bigdata2026';
+FLUSH PRIVILEGES;
+EXIT;
+mysql> ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'bigdata2026';
+SH PRIVILEGES;Query OK, 0 rows affected (0.00 sec)
+
+mysql> FLUSH PRIVILEGES;
+Query OK, 0 rows affected (0.00 sec)
+
+步驟 2：用密碼登入
+mysql -u root -p
+（輸入密碼 bigdata2026 登入）
+
+步驟 3：確認版本
+SELECT VERSION();
++-------------------------+
+| VERSION()               |
++-------------------------+
+| 8.0.45-0ubuntu0.24.04.1 |
++-------------------------+
+1 row in set (0.00 sec)
+
+步驟 4：查看預設資料庫
+SHOW DATABASES;
++-------------------------+
+| VERSION()               |
++-------------------------+
+| 8.0.45-0ubuntu0.24.04.1 |
++-------------------------+
+1 row in set (0.00 sec)
+
+mysql> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+4 rows in set (0.01 sec)
