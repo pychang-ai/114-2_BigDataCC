@@ -1,0 +1,45 @@
+姓名：何昇輔
+學號：C112181104
+
+=== whoami ===
+（貼上執行結果）
+student108
+=== hostname ===
+（貼上執行結果）
+linux-server1
+=== pwd ===
+（貼上執行結果）
+/home/student108
+=== uname -a ===
+（貼上執行結果）
+Linux linux-server1 6.1.163-186.299.amzn2023.x86_64 #1 SMP PREEMPT_DYNAMIC Tue Feb 24 16:35:42 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
+=== date ===
+（貼上執行結果）
+Tue Mar 24 08:00:55 UTC 2026
+=== ls / ===
+（貼上執行結果）
+bin   dev  home  lib32  libx32  mnt  proc  run   srv  tmp  var
+boot  etc  lib   lib64  media   opt  root  sbin  sys  usr
+=== ls -la ~ ===
+（貼上執行結果）
+total 72
+drwxr-x---. 10 student108 student108 16384 Mar 24 07:43 .
+drwxr-xr-x.  1 root       root       16384 Mar 10 03:13 ..
+-rw-------.  1 student108 student108  1457 Mar 17 08:06 .bash_history
+-rw-r--r--.  1 student108 student108   220 Jan  6  2022 .bash_logout
+-rw-r--r--.  1 student108 student108  3771 Jan  6  2022 .bashrc
+drwx------.  2 student108 student108    34 Mar 10 03:16 .cache
+drwxrwxr-x.  3 student108 student108    19 Mar 24 06:08 .local
+-rw-r--r--.  1 student108 student108   807 Jan  6  2022 .profile
+-rw-rw-r--.  1 student108 student108   189 Mar  9 06:50 README.txt
+drwxrwxr-x.  2 student108 student108     6 Mar  9 06:50 documents
+drwxr-xr-x.  2 student108 student108    83 Mar  9 06:50 exercises
+-rw-rw-r--.  1 student108 student108    71 Mar 24 06:38 hello.sh
+-rw-rw-r--.  1 student108 student108   142 Mar 24 07:38 intro.txt
+-rwxrwxr-x.  1 student108 student108   470 Mar 24 07:43 my_script.sh
+-rw-rw-r--.  1 student108 student108    34 Mar 10 07:07 myfile.txt
+-rw-rw-r--.  1 student108 student108    27 Mar 24 06:10 myinfo.txt
+drwxrwxr-x.  2 student108 student108    45 Mar 10 07:28 practice
+drwxrwxr-x.  2 student108 student108     6 Mar  9 06:50 projects
+drwxrwxr-x.  2 student108 student108     6 Mar  9 06:50 scripts
+drwxrwxr-x.  4 student108 student108    51 Mar 17 07:42 week04

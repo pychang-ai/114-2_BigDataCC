@@ -1,0 +1,40 @@
+```
+姓名：
+學號：
+
+=== 任務 1：建立資料庫 ===
+CREATE DATABASE port_db;
+SHOW DATABASES;
+USE port_db;
+（貼上每步結果）
+
+=== 任務 2：建立 ships 資料表 ===
+CREATE TABLE ships (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    ship_name VARCHAR(100) NOT NULL,
+    ship_type VARCHAR(50),
+    tonnage INT,
+    arrival_date DATE
+);
+（貼上結果）
+
+查看表結構：
+SHOW TABLES;
+DESCRIBE ships;
+（貼上結果）
+
+=== 任務 3：自己建立第二張表 crew ===
+請自行寫出 CREATE TABLE 語句，建立 crew 表，需包含以下欄位：
+- id：整數，自動遞增，主鍵
+- name：字串，最多 50 字元，不允許空值
+- rank：字串，最多 30 字元（職位：Captain / Officer / Engineer / Crew）
+- ship_id：整數（對應 ships 表的 id）
+- salary：小數（DECIMAL(10,2)）
+
+（貼上你寫的 CREATE TABLE 語句）
+（貼上 DESCRIBE crew; 的結果）
+
+請回答：
+Q：為什麼 crew 表的 ship_id 要對應 ships 表的 id？這樣設計有什麼好處？
+A：
+```
