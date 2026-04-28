@@ -1,0 +1,48 @@
+姓名：
+學號：
+
+=== 任務 1：確認 Conda 版本 ===
+conda --version
+（貼上結果）
+
+conda info
+（貼上結果，至少包含 conda version、active environment、base environment 三行）
+
+=== 任務 2：建立新環境 ===
+建立一個名為「學號_w10」的環境，Python 版本指定為 3.11
+（例如學號 A11218001 → A11218001_w10）
+
+conda create -n [你的學號]_w10 python=3.11 -y
+（貼上最後幾行結果，看到 "done" 字樣）
+
+conda env list
+（貼上結果，確認環境出現在清單中）
+
+=== 任務 3：啟動環境並安裝套件 ===
+conda activate [你的學號]_w10
+（貼上提示符變化，例如：(A11218001_w10) user@host:~$）
+
+conda install pandas numpy matplotlib -y
+（貼上最後幾行結果）
+
+conda list | head -20
+（貼上結果，確認 pandas、numpy、matplotlib 都在）
+
+=== 任務 4：匯出環境設定檔 ===
+conda env export > week10/environment.yml
+cat week10/environment.yml
+（貼上 environment.yml 完整內容）
+
+=== 任務 5：清理暫存 ===
+conda clean --all -y
+（貼上結果，記錄釋放的空間大小，例如 "Removed XX MB"）
+
+=== 任務 6：觀念回答 ===
+Q1：為什麼不要直接在 base 環境安裝專案套件？這樣做有什麼壞處？
+A1：
+
+Q2：conda install 和 pip install 有什麼差異？什麼情況下會建議用 pip？
+A2：
+
+Q3：environment.yml 的用途是什麼？換電腦時要怎麼用它快速重建環境？
+A3：
