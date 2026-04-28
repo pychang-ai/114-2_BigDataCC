@@ -1,0 +1,50 @@
+答案一
+nano ~/my_script.sh
+#!/bin/bash
+echo "========================================="
+echo "  系統資訊報告"
+echo "========================================="
+echo "使用者：$(whoami)"
+echo "主機名稱：$(hostname)"
+echo "目前日期：$(date)"
+echo "目前目錄：$(pwd)"
+echo "========================================="
+echo "磁碟使用量："
+df -h | head -5
+echo "========================================="
+echo "記憶體使用量："
+free -h
+echo "========================================="
+儲存離開
+
+答案二
+student219@linux-server2:~$ chmod +x ~/my_script.sh
+student219@linux-server2:~$ ls -l ~/my_script.sh
+-rwxrwxr-x. 1 student219 student219 486 Mar 30 13:00 /home/student219/my_script.sh
+student219@linux-server2:~$
+
+
+答案三
+.sh
+student219@linux-server2:~$ ./my_script.sh
+=========================================
+  系統資訊報告
+=========================================
+使用者：student219
+主機名稱：linux-server2
+目前日期：Mon Mar 30 13:02:30 UTC 2026
+目前目錄：/home/student219
+=========================================
+磁碟使用量：
+Filesystem      Size  Used Avail Use% Mounted on
+overlay          30G  2.6G   28G   9% /
+tmpfs            64M     0   64M   0% /dev
+shm              64M     0   64M   0% /dev/shm
+/dev/nvme0n1p1   30G  2.6G   28G   9% /etc/hosts
+=========================================
+記憶體使用量：
+               total        used        free      shared  buff/cache   available
+Mem:           7.6Gi       322Mi       6.1Gi       0.0Ki       1.2Gi       7.1Gi
+Swap:             0B          0B          0B
+=========================================
+student219@linux-server2:~$

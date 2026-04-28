@@ -1,0 +1,65 @@
+姓名:許一德
+學號:c112181153
+
+=== 任務 1：建立資料庫 ===
+1.Query OK, 1 row affected (0.01 sec)
+2.
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| port_db            |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
+3.Database changed
+
+=== 任務 2：建立 ships 資料表 ===
+-bash: syntax error near unexpected token `('
+id: ‘INT’: no such user
+id: ‘AUTO_INCREMENT’: no such user
+id: ‘PRIMARY’: no such user
+id: ‘KEY,’: no such user
+-bash: syntax error near unexpected token `('
+-bash: syntax error near unexpected token `('
+tonnage: command not found
+arrival_date: command not found
+-bash: syntax error near unexpected token `)'
+root@U16:/mnt/c/Users/Teacher#
+
+root@U16:/mnt/c/Users/Teacher# SHOW TABLES;
+SHOW: command not found
+root@U16:/mnt/c/Users/Teacher# DESCRIBE ships;
+DESCRIBE: command not found
+root@U16:/mnt/c/Users/Teacher#
+
+=== 任務 3：自己建立第二張表 crew ===
+CREATE TABLE crew (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    position VARCHAR(30),
+    ship_id INT,
+    salary DECIMAL(10,2)
+);
+mysql> DESCRIBE crew;
++----------+---------------+------+-----+---------+----------------+
+| Field    | Type          | Null | Key | Default | Extra          |
++----------+---------------+------+-----+---------+----------------+
+| id       | int           | NO   | PRI | NULL    | auto_increment |
+| name     | varchar(50)   | NO   |     | NULL    |                |
+| position | varchar(30)   | YES  |     | NULL    |                |
+| ship_id  | int           | YES  |     | NULL    |                |
+| salary   | decimal(10,2) | YES  |     | NULL    |                |
++----------+---------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+
+請回答：
+Q：為什麼 crew 表的 ship_id 要對應 ships 表的 id？這樣設計有什麼好處？
+A：
+可以清楚表示每位船員隸屬於哪一艘船
+避免重複儲存船隻資料，降低資料冗餘
+讓資料結構更有條理，方便管理與維護
+提升查詢效率，例如查詢某艘船的所有船員
+確保資料一致性（避免輸入不存在的船隻）

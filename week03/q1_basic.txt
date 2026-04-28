@@ -1,0 +1,19 @@
+student219@linux-server2:~/practice$ ls
+a.txt  c.txt  d.txt  e.txt
+student219@linux-server2:~/practice$ rm c.txt
+student219@linux-server2:~/practice$ ls
+a.txt  d.txt  e.txt
+student219@linux-server2:~/practice$ pwd
+/home/student219/practice
+student219@linux-server2:~/practice$ ls
+a.txt  d.txt  e.txt
+student219@linux-server2:~/practice$ ls-la
+-bash: ls-la: command not found
+student219@linux-server2:~/practice$ ls -la
+total 16
+drwxrwxr-x. 2 student219 student219    45 Mar 10 07:27 .
+drwxr-x---. 9 student219 student219 16384 Mar 10 07:22 ..
+-rw-rw-r--. 1 student219 student219     0 Mar 10 07:24 a.txt
+-rw-rw-r--. 1 student219 student219     0 Mar 10 07:26 d.txt
+-rw-rw-r--. 1 student219 student219     0 Mar 10 07:24 e.txt
+student219@linux-server2:~/practice$
