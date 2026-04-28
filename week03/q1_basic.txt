@@ -1,0 +1,64 @@
+姓名：黃薏庭
+學號：C112181103
+
+=== whoami ===
+（貼上執行結果）
+student107
+
+=== hostname ===
+（貼上執行結果）
+linux-server1
+
+=== pwd ===
+（貼上執行結果）
+/home/student107
+
+=== uname -a ===
+（貼上執行結果）
+Linux linux-server1 6.1.163-186.299.amzn2023.x86_64 #1 SMP PREEMPT_DYNAMIC Tue Feb 24 16:35:42 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
+
+=== date ===
+（貼上執行結果）
+Wed Mar 18 14:53:00 UTC 2026
+
+=== ls / ===
+（貼上執行結果）
+bin  boot  dev  etc  home  lib  lib32  lib64  libx32  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+
+=== ls -la ~ ===
+（貼上執行結果）
+total 736
+drwxr-x---. 11 student107 student107  16384 Mar 18 14:45 .
+drwxr-xr-x.  1 root       root        16384 Mar 10 03:13 ..
+-rw-------.  1 student107 student107   2116 Mar 18 09:23 .bash_history
+-rw-r--r--.  1 student107 student107    220 Jan  6  2022 .bash_logout
+-rw-r--r--.  1 student107 student107   3771 Jan  6  2022 .bashrc
+drwx------.  2 student107 student107     34 Mar 10 03:16 .cache
+-rw-rw-r--.  1 student107 student107    138 Mar 18 14:45 .gitconfig
+drwxrwxr-x.  3 student107 student107     19 Mar 17 07:24 .local
+-rw-r--r--.  1 student107 student107    807 Jan  6  2022 .profile
+-rw-rw-r--.  1 student107 student107    171 Mar 17 06:30 .wget-hsts
+drwxrwxr-x.  7 student107 student107     94 Mar 18 14:45 114-2_BigDataCC
+drwxrwxr-x.  2 student107 student107     24 Mar 17 06:09 C112181103
+-rw-rw-r--.  1 student107 student107    189 Mar  9 06:50 README.txt
+drwxrwxr-x.  2 student107 student107      6 Mar  9 06:50 documents
+drwxr-xr-x.  2 student107 student107     83 Mar  9 06:50 exercises
+-rw-rw-r--.  1 student107 student107      0 Mar 10 07:18 file.txt
+-rw-rw-r--.  1 student107 student107      0 Mar 10 07:19 file01.txt
+-rw-rw-r--.  1 student107 student107      0 Mar 17 06:08 file02.txt
+-rw-rw-r--.  1 student107 student107 688430 Jan 14 12:51 koala.png
+-rw-rw-r--.  1 student107 student107      0 Mar 10 07:04 myfile
+drwxrwxr-x.  2 student107 student107      6 Mar  9 06:50 projects
+drwxrwxr-x.  2 student107 student107      6 Mar  9 06:50 scripts
+drwxrwxr-x.  4 student107 student107     79 Mar 17 07:48 week04
+
+```
+
+### 評分標準
+
+| 項目 | 配分 |
+|------|------|
+| q1_basic.txt 存在且格式正確 | 5 分 |
+| 姓名學號已填寫 | 5 分 |
+| 7 個指令結果完整 | 28 分 |
+| 輸出具有合理的 Linux 特徵 | 2 分 |
