@@ -1,0 +1,59 @@
+姓名：凌賜桐
+學號：C112181110
+
+=== 任務 1：探索 Linux 目錄結構 ===
+u306@U7:/mnt/c/Users/Teacher$ ls /
+bin                dev   init               lib64       mnt   root  sbin.usr-is-merged  sys  var
+bin.usr-is-merged  etc   lib                lost+found  opt   run   snap                tmp
+boot               home  lib.usr-is-merged  media       proc  sbin  srv                 usr
+
+/home：一般使用者的家目錄   使用者的個人檔案資料夾。
+/etc：系統設定檔目錄     系統與軟體的設定檔。
+/var：變動性資料目錄 (Variable)   常變動的資料（如：系統日誌 log）。
+/tmp：暫存檔目錄 (Temporary)    暫存檔（重開機通常會自動清空）。
+/usr：使用者應用程式與軟體資源目錄   安裝的應用程式與軟體（類似 Windows 的 Program Files）。
+
+=== 任務 2：查看空間與檔案統計 ===
+u306@U7:/mnt/c/Users/Teacher$ du -sh ~
+36K     /home/u306
+
+u306@U7:/mnt/c/Users/Teacher$ find ~ -type f | wc -l
+7
+
+u306@U7:/mnt/c/Users/Teacher$ find ~ -type d | wc -l
+4
+
+=== 任務 3：chown 與 chgrp 實作 ===
+
+步驟 1：建立測試檔案並查看預設擁有者
+u306@U7:/mnt/c/Users/Teacher$ touch ~/week06_test.txt
+echo "Ownership Test" > ~/week06_test.txt
+ls -l ~/week06_test.txt
+-rw-r--r-- 1 u306 u306 15 Mar 31 15:00 /home/u306/week06_test.txt
+
+步驟 2：建立測試用的使用者和群組
+u306@U7:/mnt/c/Users/Teacher$ sudo useradd -m tempuser
+[sudo] password for u306:
+u306@U7:/mnt/c/Users/Teacher$ sudo groupadd tempgroup
+
+步驟 3：用 chown 改變擁有者
+u306@U7:/mnt/c/Users/Teacher$ sudo chown tempuser ~/week06_test.txt
+ls -l ~/week06_test.txt
+-rw-r--r-- 1 tempuser u306 15 Mar 31 15:00 /home/u306/week06_test.txt
+
+步驟 4：用 chgrp 改變群組
+u306@U7:/mnt/c/Users/Teacher$ sudo chgrp tempgroup ~/week06_test.txt
+ls -l ~/week06_test.txt
+-rw-r--r-- 1 tempuser tempgroup 15 Mar 31 15:00 /home/u306/week06_test.txt
+
+步驟 5：用 chown 一次改回自己
+u306@U7:/mnt/c/Users/Teacher$ sudo chown $(whoami):$(whoami) ~/week06_test.txt
+ls -l ~/week06_test.txt
+-rw-r--r-- 1 u306 u306 15 Mar 31 15:00 /home/u306/week06_test.txt
+
+步驟 6：清理
+u306@U7:/mnt/c/Users/Teacher$ rm ~/week06_test.txt
+sudo userdel -r tempuser
+sudo groupdel tempgroup
+userdel: tempuser mail spool (/var/mail/tempuser) not found
+

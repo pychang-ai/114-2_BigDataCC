@@ -1,0 +1,55 @@
+姓名：凌賜桐
+學號：C112181110
+
+=== 任務 1：查看 WSL 環境資訊 ===
+PS C:\Users\Teacher> wsl --list --verbose
+  NAME            STATE           VERSION
+* Ubuntu          Running         2
+  Debian          Stopped         2
+  Ubuntu-20.04    Stopped         2
+
+  PS C:\Users\Teacher> wsl --version
+WSL 版本： 2.6.3.0
+核心版本： 6.6.87.2-1
+WSLg 版本： 1.0.71
+MSRDC 版本： 1.2.6353
+Direct3D 版本： 1.611.1-81528511
+DXCore 版本： 10.0.26100.1-240331-1435.ge-release
+Windows 版本： 10.0.26200.8037
+
+ WSL版本是安裝的 2.6.3.0    Linux發行版叫 "Ubuntu 24.04.4 LTS"
+
+ === 任務 2：檔案互通 — 從 WSL 存取 Windows ===
+
+步驟 1：查看 Windows 桌面的檔案
+ u306@U7:/mnt/c/Users/Teacher$ ls /mnt/c/Users/Teacher/Desktop/ | head -10
+114-2_BigDataCC
+Anaconda Navigator.lnk
+Android Studio.lnk
+Arduino IDE.lnk
+Docker Desktop.lnk
+Excel.lnk
+GIT
+IDLE (Python 3.13 64-bit).lnk
+Jupyter Notebook.lnk
+LINE.lnk
+
+步驟 2：查看 Windows 和 WSL 的路徑對應
+Windows路徑： C:\Users\Teacher\Desktop）
+WSL路徑： /mnt/c/Users/Teacher/Desktop）
+
+=== 任務 3：檔案互通 — 從 WSL 建立檔案到 Windows ===
+
+步驟 1：在 WSL 中建立一個檔案到 Windows 桌面
+u306@U7:/mnt/c/Users/Teacher$ echo "我的學號是C112181110，這個檔案從 WSL 建立" > /mnt/c/Users/Teacher/Desktop/wsl_hello.txt
+
+步驟 2：在 WSL 中確認檔案已建立
+u306@U7:/mnt/c/Users/Teacher$ cat /mnt/c/Users/Teacher/Desktop/wsl_hello.txt
+我的學號是C112181110，這個檔案從 WSL 建立
+
+步驟 3：從 WSL 打開 Windows 檔案總管查看家目錄
+看到一個顯示Arduino的資料夾
+
+步驟 4：清理 — 刪除桌面上的測試檔案
+u306@U7:/mnt/c/Users/Teacher$ rm /mnt/c/Users/Teacher/Desktop/wsl_hello.txt
+
