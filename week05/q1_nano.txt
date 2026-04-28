@@ -1,0 +1,44 @@
+姓名：蔡异堤
+學號：C112181144
+
+=== 任務 1：用 nano 建立 intro.txt ===
+請用 nano 建立 ~/intro.txt，輸入以下內容（替換為你的真實資訊）：
+    NAME: YITI TSAI
+    SID: C1121811444"
+    Major: Department of Maritime Information and Technology"
+    Interest: SELLP"
+    Goal: Learn Linux and Docker"
+    
+
+儲存後用 cat 顯示內容：
+cat ~/intro.txt
+
+#!/bin/bash
+echo "=========================================="
+echo "NAME: YITI TSAI"
+echo "SID: C1121811444"
+echo "Major: Department of Maritime Information and Technology"
+echo "Interest: SELLP"
+echo "Goal: Learn Linux and Docker"
+echo "=========================================="
+
+=== 任務 2：nano 快捷鍵操作 ===
+用 nano 開啟 ~/intro.txt，在最後面新增一行：
+  今天日期：（用 date 指令查到的日期）
+
+儲存後用 cat 顯示完整內容：
+
+#!/bin/bash
+echo "=========================================="
+echo "NAME: YITI TSAI"
+echo "SID: C1121811444"
+echo "Major: Department of Maritime Information and Technology"
+echo "Interest: SELLP"
+echo "Goal: Learn Linux and Docker"
+echo "Time: $(date)"
+echo "=========================================="
+
+
+=== 任務 3：說明你使用了哪些 nano 快捷鍵 ===
+（例如：Ctrl+O 儲存、Ctrl+X 離開，至少列出 4 個）
+Ctrl+O Ctrl+X Ctrl+K Ctrl+U Ctrl+E
