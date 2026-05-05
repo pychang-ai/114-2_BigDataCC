@@ -1,0 +1,127 @@
+姓名：陳意欣
+學號：C112181102
+
+=== 任務 1：確認 WSL 環境 ===
+在 Windows PowerShell 中執行：
+wsl --list --verbose
+（貼上結果）
+
+  NAME      STATE           VERSION
+* Ubuntu    Running         2
+PS C:\Windows\system32>
+
+
+=== 任務 2：安裝 MySQL ===
+進入 WSL 後依序執行，貼上每步結果：
+
+步驟 1：更新套件庫
+sudo apt update && sudo apt upgrade -y
+（貼上最後幾行結果即可）
+
+Hit:1 http://security.ubuntu.com/ubuntu noble-security InRelease
+Hit:2 http://archive.ubuntu.com/ubuntu noble InRelease
+Hit:3 http://archive.ubuntu.com/ubuntu noble-updates InRelease
+Hit:4 http://archive.ubuntu.com/ubuntu noble-backports InRelease
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+All packages are up to date.
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+Calculating upgrade... Done
+The following packages were automatically installed and are no longer required:
+  galera-4 libconfig-inifiles-perl libdbd-mysql-perl libdbi-perl
+  libmariadb3 libmysqlclient21 libncurses6 libsnappy1v5
+  libterm-readkey-perl liburing2 libwrap0 mariadb-common pv
+  socat
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+
+
+步驟 2：安裝 MySQL Server
+sudo apt install -y mysql-server
+（貼上最後幾行結果即可）
+
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+mysql-server is already the newest version (8.0.45-0ubuntu0.24.04.1).
+The following packages were automatically installed and are no longer required:
+  galera-4 libconfig-inifiles-perl libdbd-mysql-perl libdbi-perl
+  libmariadb3 libmysqlclient21 libncurses6 libsnappy1v5
+  libterm-readkey-perl liburing2 libwrap0 mariadb-common pv
+  socat
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+
+
+步驟 3：啟動 MySQL 服務
+sudo service mysql start
+（貼上結果）
+
+無
+
+
+步驟 4：確認 MySQL 正在運行
+sudo service mysql status
+（貼上結果，應顯示 running）
+
+● mysql.service - MySQL Community Server
+     Loaded: loaded (/usr/lib/systemd/system/mysql.service; enabl>     Active: active (running) since Tue 2026-04-14 15:57:37 CST; >    Process: 14068 ExecStartPre=/usr/share/mysql/mysql-systemd-st>   Main PID: 14077 (mysqld)
+     Status: "Server is operational"
+      Tasks: 38 (limit: 9275)
+     Memory: 364.2M (peak: 380.2M)
+        CPU: 474ms
+     CGroup: /system.slice/mysql.service
+             └─14077 /usr/sbin/mysqld
+
+Apr 14 15:57:37 U3 systemd[1]: Starting mysql.service - MySQL Com>Apr 14 15:57:37 U3 systemd[1]: Started mysql.service - MySQL Comm>
+
+
+=== 任務 3：登入 MySQL ===
+
+步驟 1：用 sudo 登入 MySQL（WSL 預設不需要密碼）
+sudo mysql
+（貼上登入成功畫面，應顯示 Welcome to the MySQL monitor）
+
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.0.45-0ubuntu0.24.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2026, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql>
+
+
+步驟 2：確認版本
+SELECT VERSION();
+（貼上結果）
+
++-------------------------+
+| VERSION()               |
++-------------------------+
+| 8.0.45-0ubuntu0.24.04.1 |
++-------------------------+
+1 row in set (0.00 sec)
+
+
+步驟 3：查看預設資料庫
+SHOW DATABASES;
+（貼上結果）
+
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+4 rows in set (0.00 sec)
