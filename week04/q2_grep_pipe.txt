@@ -1,0 +1,44 @@
+姓名：凌賜桐
+學號：C112181110
+
+##
+student113@linux-server1:~$ ls /etc | wc -l
+101
+
+student113@linux-server1:~$ ls /etc | sort | head -10
+adduser.conf
+alternatives
+apparmor.d
+apt
+bash.bashrc
+bash_completion.d
+bindresvport.blacklist
+cloud
+cron.d
+cron.daily
+
+##
+student113@linux-server1:~$ ls -la ~ > ~/week04/home_list.txt
+cat ~/week04/home_list.txt
+total 56
+drwxr-x---. 8 student113 student113 16384 Mar 17 07:03 .
+drwxr-xr-x. 1 root       root       16384 Mar 10 03:13 ..
+-rw-------. 1 student113 student113   194 Mar 10 08:04 .bash_history
+-rw-r--r--. 1 student113 student113   220 Jan  6  2022 .bash_logout
+-rw-r--r--. 1 student113 student113  3771 Jan  6  2022 .bashrc
+drwx------. 2 student113 student113    34 Mar 10 03:16 .cache
+-rw-r--r--. 1 student113 student113   807 Jan  6  2022 .profile
+-rw-rw-r--. 1 student113 student113    42 Mar 10 07:08 Myfile.txt
+-rw-rw-r--. 1 student113 student113   189 Mar  9 06:50 README.txt
+drwxrwxr-x. 2 student113 student113     6 Mar  9 06:50 documents
+drwxr-xr-x. 2 student113 student113    83 Mar  9 06:50 exercises
+drwxrwxr-x. 2 student113 student113     6 Mar  9 06:50 projects
+drwxrwxr-x. 2 student113 student113     6 Mar  9 06:50 scripts
+drwxrwxr-x. 4 student113 student113    51 Mar 17 07:24 week04
+
+##
+student113@linux-server1:~$ date >> ~/week04/home_list.txt
+tail -3 ~/week04/home_list.txt
+Tue Mar 17 07:25:00 UTC 2026
+
+
