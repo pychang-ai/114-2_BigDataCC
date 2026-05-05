@@ -24,8 +24,18 @@
 |------|------|
 | 課程名稱 | 巨量資料與雲端運算 |
 | 學期 | 114 學年度第 2 學期 |
-
 | 實作環境 | AWS EC2 + Docker 容器、GitHub、VS Code |
+
+## 教科書
+
+| 項目 | 內容 |
+|------|------|
+| 書名 | 你的第一本 Linux 入門書：使用 WSL 建立 Linux 軟體開發與部署環境，一次學會 Docker、版本控制、建立 AI 預訓練模型 |
+| 作者 | 陳會安 |
+| 出版社 | 博碩文化 |
+| 出版日期 | 2024 年 6 月 |
+| ISBN | 978-626-333-887-6 |
+| 購書連結 | [博客來](https://www.books.com.tw/products/0010992599) ｜ [天瓏網路書店](https://www.tenlong.com.tw/products/9786263338876) |
 
 ## 課程說明
 
@@ -59,24 +69,24 @@
 
 | 週次 | 主題 | 對應教科書 |
 |------|------|-----------|
-| 第 1 週 | 課程導論、Git 與 GitHub 基礎、機器學習概述 | 7-4 |
-| 第 2 週 | VS Code 與 GitHub 實作強化 | 7-1、7-5 |
-| 第 3 週 | 虛擬化技術與 Linux、首次 SSH 連線、Fork/PR 教學、**專題分組與組長建立專題 Repo**、**公布專題題目參考清單** | 1-1、1-2 |
-| 第 4 週 | Linux 常用指令與 Bash Shell 基礎、**小考 1**、**每人提出 1-3 個題目構想** | 3-1 |
-| 第 5 週 | nano 編輯器與 Shell Script 入門、**組內討論投票決定專題題目、繳交專題提案** | 3-2 |
-| 第 6 週 | Linux 使用者、權限與目錄結構、**教師審查專題提案** | 3-3、3-4 |
-| 第 7 週 | Linux 套件管理與 Web 伺服器基礎、**確定小組專題題目** | 4-1、5-1 |
-| 第 8 週 | MySQL 資料庫基礎 | 5-3、5-4 |
-| 第 9 週 | **期中考** | |
-| 第 10 週 | Python 開發環境與基礎語法、**AI 工具：Prompt Engineering 入門** | 6-1、6-2 |
-| 第 11 週 | Pandas 資料清洗與轉換、**AI 工具：AI 輔助資料清洗** | |
-| 第 12 週 | Jupyter Notebook 與資料視覺化、**小考 2+3**、**AI 工具：AI 輔助視覺化** | 6-4 |
-| 第 13 週 | 認識 Docker 與安裝設定 | 9-1、9-2、9-5 |
-| 第 14 週 | Docker 基本操作與 Dockerfile、**AI 工具：AI 輔助 Docker** | 10-1～10-5、12-1 |
-| 第 15 週 | Python 大數據分析綜合實作、**AI 工具：AI 輔助完整分析流程** | |
-| 第 16 週 | 機器學習基礎與預訓練模型、**小考 4**、**AI 工具：Prompt Engineering 進階** | 8-3、8-4 |
-| 第 17 週 | Gradio AI 互動介面與模型部署、繳交期末報告 | 8-1、8-2 |
-| 第 18 週 | **期末專題發表** | |
+| 第 1 週 | 課程導論、Git 與 GitHub 基礎、機器學習概述 | 7-4 認識 Git 和 GitHub |
+| 第 2 週 | VS Code 與 GitHub 實作強化 | 7-1 下載與安裝 Visual Studio Code、7-5 使用 GitHub 檔案庫進行 VS Code 專案開發 |
+| 第 3 週 | 虛擬化技術與 Linux、首次 SSH 連線、Fork/PR 教學、**專題分組與組長建立專題 Repo**、**公布專題題目參考清單** | 1-1 認識程式開發的虛擬化技術、1-2 Linux 與 Windows 作業系統 |
+| 第 4 週 | Linux 常用指令與 Bash Shell 基礎、**小考 1**、**每人提出 1-3 個題目構想** | 3-1 Linux 常用命令 |
+| 第 5 週 | nano 編輯器與 Shell Script 入門、**組內討論投票決定專題題目、繳交專題提案** | 3-2 使用 nano 文字編輯器 |
+| 第 6 週 | Linux 使用者、權限與目錄結構、**教師審查專題提案** | 3-3 Linux 使用者與檔案權限命令、3-4 Linux 作業系統的目錄結構 |
+| 第 7 週 | Linux 套件管理與 Web 伺服器基礎、**確定小組專題題目** | 4-1 安裝與解除安裝 Linux 應用程式、5-1 架設 Apache 的 Web 伺服器 |
+| 第 8 週 | MySQL 資料庫基礎 | 5-3 安裝與設定 MySQL 資料庫系統、5-4 安裝與使用 phpMyAdmin 管理工具 |
+| 第 9 週 | **期中考** | — |
+| 第 10 週 | Python 開發環境與基礎語法、**AI 工具：Prompt Engineering 入門** | 6-1 在 Linux 子系統安裝 Miniconda、6-2 建立與管理 Python 虛擬環境 |
+| 第 11 週 | Pandas 資料清洗與轉換、**AI 工具：AI 輔助資料清洗** | — |
+| 第 12 週 | Jupyter Notebook 與資料視覺化、**小考 2+3**、**AI 工具：AI 輔助視覺化** | 6-4 安裝與使用 Linux 子系統的 Jupyter Notebook |
+| 第 13 週 | 認識 Docker 與安裝設定 | 9-1 認識 Docker、9-2 使用 Docker Desktop 安裝設定 Docker、9-5 註冊 Docker Hub |
+| 第 14 週 | Docker 基本操作與 Dockerfile、**AI 工具：AI 輔助 Docker** | 10-1 Docker 服務的基本操作、10-2 Docker 映像檔的基本操作、10-3 Docker 容器的基本操作、10-4 Docker 容器的網路環境、10-5 Docker Hub 倉庫的基本操作、12-1 認識 Dockerfile |
+| 第 15 週 | Python 大數據分析綜合實作、**AI 工具：AI 輔助完整分析流程** | — |
+| 第 16 週 | 機器學習基礎與預訓練模型、**小考 4**、**AI 工具：Prompt Engineering 進階** | 8-3 Keras 預訓練模型：MobileNet 與 ResNet50、8-4 KerasNLP 預訓練模型：BERT 與 GPT-2 |
+| 第 17 週 | Gradio AI 互動介面與模型部署、繳交期末報告 | 8-1 建立 Gradio 和 KerasNLP 的 Python 開發環境、8-2 使用 Gradio 建立 AI 互動介面 |
+| 第 18 週 | **期末專題發表** | — |
 
 ### 小考說明
 
