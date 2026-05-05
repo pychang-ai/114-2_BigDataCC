@@ -1,0 +1,63 @@
+## 第 1 題：SSH 連線與基本指令（40 分）
+
+SSH 連線到 Linux 練習環境，依序執行以下 7 個指令，將結果存入 `week03/q1_basic.txt`：
+
+```
+whoami
+hostname
+pwd
+uname -a
+date
+ls /
+ls -la ~
+```
+
+q1_basic.txt 格式：
+
+```
+姓名：傅瀚鋌
+學號：C112181112
+
+=== whoami ===
+
+student115
+
+
+=== hostname ===
+linux-server1
+
+
+=== pwd ===
+/home/student115
+
+
+=== uname -a ===
+Linux linux-server1 6.1.163-186.299.amzn2023.x86_64 #1 SMP PREEMPT_DYNAMIC Tue Feb 24 16:35:42 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
+
+
+=== date ===
+Tue Mar 24 07:14:49 UTC 2026
+
+
+=== ls / ===
+bin  boot  dev  etc  home  lib  lib32  lib64  libx32  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+
+
+=== ls -la ~ ===
+total 60
+drwxr-x---. 9 student115 student115 16384 Mar 24 06:57 .
+drwxr-xr-x. 1 root       root       16384 Mar 10 03:13 ..
+-rw-------. 1 student115 student115  1391 Mar 17 08:03 .bash_history
+-rw-r--r--. 1 student115 student115   220 Jan  6  2022 .bash_logout
+-rw-r--r--. 1 student115 student115  3771 Jan  6  2022 .bashrc
+drwx------. 2 student115 student115    34 Mar 10 03:16 .cache
+drwxrwxr-x. 3 student115 student115    19 Mar 24 06:15 .local
+-rw-r--r--. 1 student115 student115   807 Jan  6  2022 .profile
+-rw-rw-r--. 1 student115 student115   189 Mar  9 06:50 README.txt
+drwxrwxr-x. 2 student115 student115     6 Mar  9 06:50 documents
+drwxr-xr-x. 2 student115 student115    83 Mar  9 06:50 exercises
+-rw-rw-r--. 1 student115 student115   182 Mar 24 06:30 intro.txt
+-rwxrwxr-x. 1 student115 student115   487 Mar 24 06:57 my_script.sh
+drwxrwxr-x. 2 student115 student115     6 Mar  9 06:50 projects
+drwxrwxr-x. 2 student115 student115     6 Mar  9 06:50 scripts
+drwxrwxr-x. 4 student115 student115    51 Mar 17 07:46 week04
