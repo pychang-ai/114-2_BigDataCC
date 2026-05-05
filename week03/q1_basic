@@ -1,0 +1,38 @@
+姓名：蘇千皓
+學號：c112181128
+
+=== whoami ===
+student202
+
+=== hostname ===
+linux-server2
+
+=== pwd ===
+/home/student202
+
+=== uname -a ===
+Linux linux-server2 6.1.163-186.299.amzn2023.x86_64 #1 SMP PREEMPT_DYNAMIC Tue Feb 24 16:35:42 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
+
+=== date ===
+Tue Mar 24 06:04:32 UTC 2026
+
+=== ls / ===
+bin   dev  home  lib32  libx32  mnt  proc  run   srv  tmp  var
+boot  etc  lib   lib64  media   opt  root  sbin  sys  usr
+
+=== ls -la ~ ===
+total 56
+drwxr-x---. 8 student202 student202 16384 Mar 17 07:10 .
+drwxr-xr-x. 1 root       root       16384 Mar 10 03:13 ..
+-rw-------. 1 student202 student202  1889 Mar 17 08:10 .bash_history
+-rw-r--r--. 1 student202 student202   220 Jan  6  2022 .bash_logout
+-rw-r--r--. 1 student202 student202  3771 Jan  6  2022 .bashrc
+drwx------. 2 student202 student202    34 Mar 10 03:16 .cache
+-rw-rw-r--. 1 student202 student202    35 Mar 17 07:10 .gitconfig
+-rw-r--r--. 1 student202 student202   807 Jan  6  2022 .profile
+-rw-rw-r--. 1 student202 student202   189 Mar  9 06:57 README.txt
+drwxrwxr-x. 2 student202 student202     6 Mar  9 06:57 documents
+drwxr-xr-x. 2 student202 student202    83 Mar  9 06:57 exercises
+drwxrwxr-x. 2 student202 student202     6 Mar  9 06:57 projects
+drwxrwxr-x. 2 student202 student202     6 Mar  9 06:57 scripts
+drwxrwxr-x. 4 student202 student202    51 Mar 17 07:26 week04
