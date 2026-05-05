@@ -1,0 +1,187 @@
+姓名：陳意欣
+學號：C11218102
+
+=== 任務 1：確認 Conda 版本 ===
+conda --version
+（貼上結果）
+
+conda 26.1.1
+
+conda info
+（貼上結果，至少包含 conda version、active environment、base environment 三行）
+
+active environment : base
+    active env location : /home/u306/miniconda3
+            shell level : 1
+       user config file : /home/u306/.condarc
+ populated config files : /home/u306/miniconda3/.condarc
+                          /home/u306/miniconda3/condarc.d/anaconda-auth.yml
+          conda version : 26.1.1
+    conda-build version : not installed
+         python version : 3.13.12.final.0
+                 solver : libmamba (default)
+       virtual packages : __archspec=1=skylake
+                          __conda=26.1.1=0
+                          __cuda=12.4=0
+                          __glibc=2.39=0
+                          __linux=6.6.87.2=0
+                          __unix=0=0
+       base environment : /home/u306/miniconda3  (writable)
+      conda av data dir : /home/u306/miniconda3/etc/conda
+  conda av metadata url : None
+           channel URLs : https://repo.anaconda.com/pkgs/main/linux-64
+                          https://repo.anaconda.com/pkgs/main/noarch
+                          https://repo.anaconda.com/pkgs/r/linux-64
+                          https://repo.anaconda.com/pkgs/r/noarch
+          package cache : /home/u306/miniconda3/pkgs
+                          /home/u306/.conda/pkgs
+       envs directories : /home/u306/miniconda3/envs
+                          /home/u306/.conda/envs
+    temporary directory : /tmp
+               platform : linux-64
+             user-agent : conda/26.1.1 requests/2.32.5 CPython/3.13.12 Linux/6.6.87.2-microsoft-standard-WSL2 ubuntu/24.04.4 glibc/2.39 solver/libmamba conda-libmamba-solver/25.11.0 libmambapy/2.3.2 aau/0.7.5 c/. s/. e/.
+                UID:GID : 1000:1000
+             netrc file : None
+           offline mode : False
+
+
+=== 任務 2：建立新環境 ===
+建立一個名為「學號_w10」的環境，Python 版本指定為 3.11
+（例如學號 A11218001 → A11218001_w10）
+
+conda create -n [你的學號]_w10 python=3.11 -y
+（貼上最後幾行結果，看到 "done" 字樣）
+
+
+Downloading and Extracting Packages:
+
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+#
+# To activate this environment, use
+#
+#     $ conda activate C112181102_w10
+#
+# To deactivate an active environment, use
+#
+#     $ conda deactivate
+
+
+conda env list
+（貼上結果，確認環境出現在清單中）
+
+
+# conda environments:
+#
+# * -> active
+# + -> frozen
+base                 *   /home/u306/miniconda3
+C112181102_w10           /home/u306/miniconda3/envs/C112181102_w10
+
+
+=== 任務 3：啟動環境並安裝套件 ===
+conda activate [你的學號]_w10
+（貼上提示符變化，例如：(A11218001_w10) user@host:~$）
+
+(C112181102_w10) u306@U3:/mnt/c/Windows/system32$
+
+conda install pandas numpy matplotlib -y
+（貼上最後幾行結果）
+
+Downloading and Extracting Packages:
+
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+
+conda list | head -20
+（貼上結果，確認 pandas、numpy、matplotlib 都在）
+
+matplotlib                 3.10.8           py311h06a4308_0
+matplotlib-base            3.10.8           py311h8a257da_0
+mesalib                    25.1.5           hac3cb23_1
+mkl                        2025.0.0         hacee8c2_941
+mkl-service                2.5.2            py311hacdc0fc_0
+mkl_fft                    2.2.0            py311h44c8d7b_0
+mkl_random                 1.3.0            py311h505adc9_0
+mysql-common               9.3.0            h9e076cb_5
+mysql-libs                 9.3.0            h6ecde68_5
+ncurses                    6.5              h7934f7d_0
+numpy                      2.4.4            py311h08c6c3d_1
+numpy-base                 2.4.4            py311h00548fb_1
+openldap                   2.6.12           hb446bd0_0
+openssl                    3.5.6            h1b28b03_0
+packaging                  26.0             py311h06a4308_0
+pandas                     3.0.2            py311h86c3e14_0
+pcre2                      10.46            hf426167_0
+pillow                     12.1.1           py311h8263a33_0
+pip                        26.0.1           pyhc872135_1
+pixman                     0.46.4           h7934f7d_0
+pthread-stubs              0.3              h0ce48e5_1
+pyparsing                  3.2.5            py311h06a4308_0
+pyqt                       6.11.0           py311h0eb9b55_0
+pyqt6-sip                  13.11.1          py311h47b2149_0
+python                     3.11.15          h741d88c_0
+python-dateutil            2.9.0post0       py311h06a4308_2
+
+
+=== 任務 4：匯出環境設定檔 ===
+conda env export > week10/environment.yml
+cat week10/environment.yml
+（貼上 environment.yml 完整內容）
+
+name: C112181102_w10
+channels:
+  - defaults
+dependencies:
+  - bzip2=1.0.8=h2bbff1b_6
+  - ca-certificates=2024.3.11=haa95532_0
+  - libffi=3.4.4=hd77b12b_1
+  - openssl=3.0.13=h2bbff1b_2
+  - pip=24.0=py311haa95532_0
+  - python=3.11.9=he1021f5_0
+  - setuptools=69.5.1=py311haa95532_0
+  - sqlite=3.45.3=h2bbff1b_0
+  - tk=8.6.14=h0416ee5_0
+  - tzdata=2024a=h04d1e81_0
+  - vc=14.2=h21ff451_1
+  - vs2015_runtime=14.27.29016=h5e58377_2
+  - wheel=0.43.0=py311haa95532_0
+  - xz=5.4.6=h8cc25b3_1
+  - zlib=1.2.13=h8cc25b3_1
+prefix: C:\Users\YourName\anaconda3\envs\C112181102_w10
+
+
+=== 任務 5：清理暫存 ===
+conda clean --all -y
+（貼上結果，記錄釋放的空間大小，例如 "Removed XX MB"）
+
+Will remove 249 (517.7 MB) tarball(s).
+Will remove 1 index cache(s).
+Will remove 16 (13.3 MB) package(s).
+There are no tempfile(s) to remove.
+There are no logfile(s) to remove.
+
+
+=== 任務 6：觀念回答 ===
+Q1：為什麼不要直接在 base 環境安裝專案套件？這樣做有什麼壞處？
+A1：
+
+1. 套件衝突： 不同專案需要的套件版本可能互相衝突（例如 A 專案要 Python 3.8，B 專案要 3.11），在 base 裝會導致難以管理。
+2. 環境污染： base 是 Conda 運作的基礎，亂裝套件若導致 base 壞掉，可能需要重新安裝整個 Anaconda。
+3. 難以複製： 在 base 混雜過多無關套件，匯出環境設定檔時會包含太多雜質，別人無法使用。
+
+Q2：conda install 和 pip install 有什麼差異？什麼情況下會建議用 pip？
+A2：
+
+差異： conda 是一個跨平台的套件管理器，可以安裝 Python 以外的依賴項（如 C++ 庫）；而 pip 專注於 Python 的套件（PyPI）。Conda 具有更強大的相依性檢查功能。
+建議使用 pip 的情況： 當你在 Conda 的官方頻道或 conda-forge 找不到某個特定套件，或該套件只發布在 PyPI 上時，就會使用 pip install。
+
+Q3：environment.yml 的用途是什麼？換電腦時要怎麼用它快速重建環境？
+A3：
+
+用途： 它是環境的「食譜」，紀錄了環境名稱、依賴套件及其精確的版本號，確保在不同電腦上能重現一模一樣的開發環境。
+
+快速重建指令： 換電腦後，切換到該檔案所在目錄，執行：
+conda env create -f environment.yml
