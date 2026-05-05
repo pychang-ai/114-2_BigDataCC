@@ -1,0 +1,69 @@
+姓名：李翊丞
+學號：C111181134
+
+=== 任務 1：確認 WSL 環境 ===
+在 Windows PowerShell 中執行：
+wsl --list --verbose
+  NAME      STATE           VERSION
+* Ubuntu    Running         2
+
+=== 任務 2：安裝 MySQL ===
+進入 WSL 後依序執行，貼上每步結果：
+
+步驟 1：更新套件庫
+sudo apt update && sudo apt upgrade -y
+Processing triggers for dbus (1.14.10-4ubuntu4.1) ...
+Processing triggers for install-info (7.1-3build2) ...
+Processing triggers for hicolor-icon-theme (0.17-2) ...
+
+步驟 2：安裝 MySQL Server
+sudo apt install -y mysql-server
+Setting up libcgi-fast-perl (1:2.17-1) ...
+Processing triggers for man-db (2.12.0-4build2) ...
+Processing triggers for libc-bin (2.39-0ubuntu8.7) ...
+
+步驟 3：啟動 MySQL 服務
+sudo service mysql start
+無輸出
+
+步驟 4：確認 MySQL 正在運行
+sudo service mysql status
+● mysql.service - MySQL Community Server
+     Loaded: loaded (/usr/lib/systemd/system/mysql.service; enabled; preset: enabled)
+     Active: active (running) since Tue 2026-04-14 15:59:18 CST; 1min 54s ago
+    Process: 4768 ExecStartPre=/usr/share/mysql/mysql-systemd-start pre (code=exited, status=0/SUCCESS)
+   Main PID: 4777 (mysqld)
+     Status: "Server is operational"
+      Tasks: 37 (limit: 18869)
+     Memory: 351.2M (peak: 379.8M)
+        CPU: 1.116s
+     CGroup: /system.slice/mysql.service
+
+=== 任務 3：登入 MySQL ===
+
+步驟 1：用 sudo 登入 MySQL（WSL 預設不需要密碼）
+sudo mysql
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.0.45-0ubuntu0.24.04.1 (Ubuntu)
+
+步驟 2：確認版本
+SELECT VERSION();
++-------------------------+
+| VERSION()               |
++-------------------------+
+| 8.0.45-0ubuntu0.24.04.1 |
++-------------------------+
+1 row in set (0.00 sec)
+
+步驟 3：查看預設資料庫
+SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+4 rows in set (0.01 sec)
