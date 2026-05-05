@@ -1,0 +1,59 @@
+姓名：黃宇平
+學號：C112181108
+
+=== 任務 1：查看自己的身份資訊 ===
+請依序執行以下三個指令並貼上結果：
+
+whoami
+student112
+
+id
+uid=1011(student112) gid=1011(student112) groups=1011(student112)）
+
+groups
+student112
+
+請回答：你的 UID 是多少？你屬於哪些群組？
+uid=1011 只屬於一個群組：student112
+=== 任務 2：解讀 /etc/passwd ===
+執行以下指令：
+cat /etc/passwd | grep 你的帳號
+
+student112:x:1011:1011::/home/student112:/bin/bash
+
+
+欄位 1（帳號名稱）：student112
+欄位 2（密碼欄位）：x
+欄位 3（UID）：1011
+欄位 4（GID）：1011
+欄位 5（描述）：空白
+欄位 6（家目錄）：/home/student112
+欄位 7（Shell）：/bin/bash
+
+=== 任務 3：建立使用者與群組 ===
+請依序執行以下指令並貼上每步的結果：
+++
+步驟 1：建立使用者 week06user（-m 建立家目錄）
+sudo useradd -m week06user
+無輸出
+
+步驟 2：建立群組 week06group
+sudo groupadd week06group
+無輸出
+
+步驟 3：將 week06user 加入 week06group
+sudo usermod -aG week06group week06user
+無輸出
+
+步驟 4：驗證使用者和群組
+id week06user
+uid=1002(week06user) gid=1002(week06user) groups=1002(week06user),1003(week06group)
+
+cat /etc/group | grep week06group
+week06group:x:1003:week06user
+
+步驟 5：清理（刪除測試用的使用者和群組）
+sudo userdel -r week06user
+sudo groupdel week06group
+userdel: week06user mail spool (/var/mail/week06user) not found
+

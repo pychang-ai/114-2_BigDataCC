@@ -1,0 +1,597 @@
+姓名：黃宇平
+學號：C112181108
+
+=== 任務 1：確認 Conda 版本 ===
+conda --version
+conda 26.1.1
+
+conda info
+（貼上結果，至少包含 conda version、active environment、base environment 三行）
+ active environment : None
+       user config file : /home/u306/.condarc
+ populated config files : /home/u306/miniconda3/.condarc
+                          /home/u306/miniconda3/condarc.d/anaconda-auth.yml
+          conda version : 26.1.1
+    conda-build version : not installed
+         python version : 3.13.12.final.0
+                 solver : libmamba (default)
+       virtual packages : __archspec=1=skylake
+                          __conda=26.1.1=0
+                          __cuda=12.4=0
+                          __glibc=2.39=0
+                          __linux=6.6.87.2=0
+                          __unix=0=0
+       base environment : /home/u306/miniconda3  (writable)
+      conda av data dir : /home/u306/miniconda3/etc/conda
+  conda av metadata url : None
+           channel URLs : https://repo.anaconda.com/pkgs/main/linux-64
+                          https://repo.anaconda.com/pkgs/main/noarch
+                          https://repo.anaconda.com/pkgs/r/linux-64
+                          https://repo.anaconda.com/pkgs/r/noarch
+          package cache : /home/u306/miniconda3/pkgs
+                          /home/u306/.conda/pkgs
+       envs directories : /home/u306/miniconda3/envs
+                          /home/u306/.conda/envs
+    temporary directory : /tmp
+               platform : linux-64
+             user-agent : conda/26.1.1 requests/2.32.5 CPython/3.13.12 Linux/6.6.87.2-microsoft-standard-WSL2 ubuntu/24.04.4 glibc/2.39 solver/libmamba conda-libmamba-solver/25.11.0 libmambapy/2.3.2 aau/0.7.5 c/. s/. e/.
+                UID:GID : 1000:1000
+             netrc file : None
+           offline mode : False
+
+=== 任務 2：建立新環境 ===
+建立一個名為「學號_w10」的環境，Python 版本指定為 3.11
+（例如學號 A11218001 → A11218001_w10）
+
+conda create -n [你的學號]_w10 python=3.11 -y
+（貼上最後幾行結果，看到 "done" 字樣）
+Retrieving notices: done
+Channels:
+ - defaults
+Platform: linux-64
+Collecting package metadata (repodata.json): done
+Solving environment: done
+
+
+==> WARNING: A newer version of conda exists. <==
+    current version: 26.1.1
+    latest version: 26.3.2
+
+Please update conda by running
+
+    $ conda update -n base -c defaults conda
+
+
+
+## Package Plan ##
+
+  environment location: /home/u306/miniconda3/envs/C112181108_w10
+
+  added / updated specs:
+    - python=3.11
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    ca-certificates-2026.3.19  |       h06a4308_0         126 KB
+    ld_impl_linux-64-2.44      |       h9e0c5a2_3         725 KB
+    libexpat-2.7.5             |       h7354ed3_0         122 KB
+    libffi-3.4.8               |       hc5d346e_2         136 KB
+    libnsl-2.0.0               |       h5eee18b_0          31 KB
+    libzlib-1.3.1              |       h47b2149_1          59 KB
+    openssl-3.5.6              |       h1b28b03_0         5.6 MB
+    packaging-26.0             |  py311h06a4308_0         197 KB
+    pip-26.0.1                 |     pyhc872135_1         1.1 MB
+    python-3.11.15             |       h741d88c_0        29.5 MB
+    setuptools-82.0.1          |  py311h06a4308_0         1.6 MB
+    sqlite-3.51.2              |       h3e8d24a_0         1.2 MB
+    tzdata-2026a               |       he532380_0         117 KB
+    wheel-0.46.3               |  py311h06a4308_0          71 KB
+    zlib-1.3.1                 |       h47b2149_1          89 KB
+    ------------------------------------------------------------
+                                           Total:        40.7 MB
+
+The following NEW packages will be INSTALLED:
+
+  _libgcc_mutex      pkgs/main/linux-64::_libgcc_mutex-0.1-main
+  _openmp_mutex      pkgs/main/linux-64::_openmp_mutex-5.1-1_gnu
+  bzip2              pkgs/main/linux-64::bzip2-1.0.8-h5eee18b_6
+  ca-certificates    pkgs/main/linux-64::ca-certificates-2026.3.19-h06a4308_0
+  ld_impl_linux-64   pkgs/main/linux-64::ld_impl_linux-64-2.44-h9e0c5a2_3
+  libexpat           pkgs/main/linux-64::libexpat-2.7.5-h7354ed3_0
+  libffi             pkgs/main/linux-64::libffi-3.4.8-hc5d346e_2
+  libgcc             pkgs/main/linux-64::libgcc-15.2.0-h69a1729_7
+  libgcc-ng          pkgs/main/linux-64::libgcc-ng-15.2.0-h166f726_7
+  libgomp            pkgs/main/linux-64::libgomp-15.2.0-h4751f2c_7
+  libnsl             pkgs/main/linux-64::libnsl-2.0.0-h5eee18b_0
+  libstdcxx          pkgs/main/linux-64::libstdcxx-15.2.0-h39759b7_7
+  libuuid            pkgs/main/linux-64::libuuid-1.41.5-h5eee18b_0
+  libxcb             pkgs/main/linux-64::libxcb-1.17.0-h9b100fa_0
+  libzlib            pkgs/main/linux-64::libzlib-1.3.1-h47b2149_1
+  ncurses            pkgs/main/linux-64::ncurses-6.5-h7934f7d_0
+  openssl            pkgs/main/linux-64::openssl-3.5.6-h1b28b03_0
+  packaging          pkgs/main/linux-64::packaging-26.0-py311h06a4308_0
+  pip                pkgs/main/noarch::pip-26.0.1-pyhc872135_1
+  pthread-stubs      pkgs/main/linux-64::pthread-stubs-0.3-h0ce48e5_1
+  python             pkgs/main/linux-64::python-3.11.15-h741d88c_0
+  readline           pkgs/main/linux-64::readline-8.3-hc2a1206_0
+  setuptools         pkgs/main/linux-64::setuptools-82.0.1-py311h06a4308_0
+  sqlite             pkgs/main/linux-64::sqlite-3.51.2-h3e8d24a_0
+  tk                 pkgs/main/linux-64::tk-8.6.15-h54e0aa7_0
+  tzdata             pkgs/main/noarch::tzdata-2026a-he532380_0
+  wheel              pkgs/main/linux-64::wheel-0.46.3-py311h06a4308_0
+  xorg-libx11        pkgs/main/linux-64::xorg-libx11-1.8.12-h9b100fa_1
+  xorg-libxau        pkgs/main/linux-64::xorg-libxau-1.0.12-h9b100fa_0
+  xorg-libxdmcp      pkgs/main/linux-64::xorg-libxdmcp-1.1.5-h9b100fa_0
+  xorg-xorgproto     pkgs/main/linux-64::xorg-xorgproto-2024.1-h5eee18b_1
+  xz                 pkgs/main/linux-64::xz-5.8.2-h448239c_0
+  zlib               pkgs/main/linux-64::zlib-1.3.1-h47b2149_1
+
+
+
+Downloading and Extracting Packages:
+
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+#
+# To activate this environment, use
+#
+#     $ conda activate C112181108_w10
+#
+# To deactivate an active environment, use
+#
+#     $ conda deactivate
+
+conda env list
+（貼上結果，確認環境出現在清單中）
+# conda environments:
+#
+# * -> active
+# + -> frozen
+base                     /home/u306/miniconda3
+C112181108_w10           /home/u306/miniconda3/envs/C112181108_w10
+
+=== 任務 3：啟動環境並安裝套件 ===
+conda activate [你的學號]_w10
+（貼上提示符變化，例如：(A11218001_w10) user@host:~$）
+(C112181108_w10) u306@U32:/mnt/c/Users/Teacher$
+
+conda install pandas numpy matplotlib -y
+（貼上最後幾行結果）
+2 channel Terms of Service accepted
+Channels:
+ - defaults
+Platform: linux-64
+Collecting package metadata (repodata.json): done
+Solving environment: done
+
+
+==> WARNING: A newer version of conda exists. <==
+    current version: 26.1.1
+    latest version: 26.3.2
+
+Please update conda by running
+
+    $ conda update -n base -c defaults conda
+
+
+
+## Package Plan ##
+
+  environment location: /home/u306/miniconda3/envs/C112181108_w10
+
+  added / updated specs:
+    - matplotlib
+    - numpy
+    - pandas
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    aom-3.13.2                 |       h664349e_0         2.7 MB
+    blas-1.0                   |              mkl           6 KB
+    cairo-1.18.4               |       h44eff21_0         728 KB
+    contourpy-1.3.3            |  py311hdb19cb5_0        11.3 MB
+    cycler-0.12.1              |  py311h06a4308_0          19 KB
+    cyrus-sasl-2.1.28          |       h83b0a09_4         212 KB
+    dav1d-1.5.3                |       h3e43c27_0         763 KB
+    expat-2.7.5                |       h7354ed3_0          24 KB
+    fontconfig-2.15.0          |       h2c49b7f_0         262 KB
+    fonttools-4.62.1           |  py311h47b2149_0         4.3 MB
+    freetype-2.14.1            |       hf5b9546_0         634 KB
+    fribidi-1.0.16             |       h9fb5f84_0          58 KB
+    graphite2-1.3.14           |       h295c915_1          97 KB
+    harfbuzz-12.3.0            |       h79d275a_1         2.0 MB
+    intel-openmp-2025.0.0      |    h06a4308_1171        22.3 MB
+    jpeg-9f                    |       h5ce9db8_0         242 KB
+    kiwisolver-1.4.9           |  py311h24d9097_0          76 KB
+    lcms2-2.17                 |       heab6991_0         243 KB
+    lerc-4.1.0                 |       h7354ed3_2         266 KB
+    libavif-1.3.0              |       h2b90b00_1         151 KB
+    libcups-2.4.15             |       hbe4054b_0         4.4 MB
+    libdeflate-1.22            |       h5eee18b_0          68 KB
+    libdrm-2.4.124             |       h5eee18b_0         320 KB
+    libegl-1.7.0               |       h5eee18b_2          44 KB
+    libevent-2.1.12            |       hdbd6064_1         453 KB
+    libgl-1.7.0                |       h5eee18b_2         149 KB
+    libglib-2.86.3             |       h8b17d9a_0         3.9 MB
+    libglvnd-1.7.0             |       h5eee18b_2         140 KB
+    libglx-1.7.0               |       h5eee18b_2          87 KB
+    libhwloc-2.12.1            |default_hf1bbc79_1000         2.4 MB
+    libkrb5-1.22.1             |       h869c75e_1         786 KB
+    libllvm15-15.0.7           |       he89c38a_4        35.4 MB
+    libopengl-1.7.0            |       h5eee18b_2          57 KB
+    libopenjpeg-2.5.4          |       hee96239_1         215 KB
+    libpciaccess-0.18          |       h5eee18b_0          26 KB
+    libpng-1.6.56              |       h22898a0_0         243 KB
+    libpq-17.9                 |       h0cb448f_0         2.5 MB
+    libsodium-1.0.20           |       heac8642_0         288 KB
+    libtiff-4.7.1              |       h029b1ac_0         423 KB
+    libwebp-base-1.6.0         |       hb7bb969_0         419 KB
+    libxkbcommon-1.9.1         |       h69220b7_0         732 KB
+    matplotlib-3.10.8          |  py311h06a4308_0           7 KB
+    matplotlib-base-3.10.8     |  py311h8a257da_0         8.1 MB
+    mesalib-25.1.5             |       hac3cb23_1         8.3 MB
+    mkl-2025.0.0               |     hacee8c2_941       127.4 MB
+    mkl-service-2.5.2          |  py311hacdc0fc_0          74 KB
+    mkl_fft-2.2.0              |  py311h44c8d7b_0         182 KB
+    mkl_random-1.3.0           |  py311h505adc9_0         317 KB
+    mysql-common-9.3.0         |       h9e076cb_5         654 KB
+    mysql-libs-9.3.0           |       h6ecde68_5         1.3 MB
+    numpy-2.4.4                |  py311h08c6c3d_1          20 KB
+    numpy-base-2.4.4           |  py311h00548fb_1         8.6 MB
+    openldap-2.6.12            |       hb446bd0_0         762 KB
+    pandas-3.0.2               |  py311h86c3e14_0        14.3 MB
+    pillow-12.1.1              |  py311h8263a33_0        34.8 MB
+    pixman-0.46.4              |       h7934f7d_0         1.9 MB
+    pyparsing-3.2.5            |  py311h06a4308_0         560 KB
+    pyqt-6.11.0                |  py311h0eb9b55_0         4.5 MB
+    pyqt6-sip-13.11.1          |  py311h47b2149_0          77 KB
+    python-dateutil-2.9.0post0 |  py311h06a4308_2         323 KB
+    qtbase-6.11.0              |       h9201cad_0        12.2 MB
+    qtdeclarative-6.11.0       |       h69798bf_0        20.3 MB
+    qtsvg-6.11.0               |       h6af1df9_0         329 KB
+    qttools-6.11.0             |       h50cdde4_0         6.6 MB
+    qtwayland-6.11.0           |       h9a62c7d_0         967 KB
+    qtwebchannel-6.11.0        |       h27b496b_0         156 KB
+    qtwebsockets-6.11.0        |       h8bda742_0         130 KB
+    sip-6.15.1                 |  py311he6c97cb_0         709 KB
+    six-1.17.0                 |  py311h06a4308_0          37 KB
+    spirv-tools-2026.1         |       h24d9097_0         2.2 MB
+    tbb-2022.3.0               |       h698db13_0         181 KB
+    tbb-devel-2022.3.0         |       h698db13_0         1.1 MB
+    tornado-6.5.5              |  py311h47b2149_0         853 KB
+    wayland-1.24.0             |       hdac8c69_0         356 KB
+    xcb-util-0.4.1             |       h5eee18b_2          19 KB
+    xcb-util-cursor-0.1.5      |       h5eee18b_0          19 KB
+    xcb-util-image-0.4.0       |       h5eee18b_2          23 KB
+    xcb-util-keysyms-0.4.1     |       h5eee18b_0          13 KB
+    xcb-util-renderutil-0.3.10 |       h5eee18b_0          16 KB
+    xcb-util-wm-0.4.2          |       h5eee18b_0          55 KB
+    xkeyboard-config-2.44      |       h382ed1a_1         887 KB
+    xorg-libice-1.1.2          |       h9b100fa_0          57 KB
+    xorg-libsm-1.2.6           |       h9b100fa_0          26 KB
+    xorg-libxext-1.3.6         |       h9b100fa_0          49 KB
+    xorg-libxfixes-6.0.1       |       h9b100fa_0          18 KB
+    xorg-libxrandr-1.5.4       |       h9b100fa_0          28 KB
+    xorg-libxrender-0.9.12     |       h9b100fa_0          31 KB
+    xorg-libxshmfence-1.3.3    |       h9b100fa_0          11 KB
+    xorg-libxxf86vm-1.1.6      |       h9b100fa_0          16 KB
+    ------------------------------------------------------------
+                                           Total:       358.6 MB
+
+The following NEW packages will be INSTALLED:
+
+  aom                pkgs/main/linux-64::aom-3.13.2-h664349e_0
+  blas               pkgs/main/linux-64::blas-1.0-mkl
+  cairo              pkgs/main/linux-64::cairo-1.18.4-h44eff21_0
+  contourpy          pkgs/main/linux-64::contourpy-1.3.3-py311hdb19cb5_0
+  cycler             pkgs/main/linux-64::cycler-0.12.1-py311h06a4308_0
+  cyrus-sasl         pkgs/main/linux-64::cyrus-sasl-2.1.28-h83b0a09_4
+  dav1d              pkgs/main/linux-64::dav1d-1.5.3-h3e43c27_0
+  expat              pkgs/main/linux-64::expat-2.7.5-h7354ed3_0
+  fontconfig         pkgs/main/linux-64::fontconfig-2.15.0-h2c49b7f_0
+  fonttools          pkgs/main/linux-64::fonttools-4.62.1-py311h47b2149_0
+  freetype           pkgs/main/linux-64::freetype-2.14.1-hf5b9546_0
+  fribidi            pkgs/main/linux-64::fribidi-1.0.16-h9fb5f84_0
+  graphite2          pkgs/main/linux-64::graphite2-1.3.14-h295c915_1
+  harfbuzz           pkgs/main/linux-64::harfbuzz-12.3.0-h79d275a_1
+  icu                pkgs/main/linux-64::icu-73.1-h6a678d5_0
+  intel-openmp       pkgs/main/linux-64::intel-openmp-2025.0.0-h06a4308_1171
+  jpeg               pkgs/main/linux-64::jpeg-9f-h5ce9db8_0
+  kiwisolver         pkgs/main/linux-64::kiwisolver-1.4.9-py311h24d9097_0
+  lcms2              pkgs/main/linux-64::lcms2-2.17-heab6991_0
+  lerc               pkgs/main/linux-64::lerc-4.1.0-h7354ed3_2
+  libavif            pkgs/main/linux-64::libavif-1.3.0-h2b90b00_1
+  libcups            pkgs/main/linux-64::libcups-2.4.15-hbe4054b_0
+  libdeflate         pkgs/main/linux-64::libdeflate-1.22-h5eee18b_0
+  libdrm             pkgs/main/linux-64::libdrm-2.4.124-h5eee18b_0
+  libegl             pkgs/main/linux-64::libegl-1.7.0-h5eee18b_2
+  libevent           pkgs/main/linux-64::libevent-2.1.12-hdbd6064_1
+  libgl              pkgs/main/linux-64::libgl-1.7.0-h5eee18b_2
+  libglib            pkgs/main/linux-64::libglib-2.86.3-h8b17d9a_0
+  libglvnd           pkgs/main/linux-64::libglvnd-1.7.0-h5eee18b_2
+  libglx             pkgs/main/linux-64::libglx-1.7.0-h5eee18b_2
+  libhwloc           pkgs/main/linux-64::libhwloc-2.12.1-default_hf1bbc79_1000
+  libiconv           pkgs/main/linux-64::libiconv-1.18-h75a1612_0
+  libkrb5            pkgs/main/linux-64::libkrb5-1.22.1-h869c75e_1
+  libllvm15          pkgs/main/linux-64::libllvm15-15.0.7-he89c38a_4
+  libopengl          pkgs/main/linux-64::libopengl-1.7.0-h5eee18b_2
+  libopenjpeg        pkgs/main/linux-64::libopenjpeg-2.5.4-hee96239_1
+  libpciaccess       pkgs/main/linux-64::libpciaccess-0.18-h5eee18b_0
+  libpng             pkgs/main/linux-64::libpng-1.6.56-h22898a0_0
+  libpq              pkgs/main/linux-64::libpq-17.9-h0cb448f_0
+  libsodium          pkgs/main/linux-64::libsodium-1.0.20-heac8642_0
+  libstdcxx-ng       pkgs/main/linux-64::libstdcxx-ng-15.2.0-hc03a8fd_7
+  libtiff            pkgs/main/linux-64::libtiff-4.7.1-h029b1ac_0
+  libwebp-base       pkgs/main/linux-64::libwebp-base-1.6.0-hb7bb969_0
+  libxkbcommon       pkgs/main/linux-64::libxkbcommon-1.9.1-h69220b7_0
+  libxml2            pkgs/main/linux-64::libxml2-2.13.9-h2c43086_0
+  lmdb               pkgs/main/linux-64::lmdb-0.9.31-hb25bd0a_0
+  lz4-c              pkgs/main/linux-64::lz4-c-1.9.4-h6a678d5_1
+  matplotlib         pkgs/main/linux-64::matplotlib-3.10.8-py311h06a4308_0
+  matplotlib-base    pkgs/main/linux-64::matplotlib-base-3.10.8-py311h8a257da_0
+  mesalib            pkgs/main/linux-64::mesalib-25.1.5-hac3cb23_1
+  mkl                pkgs/main/linux-64::mkl-2025.0.0-hacee8c2_941
+  mkl-service        pkgs/main/linux-64::mkl-service-2.5.2-py311hacdc0fc_0
+  mkl_fft            pkgs/main/linux-64::mkl_fft-2.2.0-py311h44c8d7b_0
+  mkl_random         pkgs/main/linux-64::mkl_random-1.3.0-py311h505adc9_0
+  mysql-common       pkgs/main/linux-64::mysql-common-9.3.0-h9e076cb_5
+  mysql-libs         pkgs/main/linux-64::mysql-libs-9.3.0-h6ecde68_5
+  numpy              pkgs/main/linux-64::numpy-2.4.4-py311h08c6c3d_1
+  numpy-base         pkgs/main/linux-64::numpy-base-2.4.4-py311h00548fb_1
+  openldap           pkgs/main/linux-64::openldap-2.6.12-hb446bd0_0
+  pandas             pkgs/main/linux-64::pandas-3.0.2-py311h86c3e14_0
+  pcre2              pkgs/main/linux-64::pcre2-10.46-hf426167_0
+  pillow             pkgs/main/linux-64::pillow-12.1.1-py311h8263a33_0
+  pixman             pkgs/main/linux-64::pixman-0.46.4-h7934f7d_0
+  pyparsing          pkgs/main/linux-64::pyparsing-3.2.5-py311h06a4308_0
+  pyqt               pkgs/main/linux-64::pyqt-6.11.0-py311h0eb9b55_0
+  pyqt6-sip          pkgs/main/linux-64::pyqt6-sip-13.11.1-py311h47b2149_0
+  python-dateutil    pkgs/main/linux-64::python-dateutil-2.9.0post0-py311h06a4308_2
+  qtbase             pkgs/main/linux-64::qtbase-6.11.0-h9201cad_0
+  qtdeclarative      pkgs/main/linux-64::qtdeclarative-6.11.0-h69798bf_0
+  qtsvg              pkgs/main/linux-64::qtsvg-6.11.0-h6af1df9_0
+  qttools            pkgs/main/linux-64::qttools-6.11.0-h50cdde4_0
+  qtwayland          pkgs/main/linux-64::qtwayland-6.11.0-h9a62c7d_0
+  qtwebchannel       pkgs/main/linux-64::qtwebchannel-6.11.0-h27b496b_0
+  qtwebsockets       pkgs/main/linux-64::qtwebsockets-6.11.0-h8bda742_0
+  sip                pkgs/main/linux-64::sip-6.15.1-py311he6c97cb_0
+  six                pkgs/main/linux-64::six-1.17.0-py311h06a4308_0
+  spirv-tools        pkgs/main/linux-64::spirv-tools-2026.1-h24d9097_0
+  tbb                pkgs/main/linux-64::tbb-2022.3.0-h698db13_0
+  tbb-devel          pkgs/main/linux-64::tbb-devel-2022.3.0-h698db13_0
+  tornado            pkgs/main/linux-64::tornado-6.5.5-py311h47b2149_0
+  wayland            pkgs/main/linux-64::wayland-1.24.0-hdac8c69_0
+  xcb-util           pkgs/main/linux-64::xcb-util-0.4.1-h5eee18b_2
+  xcb-util-cursor    pkgs/main/linux-64::xcb-util-cursor-0.1.5-h5eee18b_0
+  xcb-util-image     pkgs/main/linux-64::xcb-util-image-0.4.0-h5eee18b_2
+  xcb-util-keysyms   pkgs/main/linux-64::xcb-util-keysyms-0.4.1-h5eee18b_0
+  xcb-util-renderut~ pkgs/main/linux-64::xcb-util-renderutil-0.3.10-h5eee18b_0
+  xcb-util-wm        pkgs/main/linux-64::xcb-util-wm-0.4.2-h5eee18b_0
+  xkeyboard-config   pkgs/main/linux-64::xkeyboard-config-2.44-h382ed1a_1
+  xorg-libice        pkgs/main/linux-64::xorg-libice-1.1.2-h9b100fa_0
+  xorg-libsm         pkgs/main/linux-64::xorg-libsm-1.2.6-h9b100fa_0
+  xorg-libxext       pkgs/main/linux-64::xorg-libxext-1.3.6-h9b100fa_0
+  xorg-libxfixes     pkgs/main/linux-64::xorg-libxfixes-6.0.1-h9b100fa_0
+  xorg-libxrandr     pkgs/main/linux-64::xorg-libxrandr-1.5.4-h9b100fa_0
+  xorg-libxrender    pkgs/main/linux-64::xorg-libxrender-0.9.12-h9b100fa_0
+  xorg-libxshmfence  pkgs/main/linux-64::xorg-libxshmfence-1.3.3-h9b100fa_0
+  xorg-libxxf86vm    pkgs/main/linux-64::xorg-libxxf86vm-1.1.6-h9b100fa_0
+  zstd               pkgs/main/linux-64::zstd-1.5.7-h11fc155_0
+
+
+
+Downloading and Extracting Packages:
+
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+
+conda list | head -20
+（貼上結果，確認 pandas、numpy、matplotlib 都在）
+# packages in environment at /home/u306/miniconda3/envs/C112181108_w10:
+#
+# Name                     Version          Build                  Channel
+_libgcc_mutex              0.1              main
+_openmp_mutex              5.1              1_gnu
+aom                        3.13.2           h664349e_0
+blas                       1.0              mkl
+bzip2                      1.0.8            h5eee18b_6
+ca-certificates            2026.3.19        h06a4308_0
+cairo                      1.18.4           h44eff21_0
+contourpy                  1.3.3            py311hdb19cb5_0
+cycler                     0.12.1           py311h06a4308_0
+cyrus-sasl                 2.1.28           h83b0a09_4
+dav1d                      1.5.3            h3e43c27_0
+expat                      2.7.5            h7354ed3_0
+fontconfig                 2.15.0           h2c49b7f_0
+fonttools                  4.62.1           py311h47b2149_0
+freetype                   2.14.1           hf5b9546_0
+fribidi                    1.0.16           h9fb5f84_0
+graphite2                  1.3.14           h295c915_1
+(C112181108_w10) u306@U32:/mnt/c/Users/Teacher$ conda list | grep -E "pandas|numpy|matplotlib"
+matplotlib                 3.10.8           py311h06a4308_0
+matplotlib-base            3.10.8           py311h8a257da_0
+numpy                      2.4.4            py311h08c6c3d_1
+numpy-base                 2.4.4            py311h00548fb_1
+pandas                     3.0.2            py311h86c3e14_0
+
+=== 任務 4：匯出環境設定檔 ===
+conda env export > week10/environment.yml
+cat week10/environment.yml
+（貼上 environment.yml 完整內容）
+conda env export > week10/environment.yml
+cat week10/environment.yml
+name: C112181108_w10
+channels:
+  - defaults
+dependencies:
+  - _libgcc_mutex=0.1=main
+  - _openmp_mutex=5.1=1_gnu
+  - aom=3.13.2=h664349e_0
+  - blas=1.0=mkl
+  - bzip2=1.0.8=h5eee18b_6
+  - ca-certificates=2026.3.19=h06a4308_0
+  - cairo=1.18.4=h44eff21_0
+  - contourpy=1.3.3=py311hdb19cb5_0
+  - cycler=0.12.1=py311h06a4308_0
+  - cyrus-sasl=2.1.28=h83b0a09_4
+  - dav1d=1.5.3=h3e43c27_0
+  - expat=2.7.5=h7354ed3_0
+  - fontconfig=2.15.0=h2c49b7f_0
+  - fonttools=4.62.1=py311h47b2149_0
+  - freetype=2.14.1=hf5b9546_0
+  - fribidi=1.0.16=h9fb5f84_0
+  - graphite2=1.3.14=h295c915_1
+  - harfbuzz=12.3.0=h79d275a_1
+  - icu=73.1=h6a678d5_0
+  - intel-openmp=2025.0.0=h06a4308_1171
+  - jpeg=9f=h5ce9db8_0
+  - kiwisolver=1.4.9=py311h24d9097_0
+  - lcms2=2.17=heab6991_0
+  - ld_impl_linux-64=2.44=h9e0c5a2_3
+  - lerc=4.1.0=h7354ed3_2
+  - libavif=1.3.0=h2b90b00_1
+  - libcups=2.4.15=hbe4054b_0
+  - libdeflate=1.22=h5eee18b_0
+  - libdrm=2.4.124=h5eee18b_0
+  - libegl=1.7.0=h5eee18b_2
+  - libevent=2.1.12=hdbd6064_1
+  - libexpat=2.7.5=h7354ed3_0
+  - libffi=3.4.8=hc5d346e_2
+  - libgcc=15.2.0=h69a1729_7
+  - libgcc-ng=15.2.0=h166f726_7
+  - libgl=1.7.0=h5eee18b_2
+  - libglib=2.86.3=h8b17d9a_0
+  - libglvnd=1.7.0=h5eee18b_2
+  - libglx=1.7.0=h5eee18b_2
+  - libgomp=15.2.0=h4751f2c_7
+  - libhwloc=2.12.1=default_hf1bbc79_1000
+  - libiconv=1.18=h75a1612_0
+  - libkrb5=1.22.1=h869c75e_1
+  - libllvm15=15.0.7=he89c38a_4
+  - libnsl=2.0.0=h5eee18b_0
+  - libopengl=1.7.0=h5eee18b_2
+  - libopenjpeg=2.5.4=hee96239_1
+  - libpciaccess=0.18=h5eee18b_0
+  - libpng=1.6.56=h22898a0_0
+  - libpq=17.9=h0cb448f_0
+  - libsodium=1.0.20=heac8642_0
+  - libstdcxx=15.2.0=h39759b7_7
+  - libstdcxx-ng=15.2.0=hc03a8fd_7
+  - libtiff=4.7.1=h029b1ac_0
+  - libuuid=1.41.5=h5eee18b_0
+  - libwebp-base=1.6.0=hb7bb969_0
+  - libxcb=1.17.0=h9b100fa_0
+  - libxkbcommon=1.9.1=h69220b7_0
+  - libxml2=2.13.9=h2c43086_0
+  - libzlib=1.3.1=h47b2149_1
+  - lmdb=0.9.31=hb25bd0a_0
+  - lz4-c=1.9.4=h6a678d5_1
+  - matplotlib=3.10.8=py311h06a4308_0
+  - matplotlib-base=3.10.8=py311h8a257da_0
+  - mesalib=25.1.5=hac3cb23_1
+  - mkl=2025.0.0=hacee8c2_941
+  - mkl-service=2.5.2=py311hacdc0fc_0
+  - mkl_fft=2.2.0=py311h44c8d7b_0
+  - mkl_random=1.3.0=py311h505adc9_0
+  - mysql-common=9.3.0=h9e076cb_5
+  - mysql-libs=9.3.0=h6ecde68_5
+  - ncurses=6.5=h7934f7d_0
+  - numpy=2.4.4=py311h08c6c3d_1
+  - numpy-base=2.4.4=py311h00548fb_1
+  - openldap=2.6.12=hb446bd0_0
+  - openssl=3.5.6=h1b28b03_0
+  - packaging=26.0=py311h06a4308_0
+  - pandas=3.0.2=py311h86c3e14_0
+  - pcre2=10.46=hf426167_0
+  - pillow=12.1.1=py311h8263a33_0
+  - pip=26.0.1=pyhc872135_1
+  - pixman=0.46.4=h7934f7d_0
+  - pthread-stubs=0.3=h0ce48e5_1
+  - pyparsing=3.2.5=py311h06a4308_0
+  - pyqt=6.11.0=py311h0eb9b55_0
+  - pyqt6-sip=13.11.1=py311h47b2149_0
+  - python=3.11.15=h741d88c_0
+  - python-dateutil=2.9.0post0=py311h06a4308_2
+  - qtbase=6.11.0=h9201cad_0
+  - qtdeclarative=6.11.0=h69798bf_0
+  - qtsvg=6.11.0=h6af1df9_0
+  - qttools=6.11.0=h50cdde4_0
+  - qtwayland=6.11.0=h9a62c7d_0
+  - qtwebchannel=6.11.0=h27b496b_0
+  - qtwebsockets=6.11.0=h8bda742_0
+  - readline=8.3=hc2a1206_0
+  - setuptools=82.0.1=py311h06a4308_0
+  - sip=6.15.1=py311he6c97cb_0
+  - six=1.17.0=py311h06a4308_0
+  - spirv-tools=2026.1=h24d9097_0
+  - sqlite=3.51.2=h3e8d24a_0
+  - tbb=2022.3.0=h698db13_0
+  - tbb-devel=2022.3.0=h698db13_0
+  - tk=8.6.15=h54e0aa7_0
+  - tornado=6.5.5=py311h47b2149_0
+  - tzdata=2026a=he532380_0
+  - wayland=1.24.0=hdac8c69_0
+  - wheel=0.46.3=py311h06a4308_0
+  - xcb-util=0.4.1=h5eee18b_2
+  - xcb-util-cursor=0.1.5=h5eee18b_0
+  - xcb-util-image=0.4.0=h5eee18b_2
+  - xcb-util-keysyms=0.4.1=h5eee18b_0
+  - xcb-util-renderutil=0.3.10=h5eee18b_0
+  - xcb-util-wm=0.4.2=h5eee18b_0
+  - xkeyboard-config=2.44=h382ed1a_1
+  - xorg-libice=1.1.2=h9b100fa_0
+  - xorg-libsm=1.2.6=h9b100fa_0
+  - xorg-libx11=1.8.12=h9b100fa_1
+  - xorg-libxau=1.0.12=h9b100fa_0
+  - xorg-libxdmcp=1.1.5=h9b100fa_0
+  - xorg-libxext=1.3.6=h9b100fa_0
+  - xorg-libxfixes=6.0.1=h9b100fa_0
+  - xorg-libxrandr=1.5.4=h9b100fa_0
+  - xorg-libxrender=0.9.12=h9b100fa_0
+  - xorg-libxshmfence=1.3.3=h9b100fa_0
+  - xorg-libxxf86vm=1.1.6=h9b100fa_0
+  - xorg-xorgproto=2024.1=h5eee18b_1
+  - xz=5.8.2=h448239c_0
+  - zlib=1.3.1=h47b2149_1
+  - zstd=1.5.7=h11fc155_0
+=== 任務 5：清理暫存 ===
+conda clean --all -y
+（貼上結果，記錄釋放的空間大小，例如 "Removed XX MB"）
+Will remove 249 (517.7 MB) tarball(s).
+Will remove 1 index cache(s).
+Will remove 16 (13.3 MB) package(s).
+There are no tempfile(s) to remove.
+There are no logfile(s) to remove.
+
+=== 任務 6：觀念回答 ===
+Q1：為什麼不要直接在 base 環境安裝專案套件？這樣做有什麼壞處？
+A1：base 環境是 conda 本身運作的基礎，直接在裡面安裝專案套件有以下壞處。
+第一，套件衝突：不同專案可能需要同一套件的不同版本，例如 A 專案需要 numpy 1.24，
+B 專案需要 numpy 2.0，裝在同一環境會互相覆蓋，導致其中一個專案無法正常執行。
+第二，難以還原：base 環境一旦被裝壞，整個 conda 可能無法正常運作，修復困難。
+第三，無法重現環境：因為 base 混雜了所有專案的套件，無法針對單一專案匯出乾淨的 environment.yml。
+第四，環境越來越臃腫，長期累積後管理困難。正確做法是每個專案建立獨立的虛擬環境，讓各專案互不干擾。
+
+Q2：conda install 和 pip install 有什麼差異？什麼情況下會建議用 pip？
+A2：conda install 的套件來源是 Anaconda 或 conda-forge 頻道，除了管理 Python 套件之外，
+也會一併處理系統層級的函式庫相依性，例如 BLAS、CUDA 等，適合科學計算類套件的安裝。
+pip install 的套件來源是 PyPI，幾乎所有 Python 套件都可以找到，但只管理 Python 套件本身，不處理系統函式庫。
+建議使用 pip 的情況有三種：第一，conda 頻道找不到該套件時；第二，套件只發布在 PyPI 上時；
+第三，需要安裝 GitHub 上的開發版本時，例如 pip install git+https://...。
+需要注意的是，在同一個 conda 環境中混用兩者時，建議先用 conda 安裝，最後再用 pip 補充，避免相依性衝突。
+
+Q3：environment.yml 的用途是什麼？換電腦時要怎麼用它快速重建環境？
+A3：environment.yml 是環境的設定檔，記錄了環境名稱、使用的 conda 頻道、所有已安裝的套件與版本，
+以及透過 pip 安裝的套件。它的用途是讓別人或未來的自己可以用同一份檔案，在任何電腦上重建出完全相同的環境，
+確保程式能夠重現執行結果，常用於團隊協作或跨裝置開發。換電腦時的重建步驟如下：
+第一步，將 environment.yml 複製到新電腦，或從 Git 儲存庫拉取；
+第二步，執行 conda env create -f environment.yml，conda 會自動依照設定檔安裝所有套件；
+第三步，執行 conda activate 環境名稱 啟動環境，即可還原到和原本完全一樣的開發環境，不需要手動逐一重裝套件。
