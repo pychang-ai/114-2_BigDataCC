@@ -1,0 +1,117 @@
+## 第 4 題：統計與多表查詢
+
+延續前面的資料，完成統計查詢，將過程存入 `week08/q4_stats.txt`：
+
+```
+姓名：蔡异堤
+學號：C112181144
+
+=== 任務 1：統計函數 ===
+請寫出 SQL 並貼上結果：
+
+Q1：查詢船舶總數、平均噸位、最大噸位、最小噸位
+SELECT 
+    COUNT(*) AS '船舶總數', 
+    AVG(tonnage) AS '平均噸位', 
+    MAX(tonnage) AS '最大噸位', 
+    MIN(tonnage) AS '最小噸位' 
+FROM ships;
++--------------+--------------+--------------+--------------+
+| 船舶總數     | 平均噸位     | 最大噸位     | 最小噸位     |
++--------------+--------------+--------------+--------------+
+|            5 |  146188.0000 |       221000 |        85000 |
++--------------+--------------+--------------+--------------+
+
+Q2：查詢噸位最大的前 3 艘船（使用 ORDER BY + LIMIT）
+SELECT * FROM ships 
+ORDER BY tonnage DESC 
+LIMIT 3;
+
++----+-------------------+-----------+---------+--------------+
+| id | ship_name         | ship_type | tonnage | arrival_date |
++----+-------------------+-----------+---------+--------------+
+|  1 | Ever Given        | Container |  221000 | 2026-04-10   |
+|  5 | Kaohsiung Express | Container |  180000 | 2026-04-14   |
+|  2 | Yang Ming Wish    | Container |  150000 | 2026-04-11   |
++----+-------------------+-----------+---------+--------------+
+
+=== 任務 2：GROUP BY 分組統計 ===
+
+Q3：統計每種船型（ship_type）的船舶數量和平均噸位
+SELECT ship_type, COUNT(*) AS '船舶數量', AVG(tonnage) AS '平均噸位'
+FROM ships
+GROUP BY ship_type;
+
++-----------+--------------+--------------+
+| ship_type | 船舶數量     | 平均噸位     |
++-----------+--------------+--------------+
+| Container |            3 |  183666.6667 |
+| Bulk      |            1 |   85000.0000 |
+| Tanker    |            1 |   95000.0000 |
++-----------+--------------+--------------+
+
+Q4：統計每種職位（rank）的船員人數和平均薪水
+SELECT `rank`, COUNT(*) AS '船員人數', AVG(salary) AS '平均薪水'
+FROM crew
+GROUP BY `rank`;
+
++----------+--------------+--------------+
+| rank     | 船員人數     | 平均薪水     |
++----------+--------------+--------------+
+| Captain  |            2 |  147500.0000 |
+| Engineer |            2 |   93500.0000 |
+| Officer  |            2 |   88500.0000 |
+| Crew     |            1 |   52000.0000 |
++----------+--------------+--------------+
+
+=== 任務 3：LEFT JOIN 多表查詢 ===
+
+Q5：查詢每位船員的姓名、職位、薪水，以及他所屬的船名
+提示：用 LEFT JOIN 把 crew 和 ships 接起來
+SELECT crew.name, crew.rank, crew.salary, ships.ship_name
+FROM crew
+LEFT JOIN ships ON crew.ship_id = ships.id;
+
++-----------+----------+-----------+-------------------+
+| name      | rank     | salary    | ship_name         |
++-----------+----------+-----------+-------------------+
+| 林曉明    | Captain  | 150000.00 | Ever Given        |
+| 陳志強    | Engineer |  95000.00 | Ever Given        |
+| 張美玲    | Officer  |  88000.00 | Yang Ming Wish    |
+| 王大同    | Crew     |  52000.00 | Yang Ming Wish    |
+| 李嘉欣    | Captain  | 145000.00 | Formosa 1         |
+| 趙子龍    | Engineer |  92000.00 | Ocean Star        |
+| 孫悟空    | Officer  |  89000.00 | Kaohsiung Express |
++-----------+----------+-----------+-------------------+
+
+Q6：找出沒有任何船員的船舶
+提示：LEFT JOIN + WHERE ... IS NULL
+
+mysql> INSERT INTO ships (ship_name, ship_type, tonnage, arrival_date)
+    -> VALUES ('Ghost Ship', 'Tanker', 50000, '2026-04-15');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> SELECT ships.ship_name
+    -> FROM ships
+    -> LEFT JOIN crew ON ships.id = crew.ship_id
+    -> WHERE crew.id IS NULL;
++------------+
+| ship_name  |
++------------+
+| Ghost Ship |
++------------+
+
+請回答：
+Q：LEFT JOIN 和直接查兩張表（SELECT * FROM crew, ships WHERE ...）有什麼不同？
+   提示：想想「沒有船員的船」在兩種寫法下會不會出現。
+A：
+主要的區別在於對於 「不完全匹配資料」 的處理方式：
+
+直接查兩張表（等同於 INNER JOIN）：這種寫法只會顯示「兩張表都有對應資料」的結果。如果有一艘船目前沒有分配任何船員，那麼這艘船在結果中會完全消失。
+
+LEFT JOIN：它會以左邊的表（例如 ships）為主，即便右邊的表（crew）沒有對應資料，左表的資料依然會出現，只是右邊的欄位會顯示為 NULL。
+
+這就是為什麼 Q6 必須使用 LEFT JOIN 的原因：只有這樣我們才能保證看到「所有的船」，然後再透過 WHERE ... IS NULL 過濾出那些沒有船員對應的船隻。
+```
+
+---
