@@ -1,0 +1,40 @@
+姓名：呂依裴
+學號：C112181137
+
+Q1：chown 和 chmod 有什麼不同？請分別說明它們的功能，並各舉一個使用情境。
+A1：
+chown:用來更改檔案或目錄的「擁有者」或「所屬群組」。
+使用情境： 老師把範例程式傳給你，檔案擁有者是 teacher，你為了方便修改，使用 sudo chown student208 file.txt 把檔案變成你的。
+chmod:用來更改檔案或目錄的「存取權限」（讀、寫、執行）。
+使用情境： 你寫了一個 shell 腳本 script.sh，但系統不讓你執行，你使用 chmod +x script.sh 來賦予它「執行」的權限。
+
+Q2：你和 3 位同學要合作做專題，需要在 Linux 上建立一個共用資料夾，
+    讓組員都能讀寫檔案，但其他人不能存取。
+    請寫出你會使用的指令（提示：需要建立群組、設定目錄的群組和權限）。
+A2：
+建立群組：
+sudo groupadd project_group
+
+將組員加入群組（以自己為例）：
+sudo usermod -aG project_group u306 (其他三位同學也比照辦理)
+
+建立資料夾並更改所屬群組：
+mkdir project_folder
+sudo chown :project_group project_folder
+
+設定權限（組員可讀寫，其他人禁止）：
+chmod 770 project_folder
+(註：770 代表 擁有者全開(7)、群組全開(7)、其他人全關(0))
+
+Q3：Linux 判斷權限時，是按什麼順序檢查的？
+    假設一個檔案的權限是 rwxr-x---，擁有者是 alice，群組是 project。
+    請回答以下三個人分別能做什麼操作：
+    (a) alice（擁有者）能做什麼？
+    (b) bob（屬於 project 群組）能做什麼？
+    (c) charlie（不屬於 project 群組）能做什麼？
+A3：
+
+檢查順序： Linux 會由左至右、由身分由近到遠檢查：擁有者 (User) $\rightarrow$ 群組 (Group) $\rightarrow$ 其他人 (Others)。一旦符合身分，就套用該權限，不再往下看。針對檔案權限 rwx r-x ---：
+(a) alice (擁有者)： 對應 rwx。她可以讀取 (r)、修改/寫入 (w) 以及執行 (x) 該檔案。
+(b) bob (屬於 project 群組)： 對應 r-x。他可以讀取 (r) 和執行 (x) 該檔案，但不能修改內容 (沒有 w)。
+(c) charlie (其他人)： 對應 ---。他完全不能操作該檔案（不能看、不能改、不能跑）。
