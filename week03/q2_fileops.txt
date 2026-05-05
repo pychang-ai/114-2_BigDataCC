@@ -1,0 +1,39 @@
+姓名：何昇輔
+學號：C112181104
+
+=== 步驟 1：mkdir week03test ===
+（貼上結果，無輸出則寫「無輸出」）
+無輸出
+=== 步驟 2：cd week03test ===
+（貼上結果）
+student108@linux-server1:~/week03test$
+=== 步驟 3：建立三個檔案 ===
+使用的指令：
+（寫出你用的指令）
+touch test1.txt
+touch hello.txt
+touch vm.txt
+=== 步驟 4：ls -l ===
+（貼上結果）
+total 0
+-rw-rw-r--. 1 student108 student108 0 Mar 24 08:15 hello.txt
+-rw-rw-r--. 1 student108 student108 0 Mar 24 08:09 test1.txt
+-rw-rw-r--. 1 student108 student108 0 Mar 24 08:16 vm.txt
+
+=== 步驟 5：cp hello.txt hello_backup.txt ===
+（貼上結果）
+無輸出
+=== 步驟 6：mv vm.txt virtualization.txt ===
+（貼上結果）
+無輸出
+=== 步驟 7：ls -l（最終結果） ===
+（貼上結果）
+-rw-rw-r--. 1 student108 student108 0 Mar 24 08:15 hello.txt
+-rw-rw-r--. 1 student108 student108 0 Mar 24 08:17 hello_backup.txt
+-rw-rw-r--. 1 student108 student108 0 Mar 24 08:09 test1.txt
+-rw-rw-r--. 1 student108 student108 0 Mar 24 08:16 virtualization.txt
+=== 問答 ===
+Q：最終目錄中有哪些檔案？和步驟 4 相比，發生了什麼變化？
+A：（用自己的話回答）
+cp 會複製檔案， mv 會改名字
+
