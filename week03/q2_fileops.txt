@@ -1,0 +1,63 @@
+## 第 2 題：檔案操作實作（40 分）
+
+在 Linux 環境中依序完成以下操作，將過程與結果存入 `week03/q2_fileops.txt`：
+
+1. `mkdir week03test`
+2. `cd week03test`
+3. 建立三個檔案：hello.txt、learning.txt、vm.txt
+4. `ls -l` 確認檔案
+5. `cp hello.txt hello_backup.txt`
+6. `mv vm.txt virtualization.txt`
+7. 最終 `ls -l` 確認結果
+
+q2_fileops.txt 格式：
+
+```
+姓名：傅瀚鋌
+學號：C112181112
+
+=== 步驟 1：mkdir week03test ===
+無輸出
+
+=== 步驟 2：cd week03test ===
+student115@linux-server1:~/week03test$
+
+=== 步驟 3：建立三個檔案 ===
+使用的指令：
+touch ~/week03test/hello.txt
+touch ~/week03test/learning.txt
+touch ~/week03test/vm.txt
+
+=== 步驟 4：ls -l ===
+-rw-rw-r--. 1 student115 student115 0 Mar 24 07:21 hello.txt
+-rw-rw-r--. 1 student115 student115 0 Mar 24 07:21 learning.txt
+-rw-rw-r--. 1 student115 student115 0 Mar 24 07:21 vm.txt
+
+
+=== 步驟 5：cp hello.txt hello_backup.txt ===
+
+
+=== 步驟 6：mv vm.txt virtualization.txt ===
+
+
+=== 步驟 7：ls -l（最終結果） ===
+total 0
+-rw-rw-r--. 1 student115 student115 0 Mar 24 07:21 hello.txt
+-rw-rw-r--. 1 student115 student115 0 Mar 24 07:21 learning.txt
+-rw-rw-r--. 1 student115 student115 0 Mar 24 07:21 vm.txt
+student115@linux-server1:~/week03test$ ^C
+student115@linux-server1:~/week03test$ cp hello.txt hello_backup.txt
+student115@linux-server1:~/week03test$ mv vm.txt virtualization.txt
+student115@linux-server1:~/week03test$ ls -l
+total 0
+-rw-rw-r--. 1 student115 student115 0 Mar 24 07:21 hello.txt
+-rw-rw-r--. 1 student115 student115 0 Mar 24 07:22 hello_backup.txt
+-rw-rw-r--. 1 student115 student115 0 Mar 24 07:21 learning.txt
+-rw-rw-r--. 1 student115 student115 0 Mar 24 07:21 virtualization.txt
+student115@linux-server1:~/week03test$
+
+
+=== 問答 ===
+Q：最終目錄中有哪些檔案？和步驟 4 相比，發生了什麼變化？
+A：3個多了一個hello_backup.txt
+```

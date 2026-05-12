@@ -1,0 +1,91 @@
+### 第 1 題：Conda 環境建立與套件管理
+
+請在電腦上完成以下任務，將每步指令與輸出存入 `week10/q1_conda.txt`：
+
+```
+姓名：傅瀚鋌
+學號：C112181112
+
+=== 任務 1：確認 Conda 版本 ===
+conda --version
+conda 25.11.1
+
+conda info
+（貼上結果，至少包含 conda version、active environment、base environment 三行）
+conda version : 25.11.1
+active environment : C:\Users\Teacher\anaconda3
+base environment : C:\ProgramData\anaconda3  (read only)
+
+=== 任務 2：建立新環境 ===
+建立一個名為「學號_w10」的環境，Python 版本指定為 3.11
+（例如學號 A11218001 → A11218001_w10）
+
+conda create -n [你的學號]_w10 python=3.11 -y
+（貼上最後幾行結果，看到 "done" 字樣）
+done                                                                                                                                                                            
+#                                                                                                                                                                               
+# To activate this environment, use                                                                                                                                             
+#                                                                                                                                                                               
+#     $ conda activate C112181112_w10                                                                                                                                           
+#                                                                                                                                                                               
+# To deactivate an active environment, use                                                                                                                                      
+#                                                                                                                                                                               
+#     $ conda deactivate    
+
+conda env list
+（貼上結果，確認環境出現在清單中）
+# conda environments:                                                                                                                                                           
+#
+# * -> active
+# + -> frozen
+base                     C:\ProgramData\anaconda3
+C112181112_w10           C:\Users\Teacher\.conda\envs\C112181112_w10
+                     *   C:\Users\Teacher\anaconda3
+                         C:\Users\Teacher\miniconda3
+
+=== 任務 3：啟動環境並安裝套件 ===
+conda activate [你的學號]_w10
+（貼上提示符變化，例如：(A11218001_w10) user@host:~$）
+
+conda install pandas numpy matplotlib -y
+（貼上最後幾行結果）
+Downloading and Extracting Packages:
+                                                                                                                                                                               
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+
+conda list | head -20
+（貼上結果，確認 pandas、numpy、matplotlib 都在）
+matplotlib                       3.10.6                py313haa95532_1
+matplotlib-base                  3.10.6                py313h26e45b9_1
+matplotlib-inline                0.2.1                 py313haa95532_0
+numpy                            2.3.5                 py313h050da96_0
+numpy-base                       2.3.5                 py313h1e017a8_0
+numpydoc                         1.9.0                 py313haa95532_0
+pandas                           2.3.3                 py313h42c1672_1
+
+=== 任務 4：匯出環境設定檔 ===
+conda env export > week10/environment.yml
+cat week10/environment.yml
+（貼上 environment.yml 完整內容）
+
+=== 任務 5：清理暫存 ===
+conda clean --all -y
+（貼上結果，記錄釋放的空間大小，例如 "Removed XX MB"）
+Will remove 16 (31.5 MB) tarball(s).
+Will remove 1 index cache(s).
+Will remove 1 (59 KB) package(s).
+There are no tempfile(s) to remove.
+There are no logfile(s) to remove.
+
+=== 任務 6：觀念回答 ===
+Q1：為什麼不要直接在 base 環境安裝專案套件？這樣做有什麼壞處？
+A1：因為容易造成套件版本衝突、環境混亂，且會影響 Conda 本身穩定性，也不利於不同專案之間的隔離與重現。建議為每個專案建立獨立環境。
+
+Q2：conda install 和 pip install 有什麼差異？什麼情況下會建議用 pip？
+A2：conda install 可處理套件與系統相依性，穩定性較高；pip install 套件較多、更新較快。當 conda 找不到套件或需要最新版本時，會使用 pip（通常先 conda 再 pip）。
+
+Q3：environment.yml 的用途是什麼？換電腦時要怎麼用它快速重建環境？
+A3：用來記錄環境設定（Python、套件、版本），方便重現環境。換電腦時可用conda env create -f environment.yml 快速建立相同環境。
+```
