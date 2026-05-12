@@ -1,1 +1,38 @@
+姓名：林秉賢
+學號：C112181148
 
+=== 步驟 1：mkdir week03test ===
+（貼上結果，無輸出則寫「無輸出」）
+無輸出
+=== 步驟 2：cd week03test ===
+（貼上結果）
+無輸出
+=== 步驟 3：建立三個檔案 ===
+使用的指令：
+（寫出你用的指令）
+使用的指令：
+touch hello.txt vm.txt linux.txt
+=== 步驟 4：ls -l ===
+（貼上結果）
+total 0
+-rw-r--r-- 1 student student 0 May 12 14:40 hello.txt
+-rw-r--r-- 1 student student 0 May 12 14:40 linux.txt
+-rw-r--r-- 1 student student 0 May 12 14:40 vm.txt
+=== 步驟 5：cp hello.txt hello_backup.txt ===
+（貼上結果）
+無輸出
+=== 步驟 6：mv vm.txt virtualization.txt ===
+（貼上結果）
+無輸出
+=== 步驟 7：ls -l（最終結果） ===
+（貼上結果）
+total 0
+-rw-r--r-- 1 student student 0 May 12 14:40 hello.txt
+-rw-r--r-- 1 student student 0 May 12 14:40 hello_backup.txt
+-rw-r--r-- 1 student student 0 May 12 14:40 linux.txt
+-rw-r--r-- 1 student student 0 May 12 14:40 virtualization.txt
+=== 問答 ===
+Q：最終目錄中有哪些檔案？和步驟 4 相比，發生了什麼變化？
+A：（用自己的話回答）
+最終目錄中有 hello.txt、hello_backup.txt、linux.txt 與 virtualization.txt 四個檔案。
+和步驟 4 相比，多了一個 hello_backup.txt 備份檔案，另外 vm.txt 被重新命名成 virtualization.txt。
