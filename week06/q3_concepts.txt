@@ -1,0 +1,26 @@
+姓名：李翊丞
+學號：C111181134
+
+Q1：chown 和 chmod 有什麼不同？請分別說明它們的功能，並各舉一個使用情境。
+A1：chown:用來修改檔案或目錄的「擁有者 (Owner)」或「所屬群組 (Group)」。它決定了檔案「歸誰管」
+當你用 sudo 建立了一個設定檔，但之後想讓普通使用者 user 也能直接修改，你會執行 sudo chown user config.txt 來移交所有權
+
+chmod:用來修改檔案或目錄的「存取權限」。它決定了不同身份的人「能做什麼」
+你寫了一個 Shell 腳本，卻發現無法執行（Permission denied），此時會執行 chmod +x script.sh 來賦予執行權限
+
+Q2：你和 3 位同學要合作做專題，需要在 Linux 上建立一個共用資料夾，
+    讓組員都能讀寫檔案，但其他人不能存取。
+    請寫出你會使用的指令（提示：需要建立群組、設定目錄的群組和權限）。
+A2：建立群組：sudo groupadd pro_team
+將資料夾的群組修改為專案群組：sudo chgrp pro_team project_shared
+設定權限（擁有者與群組可讀寫執行，其他人完全無法存取）：chmod 770 project_shared
+
+Q3：Linux 判斷權限時，是按什麼順序檢查的？
+    假設一個檔案的權限是 rwxr-x---，擁有者是 alice，群組是 project
+    請回答以下三個人分別能做什麼操作：
+    (a) alice（擁有者）能做什麼？
+    (b) bob（屬於 project 群組）能做什麼？
+    (c) charlie（不屬於 project 群組）能做什麼？
+A3：a:具有 rwx 權限。她可以讀取內容、修改或刪除檔案，以及執行該檔案
+b:具有 r-x 權限。他可以讀取檔案、執行檔案，但不能修改內容
+c:具有 --- 權限。他無法進行任何操作
