@@ -1,0 +1,35 @@
+答案1
+Erase is control-H (^H).
+student219@linux-server2:~$ export LANG=en_US.UTF-8
+student219@linux-server2:~$ nano ~/intro.txt
+student219@linux-server2:~$ cat ~/intro.txt
+Name: ed
+ID: c112181153
+Dept: X
+Interest: X
+Expectation: Learn Linux
+student219@linux-server2:~$
+
+
+答案二
+Expectation: Learn Linux
+student219@linux-server2:~$ date
+Mon Mar 30 12:53:15 UTC 2026
+student219@linux-server2:~$ nano ~/intro.txt
+student219@linux-server2:~$ cat ~/intro.txt
+Name: ed
+ID: c112181153
+Dept: X
+Interest: X
+Expectation: Learn Linux
+Mon Mar 30 19:50:00 CST 2026
+student219@linux-server2:~$
+
+
+
+答案三
+Ctrl + O：儲存檔案
+Ctrl + X：離開 nano
+Ctrl + K：剪下整行
+Ctrl + U：貼上
+Ctrl + G：顯示說明

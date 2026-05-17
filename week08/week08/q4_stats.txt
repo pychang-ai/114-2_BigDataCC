@@ -1,0 +1,140 @@
+姓名:許一德
+學號:c112181153
+
+=== 任務 1：統計函數 ===
+請寫出 SQL 並貼上結果：
+
+Q1：查詢船舶總數、平均噸位、最大噸位、最小噸位
+SELECT 
+    COUNT(*) AS total_ships,
+    AVG(tonnage) AS avg_tonnage,
+    MAX(tonnage) AS max_tonnage,
+    MIN(tonnage) AS min_tonnage
+FROM ships;
+
+mysql> SELECT
+NT(*) AS     ->     COUNT(*) AS total_ships,
+    ->     AVG(tonnage) AS avg_tonnage,
+    ->     MAX(tonnage) AS max_tonnage,
+    ->     MIN(tonnage) AS min_tonnage
+    -> FROM ships;
++-------------+-------------+-------------+-------------+
+| total_ships | avg_tonnage | max_tonnage | min_tonnage |
++-------------+-------------+-------------+-------------+
+|           5 | 146200.0000 |      221000 |       85000 |
++-------------+-------------+-------------+-------------+
+1 row in set (0.00 sec)
+
+Q2：查詢噸位最大的前 3 艘船（使用 ORDER BY + LIMIT）
+SELECT *
+FROM ships
+ORDER BY tonnage DESC
+LIMIT 3;
+
+mysql> SELECT *
+RDER    -> FROM ships
+ BY t    -> ORDER BY tonnage DESC
+    -> LIMIT 3;
++----+-------------------+-----------+---------+--------------+
+| id | ship_name         | ship_type | tonnage | arrival_date |
++----+-------------------+-----------+---------+--------------+
+|  1 | Ever Given        | Container |  221000 | 2026-04-10   |
+|  5 | Kaohsiung Express | Container |  180000 | 2026-04-14   |
+|  2 | Yang Ming Wish    | Container |  150000 | 2026-04-11   |
++----+-------------------+-----------+---------+--------------+
+3 rows in set (0.00 sec)
+
+=== 任務 2：GROUP BY 分組統計 ===
+Q3：統計每種船型（ship_type）的船舶數量和平均噸位
+SELECT 
+    ship_type,
+    COUNT(*) AS ship_count,
+    AVG(tonnage) AS avg_tonnage
+FROM ships
+GROUP BY ship_type;
+
+mysql> SELECT
+    ->     ship_type,
+    ->     COUNT(*) AS ship_count,
+    ->     AVG(tonnage) AS avg_tonnage
+    -> FROM ships
+    -> GROUP BY ship_type;
++-----------+------------+-------------+
+| ship_type | ship_count | avg_tonnage |
++-----------+------------+-------------+
+| Container |          3 | 183666.6667 |
+| Bulk      |          1 |  85000.0000 |
+| Tanker    |          1 |  95000.0000 |
++-----------+------------+-------------+
+3 rows in set (0.00 sec)
+
+Q4：統計每種職位（rank）的船員人數和平均薪水
+SELECT 
+    position,
+    COUNT(*) AS crew_count,
+    AVG(salary) AS avg_salary
+FROM crew
+GROUP BY position;
+
+mysql> SELECT
+    ->     position,
+COUN    ->     COUNT(*) AS crew_count,
+    ->     AVG(salary) AS avg_salary
+    -> FROM crew
+    -> GROUP BY position;
++----------+------------+--------------+
+| position | crew_count | avg_salary   |
++----------+------------+--------------+
+| Captain  |          2 | 85000.000000 |
+| Officer  |          2 | 53500.000000 |
+| Engineer |          2 | 59000.000000 |
+| Crew     |          1 | 32000.000000 |
++----------+------------+--------------+
+4 rows in set (0.00 sec)
+
+=== 任務 3：LEFT JOIN 多表查詢 ===
+Q5：查詢每位船員的姓名、職位、薪水，以及他所屬的船名
+SELECT 
+    crew.name,
+    crew.position,
+    crew.salary,
+    ships.ship_name
+FROM crew
+LEFT JOIN ships
+ON crew.ship_id = ships.id;
+mysql> SELECT
+    ->     crew.name,
+    ->     crew.position,
+    ->     crew.salary,
+    ->     ships.ship_name
+    -> FROM crew
+    -> LEFT JOIN ships
+    -> ON crew.ship_id = ships.id;
++-------+----------+----------+-------------------+
+| name  | position | salary   | ship_name         |
++-------+----------+----------+-------------------+
+| John  | Captain  | 80000.00 | Ever Given        |
+| Mary  | Officer  | 55000.00 | Ever Given        |
+| Tom   | Engineer | 60000.00 | Yang Ming Wish    |
+| Kevin | Officer  | 52000.00 | Formosa 1         |
+| Linda | Engineer | 58000.00 | Formosa 1         |
+| David | Captain  | 90000.00 | Ocean Star        |
+| Emma  | Crew     | 32000.00 | Kaohsiung Express |
++-------+----------+----------+-------------------+
+7 rows in set (0.00 sec)
+Q6：找出沒有任何船員的船舶
+mysql> SELECT ships.*
+    -> FROM ships
+    -> LEFT JOIN crew
+    -> ON ships.id = crew.ship_id
+    -> WHERE crew.id IS NULL;
+Empty set (0.00 sec)
+
+mysql>
+
+請回答：
+Q：LEFT JOIN 和直接查兩張表（SELECT * FROM crew, ships WHERE ...）有什麼不同？
+   提示：想想「沒有船員的船」在兩種寫法下會不會出現。
+A：LEFT JOIN 會保留「左邊資料表（ships）」的所有資料，即使在右邊（crew）沒有對應資料，也會顯示出來，沒有匹配的欄位會顯示 NULL。
+
+而 SELECT * FROM crew, ships WHERE ...（舊式寫法 / 隱式 INNER JOIN）只會顯示「兩張表有成功配對到資料的結果」，沒有對應資料的船不會出現。
