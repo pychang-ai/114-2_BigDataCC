@@ -1,0 +1,68 @@
+姓名：何品賢
+學號：C112181113
+
+=== 任務 1：探索 Linux 目錄結構 ===
+
+u306@U6:/mnt/c/Windows/system32$ ls /
+bin                boot  etc   init  lib.usr-is-merged  lost+found  mnt  proc  run   sbin.usr-is-merged  srv  tmp  var
+bin.usr-is-merged  dev   home  lib   lib64              media       opt  root  sbin  snap                sys  usr
+
+請從上面的結果中，說明以下 5 個目錄各是做什麼的：
+/home：
+存放一般使用者的家目錄，每個使用者通常都有自己的資料夾，例如 /home/u306。
+
+/etc：
+存放系統的設定檔，像是使用者資訊、網路設定、服務設定等。
+
+/var：
+存放經常會變動的資料，例如系統日誌、快取、郵件、資料庫內容等。
+
+/tmp：
+存放暫存檔，讓程式或使用者暫時放資料，通常重開機後可能會被清掉。
+
+/usr：
+存放大部分使用者可用的程式、指令、函式庫與文件，例如很多常用指令都在這裡。
+
+=== 任務 2：查看空間與檔案統計 ===
+
+u306@U6:/mnt/c/Windows/system32$ du -sh ~
+36K     /home/u306
+
+u306@U6:/mnt/c/Windows/system32$ find ~ -type f | wc -l
+7
+
+u306@U6:/mnt/c/Windows/system32$ find ~ -type d | wc -l
+4
+
+=== 任務 3：chown 與 chgrp 實作 ===
+
+步驟 1：建立測試檔案並查看預設擁有者
+u306@U6:/mnt/c/Windows/system32$ touch ~/week06_test.txt
+u306@U6:/mnt/c/Windows/system32$ echo "Ownership Test" > ~/week06_test.txt
+u306@U6:/mnt/c/Windows/system32$ ls -l ~/week06_test.txt
+-rw-r--r-- 1 u306 u306 15 Mar 31 14:36 /home/u306/week06_test.txt
+
+步驟 2：建立測試用的使用者和群組
+u306@U6:/mnt/c/Windows/system32$ sudo useradd -m tempuser
+u306@U6:/mnt/c/Windows/system32$ sudo groupadd tempgroup
+無輸出表示成功
+
+步驟 3：用 chown 改變擁有者
+u306@U6:/mnt/c/Windows/system32$ sudo chown tempuser ~/week06_test.txt
+u306@U6:/mnt/c/Windows/system32$ ls -l ~/week06_test.txt
+-rw-r--r-- 1 tempuser u306 15 Mar 31 14:36 /home/u306/week06_test.txt
+
+步驟 4：用 chgrp 改變群組
+u306@U6:/mnt/c/Windows/system32$ ls -l ~/week06_test.txt
+-rw-r--r-- 1 tempuser tempgroup 15 Mar 31 14:36 /home/u306/week06_test.txt
+
+步驟 5：用 chown 一次改回自己
+u306@U6:/mnt/c/Windows/system32$ sudo chown $(whoami):$(whoami) ~/week06_test.txt
+u306@U6:/mnt/c/Windows/system32$ ls -l ~/week06_test.txt
+-rw-r--r-- 1 u306 u306 15 Mar 31 14:36 /home/u306/week06_test.txt
+
+步驟 6：清理
+u306@U6:/mnt/c/Windows/system32$ sudo userdel -r tempuser
+userdel: tempuser mail spool (/var/mail/tempuser) not found
+u306@U6:/mnt/c/Windows/system32$ sudo groupdel tempgroup
+
