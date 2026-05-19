@@ -1,0 +1,84 @@
+姓名：凌賜桐
+學號：C112181110
+
+=== 任務 1：統計函數 ===
+請寫出 SQL 並貼上結果：
+
+Q1：查詢船舶總數、平均噸位、最大噸位、最小噸位
+mysql> SELECT COUNT(*), AVG(tonnage), MAX(tonnage), MIN(tonnage) FROM ships;
++----------+---------------+--------------+--------------+
+| COUNT(*) | AVG(tonnage)  | MAX(tonnage) | MIN(tonnage) |
++----------+---------------+--------------+--------------+
+|        5 | 146200.0000   |       221000 |        85000 |
++----------+---------------+--------------+--------------+
+1 row in set (0.00 sec)
+
+Q2：查詢噸位最大的前 3 艘船（使用 ORDER BY + LIMIT）
+mysql> SELECT * FROM ships ORDER BY tonnage DESC LIMIT 3;
++----+-------------------+-----------+---------+--------------+
+| id | ship_name         | ship_type | tonnage | arrival_date |
++----+-------------------+-----------+---------+--------------+
+|  1 | Ever Given        | Container |  221000 | 2026-04-10   |
+|  5 | Kaohsiung Express | Container |  180000 | 2026-04-14   |
+|  2 | Yang Ming Wish    | Container |  150000 | 2026-04-11   |
++----+-------------------+-----------+---------+--------------+
+3 rows in set (0.00 sec)
+
+=== 任務 2：GROUP BY 分組統計 ===
+
+Q3：統計每種船型（ship_type）的船舶數量和平均噸位
+mysql> SELECT ship_type, COUNT(*), AVG(tonnage) FROM ships GROUP BY ship_type;
++-----------+----------+--------------+
+| ship_type | COUNT(*) | AVG(tonnage) |
++-----------+----------+--------------+
+| Container |        3 | 183666.6667  |
+| Bulk      |        1 |  85000.0000  |
+| Tanker    |        1 |  95000.0000  |
++-----------+----------+--------------+
+3 rows in set (0.00 sec)
+
+Q4：統計每種職位（rank）的船員人數和平均薪水
+mysql> SELECT rank, COUNT(*), AVG(salary) FROM crew GROUP BY rank;
++----------+----------+-------------+
+| rank     | COUNT(*) | AVG(salary) |
++----------+----------+-------------+
+| Captain  |        2 | 140000.0000 |
+| Officer  |        2 |  81500.0000 |
+| Engineer |        2 |  93500.0000 |
+| Crew     |        1 |  48000.0000 |
++----------+----------+-------------+
+4 rows in set (0.00 sec)
+
+=== 任務 3：LEFT JOIN 多表查詢 ===
+
+Q5：查詢每位船員的姓名、職位、薪水，以及他所屬的船名
+提示：用 LEFT JOIN 把 crew 和 ships 接起來
+mysql> SELECT c.name, c.rank, c.salary, s.ship_name 
+    -> FROM crew c 
+    -> LEFT JOIN ships s ON c.ship_id = s.id;
++---------+----------+-----------+-------------------+
+| name    | rank     | salary    | ship_name         |
++---------+----------+-----------+-------------------+
+| Alice   | Captain  | 150000.00 | Ever Given        |
+| Bob     | Officer  |  85000.00 | Ever Given        |
+| Charlie | Engineer |  92000.00 | Yang Ming Wish    |
+| Eve     | Captain  | 130000.00 | Formosa 1         |
+| Frank   | Officer  |  78000.00 | Formosa 1         |
+| Grace   | Engineer |  95000.00 | Ocean Star        |
+| Hank    | Crew     |  48000.00 | Kaohsiung Express |
++---------+----------+-----------+-------------------+
+7 rows in set (0.00 sec)
+
+Q6：找出沒有任何船員的船舶
+提示：LEFT JOIN + WHERE ... IS NULL
+mysql> SELECT s.ship_name 
+    -> FROM ships s 
+    -> LEFT JOIN crew c ON s.id = c.ship_id 
+    -> WHERE c.id IS NULL;
+Empty set (0.00 sec)
+(註：因為前面新增的船員剛好每艘船都有配置，所以結果為空。若要產生結果，可以再新增一艘沒有船員的船。)
+
+請回答：
+Q：LEFT JOIN 和直接查兩張表（SELECT * FROM crew, ships WHERE ...）有什麼不同？
+   提示：想想「沒有船員的船」在兩種寫法下會不會出現。
+A：直接查兩張表（等同於 INNER JOIN），只會顯示兩張表中條件相符的資料，因此「沒有船員的船」或是「沒有指派船的船員」都不會出現。而 LEFT JOIN 會保留左邊表（主表）的所有資料，即使右邊表沒有符合的資料，也會顯示出來（對應的欄位會補上 NULL）。因此，如果要找出「沒有船員的船」，就必須把 ships 當作左邊表使用 LEFT JOIN，並過濾出 crew 欄位為 NULL 的資料。

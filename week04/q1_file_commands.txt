@@ -1,0 +1,55 @@
+姓名：凌賜桐
+學號：C112181110
+
+##
+/home/student113/week04
+|-- dir1
+|   |-- file1.txt
+|   `-- subdir1
+|       `-- file2.txt
+`-- dir2
+    `-- file3.txt
+
+3 directories, 3 files
+
+##
+student113@linux-server1:~$ cat ~/week04/dir1/file1.txt
+Hello Linux
+
+student113@linux-server1:~$ cat ~/week04/dir1/subdir1/file2.txt
+Bash Shell Practice
+
+student113@linux-server1:~$ cat ~/week04/dir2/file3.txt
+Week 04 Assignment
+
+##
+student113@linux-server1:~$ cat /etc/passwd | head -5
+cat /etc/passwd | tail -3
+wc -l /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+student228:x:1059:1059::/home/student228:/bin/bash
+student229:x:1060:1060::/home/student229:/bin/bash
+student230:x:1061:1061::/home/student230:/bin/bash
+82 /etc/passwd
+student113@linux-server1:~$
+student113@linux-server1:~$
+student113@linux-server1:~$
+student113@linux-server1:~$
+student113@linux-server1:~$
+student113@linux-server1:~$ cat /etc/passwd | head -5
+cat /etc/passwd | tail -3
+wc -l /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+student228:x:1059:1059::/home/student228:/bin/bash
+student229:x:1060:1060::/home/student229:/bin/bash
+student230:x:1061:1061::/home/student230:/bin/bash
+82 /etc/passwd
+
