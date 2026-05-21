@@ -95,7 +95,7 @@ INSERT INTO ships (ship_name, ship_type, tonnage, arrival_date) VALUES
 3. 在終端機中執行整個檔案：
 
 ```bash
-mysql -u root -p < week08.sql
+sudo mysql < week08.sql
 ```
 
 > 好處：SQL 語句可以保存、修改、重複使用，不用每次重新輸入。
@@ -145,9 +145,25 @@ wsl --list --verbose
 wsl --install -d Ubuntu
 ```
 
-### 1.2 進入 WSL 並安裝 MySQL
+### 1.2 確認 MySQL 環境
 
-開啟 WSL 終端機（或在 PowerShell 中輸入 `wsl`）：
+WSL Ubuntu **預設已內建 MySQL（MariaDB）**，不需要另外安裝，也**不需要設定密碼**。
+
+開啟 WSL 終端機（或在 PowerShell 中輸入 `wsl`），啟動服務即可使用：
+
+```bash
+# 啟動 MySQL 服務
+sudo service mysql start
+
+# 確認 MySQL 正在運行
+sudo service mysql status
+```
+
+> 每次開啟 WSL 後，MySQL 服務不會自動啟動，記得先執行 `sudo service mysql start`。
+
+#### 如果你的 WSL 沒有 MySQL
+
+部分版本的 WSL Ubuntu 可能未預裝。如果 `sudo service mysql start` 出現找不到服務的錯誤，手動安裝：
 
 ```bash
 # 更新套件庫
@@ -156,11 +172,8 @@ sudo apt update && sudo apt upgrade -y
 # 安裝 MySQL Server
 sudo apt install -y mysql-server
 
-# 啟動 MySQL 服務
+# 啟動服務
 sudo service mysql start
-
-# 確認 MySQL 正在運行
-sudo service mysql status
 ```
 
 #### 常見問題
@@ -170,21 +183,14 @@ sudo service mysql status
 | `service mysql start` 失敗 | 執行 `sudo service mysql restart` 重試 |
 | WSL 沒有 systemctl | WSL 用 `service` 指令取代 `systemctl` |
 | 安裝過程卡住 | 按 Enter 或輸入 Y 確認 |
+| `unmet dependencies` 或 `held broken packages` | 可能已有 MariaDB 佔用。先跑 `sudo apt update && sudo apt upgrade -y`，再跑 `sudo apt --fix-broken install`。若仍失敗，直接使用已有的 MariaDB 即可，SQL 語法完全相容 |
 
-### 1.3 設定 root 密碼並登入
+### 1.3 登入 MySQL
+
+WSL 上的 MySQL **預設不需要密碼**，直接用 `sudo` 登入：
 
 ```bash
-# 用 sudo 直接進入 MySQL（首次不需密碼）
 sudo mysql
-
-# 進入 MySQL 後，設定 root 密碼
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'bigdata2026';
-FLUSH PRIVILEGES;
-EXIT;
-
-# 用密碼重新登入
-mysql -u root -p
-# 輸入密碼：bigdata2026
 ```
 
 登入成功會看到：
@@ -194,7 +200,31 @@ Welcome to the MySQL monitor.  Commands end with ; or \g.
 mysql>
 ```
 
-> 重要：每次開啟 WSL 後，MySQL 服務不會自動啟動，要先執行 `sudo service mysql start`。
+> 本學期所有 MySQL 操作都用 `sudo mysql` 登入即可，不需要設定密碼。
+
+#### 選做：設定 root 密碼
+
+> 以下為選做內容。如果你想練習用帳號密碼登入（業界常見做法），可以操作這個區塊，否則跳過即可。
+
+```bash
+# 用 sudo 進入 MySQL
+sudo mysql
+```
+
+```sql
+-- 設定 root 密碼
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'bigdata2026';
+FLUSH PRIVILEGES;
+EXIT;
+```
+
+```bash
+# 設定後就能用密碼登入
+mysql -u root -p
+# 輸入密碼：bigdata2026
+```
+
+> 設定密碼後，`sudo mysql` 和 `mysql -u root -p` 兩種方式都能登入。
 
 ### 1.4 MySQL 基本操作
 

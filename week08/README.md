@@ -59,26 +59,17 @@ sudo service mysql start
 sudo service mysql status
 （貼上結果，應顯示 running）
 
-=== 任務 3：設定密碼並登入 ===
+=== 任務 3：登入 MySQL ===
 
-步驟 1：進入 MySQL 設定密碼
+步驟 1：用 sudo 登入 MySQL（WSL 預設不需要密碼）
 sudo mysql
-（進入後執行以下 SQL）
+（貼上登入成功畫面，應顯示 Welcome to the MySQL monitor）
 
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'bigdata2026';
-FLUSH PRIVILEGES;
-EXIT;
-（貼上結果）
-
-步驟 2：用密碼登入
-mysql -u root -p
-（輸入密碼 bigdata2026 登入）
-
-步驟 3：確認版本
+步驟 2：確認版本
 SELECT VERSION();
 （貼上結果）
 
-步驟 4：查看預設資料庫
+步驟 3：查看預設資料庫
 SHOW DATABASES;
 （貼上結果）
 ```
@@ -256,15 +247,28 @@ A：
 
 ## 常見問題
 
+**Q：安裝 MySQL 時出現 `unmet dependencies` 或 `held broken packages`？**
+這是 WSL 套件庫版本衝突，常見於長時間沒更新的環境。依序嘗試：
+```bash
+# 步驟 1：完整更新套件庫
+sudo apt update && sudo apt upgrade -y
+
+# 步驟 2：修復相依性
+sudo apt --fix-broken install
+
+# 步驟 3：重新安裝
+sudo apt install -y mysql-server
+```
+如果仍然失敗，可能是 Ubuntu 版本太舊。執行 `lsb_release -a` 確認版本，建議使用 Ubuntu 22.04 以上。若版本過舊，在 Windows PowerShell 中重裝 WSL：
+```powershell
+wsl --install -d Ubuntu-22.04
+```
+
 **Q：WSL 中 `sudo service mysql start` 出現錯誤？**
 嘗試 `sudo service mysql restart`。如果仍然失敗，執行 `sudo apt install --reinstall mysql-server` 重新安裝。
 
 **Q：`mysql -u root -p` 輸入密碼後顯示 Access denied？**
-用 `sudo mysql` 進入後重新設定密碼：
-```sql
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'bigdata2026';
-FLUSH PRIVILEGES;
-```
+WSL 上的 MySQL 預設不使用密碼，請用 `sudo mysql` 登入（不需要 `-u root -p`）。執行 .sql 檔案也一樣用 `sudo mysql < week08.sql`。
 
 **Q：每次開 WSL 都要重新啟動 MySQL 嗎？**
 是的。WSL 中的服務不會自動啟動，每次開啟 WSL 後要執行 `sudo service mysql start`。
