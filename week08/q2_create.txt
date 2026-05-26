@@ -1,0 +1,87 @@
+姓名：廖紹凱
+學號：C112181124
+
+=== 任務 1：建立資料庫 ===
+CREATE DATABASE port_db;
+SHOW DATABASES;
+USE port_db;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| port_db            |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql> USE port_db;
+Database changed）
+
+=== 任務 2：建立 ships 資料表 ===
+CREATE TABLE ships (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    ship_name VARCHAR(100) NOT NULL,
+    ship_type VARCHAR(50),
+    tonnage INT,
+    arrival_date DATE
+);
+Query OK, 0 rows affected (0.04 sec)
+
+查看表結構：
+SHOW TABLES;
+DESCRIBE ships;
++-------------------+
+| Tables_in_port_db |
++-------------------+
+| ships             |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> DESCRIBE ships;
++--------------+--------------+------+-----+---------+----------------+
+| Field        | Type         | Null | Key | Default | Extra          |
++--------------+--------------+------+-----+---------+----------------+
+| id           | int          | NO   | PRI | NULL    | auto_increment |
+| ship_name    | varchar(100) | NO   |     | NULL    |                |
+| ship_type    | varchar(50)  | YES  |     | NULL    |                |
+| tonnage      | int          | YES  |     | NULL    |                |
+| arrival_date | date         | YES  |     | NULL    |                |
++--------------+--------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+
+=== 任務 3：自己建立第二張表 crew ===
+請自行寫出 CREATE TABLE 語句，建立 crew 表，需包含以下欄位：
+- id：整數，自動遞增，主鍵
+- name：字串，最多 50 字元，不允許空值
+- rank：字串，最多 30 字元（職位：Captain / Officer / Engineer / Crew）
+- ship_id：整數（對應 ships 表的 id）
+- salary：小數（DECIMAL(10,2)）
+
+CREATE TABLE crew (
+    ->     id INT AUTO_INCREMENT PRIMARY KEY,
+    ->     name VARCHAR(50) NOT NULL,
+    ->     `rank` VARCHAR(30),
+    ->     ship_id INT,
+    ->     salary DECIMAL(10,2),
+    ->     FOREIGN KEY (ship_id) REFERENCES ships(id)
+    -> );
+Query OK, 0 rows affected (0.02 sec)
++---------+---------------+------+-----+---------+----------------+
+| Field   | Type          | Null | Key | Default | Extra          |
++---------+---------------+------+-----+---------+----------------+
+| id      | int           | NO   | PRI | NULL    | auto_increment |
+| name    | varchar(50)   | NO   |     | NULL    |                |
+| rank    | varchar(30)   | YES  |     | NULL    |                |
+| ship_id | int           | YES  | MUL | NULL    |                |
+| salary  | decimal(10,2) | YES  |     | NULL    |                |
++---------+---------------+------+-----+---------+----------------+
+5 rows in set (0.01 sec)）
+
+請回答：
+Q：為什麼 crew 表的 ship_id 要對應 ships 表的 id？這樣設計有什麼好處？
+A：因為這樣可以建立「船員（crew）與船隻（ships）」之間的關聯，屬於關聯式資料庫中的外鍵設計
