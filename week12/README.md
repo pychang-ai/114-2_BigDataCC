@@ -79,6 +79,7 @@ def predict(input): 	input_resized = resize_image(input, 224, 224)
 inputs = gr.Image() outputs = gr.Label(num_top_classes=3) app = gr.Interface(fn=predict, inputs=inputs, outputs=outputs) app.launch()
 ```
 ## Ex 07
+```
 import keras_nlp
 import gradio as gr 
 
@@ -91,9 +92,10 @@ classifier = keras_nlp.models.BertClassifier.from_preset( model_name, num_classe
 def predict(input): 	output = classifier.predict([input]) 	predictions = { labels[i]: float(output[0][i]) for i in range(len(labels)) } 	return predictions
 
 outputs = gr.Label(num_top_classes=2) examples = ["This movie is good.", "A total waste of my time."] app = gr.Interface(fn=predict, inputs="text", outputs=outputs, examples=xamples) app.launch()
-
+```
 
 ## Ex 08
+```
 from keras_nlp.models import GPT2CausalLMPreprocessor 
 from keras_nlp.models import GPT2CausalLM 
 import gradio as gr 
@@ -107,8 +109,7 @@ def predict(input): #使用模型進行預測
 	output = gpt2_1m.generate(input, max_length=200) 	return output
 
 examples = ["My trip to New York was", "My trip to Taipei was"] app = gr.Interface(fn=predict, inputs="text", outputs="text", examples=examples) app.launch()
-
-
+```
 
 # Software installation
 ## Download Miniconda
@@ -132,6 +133,10 @@ add the following content into .bashrc file.
 
 ```
 export PATH="$HOME/miniconda3/bin:$PATH"
+```
+or 
+```
+export PATH=/home/u306/miniconda3/bin:$PATH
 ```
 
 ## Validate the installation
