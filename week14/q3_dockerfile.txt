@@ -1,0 +1,49 @@
+姓名：黃翊華
+學號：C112181111
+
+=== 我撰寫的 Dockerfile 內容 ===
+（貼上你寫的 Dockerfile 完整內容）
+FROM python:3.11-slim
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+COPY . .
+EXPOSE 5000
+CMD ["python", "app.py"]
+
+=== docker build 輸出 ===
+（貼上 docker build 的最後 5 行，應出現 "Successfully built ..." 或 "naming to docker.io/..."）
+ => => exporting config sha256:12fcd5d15d14968f80bd17dc44bc02c4d9b131e62ed7dbec6c3ac3ccd27ac4fd                                                                                                                       0.0s
+ => => exporting attestation manifest sha256:8d49e5b57091b12fc48b3dd8f11a93d90afc43a6f5e1860bb27ea464d66a34c9                                                                                                         0.0s
+ => => exporting manifest list sha256:eee34620492d94760f760794fccc9cd7be85040dc79904311d3c90be43b929c0                                                                                                                0.0s
+ => => naming to docker.io/library/ship-api:v1                                                                                                                                                                        0.0s
+ => => unpacking to docker.io/library/ship-api:v1
+
+=== docker images 確認 ===
+（貼上 docker images | grep ship-api 的結果，確認映像檔存在）
+WARNING: This output is designed for human readability. For machine-readable output, please use --format.
+ship-api:v1                     eee34620492d        210MB         51.2MB
+
+=== API 測試結果 ===
+
+curl http://localhost:8080/ 輸出：{"message":"\u9ad8\u96c4\u6e2f\u8239\u8236\u8cc7\u6599 API","total_ships":3,"version":"1.0"}
+
+curl http://localhost:8080/ships 輸出：[{"id":1,"name":"Ever Given","port":"Kaohsiung","tonnage":220940,"type":"Container"},{"id":2,"name":"Formosa 1","port":"Kaohsiung","tonnage":85000,"type":"Bulk"},{"id":3,"name":"Ocean Star","port":"Taichung","tonnage":95000,"type":"Tanker"}]
+
+curl http://localhost:8080/ships/2 輸出：{"id":2,"name":"Formosa 1","port":"Kaohsiung","tonnage":85000,"type":"Bulk"}
+
+=== 清理 ===
+docker stop ship-api
+docker rm ship-api
+
+（執行完成後貼上 docker ps -a | grep ship-api 的結果，確認已清除）
+CONTAINER ID   IMAGE                    COMMAND                  CREATED       STATUS                         PORTS     NAMES
+4091405a1e81   docker/getting-started   "/docker-entrypoint.…"   2 hours ago   Exited (0) About an hour ago             webapp
+
+=== 觀念題 ===
+Q1：Dockerfile 中 RUN 和 CMD 有什麼不同？分別在什麼時候執行？
+A1：RUN 在 build Docker image 時執行，用來安裝或設定環境；CMD 在 container 啟動時執行，用來啟動應用程式。
+
+Q2：為什麼要先 COPY requirements.txt 安裝套件，再 COPY . . 複製程式碼？
+如果反過來，每次改 app.py 時會多做什麼事？
+A2：先 COPY requirements.txt 再安裝套件可以利用 Docker cache 重用已安裝的 layer；如果先 COPY . .，每次改 app.py 都會讓 Docker 重新執行 pip install，浪費時間。
