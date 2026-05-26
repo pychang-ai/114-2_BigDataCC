@@ -1,0 +1,58 @@
+姓名：王馥柔
+學號：C112181150
+
+=== 任務 1：確認 Docker 環境 ===
+
+執行以下指令，確認 Docker 正常運作：
+docker version
+
+（貼上 Client 和 Server 的版本號，只需貼出 Version 那行即可）
+Client Version:29.2.1
+Server Engine Version:   29.2.1
+
+=== 任務 2：拉取映像檔 ===
+
+依序拉取以下三個映像檔：
+docker pull ubuntu:22.04
+docker pull python:3.11-slim
+docker pull nginx:alpine
+
+（每個 pull 完成後，貼上最後一行輸出，例如 "Status: Downloaded newer image ..." 或 "Status: Image is up to date ..."）
+
+ubuntu:22.04： Downloaded newer image for ubuntu:22.04 docker.io/library/ubuntu:22.04
+python:3.11-slim：Downloaded newer image for python:3.11-slim docker.io/library/python:3.11-slim
+nginx:alpine： Downloaded newer image for nginx:alpine docker.io/library/nginx:alpine
+
+=== 任務 3：列出映像檔 ===
+
+執行：docker images
+（貼上完整輸出）
+docker images
+                                                                                                   i Info →   U  In Use
+IMAGE              ID             DISK USAGE   CONTENT SIZE   EXTRA
+nginx:alpine       8b1e78743a03       93.6MB           27MB
+python:3.11-slim   a3ab0b966bc4        188MB         47.7MB
+ubuntu:22.04       4f838adc7181        119MB         31.7MB
+
+=== 任務 4：刪除映像檔 ===
+
+執行以下指令刪除 ubuntu:22.04：
+docker rmi ubuntu:22.04
+
+（貼上刪除後的輸出）
+Untagged: ubuntu:22.04
+Deleted: sha256:4f838adc7181d9039ac795a7d0aba05a9bd9ecd480d294483169c5def983b64d
+
+執行 docker images，確認 ubuntu:22.04 已移除：
+（貼上刪除後的 docker images 輸出）
+                                                                                                   i Info →   U  In Use
+IMAGE              ID             DISK USAGE   CONTENT SIZE   EXTRA
+nginx:alpine       8b1e78743a03       93.6MB           27MB
+python:3.11-slim   a3ab0b966bc4        188MB         47.7MB
+
+=== 觀念題 ===
+Q1：映像檔（Image）和容器（Container）有什麼不同？
+A1：映像檔（Image）是唯讀的模板，包含了執行程式所需的環境、套件和程式碼，就像是「設計圖」或「類別（Class）」；而容器（Container）則是從映像檔執行起來的動態實體，擁有獨立的運行空間且可寫入資料，就像是依據設計圖蓋出來的「房子」或「物件（Instance）」。
+
+Q2：為什麼刪除映像檔前需要先刪除使用該映像檔的容器？
+A2：因為容器的運行是建立在映像檔的唯讀層之上的。如果直接把底層的映像檔刪除，容器將會失去檔案系統的支援而崩潰。Docker 為了保護資料的完整性與系統穩定，預設會禁止刪除任何仍有容器（包含已停止的容器）在使用的映像檔。

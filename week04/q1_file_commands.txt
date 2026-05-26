@@ -1,0 +1,59 @@
+姓名：王馥柔
+學號：C112181150
+
+=== 任務 1：建立目錄結構 ===
+請執行以下指令並貼上結果：
+mkdir -p ~/week04/dir1/subdir1
+mkdir -p ~/week04/dir2
+touch ~/week04/dir1/file1.txt
+touch ~/week04/dir1/subdir1/file2.txt
+touch ~/week04/dir2/file3.txt
+tree ~/week04
+
+（貼上 tree 的輸出結果）
+/home/student218/week04
+├── dir1
+│   ├── file1.txt
+│   └── subdir1
+│       └── file2.txt
+└── dir2
+    └── file3.txt
+
+2 directories, 3 files
+=== 任務 2：寫入檔案內容 ===
+請執行以下指令：
+echo "Hello Linux" > ~/week04/dir1/file1.txt
+echo "Bash Shell Practice" > ~/week04/dir1/subdir1/file2.txt
+echo "Week 04 Assignment" > ~/week04/dir2/file3.txt
+
+用 cat 查看三個檔案的內容並貼上結果：
+（貼上結果）
+1.cat ~/week04/dir1/file1.txt
+# 輸出結果：
+Hello Linux
+2.cat ~/week04/dir1/subdir1/file2.txt
+# 輸出結果：
+Bash Shell Practice
+3.cat ~/week04/dir2/file3.txt
+# 輸出結果：
+Week 04 Assignment
+
+=== 任務 3：檔案內容檢視指令 ===
+請執行以下指令並貼上結果：
+cat /etc/passwd | head -5
+cat /etc/passwd | tail -3
+wc -l /etc/passwd
+
+（貼上結果）
+1.
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+2.
+lxd:x:101:65534::/var/lib/lxd/:/bin/false
+seq:x:1000:1000:seq:/home/seq:/bin/bash
+student218:x:1017:1017:student218:/home/student218:/bin/bash
+3.
+32 /etc/passwd

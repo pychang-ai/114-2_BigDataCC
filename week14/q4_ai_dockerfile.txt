@@ -1,0 +1,73 @@
+姓名：王馥柔
+學號：C112181150
+
+=== 我使用的 AI 工具 ===
+Gemini
+
+=== 我使用的 Prompt ===
+我要建立一個 Docker 容器來執行 Python 3.11 的資料分析腳本。
+需要的套件：pandas、numpy、matplotlib、seaborn
+程式碼只有一個檔案 analysis.py，啟動指令是 python analysis.py
+資料輸入從 /app/data/ 目錄讀取 CSV 檔，分析結果的圖表存到 /app/output/ 目錄
+
+請幫我寫一個 Dockerfile，注意：
+1. 使用輕量化的 python:3.11-slim 作為基底
+2. requirements.txt 和程式碼分開複製，善用 build cache
+3. 加上必要的說明（用 # 開頭的註解）
+
+=== AI 產出的 Dockerfile ===
+# 1. 使用官方輕量版 Python 3.11 映像檔作為基礎
+FROM python:3.11-slim
+
+# 2. 設定容器內的工作目錄為 /app
+WORKDIR /app
+
+# 3. 在容器內預先建立資料輸入與輸出的目錄
+RUN mkdir -p /app/data /app/output
+
+# 4. 先複製套件清單以利用 Build Cache 快取優化
+COPY requirements.txt .
+
+# 5. 安裝資料分析所需的相關套件，並加上 --no-cache-dir 減少體積
+RUN pip install --no-cache-dir -r requirements.txt
+
+# 6. 複製資料分析腳本到工作目錄
+COPY analysis.py .
+
+# 7. 設定容器啟動時預設執行的指令
+CMD ["python", "analysis.py"]
+
+=== 逐行解釋 ===
+* FROM python:3.11-slim → 指定使用官方輕量版的 Python 3.11 映像檔作為基礎底層，能大幅縮減最後產出的映像檔體積。
+* WORKDIR /app → 在容器內部建立並切換到 /app 目錄，之後所有相對路徑的指令（如 COPY、RUN、CMD）都會在這個工作目錄下執行。
+* RUN mkdir -p /app/data /app/output → 在容器中強制建立 data 與 output 兩個資料夾，用來預備給腳本讀取 CSV 資料與儲存圖表。
+* COPY requirements.txt . → 將主機當前目錄下的 requirements.txt 複製到容器的工作目錄中。
+* RUN pip install --no-cache-dir -r requirements.txt → 根據清單安裝 Python 資料分析套件，使用 --no-cache-dir 參數可以避免將安裝包暫存檔留在容器中，讓映像檔更輕量。
+* COPY analysis.py . → 將主機當前目錄下的 analysis.py 分析程式碼複製到容器中。
+* CMD ["python", "analysis.py"] → 定義容器啟動時預設要執行的核心指令，即直接運行 python 啟動分析腳本。
+
+=== AI 產出是否有問題？ ===
+請回答以下問題：
+
+Q1：AI 有沒有把 requirements.txt 和程式碼分開複製？（有/沒有）
+    如果沒有，這樣會有什麼問題？
+A1：有。AI 確實有將 requirements.txt 與 analysis.py 分開複製。這樣能完美利用 Docker 的 Layer Cache 機制，當我們頻繁修改程式碼時，不需要每次都重新花時間下載並編譯 pandas、numpy 等大型套件。
+
+Q2：AI 產出的 Dockerfile 中，有沒有使用 EXPOSE 指令？
+    這個腳本需要 EXPOSE 嗎？為什麼？
+A2：沒有使用 EXPOSE 指令。這個腳本「不需要」EXPOSE，因為它是一個純粹讀取資料、跑完運算、輸出圖片就結束的自動化腳本，內部並沒有運行任何需要對外監聽（如 Flask 網頁、資料庫）的網路服務。
+
+Q3：AI 有有沒有建立 /app/data/ 和 /app/output/ 目錄？
+    如果沒有，容器執行時可能會出現什麼問題？如何解決？
+A3：有，AI 在第 3 行有使用 `RUN mkdir -p` 建立這兩個目錄。如果沒有建立，當 analysis.py 程式內試圖讀取或寫入這些路徑時，會因為容器內部找不到對應的資料夾而直接拋出 `FileNotFoundError` 導致程式崩潰。
+
+=== 你的修改（如果有的話） ===
+AI 產出符合所有需求，結構清晰且有考量快取與目錄建立，無需修改。
+
+=== 心得 ===
+Q：使用 AI 輔助撰寫 Dockerfile 和自己從頭寫相比，有什麼優缺點？
+   什麼情況下 AI 特別有幫助？什麼情況下需要特別小心驗證？
+A：
+優點：AI 能夠極快地生成基礎語法結構，減少背誦指令的時間，並會主動加上註解，對加速開發非常有幫助。
+缺點：AI 有時會出現過度延伸（例如給予不必要的 EXPOSE）或忽略環境細節（漏掉 mkdir 建立目錄）的情況。
+在我們面對全新或複雜的環境（例如要在 Linux 內安裝額外系統依賴）時，AI 特別有幫助；但在面臨資料夾實體路徑掛載（Volume）、正式環境的安全性與多階段構建（Multi-stage build）考量時，必須由人類工程師進行嚴謹的挑錯與驗證，才不會導致容器執行失敗。

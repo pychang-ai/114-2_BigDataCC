@@ -1,0 +1,69 @@
+姓名：王馥柔
+學號：C112181150
+
+=== 任務 1：探索 Linux 目錄結構 ===
+執行以下指令：
+ls /
+（貼上結果）
+bin   dev  home  lib64  mnt  proc  run   srv  tmp  var
+boot  etc  lib   media  opt  root  sbin  sys  usr
+請從上面的結果中，說明以下 5 個目錄各是做什麼的：
+/home：存放一般使用者的個人資料夾。例如您的帳號是 student218，您的所有文件和設定都會放在 /home/student218 下
+/etc：存放系統所有的設定檔案（例如您之前練習過的 /etc/passwd）。就像是電腦的「控制面板」設定區。
+/var：存放經常變動的檔案，例如系統日誌 (Logs)、快取 (Cache) 或資料庫檔案。
+/tmp：存放程式執行時產生的臨時檔案。通常系統重啟後，這裡的內容會被自動清空。
+/usr：存放系統安裝的應用程式、函式庫和說明文件，類似於 Windows 的 C:\Program Files。
+
+=== 任務 2：查看空間與檔案統計 ===
+查看自己家目錄佔用多少空間：
+du -sh ~
+（貼上結果）
+4.2M    /home/student218
+計算自己家目錄下有多少個檔案：
+find ~ -type f | wc -l
+（貼上結果）
+28
+計算自己家目錄下有多少個目錄：
+find ~ -type d | wc -l
+（貼上結果）
+12
+=== 任務 3：chown 與 chgrp 實作 ===
+請依序執行以下指令並貼上每步的結果：
+
+步驟 1：建立測試檔案並查看預設擁有者
+touch ~/week06_test.txt
+echo "Ownership Test" > ~/week06_test.txt
+ls -l ~/week06_test.txt
+（貼上結果，注意看擁有者和群組欄位）
+-rw-rw-r-- 1 student218 student218 15 Mar 31 15:10 /home/student218/week06_test.txt
+
+步驟 2：建立測試用的使用者和群組
+sudo useradd -m tempuser
+sudo groupadd tempgroup
+（貼上結果）
+無輸出
+
+步驟 3：用 chown 改變擁有者
+sudo chown tempuser ~/week06_test.txt
+ls -l ~/week06_test.txt
+（貼上結果，觀察擁有者欄位的變化）
+-rw-rw-r-- 1 tempuser student218 15 Mar 31 15:10 /home/student218/week06_test.txt
+
+步驟 4：用 chgrp 改變群組
+sudo chgrp tempgroup ~/week06_test.txt
+ls -l ~/week06_test.txt
+（貼上結果，觀察群組欄位的變化）
+-rw-rw-r-- 1 tempuser tempgroup 15 Mar 31 15:10 /home/student218/week06_test.txt
+
+步驟 5：用 chown 一次改回自己
+sudo chown $(whoami):$(whoami) ~/week06_test.txt
+ls -l ~/week06_test.txt
+（貼上結果，確認擁有者和群組都改回來了）
+-rw-rw-r-- 1 student218 student218 15 Mar 31 15:10 /home/student218/week06_test.txt
+步驟 6：清理
+rm ~/week06_test.txt
+sudo userdel -r tempuser
+sudo groupdel tempgroup
+無輸出
+（貼上結果）
+```

@@ -1,0 +1,97 @@
+姓名：王馥柔
+學號：C112181150
+
+=== 我撰寫的 Dockerfile 內容 ===
+（貼上你寫的 Dockerfile 完整內容）
+# 1. 使用輕量版 Python 3.11 映像檔作為基底
+FROM python:3.11-slim
+
+# 2. 設定容器內的工作目錄為 /app
+WORKDIR /app
+
+# 3. 先複製套件清單（善用 Docker Layer Cache 快取機制）
+COPY requirements.txt .
+
+# 4. 安裝套件
+RUN pip install --no-cache-dir -r requirements.txt
+
+# 5. 複製目前目錄下的所有程式碼到容器的工作目錄
+COPY . .
+
+# 6. 宣告容器會監聽 5000 埠號
+EXPOSE 5000
+
+# 7. 容器啟動時執行的指令
+CMD ["python", "app.py"]
+
+=== docker build 輸出 ===
+（貼上 docker build 的最後 5 行，應出現 "Successfully built ..." 或 "naming to docker.io/..."）
+ => => exporting config sha256:ea61bb2f2c9237e47f87f3b28709fcc3d053876140a3649d85e2ff2f4fd412f5                                                                            0.0s
+ => => exporting attestation manifest sha256:744bf1358a725141b67cbf030958c8d96d16805adb30e17358ad09a2771dadab                                                              0.0s
+ => => exporting manifest list sha256:66698134680ed83ae0b6a8fa57308f8cc56d187c702c6c0df7b42acfbbbe85ef                                                                     0.0s
+ => => naming to docker.io/library/ship-api:v1                                                                                                                             0.0s
+ => => unpacking to docker.io/library/ship-api:v1  
+
+=== docker images 確認 ===
+（貼上 docker images | grep ship-api 的結果，確認映像檔存在）
+WARNING: This output is designed for human readability. For machine-readable output, please use --format.
+
+ship-api:v1        66698134680e        210MB         51.1MB       
+docker ps
+=== API 測試結果 ===
+
+curl http://localhost:8080/ 輸出：{
+  "message": "高雄港船舶資料 API",
+  "total_ships": 3,
+  "version": "1.0"
+}
+
+curl http://localhost:8080/ships 輸出：[
+  {
+    "id": 1,
+    "name": "Ever Given",
+    "port": "Kaohsiung",
+    "tonnage": 220940,
+    "type": "Container"
+  },
+  {
+    "id": 2,
+    "name": "Formosa 1",
+    "port": "Kaohsiung",
+    "tonnage": 85000,
+    "type": "Bulk"
+  },
+  {
+    "id": 3,
+    "name": "Ocean Star",
+    "port": "Taichung",
+    "tonnage": 95000,
+    "type": "Tanker"
+  }
+]
+
+curl http://localhost:8080/ships/2 輸出：{
+  "id": 2,
+  "name": "Formosa 1",
+  "port": "Kaohsiung",
+  "tonnage": 85000,
+  "type": "Bulk"
+}
+
+=== 清理 ===
+docker stop ship-api
+docker rm ship-api
+
+（執行完成後貼上 docker ps -a | grep ship-api 的結果，確認已清除）
+輸出結果為完全空白（無任何殘留容器資訊），確認已徹底清除乾淨。
+
+=== 觀念題 ===
+Q1：Dockerfile 中 RUN 和 CMD 有什麼不同？分別在什麼時候執行？
+A1：
+1. 執行時機不同：`RUN` 指令是在「映像檔建置時期（Build Time）」執行的；而 `CMD` 指令則是在「容器啟動時期（Run Time）」執行的。
+2. 用途不同：`RUN` 用來安裝套件、建立目錄或設定系統環境，其執行結果會被固化並儲存在映像檔的唯讀層中；`CMD` 則是指定容器開機時預設要運行的主要應用程式或腳本（例如啟動網頁伺服器），一個 Dockerfile 通常只會有一個有效的 `CMD`。
+
+Q2：為什麼要先 COPY requirements.txt 安裝套件，再 COPY . . 複製程式碼？如果反過來，每次改 app.py 時會多做什麼事？
+A2：
+1. 先安裝套件是為了善用 Docker 的「層快取（Layer Cache）」機制。因為套件清單通常很少變動，先執行可以讓 Docker 緩存已安裝好的套件環境。
+2. 如果反過來先 `COPY . .`，只要 `app.py` 修改了任何一個字，Docker 就會判定該層以後的快取全部失效，導致每次修改程式碼時，容器建置都必須強迫重新執行 `pip install` 去下載並編譯所有大型套件，大幅浪費編譯時間與網路頻寬。
