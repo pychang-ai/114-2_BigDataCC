@@ -1,0 +1,108 @@
+姓名：曾紹喆
+學號：c112181182
+
+=== 任務 1：啟動 nginx 容器 ===
+
+執行以下指令，在背景啟動 nginx 並對應埠號：
+docker run -d --name my-nginx -p 8080:80 nginx:alpine
+
+（貼上輸出的容器 ID，例如 a1b2c3d4...）
+aac4f31dee40e67f97fcd8b328a3cccd828f7f88aa307c610247311e14cb3d8f
+=== 任務 2：查看容器狀態 ===
+
+執行：docker ps
+（貼上完整輸出，確認 my-nginx 的 STATUS 是 Up，PORTS 顯示 0.0.0.0:8080->80/tcp）
+CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS          PORTS
+          NAMES
+aac4f31dee40   nginx:alpine   "/docker-entrypoint.…"   31 seconds ago   Up 31 seconds   0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   my-nginx
+=== 任務 3：測試 nginx 服務 ===
+
+在 AWS EC2 上執行：
+curl http://localhost:8080
+
+（貼上回傳的 HTML 內容，應包含 "Welcome to nginx!"）
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+html { color-scheme: light dark; }
+body { width: 35em; margin: 0 auto;
+font-family: Tahoma, Verdana, Arial, sans-serif; }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, nginx is successfully installed and working.
+Further configuration is required for the web server, reverse proxy,
+API gateway, load balancer, content cache, or other features.</p>
+
+<p>For online documentation and support please refer to
+<a href="https://nginx.org/">nginx.org</a>.<br/>
+To engage with the community please visit
+<a href="https://community.nginx.org/">community.nginx.org</a>.<br/>
+For enterprise grade support, professional services, additional
+security features and capabilities please refer to
+<a href="https://f5.com/nginx">f5.com/nginx</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
+=== 任務 4：進入容器 ===
+
+執行：docker exec -it my-nginx sh
+
+進入後執行以下指令並貼上結果：
+1. hostname          （查看容器的 hostname）
+2. ls /etc/nginx     （查看 nginx 設定目錄內容）
+3. cat /etc/nginx/nginx.conf  （查看 nginx 設定，只貼前 10 行即可）
+
+（hostname 輸出）：aac4f31dee40
+（ls /etc/nginx 輸出）：conf.d          fastcgi_params  modules         scgi_params
+
+fastcgi.conf    mime.types      nginx.conf      uwsgi_params
+user  nginx;
+worker_processes  auto;
+
+error_log  /var/log/nginx/error.log notice;
+pid        /run/nginx.pid;
+
+
+events {
+    worker_connections  1024;
+}
+
+
+http {
+    include       /etc/nginx/mime.types;
+輸入 exit 離開容器。
+
+=== 任務 5：查看容器 log ===
+
+執行：docker logs my-nginx
+（貼上最後 5 行 log 輸出）
+2026/05/26 07:01:14 [notice] 1#1: start worker process 54
+2026/05/26 07:01:14 [notice] 1#1: start worker process 55
+2026/05/26 07:01:14 [notice] 1#1: start worker process 56
+2026/05/26 07:01:14 [notice] 1#1: start worker process 57
+172.17.0.1 - - [26/May/2026:07:02:45 +0000] "GET / HTTP/1.1" 200 896 "-" "curl/8.5.0" "-"
+=== 任務 6：停止並刪除容器 ===
+
+docker stop my-nginx
+docker rm my-nginx
+
+執行 docker ps -a，確認 my-nginx 已移除：
+（貼上 docker ps -a 輸出，確認清單中沒有 my-nginx）
+CONTAINER ID   IMAGE                    COMMAND                  CREATED          STATUS                        PORTS     NAMES
+2ab1a1ddfcfc   docker/getting-started   "/docker-entrypoint.…"   39 minutes ago   Exited (137) 5 minutes ago
+  webapp
+e73b1e13c78f   ubuntu                   "bash"                   40 minutes ago   Exited (127) 39 minutes ago
+  determined_kapitsa
+08e8887d6053   ubuntu                   "bash"                   41 minutes ago   Exited (127) 40 minutes ago
+  xenodochial_visvesvaraya
+=== 觀念題 ===
+Q1：docker run -d 和 docker run -it 的使用時機有什麼不同？
+A1：docker run -d（detached mode）適用於在背景持續運行的服務，例如 Web 伺服器、資料庫等，執行後終端機可繼續使用其他指令；docker run -it（interactive + tty）適用於需要與容器互動的情境，例如進入容器執行 bash shell 進行除錯或手動操作。
+
+Q2：-p 8080:80 的意思是什麼？如果把主機的 8080 改成 9090，應用程式的行為會有什麼不同？
+A2：-p 8080:80 表示將主機的 8080 埠對應到容器內部的 80 埠，讓外部可透過 localhost:8080 存取容器內跑在 80 埠的服務。若改成 -p 9090:80，容器內部的服務不變（仍在 80 埠），但外部需改用 localhost:9090 存取；應用程式本身的行為不受影響，只是對外的主機埠號從 8080 改為 9090。

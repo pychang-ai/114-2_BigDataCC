@@ -1,0 +1,53 @@
+姓名：曾紹喆
+學號：c112181182
+
+=== 我撰寫的 Dockerfile 內容 ===
+FROM python:3.11-slim
+
+WORKDIR /app
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+EXPOSE 5000
+
+CMD ["python", "app.py"]
+
+=== docker build 輸出 ===
+（貼上 docker build 的最後 5 行，應出現 "Successfully built ..." 或 "naming to docker.io/..."）
+#10 exporting manifest list sha256:c75d2acfde079dcb401ea53f42a044d820ee741880179f1d2a9e3f1c855f7dfc done
+#10 naming to docker.io/library/ship-api:latest done
+#10 unpacking to docker.io/library/ship-api:latest 0.1s done
+#10 DONE 0.7s
+
+=== docker images 確認 ===
+（貼上 docker images | grep ship-api 的結果，確認映像檔存在）
+ship-api   latest   c75d2acfde07   210MB   51.2MB
+
+=== API 測試結果 ===
+
+curl http://localhost:8080/ 輸出：
+{"message":"高雄港船舶資料 API","total_ships":3,"version":"1.0"}
+
+curl http://localhost:8080/ships 輸出：
+[{"id":1,"name":"Ever Given","port":"Kaohsiung","tonnage":220940,"type":"Container"},{"id":2,"name":"Formosa 1","port":"Kaohsiung","tonnage":85000,"type":"Bulk"},{"id":3,"name":"Ocean Star","port":"Taichung","tonnage":95000,"type":"Tanker"}]
+
+curl http://localhost:8080/ships/2 輸出：
+{"id":2,"name":"Formosa 1","port":"Kaohsiung","tonnage":85000,"type":"Bulk"}
+
+=== 清理 ===
+docker stop ship-api
+docker rm ship-api
+
+（執行完成後貼上 docker ps -a | grep ship-api 的結果，確認已清除）
+（無輸出，代表 ship-api 容器已成功移除）
+
+=== 觀念題 ===
+Q1：Dockerfile 中 RUN 和 CMD 有什麼不同？分別在什麼時候執行？
+A1：RUN 是在 docker build 建立映像檔時執行，每一條 RUN 指令會新增一個映像層（layer），常用於安裝套件、建立目錄等環境設定；CMD 是在 docker run 啟動容器時執行的預設指令，代表容器主程序，一個 Dockerfile 只有最後一條 CMD 有效。兩者最大差異在於執行時機：RUN 在 build 階段，CMD 在 run 階段。
+
+Q2：為什麼要先 COPY requirements.txt 安裝套件，再 COPY . . 複製程式碼？
+   如果反過來，每次改 app.py 時會多做什麼事？
+A2：Docker 建置映像檔時會快取每個步驟的結果（layer cache）。先 COPY requirements.txt 並 RUN pip install，當 requirements.txt 沒有變動時，套件安裝步驟會直接使用快取，大幅加速後續 build。若反過來先 COPY . .，每次修改 app.py 都會讓該層 cache 失效，導致之後的 pip install 也必須重新下載並安裝所有套件，浪費時間與網路頻寬。
