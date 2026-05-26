@@ -1,0 +1,54 @@
+姓名：陳意欣
+學號：C112181102
+
+=== whoami ===
+
+student106@linux-server1:~$ whoami
+student106
+
+=== hostname ===
+
+student106@linux-server1:~$ hostname
+linux-server1
+
+=== pwd ===
+
+student106@linux-server1:~$ pwd
+/home/student106
+
+=== uname -a ===
+
+student106@linux-server1:~$ uname -a
+Linux linux-server1 6.1.163-186.299.amzn2023.x86_64 #1 SMP PREEMPT_DYNAMIC Tue Feb 24 16:35:42 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
+
+=== date ===
+
+student106@linux-server1:~$ date
+Wed Mar 18 08:02:29 UTC 2026
+
+=== ls / ===
+
+student106@linux-server1:~$ ls /
+bin   dev  home  lib32  libx32  mnt  proc  run   srv  tmp  var
+boot  etc  lib   lib64  media   opt  root  sbin  sys  usr
+
+=== ls -la ~ ===
+
+student106@linux-server1:~$ ls -la ~
+total 60
+drwxr-x---. 8 student106 student106 16384 Mar 17 06:52  .
+drwxr-xr-x. 1 root       root       16384 Mar 10 03:13  ..
+-rw-------. 1 student106 student106  1749 Mar 17 07:40  .bash_history
+-rw-r--r--. 1 student106 student106   220 Jan  6  2022  .bash_logout
+-rw-r--r--. 1 student106 student106  3771 Jan  6  2022  .bashrc
+drwx------. 2 student106 student106    34 Mar 10 03:16  .cache
+-rw-rw-r--. 1 student106 student106    62 Mar 17 06:32  .gitconfig
+-rw-r--r--. 1 student106 student106   807 Jan  6  2022  .profile
+-rw-rw-r--. 1 student106 student106   189 Mar  9 06:50  README.txt
+drwxrwxr-x. 2 student106 student106     6 Mar  9 06:50  documents
+drwxr-xr-x. 2 student106 student106    83 Mar  9 06:50  exercises
+-rw-rw-r--. 1 student106 student106     0 Mar 10 07:17  file.txt
+-rw-rw-r--. 1 student106 student106    37 Mar 10 07:07 'my file.txt'
+drwxrwxr-x. 2 student106 student106     6 Mar  9 06:50  projects
+drwxrwxr-x. 2 student106 student106     6 Mar  9 06:50  scripts
+drwxrwxr-x. 4 student106 student106    51 Mar 17 07:20  week04
