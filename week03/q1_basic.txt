@@ -1,0 +1,47 @@
+姓名：蔡异堤
+學號：C112181144
+
+student212@linux-server2:~$ whoami
+student212
+
+student212@linux-server2:~$ hostname
+linux-server2
+
+student212@linux-server2:~$ pwd
+/home/student212
+
+student212@linux-server2:~$ uname -a
+Linux linux-server2 6.1.163-186.299.amzn2023.x86_64 #1 SMP PREEMPT_DYNAMIC Tue Feb 24 16:35:42 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
+
+student212@linux-server2:~$ date
+Wed Mar 18 08:51:01 UTC 2026
+
+
+student212@linux-server2:~$ ls
+C112181144  README.txt  documents  file.txt.save  myfile    scripts  week04
+Do          backup      exercises  file0317.txt   projects  test
+
+student212@linux-server2:~$ ls -la
+total 56
+drwxr-x---. 14 student212 student212 16384 Mar 17 07:18 .
+drwxr-xr-x.  1 root       root       16384 Mar 10 03:13 ..
+-rw-------.  1 student212 student212  1547 Mar 17 08:01 .bash_history
+-rw-r--r--.  1 student212 student212   220 Jan  6  2022 .bash_logout
+-rw-r--r--.  1 student212 student212  3771 Jan  6  2022 .bashrc
+drwx------.  2 student212 student212    34 Mar 10 03:16 .cache
+drwxrwxr-x.  3 student212 student212    19 Mar 10 07:25 .local
+-rw-r--r--.  1 student212 student212   807 Jan  6  2022 .profile
+drwx------.  2 student212 student212    48 Mar 10 07:17 .ssh
+drwxrwxr-x.  2 student212 student212     6 Mar 17 06:02 C112181144
+drwxrwxr-x.  2 student212 student212    28 Mar 17 06:21 Do
+-rw-rw-r--.  1 student212 student212   189 Mar  9 06:57 README.txt
+drwxrwxr-x.  3 student212 student212    33 Mar 17 06:25 backup
+drwxrwxr-x.  2 student212 student212     6 Mar  9 06:57 documents
+drwxr-xr-x.  2 student212 student212    83 Mar  9 06:57 exercises
+-rw-------.  1 student212 student212     4 Mar 10 07:27 file.txt.save
+-rw-rw-r--.  1 student212 student212     0 Mar 17 06:11 file0317.txt
+-rw-rw-r--.  1 student212 student212     0 Mar 10 07:18 myfile
+drwxrwxr-x.  2 student212 student212     6 Mar  9 06:57 projects
+drwxrwxr-x.  2 student212 student212     6 Mar  9 06:57 scripts
+drwxrwxr-x.  3 student212 student212    33 Mar 17 06:23 test
+drwxrwxr-x.  4 student212 student212    51 Mar 17 07:52 week04
