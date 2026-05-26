@@ -1,0 +1,42 @@
+姓名：黃亭睿
+學號：C112181129
+
+=== whoami ===
+student203@linux-server2:~$ whoami
+student203
+=== hostname ===
+student203@linux-server2:~$ hostname
+linux-server2
+=== pwd ===
+student203@linux-server2:~$ pwd
+/home/student203
+=== uname -a ===
+student203@linux-server2:~$ uname -a
+Linux linux-server2 6.1.163-186.299.amzn2023.x86_64 #1 SMP PREEMPT_DYNAMIC Tue Feb 24 16:35:42 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
+=== date ===
+student203@linux-server2:~$ date
+Wed Mar 18 08:55:39 UTC 2026
+=== ls / ===
+student203@linux-server2:~$ ls /
+bin   dev  home  lib32  libx32  mnt  proc  run   srv  tmp  var
+boot  etc  lib   lib64  media   opt  root  sbin  sys  usr
+=== ls -la ~ ===
+student203@linux-server2:~$ ls -la ~
+total 740
+drwxr-x---. 8 student203 student203  16384 Mar 17 07:01 .
+drwxr-xr-x. 1 root       root        16384 Mar 10 03:13 ..
+-rw-------. 1 student203 student203   1293 Mar 17 07:35 .bash_history
+-rw-r--r--. 1 student203 student203    220 Jan  6  2022 .bash_logout
+-rw-r--r--. 1 student203 student203   3771 Jan  6  2022 .bashrc
+drwx------. 2 student203 student203     34 Mar 10 03:16 .cache
+-rw-rw-r--. 1 student203 student203     57 Mar 17 06:34 .gitconfig
+-rw-r--r--. 1 student203 student203    807 Jan  6  2022 .profile
+-rw-rw-r--. 1 student203 student203    171 Mar 17 06:27 .wget-hsts
+-rw-rw-r--. 1 student203 student203    189 Mar  9 06:57 README.txt
+drwxrwxr-x. 2 student203 student203      6 Mar  9 06:57 documents
+drwxr-xr-x. 2 student203 student203     83 Mar  9 06:57 exercises
+-rw-rw-r--. 1 student203 student203 688430 Jan 14 12:51 koala.png
+-rw-rw-r--. 1 student203 student203     37 Mar 10 07:08 myfile.txt
+drwxrwxr-x. 2 student203 student203      6 Mar  9 06:57 projects
+drwxrwxr-x. 2 student203 student203      6 Mar  9 06:57 scripts
+drwxrwxr-x. 4 student203 student203     51 Mar 17 07:22 week04

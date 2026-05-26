@@ -1,0 +1,82 @@
+姓名：黃亭睿
+學號：C112181129
+
+=== 任務 1：確認 WSL 環境 ===
+PS C:\Users\Teacher> wsl --list --verbose
+  NAME      STATE           VERSION
+* Ubuntu    Running         2
+
+=== 任務 2：安裝 MySQL ===
+步驟 1：更新套件庫
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+All packages are up to date.
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+Calculating upgrade... Done
+
+步驟 2：安裝 MySQL Server
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+mysql-server is already the newest version (8.0.45-0ubuntu0.24.04.1).
+
+步驟 3：啟動 MySQL 服務
+無輸出
+
+步驟 4：確認 MySQL 正在運行
+u306@U8:/mnt/c/Users/Teacher$ sudo service mysql status
+[sudo] password for u306:
+● mysql.service - MySQL Community Server
+     Loaded: loaded (/usr/lib/systemd/system/mysql.service; enabled; preset: enabled)
+     Active: active (running) since Tue 2026-04-28 13:33:01 CST; 2min 15s ago
+    Process: 5366 ExecStartPre=/usr/share/mysql/mysql-systemd-start pre (code=exited, status=0/SUCCESS)
+   Main PID: 5375 (mysqld)
+     Status: "Server is operational"
+      Tasks: 38 (limit: 9275)
+     Memory: 363.8M (peak: 380.7M)
+        CPU: 1.102s
+     CGroup: /system.slice/mysql.service
+             └─5375 /usr/sbin/mysqld
+
+Apr 28 13:33:01 U8 systemd[1]: Starting mysql.service - MySQL Community Server...
+Apr 28 13:33:01 U8 systemd[1]: Started mysql.service - MySQL Community Server.
+=== 任務 3：登入 MySQL ===
+
+步驟 1：用 sudo 登入 MySQL（WSL 預設不需要密碼）
+u306@U8:/mnt/c/Users/Teacher$ mysql -u root -p
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 12
+Server version: 8.0.45-0ubuntu0.24.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2026, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+步驟 2：確認版本
+mysql> SELECT VERSION();
++-------------------------+
+| VERSION()               |
++-------------------------+
+| 8.0.45-0ubuntu0.24.04.1 |
++-------------------------+
+1 row in set (0.00 sec)
+
+步驟 3：查看預設資料庫
+mysql> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+4 rows in set (0.01 sec)
+
