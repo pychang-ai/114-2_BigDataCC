@@ -1,0 +1,27 @@
+姓名：蘇千皓
+學號：c112181128
+
+=== 任務 1：用 nano 建立 intro.txt ===
+
+student202@linux-server2:~/week03test$ nano ~/intro.txt
+student202@linux-server2:~/week03test$ cat ~/intro.txt
+姓名：蘇千皓
+學號：C112181128
+系所：海事資訊科技系
+興趣：騎車
+修這門課的期望：學會 Linux
+
+=== 任務 2：nano 快捷鍵操作 ===
+
+student202@linux-server2:~/week03test$ cat ~/intro.txt
+姓名：蘇千皓
+學號：C112181128
+系所：海事資訊科技系
+興趣：騎車
+修這門課的期望：學會 Linux
+今天日期：2026-03-24
+
+
+=== 任務 3：說明你使用了哪些 nano 快捷鍵 ===
+（例如：Ctrl+O 儲存、Ctrl+X 離開，至少列出 4 個）
+ctrl+o儲存 ctrl+x離開 ctrl+k剪下 ctrl+u貼上
