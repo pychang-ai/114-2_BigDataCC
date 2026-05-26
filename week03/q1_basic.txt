@@ -1,0 +1,34 @@
+姓名： 簡祈媗
+學號： C112181138
+=== whoami ===
+vagrant
+
+=== hostname ===
+ubuntu-2204
+
+=== pwd ===
+/home/vagrant
+
+=== uname -a ===
+Linux ubuntu-2204 5.15.0-101-generic #111-Ubuntu SMP Tue Feb 11 19:01:00 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
+
+=== date ===
+Tue Mar 31 14:40:00 CST 2026
+
+=== ls / ===
+
+Plaintext
+bin   dev  home  lib32  libx32      media  opt   root  sbin  sys  usr
+boot  etc  lib   lib64  lost+found  mnt    proc  run   snap  tmp  var
+=== ls -la ~ ===
+
+Plaintext
+total 28
+drwxr-x--- 4 vagrant vagrant 4096 Mar 31 14:30 .
+drwxr-xr-x 3 root    root    4096 Mar 31 14:30 ..
+-rw------- 1 vagrant vagrant  123 Mar 31 14:30 .bash_history
+-rw-r--r-- 1 vagrant vagrant  220 Mar 31 14:30 .bash_logout
+-rw-r--r-- 1 vagrant vagrant 3771 Mar 31 14:30 .bashrc
+drwx------ 2 vagrant vagrant 4096 Mar 31 14:30 .cache
+-rw-r--r-- 1 vagrant vagrant  807 Mar 31 14:30 .profile
+drwx------ 2 vagrant vagrant 4096 Mar 31 14:30 .ssh

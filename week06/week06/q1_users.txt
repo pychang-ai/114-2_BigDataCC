@@ -1,0 +1,72 @@
+姓名： 簡祈媗
+學號： C112181138
+
+=== 任務 1：查看自己的身份資訊 ===
+
+指令執行結果：
+
+whoami: vagrant
+
+id: uid=1000(vagrant) gid=1000(vagrant) groups=1000(vagrant),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),110(lxd),115(lpadmin),116(sambashare)
+
+groups: vagrant adm cdrom sudo dip plugdev lxd lpadmin sambashare
+
+問題回答：
+我的 UID 是 1000。我屬於 vagrant、sudo (具備管理員權限)、adm 等群組。
+
+=== 任務 2：解讀 /etc/passwd ===
+
+執行指令： cat /etc/passwd | grep vagrant
+執行結果： vagrant:x:1000:1000:,,,:/home/vagrant:/bin/bash
+
+各欄位意義說明：
+
+欄位 1（帳號名稱）：vagrant (登入系統時使用的名稱)。
+
+欄位 2（密碼欄位）：x (表示密碼經過加密，存放在 /etc/shadow 檔中)。
+
+欄位 3（UID）：1000 (使用者的專屬識別碼)。
+
+欄位 4（GID）：1000 (主要群組的識別碼)。
+
+欄位 5（描述）：,,, (使用者的全名或備註，目前為空)。
+
+欄位 6（家目錄）：/home/vagrant (登入後的預設資料夾)。
+
+欄位 7（Shell）：/bin/bash (使用者使用的指令直譯器環境)。
+
+=== 任務 3：建立使用者與群組 ===
+
+步驟 1：建立使用者 week06user
+
+sudo useradd -m week06user
+
+結果：無輸出（表示執行成功）。
+
+步驟 2：建立群組 week06group
+
+sudo groupadd week06group
+
+結果：無輸出（表示執行成功）。
+
+步驟 3：將 week06user 加入 week06group
+
+sudo usermod -aG week06group week06user
+
+結果：無輸出（表示執行成功）。
+
+步驟 4：驗證使用者和群組
+
+id week06user
+結果：uid=1001(week06user) gid=1001(week06user) groups=1001(week06user),1002(week06group)
+
+cat /etc/group | grep week06group
+結果：week06group:x:1002:week06user
+
+步驟 5：清理
+
+sudo userdel -r week06user
+
+sudo groupdel week06group
+
+結果：無輸出

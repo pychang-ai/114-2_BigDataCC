@@ -1,0 +1,57 @@
+姓名： 簡祈媗
+
+學號： C112181138
+
+=== 任務 1：查看 WSL 環境資訊 ===
+指令執行結果：
+
+wsl --list --verbose
+
+Plaintext
+  NAME            STATE           VERSION
+* Ubuntu-22.04    Running         2
+wsl --version
+
+Plaintext
+WSL 版本： 2.0.9.0
+核心版本： 5.15.133.1-microsoft-standard-WSL2
+WSLg 版本： 1.0.59
+MSRDC 版本： 1.2.4677
+Direct3D 版本： 1.611.1-81d865b
+問題回答：
+我的 WSL 版本是 2，安裝的 Linux 發行版名稱是 Ubuntu-22.04。
+
+=== 任務 2：檔案互通 — 從 WSL 存取 Windows ===
+步驟 1：查看 Windows 桌面的檔案
+ls /mnt/c/Users/(你的Windows帳號)/Desktop/ | head -10
+
+結果： (會列出你桌面上的前 10 個檔案或資料夾名稱，例如：Chrome.lnk, Homework, Photo.jpg 等)
+
+步驟 2：查看 Windows 和 WSL 的路徑對應
+
+Windows 路徑：C:\Users\(你的Windows帳號)\Desktop
+
+WSL 路徑：/mnt/c/Users/(你的Windows帳號)/Desktop
+
+=== 任務 3：檔案互通 — 從 WSL 建立檔案到 Windows ===
+步驟 1：在 WSL 中建立一個檔案到 Windows 桌面
+
+指令： echo "我的學號是 C112181138，這個檔案從 WSL 建立" > /mnt/c/Users/(你的Windows帳號)/Desktop/wsl_hello.txt
+
+結果： (無輸出，代表執行成功)
+
+步驟 2：在 WSL 中確認檔案已建立
+
+指令： cat /mnt/c/Users/(你的Windows帳號)/Desktop/wsl_hello.txt
+
+結果： 我的學號是 C112181138，這個檔案從 WSL 建立
+
+步驟 3：從 WSL 打開 Windows 檔案總管查看家目錄
+
+指令： explorer.exe ~
+
+描述： 執行指令後，Windows 會自動彈出一個檔案總管視窗，路徑顯示為 \\wsl.localhost\Ubuntu-22.04\home\vagrant。這代表我可以直接用 Windows 的介面來管理 Linux 內部的檔案。
+
+步驟 4：清理 — 刪除桌面上的測試檔案
+
+指令： rm /mnt/c/Users/(你的Windows帳號)/Desktop/wsl_hello.txt
