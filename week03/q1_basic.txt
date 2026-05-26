@@ -1,0 +1,54 @@
+姓名：宋經翔
+學號：C11218118
+
+=== whoami ===
+（貼上執行結果）
+student114
+
+=== hostname ===
+（貼上執行結果）
+linux-server1
+=== pwd ===
+（貼上執行結果）
+/home/student114
+
+=== uname -a ===
+（貼上執行結果）
+Linux linux-server1 6.1.163-186.299.amzn2023.x86_64 #1 SMP PREEMPT_DYNAMIC Tue Feb 24 16:35:42 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
+
+=== date ===
+（貼上執行結果）
+Tue Mar 24 08:14:05 UTC 2026
+
+=== ls / ===
+（貼上執行結果）
+bin   dev  home  lib32  libx32  mnt  proc  run   srv  tmp  var
+boot  etc  lib   lib64  media   opt  root  sbin  sys  usr
+
+=== ls -la ~ ===
+（貼上執行結果）
+total 748
+drwxr-x---. 11 student114 student114  16384 Mar 24 07:33 .
+drwxr-xr-x.  1 root       root        16384 Mar 10 03:13 ..
+-rw-------.  1 student114 student114   1411 Mar 17 08:23 .bash_history
+-rw-r--r--.  1 student114 student114    220 Jan  6  2022 .bash_logout
+-rw-r--r--.  1 student114 student114   3771 Jan  6  2022 .bashrc
+drwx------.  2 student114 student114     34 Mar 10 03:16 .cache
+drwxrwxr-x.  3 student114 student114     19 Mar 24 06:09 .local
+-rw-r--r--.  1 student114 student114    807 Jan  6  2022 .profile
+-rw-rw-r--.  1 student114 student114    171 Mar 17 06:27 .wget-hsts
+-rw-rw-r--.  1 student114 student114    189 Mar  9 06:50 README.txt
+drwxrwxr-x.  2 student114 student114     22 Mar 17 06:16 c112181111
+drwxrwxr-x.  2 student114 student114     32 Mar 24 06:06 documents
+drwxr-xr-x.  2 student114 student114     83 Mar  9 06:50 exercises
+-rw-rw-r--.  1 student114 student114      0 Mar 10 07:18 file.txt
+-rw-rw-r--.  1 student114 student114    185 Mar 24 07:34 intro.txt
+-rw-rw-r--.  1 student114 student114      0 Mar 24 07:33 intro.txto.txt
+-rw-rw-r--.  1 student114 student114 688430 Jan 14 12:51 koala.png
+-rwxrwxr-x.  1 student114 student114    470 Mar 24 07:25 my_script.sh
+-rw-rw-r--.  1 student114 student114     36 Mar 10 07:09 myfile.txt
+-rw-rw-r--.  1 student114 student114     29 Mar 24 06:15 myfile1.txt
+drwxrwxr-x.  2 student114 student114      6 Mar 10 07:27 practice
+drwxrwxr-x.  2 student114 student114      6 Mar  9 06:50 projects
+drwxrwxr-x.  2 student114 student114      6 Mar  9 06:50 scripts
+drwxrwxr-x.  4 student114 student114     68 Mar 17 07:48 week04
