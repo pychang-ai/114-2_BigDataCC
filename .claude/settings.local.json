@@ -1,0 +1,32 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(docker version)",
+      "PowerShell(docker pull ubuntu:22.04 2>&1)",
+      "PowerShell(docker pull ubuntu:22.04)",
+      "PowerShell(docker pull python:3.11-slim)",
+      "PowerShell(docker pull nginx:alpine)",
+      "PowerShell(docker rmi ubuntu:22.04)",
+      "PowerShell(docker run -d --name my-nginx -p 8080:80 nginx:alpine)",
+      "PowerShell(curl http://localhost:8080 2>&1)",
+      "PowerShell(Invoke-WebRequest -Uri http://localhost:8080 -UseBasicParsing)",
+      "PowerShell(docker exec my-nginx hostname)",
+      "PowerShell(docker exec my-nginx ls /etc/nginx)",
+      "PowerShell(docker exec my-nginx cat /etc/nginx/nginx.conf)",
+      "PowerShell(docker stop my-nginx)",
+      "PowerShell(docker rm my-nginx)",
+      "PowerShell(Get-ChildItem \"$env:USERPROFILE\\\\.claude\\\\projects\\\\\" | Select-Object Name)",
+      "PowerShell(Test-Path \"$env:USERPROFILE\\\\.claude\"; Get-ChildItem \"$env:USERPROFILE\\\\.claude\" -ErrorAction SilentlyContinue | Select-Object Name, PSIsContainer)",
+      "PowerShell(Get-ChildItem \"$env:USERPROFILE\\\\.claude\" -Recurse -Depth 2 | Select-Object FullName, PSIsContainer | Format-List)",
+      "PowerShell(docker run -d --name ship-api -p 8080:5000 ship-api:v1)",
+      "PowerShell(Invoke-WebRequest -Uri http://localhost:8080/ -UseBasicParsing)",
+      "PowerShell(Invoke-WebRequest -Uri http://localhost:8080/ships -UseBasicParsing)",
+      "PowerShell(Invoke-WebRequest -Uri http://localhost:8080/ships/2 -UseBasicParsing)",
+      "PowerShell(docker stop ship-api)",
+      "PowerShell(docker rm ship-api)"
+    ],
+    "additionalDirectories": [
+      "c:\\Users\\Teacher\\Desktop\\W13\\114-2_BigDataCC\\.claude"
+    ]
+  }
+}
