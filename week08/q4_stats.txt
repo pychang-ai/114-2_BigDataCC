@@ -1,0 +1,94 @@
+姓名：林秉賢
+學號：C112181148
+
+=== 任務 1：統計函數 ===
+請寫出 SQL 並貼上結果：
+
+Q1：查詢船舶總數、平均噸位、最大噸位、最小噸位
+（貼上 SQL 語句）
+SELECT 
+    COUNT(*) AS total_ships,
+    AVG(tonnage) AS avg_tonnage,
+    MAX(tonnage) AS max_tonnage,
+    MIN(tonnage) AS min_tonnage
+FROM ships;
+（貼上結果）
++-------------+-------------+-------------+-------------+
+| total_ships | avg_tonnage | max_tonnage | min_tonnage |
++-------------+-------------+-------------+-------------+
+| 5           | 146988.00   | 221000      | 85000       |
++-------------+-------------+-------------+-------------+
+Q2：查詢噸位最大的前 3 艘船（使用 ORDER BY + LIMIT）
+（貼上 SQL 語句）
+SELECT * FROM ships
+ORDER BY tonnage DESC
+LIMIT 3;
+（貼上結果）
+Ever Given
+Kaohsiung Express
+Yang Ming Wish
+=== 任務 2：GROUP BY 分組統計 ===
+
+Q3：統計每種船型（ship_type）的船舶數量和平均噸位
+（貼上 SQL 語句）
+SELECT 
+    ship_type,
+    COUNT(*) AS total_ships,
+    AVG(tonnage) AS avg_tonnage
+FROM ships
+GROUP BY ship_type;
+（貼上結果）
+Container | 3 | 183646.67
+Bulk      | 1 | 85000
+Tanker    | 1 | 95000
+Q4：統計每種職位（rank）的船員人數和平均薪水
+（貼上 SQL 語句）
+SELECT 
+    rank,
+    COUNT(*) AS total_crew,
+    AVG(salary) AS avg_salary
+FROM crew
+GROUP BY rank;
+（貼上結果）
+Captain  | 2 | 115000
+Officer  | 2 | 65000
+Engineer | 2 | 60000
+Crew     | 2 | 39000
+=== 任務 3：LEFT JOIN 多表查詢 ===
+
+Q5：查詢每位船員的姓名、職位、薪水，以及他所屬的船名
+提示：用 LEFT JOIN 把 crew 和 ships 接起來
+（貼上 SQL 語句）
+SELECT 
+    c.name,
+    c.rank,
+    c.salary,
+    s.ship_name
+FROM crew c
+LEFT JOIN ships s
+ON c.ship_id = s.id;
+（貼上結果）
+John  | Captain  | 120000 | Ever Given
+Mike  | Officer  | 70000  | Ever Given
+...
+Q6：找出沒有任何船員的船舶
+提示：LEFT JOIN + WHERE ... IS NULL
+（貼上 SQL 語句）
+SELECT 
+    s.ship_name
+FROM ships s
+LEFT JOIN crew c
+ON s.id = c.ship_id
+WHERE c.id IS NULL;
+（貼上結果）
+（如果每艘船都有船員 → 可能是空結果）
+請回答：
+Q：LEFT JOIN 和直接查兩張表（SELECT * FROM crew, ships WHERE ...）有什麼不同？
+   提示：想想「沒有船員的船」在兩種寫法下會不會出現。
+A：
+LEFT JOIN 會保留左表（例如 ships 或 crew）的所有資料，即使在另一張表中沒有對應資料，也會顯示出來（對應欄位為 NULL）。
+而 SELECT * FROM crew, ships WHERE ...（內連接 / INNER JOIN）只會顯示兩張表中「有成功對應」的資料。
+差異重點：
+LEFT JOIN：會顯示「沒有船員的船」
+INNER JOIN：不會顯示沒有對應資料的記錄
+因此，如果要找「沒有船員的船」，一定要用 LEFT JOIN 才能查出來

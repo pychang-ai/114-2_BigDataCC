@@ -1,0 +1,150 @@
+姓名：林秉賢
+學號：C112181148
+
+=== 任務 1：確認 Conda 版本 ===
+conda --version
+（貼上結果）
+conda 26.1.1
+conda info
+（貼上結果，至少包含 conda version、active environment、base environment 三行）
+
+     active environment : None
+       user config file : /home/u306/.condarc
+ populated config files : /home/u306/miniconda3/.condarc
+                          /home/u306/miniconda3/condarc.d/anaconda-auth.yml
+          conda version : 26.1.1
+    conda-build version : not installed
+         python version : 3.13.12.final.0
+                 solver : libmamba (default)
+       virtual packages : __archspec=1=skylake
+                          __conda=26.1.1=0
+                          __cuda=12.4=0
+                          __glibc=2.39=0
+                          __linux=6.6.87.2=0
+                          __unix=0=0
+       base environment : /home/u306/miniconda3  (writable)
+      conda av data dir : /home/u306/miniconda3/etc/conda
+  conda av metadata url : None
+           channel URLs : https://repo.anaconda.com/pkgs/main/linux-64
+                          https://repo.anaconda.com/pkgs/main/noarch
+                          https://repo.anaconda.com/pkgs/r/linux-64
+                          https://repo.anaconda.com/pkgs/r/noarch
+          package cache : /home/u306/miniconda3/pkgs
+                          /home/u306/.conda/pkgs
+       envs directories : /home/u306/miniconda3/envs
+                          /home/u306/.conda/envs
+    temporary directory : /tmp
+               platform : linux-64
+             user-agent : conda/26.1.1 requests/2.32.5 CPython/3.13.12 Linux/6.6.87.2-microsoft-standard-WSL2 ubuntu/24.04.4 glibc/2.39 solver/libmamba conda-libmamba-solver/25.11.0 libmambapy/2.3.2 aau/0.7.5 c/. s/. e/.
+                UID:GID : 1000:1000
+             netrc file : None
+           offline mode : False
+=== 任務 2：建立新環境 ===
+建立一個名為「學號_w10」的環境，Python 版本指定為 3.11
+（例如學號 A11218001 → A11218001_w10）
+
+conda create -n [你的學號]_w10 python=3.11 -y
+（貼上最後幾行結果，看到 "done" 字樣）
+CondaToSNonInteractiveError: Terms of Service have not been accepted for the following channels. Please accept or remove them before proceeding:
+    - https://repo.anaconda.com/pkgs/main
+    - https://repo.anaconda.com/pkgs/r
+
+To accept these channels' Terms of Service, run the following commands:
+    conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main
+    conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r
+
+For information on safely removing channels from your conda configuration,
+please see the official documentation:
+
+    https://www.anaconda.com/docs/tools/working-with-conda/channels
+conda env list
+（貼上結果，確認環境出現在清單中）
+# conda environments:
+#
+# * -> active
+# + -> frozen
+base                     /home/u306/miniconda3
+=== 任務 3：啟動環境並安裝套件 ===
+conda activate [你的學號]_w10
+（貼上提示符變化，例如：(A11218001_w10) user@host:~$）
+CondaError: Run 'conda init' before 'conda activate'
+conda install pandas numpy matplotlib -y
+（貼上最後幾行結果）
+For information on safely removing channels from your conda configuration,
+please see the official documentation:
+
+    https://www.anaconda.com/docs/tools/working-with-conda/channels
+conda list | head -20
+（貼上結果，確認 pandas、numpy、matplotlib 都在）
+# packages in environment at /home/u306/miniconda3:
+#
+# Name                      Version          Build               Channel
+_libgcc_mutex               0.1              main
+_openmp_mutex               5.1              1_gnu
+absl-py                     2.4.0            pypi_0              pypi
+anaconda-anon-usage         0.7.5            pyhb46e38b_100
+anaconda-auth               0.13.0           py313h06a4308_0
+anaconda-cli-base           0.8.1            py313h06a4308_0
+annotated-types             0.6.0            py313h06a4308_1
+anyio                       4.10.0           py313h06a4308_0
+archspec                    0.2.5            pyhd3eb1b0_0
+astroid                     4.0.4            pypi_0              pypi
+asttokens                   3.0.1            pypi_0              pypi
+boltons                     25.0.0           py313h06a4308_0
+brotlicffi                  1.2.0.0          py313h7354ed3_0
+bzip2                       1.0.8            h5eee18b_6
+c-ares                      1.34.6           hd44998d_0
+ca-certificates             2025.12.2        h06a4308_0
+certifi                     2026.01.04       py313h06a4308_0
+=== 任務 4：匯出環境設定檔 ===
+conda env export > week10/environment.yml
+cat week10/environment.yml
+（貼上 environment.yml 完整內容）
+cat: week10/environment.yml: No such file or directory
+=== 任務 5：清理暫存 ===
+conda clean --all -y
+（貼上結果，記錄釋放的空間大小，例如 "Removed XX MB"）
+Will remove 145 (118.4 MB) tarball(s).
+Will remove 1 index cache(s).
+Will remove 10 (3.1 MB) package(s).
+There are no tempfile(s) to remove.
+There are no logfile(s) to remove.
+=== 任務 6：觀念回答 ===
+Q1：為什麼不要直接在 base 環境安裝專案套件？這樣做有什麼壞處？
+A1：
+不建議在 base 環境直接安裝專案套件，主要原因如下：
+
+容易造成套件衝突
+不同專案可能需要不同版本的套件，如果全部裝在 base，會互相影響，導致版本衝突或程式無法執行。
+環境難以維護
+base 環境會變得混亂，難以追蹤哪些套件是屬於哪個專案。
+影響 Conda 本身運作
+base 環境是 Conda 的核心環境，隨意修改可能會影響 conda 指令或其他環境管理功能。
+不利於專案重現（reproducibility）
+若沒有獨立環境，換電腦或與他人合作時，很難重建相同的執行環境。
+
+👉 因此建議：每個專案建立獨立環境（conda env）
+Q2：conda install 和 pip install 有什麼差異？什麼情況下會建議用 pip？
+A2：
+差異：
+
+套件來源不同
+conda install：來自 Conda repository（如 conda-forge）
+pip install：來自 PyPI（Python 官方套件庫）
+相依性管理
+conda：會處理「跨語言」依賴（例如 C、C++ library）
+pip：只處理 Python 套件依賴
+環境穩定性
+conda：較穩定，適合科學計算（numpy、pandas 等）
+pip：較新、更新快，但可能較容易衝突
+Q3：environment.yml 的用途是什麼？換電腦時要怎麼用它快速重建環境？
+A3：
+用途：
+environment.yml 是用來記錄 Conda 環境的設定，包括：
+
+環境名稱
+Python 版本
+已安裝套件與版本
+套件來源（channels）
+
+👉 可以用來「重現完全相同的開發環境」

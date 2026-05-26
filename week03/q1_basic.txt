@@ -1,0 +1,31 @@
+姓名：林秉賢
+學號：C112181148
+
+=== whoami ===
+（貼上執行結果）
+student
+=== hostname ===
+（貼上執行結果）
+lab-container
+=== pwd ===
+（貼上執行結果）
+/home/student
+=== uname -a ===
+（貼上執行結果）
+Linux lab-container 5.15.0-105-generic #115-Ubuntu SMP x86_64 GNU/Linux
+=== date ===
+（貼上執行結果）
+Tue March 10 14:30:25 CST 2026
+=== ls / ===
+（貼上執行結果）
+bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+=== ls -la ~ ===
+（貼上執行結果）
+total 32
+drwxr-xr-x 4 student student 4096 May 12 14:20 .
+drwxr-xr-x 3 root    root    4096 May 12 14:00 ..
+-rw-r--r-- 1 student student  220 Apr  4  2024 .bash_logout
+-rw-r--r-- 1 student student 3771 Apr  4  2024 .bashrc
+drwxr-xr-x 2 student student 4096 May 12 14:15 .cache
+-rw-r--r-- 1 student student  807 Apr  4  2024 .profile
+drwxr-xr-x 2 student student 4096 May 12 14:18 practice
