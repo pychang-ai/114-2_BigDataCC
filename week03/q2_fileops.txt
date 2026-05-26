@@ -1,0 +1,60 @@
+姓名：黃薏庭
+學號：C112181103
+
+=== 步驟 1：mkdir week03test ===
+（貼上結果，無輸出則寫「無輸出」）
+無輸出
+
+=== 步驟 2：cd week03test ===
+（貼上結果）
+student107@linux-server1:~/week03test$
+
+=== 步驟 3：建立三個檔案 ===
+使用的指令：touch a01.txt a02.txt a03.txt
+（寫出你用的指令）
+
+=== 步驟 4：ls -l ===
+（貼上結果）
+total 0
+-rw-rw-r--. 1 student107 student107 0 Mar 18 15:46 a01.txt
+-rw-rw-r--. 1 student107 student107 0 Mar 18 15:46 a02.txt
+-rw-rw-r--. 1 student107 student107 0 Mar 18 15:46 a03.txt
+
+
+=== 步驟 5：cp hello.txt hello_backup.txt ===
+（貼上結果）
+student107@linux-server1:~/week03test$ cp hello.txt hello_backup.txt
+student107@linux-server1:~/week03test$ ls
+a01.txt  a02.txt  a03.txt  hello.txt  hello_backup.txt
+
+=== 步驟 6：mv vm.txt virtualization.txt ===
+（貼上結果）
+student107@linux-server1:~/week03test$ mv vm.txt virtualization.txt
+student107@linux-server1:~/week03test$ ls
+a01.txt  a02.txt  a03.txt  hello.txt  hello_backup.txt  virtualization.txt
+
+=== 步驟 7：ls -l（最終結果） ===
+（貼上結果）
+total 0
+-rw-rw-r--. 1 student107 student107 0 Mar 18 15:46 a01.txt
+-rw-rw-r--. 1 student107 student107 0 Mar 18 15:46 a02.txt
+-rw-rw-r--. 1 student107 student107 0 Mar 18 15:46 a03.txt
+-rw-rw-r--. 1 student107 student107 0 Mar 18 15:54 hello.txt
+-rw-rw-r--. 1 student107 student107 0 Mar 18 15:54 hello_backup.txt
+-rw-rw-r--. 1 student107 student107 0 Mar 18 15:57 virtualization.txt
+
+=== 問答 ===
+Q：最終目錄中有哪些檔案？和步驟 4 相比，發生了什麼變化？
+A：（用自己的話回答）a01.txt  a02.txt  a03.txt  hello.txt  hello_backup.txt  virtualization.txt
+多了三個檔案 複製hello.txt變hello_backup.txt 然後把vm.txt改成virtualization.txt
+```
+
+### 評分標準
+
+| 項目 | 配分 |
+|------|------|
+| q2_fileops.txt 存在且格式正確 | 5 分 |
+| 姓名學號已填寫 | 3 分 |
+| 7 個步驟紀錄完整 | 21 分 |
+| 最終檔案清單正確 | 6 分 |
+| 問答回答合理 | 5 分 |

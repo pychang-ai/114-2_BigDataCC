@@ -1,0 +1,120 @@
+姓名：黃薏庭
+學號：C112181103
+
+=== 任務 1：建立資料庫 ===
+CREATE DATABASE port_db;
+SHOW DATABASES;
+USE port_db;
+（貼上每步結果）
+mysql> CREATE DATABASE port_db;
+SHOW DATABASES;
+USE port_db;Query OK, 1 row affected (0.00 sec)
+
+mysql> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| port_db            |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql> USE port_db;
+Database changed
+mysql> CREATE DATABASE port_db;
+ DATABASES;
+USERROR 1007 (HY000): Can't create database 'port_db'; database exists
+mysql> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| port_db            |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
+
+=== 任務 2：建立 ships 資料表 ===
+CREATE TABLE ships (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    ship_name VARCHAR(100) NOT NULL,
+    ship_type VARCHAR(50),
+    tonnage INT,
+    arrival_date DATE
+);
+（貼上結果）
+mysql> CREATE TABLE ships (
+    ->     id INT AUTO_INCREMENT PRIMARY KEY,
+    ->     ship_name VARCHAR(100) NOT NULL,
+    ->     ship_type VARCHAR(50),
+    ->     tonnage INT,
+    ->     arrival_date DATE
+    -> );
+Query OK, 0 rows affected (0.02 sec)
+
+查看表結構：
+SHOW TABLES;
+DESCRIBE ships;
+（貼上結果）
+mysql> SHOW TABLES;
+ESCRIBE ships;+-------------------+
+| Tables_in_port_db |
++-------------------+
+| ships             |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> DESCRIBE ships;
++--------------+--------------+------+-----+---------+----------------+
+| Field        | Type         | Null | Key | Default | Extra          |
++--------------+--------------+------+-----+---------+----------------+
+| id           | int          | NO   | PRI | NULL    | auto_increment |
+| ship_name    | varchar(100) | NO   |     | NULL    |                |
+| ship_type    | varchar(50)  | YES  |     | NULL    |                |
+| tonnage      | int          | YES  |     | NULL    |                |
+| arrival_date | date         | YES  |     | NULL    |                |
++--------------+--------------+------+-----+---------+----------------+
+5 rows in set (0.01 sec)
+
+=== 任務 3：自己建立第二張表 crew ===
+請自行寫出 CREATE TABLE 語句，建立 crew 表，需包含以下欄位：
+- id：整數，自動遞增，主鍵
+- name：字串，最多 50 字元，不允許空值
+- rank：字串，最多 30 字元（職位：Captain / Officer / Engineer / Crew）
+- ship_id：整數（對應 ships 表的 id）
+- salary：小數（DECIMAL(10,2)）
+
+（貼上你寫的 CREATE TABLE 語句）
+（貼上 DESCRIBE crew; 的結果）
+mysql> CREATE TABLE crew (
+    ->     id INT AUTO_INCREMENT PRIMARY KEY,
+    ->     name VARCHAR(50) NOT NULL,
+    ->     `rank` VARCHAR(30) NOT NULL,
+    ->     ship_id INT,
+    ->     salary DECIMAL(10,2),
+    ->     FOREIGN KEY (ship_id) REFERENCES ships(id)
+    -> );
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> DESCRIBE crew;
++---------+---------------+------+-----+---------+----------------+
+| Field   | Type          | Null | Key | Default | Extra          |
++---------+---------------+------+-----+---------+----------------+
+| id      | int           | NO   | PRI | NULL    | auto_increment |
+| name    | varchar(50)   | NO   |     | NULL    |                |
+| rank    | varchar(30)   | NO   |     | NULL    |                |
+| ship_id | int           | YES  | MUL | NULL    |                |
+| salary  | decimal(10,2) | YES  |     | NULL    |                |
++---------+---------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+
+請回答：
+Q：為什麼 crew 表的 ship_id 要對應 ships 表的 id？這樣設計有什麼好處？
+A：這設計稱為外鍵約束，核心好處有三點：第一是資料完整性，防止船員分配到不存在的船隻；
+第二是減少冗餘，船隻詳細資訊僅需儲存一份，節省空間且避免重複輸入；第三是維護便利性，若需修改船隻資料，
+只需在 ships 表更新一次，所有關聯船員便能同步指向正確資訊，確保資料的一致性與查詢效率。
