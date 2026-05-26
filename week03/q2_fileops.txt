@@ -1,0 +1,37 @@
+姓名：曾紹喆
+學號：c112181182
+
+=== 步驟 1：mkdir week03test ===
+（貼上結果，無輸出則寫「無輸出」）
+無輸出
+=== 步驟 2：cd week03test ===
+（貼上結果）
+student222@linux-server2:~/week0
+=== 步驟 3：建立三個檔案 ===
+使用的指令：
+（寫出你用的指令）
+touch hello.txt
+touch learning.txt
+touch vm.txt
+=== 步驟 4：ls -l ===
+（貼上結果）
+-rw-rw-r--. 1 student222 student222 0 Mar 24 06:13 hello.txt
+-rw-rw-r--. 1 student222 student222 0 Mar 24 06:13 learning.tx
+-rw-rw-r--. 1 student222 student222 0 Mar 24 06:14 vm.txt
+=== 步驟 5：cp hello.txt hello_backup.txt ===
+（貼上結果）
+無輸出
+=== 步驟 6：mv vm.txt virtualization.txt ===
+（貼上結果）
+無輸出
+=== 步驟 7：ls -l（最終結果） ===
+（貼上結果）
+-rw-rw-r--. 1 student222 student222 0 Mar 24 06:13 hello.txt
+-rw-rw-r--. 1 student222 student222 0 Mar 24 06:15 hello_backup.txt
+-rw-rw-r--. 1 student222 student222 0 Mar 24 06:13 learning.tx
+-rw-rw-r--. 1 student222 student222 0 Mar 24 06:14 virtualization.txt
+=== 問答 ===
+Q：最終目錄中有哪些檔案？和步驟 4 相比，發生了什麼變化？
+A：（用自己的話回答）
+hello.txt,hello_backup.txt,learning.tx,virtualization.txt
+vm.txt不見了,新增了hello_backup.txt和virtualization.txt

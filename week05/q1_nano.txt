@@ -1,0 +1,39 @@
+姓名：曾紹喆
+學號：c112181182
+
+=== 任務 1：用 nano 建立 intro.txt ===
+請用 nano 建立 ~/intro.txt，輸入以下內容（替換為你的真實資訊）：
+  姓名：XXX
+  學號：XXX
+  系所：XXX
+  興趣：XXX
+  修這門課的期望：XXX
+
+儲存後用 cat 顯示內容：
+cat ~/intro.txt
+
+（貼上結果）
+student222@linux-server2:~/week03test$ cat ~/intro.txt~
+姓名：曾紹喆
+學號：c112181182
+系所：海資
+興趣：潛水
+修這門課的期望：無
+
+=== 任務 2：nano 快捷鍵操作 ===
+用 nano 開啟 ~/intro.txt，在最後面新增一行：
+  今天日期：（用 date 指令查到的日期）
+
+儲存後用 cat 顯示完整內容：
+（貼上結果）
+student222@linux-server2:~/week03test$ cat ~/intro.txt~
+姓名：曾紹喆
+學號：c112181182
+系所：海資
+興趣：潛水
+修這門課的期望：無
+今日日期:20260324
+
+=== 任務 3：說明你使用了哪些 nano 快捷鍵 ===
+（例如：Ctrl+O 儲存、Ctrl+X 離開，至少列出 4 個）
+Ctrl+O,Ctrl+x,Ctrl+u,Ctrl+k

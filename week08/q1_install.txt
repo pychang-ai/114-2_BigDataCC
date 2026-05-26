@@ -1,0 +1,81 @@
+姓名：曾紹喆
+學號：c112181182
+
+=== 任務 1：確認 WSL 環境 ===
+在 Windows PowerShell 中執行：
+wsl --list --verbose
+（貼上結果）
+  NAME      STATE           VERSION
+* Ubuntu    Stopped         2
+=== 任務 2：安裝 MySQL ===
+進入 WSL 後依序執行，貼上每步結果：
+
+步驟 1：更新套件庫
+sudo apt update && sudo apt upgrade -y
+（貼上最後幾行結果即可）
+Processing triggers for man-db (2.12.0-4build2) ...
+Setting up packagekit (1.2.8-2ubuntu1.5) ...
+Setting up packagekit-tools (1.2.8-2ubuntu1.5) ...
+Setting up software-properties-common (0.99.49.4) ...
+步驟 2：安裝 MySQL Server
+sudo apt install -y mysql-server
+（貼上最後幾行結果即可）
+Created symlink /etc/systemd/system/multi-user.target.wants/mysql.service → /usr/lib/systemd/system/mysql.service.
+Setting up libcgi-pm-perl (4.63-1) ...
+Setting up libhtml-template-perl (2.97-2) ...
+Setting up mysql-server (8.0.45-0ubuntu0.24.04.1) ...
+Setting up libcgi-fast-perl (1:2.17-1) ...
+Processing triggers for man-db (2.12.0-4build2) ...
+Processing triggers for libc-bin (2.39-0ubuntu8.7) ...
+/sbin/ldconfig.real: /usr/lib/wsl/lib/libcuda.so.1 is not a symbolic link
+
+步驟 3：啟動 MySQL 服務
+sudo service mysql start
+（貼上結果）
+無結果
+步驟 4：確認 MySQL 正在運行
+sudo service mysql status
+（貼上結果，應顯示 running）
+● mysql.service - MySQL Community Server
+     Loaded: loaded (/usr/lib/systemd/system/mysql.service; enabled; preset: enabled)
+     Active: active (running) since Tue 2026-04-28 14:09:08 CST; 43s ago
+    Process: 5568 ExecStartPre=/usr/share/mysql/mysql-systemd-start pre (code=exited, status=0/SUCCESS)
+   Main PID: 5576 (mysqld)
+     Status: "Server is operational"
+      Tasks: 38 (limit: 9275)
+     Memory: 363.9M (peak: 379.8M)
+        CPU: 591ms
+     CGroup: /system.slice/mysql.service
+             └─5576 /usr/sbin/mysqld
+
+Apr 28 14:09:07 U31 systemd[1]: Starting mysql.service - MySQL Community Server...
+Apr 28 14:09:08 U31 systemd[1]: Started mysql.service - MySQL Community Server.
+=== 任務 3：登入 MySQL ===
+
+步驟 1：用 sudo 登入 MySQL（WSL 預設不需要密碼）
+sudo mysql
+（貼上登入成功畫面，應顯示 Welcome to the MySQL monitor）
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.0.45-0ubuntu0.24.04.1 (Ubuntu)
+步驟 2：確認版本
+SELECT VERSION();
+（貼上結果）
++-------------------------+
+| VERSION()               |
++-------------------------+
+| 8.0.45-0ubuntu0.24.04.1 |
++-------------------------+
+1 row in set (0.00 sec)
+步驟 3：查看預設資料庫
+SHOW DATABASES;
+（貼上結果）
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+4 rows in set (0.01 sec)
