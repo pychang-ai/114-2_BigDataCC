@@ -1,0 +1,60 @@
+姓名：黃翊華
+學號：C112181111
+
+=== 任務 1：確認 Docker 環境 ===
+
+執行以下指令，確認 Docker 正常運作：
+docker version
+
+（貼上 Client 和 Server 的版本號，只需貼出 Version 那行即可）
+Client Version:29.2.1
+Server Engine Version:29.2.1
+
+=== 任務 2：拉取映像檔 ===
+
+依序拉取以下三個映像檔：
+docker pull ubuntu:22.04
+docker pull python:3.11-slim
+docker pull nginx:alpine
+
+（每個 pull 完成後，貼上最後一行輸出，例如 "Status: Downloaded newer image ..." 或 "Status: Image is up to date ..."）
+
+ubuntu:22.04：Status: Downloaded newer image for ubuntu:22.04
+docker.io/library/ubuntu:22.04
+python:3.11-slim：Status: Downloaded newer image for python:3.11-slim
+docker.io/library/python:3.11-slim
+nginx:alpine：Status: Downloaded newer image for nginx:alpine
+docker.io/library/nginx:alpine
+
+=== 任務 3：列出映像檔 ===
+
+執行：docker images
+（貼上完整輸出）
+                                                                                                    i Info →   U  In Use
+IMAGE                           ID             DISK USAGE   CONTENT SIZE   EXTRA
+docker/getting-started:latest   d79336f4812b       73.9MB         21.4MB    U
+nginx:alpine                    8b1e78743a03       93.6MB           27MB
+python:3.11-slim                a3ab0b966bc4        188MB         47.7MB
+ubuntu:22.04                    4f838adc7181        119MB         31.7MB
+=== 任務 4：刪除映像檔 ===
+
+執行以下指令刪除 ubuntu:22.04：
+docker rmi ubuntu:22.04
+
+（貼上刪除後的輸出）
+Untagged: ubuntu:22.04
+Deleted: sha256:4f838adc7181d9039ac795a7d0aba05a9bd9ecd480d294483169c5def983b64d
+執行 docker images，確認 ubuntu:22.04 已移除：
+（貼上刪除後的 docker images 輸出）
+                                                                                                    i Info →   U  In Use
+IMAGE                           ID             DISK USAGE   CONTENT SIZE   EXTRA
+docker/getting-started:latest   d79336f4812b       73.9MB         21.4MB    U
+nginx:alpine                    8b1e78743a03       93.6MB           27MB
+python:3.11-slim                a3ab0b966bc4        188MB         47.7MB
+=== 觀念題 ===
+Q1：映像檔（Image）和容器（Container）有什麼不同？
+A1：Image = 模板 / 安裝檔
+Container = 執行中的實體
+
+Q2：為什麼刪除映像檔前需要先刪除使用該映像檔的容器？
+A2：如果先把 Image 刪掉 Container 就失去基底
