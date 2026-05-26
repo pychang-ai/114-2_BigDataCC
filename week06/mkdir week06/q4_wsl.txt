@@ -1,0 +1,26 @@
+```
+姓名：吳宣縈
+學號：C112181149
+
+=== 任務 1：查看 WSL 環境資訊 ===
+請在 Windows 的 PowerShell 或 CMD 中執行以下指令，貼上結果：
+wsl --list --verbose
+C:\Users\Teacher>wsl --list --verbose
+  NAME      STATE           VERSION
+* Ubuntu    Stopped         2
+
+wsl --version
+C:\Users\Teacher>wsl --version
+WSL 版本： 2.6.3.0
+核心版本： 6.6.87.2-1
+WSLg 版本： 1.0.71
+MSRDC 版本： 1.2.6353
+Direct3D 版本： 1.611.1-81528511
+DXCore 版本： 10.0.26100.1-240331-1435.ge-release
+Windows 版本： 10.0.26200.8037
+
+我的 WSL 版本是 2，安裝的 Linux 發行版名稱是 Ubuntu
+
+=== 任務 2：檔案互通 — 從 WSL 存取 Windows ===
+以下操作在 WSL 終端機中執行：
+

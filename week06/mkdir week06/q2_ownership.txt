@@ -1,0 +1,67 @@
+```
+姓名：吳宣縈
+學號：C112181149
+
+=== 任務 1：探索 Linux 目錄結構 ===
+執行以下指令：
+ls /
+student217@linux-server2:~$ ls /
+bin   dev  home  lib32  libx32  mnt  proc  run   srv  tmp  var
+boot  etc  lib   lib64  media   opt  root  sbin  sys  usr
+
+/home：使用者的「家」存放一般使用者的個人檔案與設定檔。
+/etc：系統的「設定中心」存放所有的系統設定檔。
+/var：「變動資料區」存放經常變動的檔案，例如系統日誌、資料庫內容或快取。
+/tmp：「暫存區」供程式或使用者存放臨時檔案，系統重新啟動後通常會被清理。
+/usr：「使用者程式區」存放大多數的使用者工具軟體與程式庫。
+
+=== 任務 2：查看空間與檔案統計 ===
+查看自己家目錄佔用多少空間：
+du -sh ~
+student217@linux-server2:~$ du -sh ~
+80K     /home/student217
+
+計算自己家目錄下有多少個檔案：
+find ~ -type f | wc -l
+student217@linux-server2:~$ find ~ -type f | wc -l
+23
+
+計算自己家目錄下有多少個目錄：
+find ~ -type d | wc -l
+student217@linux-server2:~$ find ~ -type d | wc -l
+16
+
+=== 任務 3：chown 與 chgrp 實作 ===
+請依序執行以下指令並貼上每步的結果：
+步驟 1：建立測試檔案並查看預設擁有者
+touch ~/week06_test.txt
+echo "Ownership Test" > ~/week06_test.txt
+ls -l ~/week06_test.txt
+（貼上結果，注意看擁有者和群組欄位）
+
+步驟 2：建立測試用的使用者和群組
+sudo useradd -m tempuser
+sudo groupadd tempgroup
+（貼上結果）
+
+步驟 3：用 chown 改變擁有者
+sudo chown tempuser ~/week06_test.txt
+ls -l ~/week06_test.txt
+（貼上結果，觀察擁有者欄位的變化）
+
+步驟 4：用 chgrp 改變群組
+sudo chgrp tempgroup ~/week06_test.txt
+ls -l ~/week06_test.txt
+（貼上結果，觀察群組欄位的變化）
+
+步驟 5：用 chown 一次改回自己
+sudo chown $(whoami):$(whoami) ~/week06_test.txt
+ls -l ~/week06_test.txt
+（貼上結果，確認擁有者和群組都改回來了）
+
+步驟 6：清理
+rm ~/week06_test.txt
+sudo userdel -r tempuser
+sudo groupdel tempgroup
+（貼上結果）
+```

@@ -1,0 +1,13 @@
+## pwd
+/home/student217/week03
+
+## ls
+q1_basic.txt  q2_fileops.txt  q3_compare.txt
+
+##ls -la
+total 0
+drwxrwxr-x. 2 student217 student217  70 Mar 10 07:32 .
+drwxr-x---. 9 student217 student217 182 Mar 10 07:24 ..
+-rw-rw-r--. 1 student217 student217   0 Mar 10 07:31 q1_basic.txt
+-rw-rw-r--. 1 student217 student217   0 Mar 10 07:31 q2_fileops.txt
+-rw-rw-r--. 1 student217 student217   0 Mar 10 07:32 q3_compare.txt

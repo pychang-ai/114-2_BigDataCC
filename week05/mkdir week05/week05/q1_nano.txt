@@ -1,0 +1,32 @@
+```
+姓名：吳宣縈
+學號：C112181149
+
+=== 任務 1：用 nano 建立 intro.txt ===
+student217@linux-server2:~$ nano ~intro.txt
+student217@linux-server2:~$ cat ~/intro.txt
+姓名:吳宣縈
+學號:C112181149
+系所:海事資訊科技系
+興趣:聽音樂
+修這門課的期望:學會Linux
+
+
+=== 任務 2：nano 快捷鍵操作 ===
+student217@linux-server2:~$ date
+Tue Mar 24 07:31:53 UTC 2026
+student217@linux-server2:~$ ^C
+student217@linux-server2:~$ nano ~intro.txt
+student217@linux-server2:~$ cat ~/intro.txt
+姓名:吳宣縈
+學號:C112181149
+系所:海事資訊科技系
+興趣:聽音樂
+修這門課的期望:學會Linux
+今天日期：2026-03-24
+
+=== 任務 3：說明你使用了哪些 nano 快捷鍵 ===
+Ctrl+O 儲存檔案
+Ctrl+X 離開
+Ctrl+K 剪下
+Ctrl+U 貼上
