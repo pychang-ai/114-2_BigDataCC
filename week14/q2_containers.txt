@@ -1,0 +1,55 @@
+姓名：呂依裴
+學號：C112181137
+
+=== 任務 1：啟動 nginx 容器 ===
+
+執行以下指令，在背景啟動 nginx 並對應埠號：
+docker run -d --name my-nginx -p 8080:80 nginx:alpine
+
+（貼上輸出的容器 ID，例如 a1b2c3d4...）
+
+=== 任務 2：查看容器狀態 ===
+
+執行：docker ps
+（貼上完整輸出，確認 my-nginx 的 STATUS 是 Up，PORTS 顯示 0.0.0.0:8080->80/tcp）
+
+=== 任務 3：測試 nginx 服務 ===
+
+在 AWS EC2 上執行：
+curl http://localhost:8080
+
+（貼上回傳的 HTML 內容，應包含 "Welcome to nginx!"）
+
+=== 任務 4：進入容器 ===
+
+執行：docker exec -it my-nginx sh
+
+進入後執行以下指令並貼上結果：
+1. hostname          （查看容器的 hostname）
+2. ls /etc/nginx     （查看 nginx 設定目錄內容）
+3. cat /etc/nginx/nginx.conf  （查看 nginx 設定，只貼前 10 行即可）
+
+（hostname 輸出）：
+（ls /etc/nginx 輸出）：
+
+輸入 exit 離開容器。
+
+=== 任務 5：查看容器 log ===
+
+執行：docker logs my-nginx
+（貼上最後 5 行 log 輸出）
+
+=== 任務 6：停止並刪除容器 ===
+
+docker stop my-nginx
+docker rm my-nginx
+
+執行 docker ps -a，確認 my-nginx 已移除：
+（貼上 docker ps -a 輸出，確認清單中沒有 my-nginx）
+
+=== 觀念題 ===
+Q1：docker run -d 和 docker run -it 的使用時機有什麼不同？
+A1：
+
+Q2：-p 8080:80 的意思是什麼？如果把主機的 8080 改成 9090，應用程式的行為會有什麼不同？
+A2：

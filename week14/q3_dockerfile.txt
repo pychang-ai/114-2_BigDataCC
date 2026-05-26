@@ -1,0 +1,33 @@
+姓名：呂依裴
+學號：C112181137
+
+=== 我撰寫的 Dockerfile 內容 ===
+（貼上你寫的 Dockerfile 完整內容）
+
+=== docker build 輸出 ===
+（貼上 docker build 的最後 5 行，應出現 "Successfully built ..." 或 "naming to docker.io/..."）
+
+=== docker images 確認 ===
+（貼上 docker images | grep ship-api 的結果，確認映像檔存在）
+
+=== API 測試結果 ===
+
+curl http://localhost:8080/ 輸出：
+
+curl http://localhost:8080/ships 輸出：
+
+curl http://localhost:8080/ships/2 輸出：
+
+=== 清理 ===
+docker stop ship-api
+docker rm ship-api
+
+（執行完成後貼上 docker ps -a | grep ship-api 的結果，確認已清除）
+
+=== 觀念題 ===
+Q1：Dockerfile 中 RUN 和 CMD 有什麼不同？分別在什麼時候執行？
+A1：
+
+Q2：為什麼要先 COPY requirements.txt 安裝套件，再 COPY . . 複製程式碼？
+   如果反過來，每次改 app.py 時會多做什麼事？
+A2：

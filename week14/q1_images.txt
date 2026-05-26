@@ -1,0 +1,67 @@
+姓名：呂依裴
+學號：C112181137
+
+=== 任務 1：確認 Docker 環境 ===
+
+執行以下指令，確認 Docker 正常運作：
+docker version
+
+（貼上 Client 和 Server 的版本號，只需貼出 Version 那行即可）
+Client Version:29.2.1
+Server Engine Version:29.2.1
+
+=== 任務 2：拉取映像檔 ===
+
+依序拉取以下三個映像檔：
+docker pull ubuntu:22.04
+docker pull python:3.11-slim
+docker pull nginx:alpine
+
+（每個 pull 完成後，貼上最後一行輸出，例如 "Status: Downloaded newer image ..." 或 "Status: Image is up to date ..."）
+
+ubuntu:22.04：
+Status: Downloaded newer image for ubuntu:22.04
+docker.io/library/ubuntu:22.04
+
+python:3.11-slim：
+Status: Downloaded newer image for python:3.11-slim
+docker.io/library/python:3.11-slim
+
+nginx:alpine：
+Status: Downloaded newer image for nginx:alpine
+docker.io/library/nginx:alpine
+
+=== 任務 3：列出映像檔 ===
+
+執行：docker images
+
+                                                                                                   i Info →   U  In Use
+IMAGE              ID             DISK USAGE   CONTENT SIZE   EXTRA
+nginx:alpine       8b1e78743a03       93.6MB           27MB
+python:3.11-slim   a3ab0b966bc4        188MB         47.7MB
+ubuntu:22.04       4f838adc7181        119MB         31.7MB
+
+=== 任務 4：刪除映像檔 ===
+
+執行以下指令刪除 ubuntu:22.04：
+docker rmi ubuntu:22.04
+
+Untagged: ubuntu:22.04
+Deleted: sha256:4f838adc7181d9039ac795a7d0aba05a9bd9ecd480d294483169c5def983b64d
+
+執行 docker images，確認 ubuntu:22.04 已移除：
+（貼上刪除後的 docker images 輸出）
+                                                                                                   i Info →   U  In Use
+IMAGE              ID             DISK USAGE   CONTENT SIZE   EXTRA
+nginx:alpine       8b1e78743a03       93.6MB           27MB
+python:3.11-slim   a3ab0b966bc4        188MB         47.7MB
+
+
+=== 觀念題 ===
+Q1：映像檔（Image）和容器（Container）有什麼不同？
+A1：
+映像檔 (Image) 是「唯讀的模板」，像是一張藍圖或一份食譜。它包含了執行程式所需的所有環境，但它是靜態的、不會動的。
+容器 (Container) 是映像檔的「執行實例」，像是根據食譜煮出來的那道菜。它是動態的，可以被啟動、停止、修改，且在執行時會消耗系統資源（如記憶體）。
+
+Q2：為什麼刪除映像檔前需要先刪除使用該映像檔的容器？
+A2：因為容器是基於映像檔所建立的「層」。如果映像檔被刪除了，正在運行的容器就會失去它的基礎檔案系統，導致出錯。
