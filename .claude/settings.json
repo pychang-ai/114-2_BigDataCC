@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-ChildItem *)",
+      "PowerShell(docker version*)",
+      "PowerShell(dir *)",
+      "PowerShell(Get-Content *)",
+      "PowerShell(Test-Path *)"
+    ]
+  }
+}

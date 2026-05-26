@@ -1,0 +1,83 @@
+﻿姓名：黃宇平
+學號：C112181108
+
+=== 我使用的 AI 工具 ===
+Claude (claude.ai)
+
+=== 我使用的 Prompt ===
+我要建立一個 Docker 容器來執行 Python 3.11 的資料分析腳本。
+需要的套件：pandas、numpy、matplotlib、seaborn
+程式碼只有一個檔案 analysis.py，啟動指令是 python analysis.py
+資料輸入從 /app/data/ 目錄讀取 CSV 檔，分析結果的圖表存到 /app/output/ 目錄
+
+請幫我寫一個 Dockerfile，注意：
+1. 使用輕量化的 python:3.11-slim 作為基底
+2. requirements.txt 和程式碼分開複製，善用 build cache
+3. 加上必要的說明（用 # 開頭的註解）
+
+=== AI 產出的 Dockerfile ===
+# 使用輕量版 Python 3.11 作為基底映像檔
+FROM python:3.11-slim
+
+# 設定容器內的工作目錄
+WORKDIR /app
+
+# 先複製 requirements.txt，善用 Docker build cache
+COPY requirements.txt .
+
+# 安裝所需 Python 套件
+RUN pip install --no-cache-dir -r requirements.txt
+
+# 建立資料輸入與圖表輸出目錄
+RUN mkdir -p /app/data /app/output
+
+# 複製程式碼到容器
+COPY . .
+
+# 宣告容器使用的埠（供文件參考）
+EXPOSE 8080
+
+# 啟動指令：執行資料分析腳本
+CMD ["python", "analysis.py"]
+
+=== 逐行解釋 ===
+FROM python:3.11-slim → 使用輕量版 Python 3.11 映像檔作為基礎，slim 版比完整版小約 70%，不含多餘的系統工具
+WORKDIR /app → 設定容器內的工作目錄為 /app，之後所有 COPY、RUN、CMD 指令都在此目錄下執行
+COPY requirements.txt . → 只複製套件清單到容器，讓 Docker 可以單獨快取這一層
+RUN pip install --no-cache-dir -r requirements.txt → 在 build 時安裝套件，--no-cache-dir 避免 pip 快取佔用空間
+RUN mkdir -p /app/data /app/output → 預先建立資料輸入目錄和圖表輸出目錄，-p 表示若上層目錄不存在也一併建立
+COPY . . → 把本機目前目錄（含 analysis.py）全部複製到容器的 /app
+EXPOSE 8080 → 宣告容器對外開放 8080 埠（文件用途，不會真的開通連線）
+CMD ["python", "analysis.py"] → 容器啟動後執行 analysis.py，使用 JSON 陣列格式避免 shell 解析問題
+
+=== AI 產出是否有問題？ ===
+請回答以下問題：
+
+Q1：AI 有沒有把 requirements.txt 和程式碼分開複製？（有/沒有）
+    如果沒有，這樣會有什麼問題？
+A1：有。AI 先單獨 COPY requirements.txt 並執行 pip install，再 COPY . . 複製程式碼，正確善用了 Docker build cache。若沒有分開，每次修改 analysis.py 都會讓整個 COPY 層失效，導致 pip install 也必須重跑，浪費時間重新下載套件。
+
+Q2：AI 產出的 Dockerfile 中，有沒有使用 EXPOSE 指令？
+    這個腳本需要 EXPOSE 嗎？為什麼？
+A2：有，AI 加了 EXPOSE 8080。但這個腳本不需要 EXPOSE，因為 analysis.py 是一個批次執行的資料分析腳本，不是 Web 伺服器，不會監聽任何網路埠。EXPOSE 是用來告知外部此容器提供網路服務的，對純腳本沒有實際意義，保留會造成誤解，應該移除。
+
+Q3：AI 有沒有建立 /app/data/ 和 /app/output/ 目錄？
+    如果沒有，容器執行時可能會出現什麼問題？如何解決？
+A3：有。AI 使用 RUN mkdir -p /app/data /app/output 建立了兩個目錄。若沒有預先建立，當 analysis.py 試圖讀取 /app/data/ 或寫入圖表到 /app/output/ 時，會發生 FileNotFoundError 導致程式崩潰。解決方式是在 Dockerfile 加上 RUN mkdir -p /app/data /app/output，或在 analysis.py 中加入 os.makedirs() 自動建立目錄。
+
+=== 你的修改（如果有的話） ===
+移除了 EXPOSE 8080 這一行。理由：analysis.py 是純批次腳本，不對外提供任何網路服務，EXPOSE 在此沒有實際作用，保留反而會讓閱讀 Dockerfile 的人誤以為此容器是一個 Web 服務，造成混淆。
+
+修改後的 Dockerfile：
+FROM python:3.11-slim
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+RUN mkdir -p /app/data /app/output
+COPY . .
+CMD ["python", "analysis.py"]
+
+=== 心得 ===
+Q：使用 AI 輔助撰寫 Dockerfile 和自己從頭寫相比，有什麼優缺點？
+   什麼情況下 AI 特別有幫助？什麼情況下需要特別小心驗證？
+A：優點是速度快，AI 能根據需求快速生成結構完整的 Dockerfile，並自動加上 --no-cache-dir、mkdir -p 等實用細節，對初學者來說節省大量查文件的時間。缺點是 AI 有時會加入不必要的指令（例如本題的 EXPOSE 8080），或對特定環境的邊際狀況（如 Windows 路徑、GPU 支援）判斷不準確。AI 特別有幫助的情境是快速產生標準結構的樣板，例如 Python/Node.js 常見 Web 服務的 Dockerfile。需要特別小心驗證的情境是：安全性相關設定（避免以 root 執行）、多階段 build、以及涉及特殊硬體或網路需求的部署，這些地方 AI 容易產出看起來合理但實際有問題的指令，必須自己理解每一行後再使用。

@@ -1,0 +1,55 @@
+﻿姓名：黃宇平
+學號：C112181108
+
+=== 我撰寫的 Dockerfile 內容 ===
+FROM python:3.11-slim
+
+WORKDIR /app
+
+COPY requirements.txt .
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+EXPOSE 5000
+
+CMD ["python", "app.py"]
+
+=== docker build 輸出 ===
+#9 [5/5] COPY . .
+#9 DONE 0.1s
+#10 exporting to image
+#10 exporting layers 0.4s done
+#10 exporting manifest sha256:9860f79135c84ce3900ed8320307fdfde6ac1624ade0b78ec2cddf47383e6db4 done
+#10 naming to docker.io/library/ship-api:v1 done
+#10 DONE 0.7s
+
+=== docker images 確認 ===
+ship-api:v1        06d0cd63a684        210MB         51.2MB
+
+=== API 測試結果 ===
+
+curl http://localhost:8080/ 輸出：
+{"message":"高雄港船舶資料 API","total_ships":3,"version":"1.0"}
+
+curl http://localhost:8080/ships 輸出：
+[{"id":1,"name":"Ever Given","port":"Kaohsiung","tonnage":220940,"type":"Container"},{"id":2,"name":"Formosa 1","port":"Kaohsiung","tonnage":85000,"type":"Bulk"},{"id":3,"name":"Ocean Star","port":"Taichung","tonnage":95000,"type":"Tanker"}]
+
+curl http://localhost:8080/ships/2 輸出：
+{"id":2,"name":"Formosa 1","port":"Kaohsiung","tonnage":85000,"type":"Bulk"}
+
+=== 清理 ===
+docker stop ship-api
+docker rm ship-api
+
+（執行完成後貼上 docker ps -a | grep ship-api 的結果，確認已清除）
+（無輸出，代表 ship-api 容器已完全移除）
+
+=== 觀念題 ===
+Q1：Dockerfile 中 RUN 和 CMD 有什麼不同？分別在什麼時候執行？
+A1：RUN 在 docker build 時執行，用來安裝套件、建立目錄等環境準備工作，執行結果會被固化進映像檔的 layer 中。CMD 在 docker run 啟動容器時執行，定義容器的預設啟動指令，每次容器啟動都會執行一次，且可以被 docker run 後面接的指令覆蓋。
+
+Q2：為什麼要先 COPY requirements.txt 安裝套件，再 COPY . . 複製程式碼？
+   如果反過來，每次改 app.py 時會多做什麼事？
+A2：Docker build 有 layer cache 機制，每個步驟若輸入沒有改變就直接使用快取。先單獨 COPY requirements.txt 再 pip install，只要套件清單沒變，pip install 這一層就能命中快取，大幅縮短 build 時間。若反過來先 COPY . .，每次修改 app.py 都會讓這層 cache 失效，導致後面的 pip install 也必須重新執行，即使套件完全沒有變動，浪費大量時間重複下載安裝。
