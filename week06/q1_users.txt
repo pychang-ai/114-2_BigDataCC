@@ -1,0 +1,81 @@
+姓名：黄威智
+學號：C112181107
+
+=== 任務 1：查看自己的身份資訊 ===
+請依序執行以下三個指令並貼上結果：
+
+whoami
+
+u306@U17:/mnt/c/Windows/system32$ whoami
+u306
+id
+
+u306@U17:/mnt/c/Windows/system32$ id
+uid=1000(u306) gid=1000(u306) groups=1000(u306),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),100(users)
+groups
+
+u306@U17:/mnt/c/Windows/system32$ groups
+u306 adm cdrom sudo dip plugdev users
+請回答：你的 UID 是多少？你屬於哪些群組？
+UID:1000
+你所属的群组共有 7 个，分别是：
+
+u306 (你的主群组)
+
+adm (通常用于查看系统日志)
+
+cdrom (使用光驱设备的权限)
+
+sudo (最重要的群组，允许你执行管理员权限的命令)
+
+dip (使用拨号上网连接的权限)
+
+plugdev (挂载外部存储设备的权限)
+
+users (系统的普通用户标准群组)
+=== 任務 2：解讀 /etc/passwd ===
+執行以下指令：
+cat /etc/passwd | grep 你的帳號
+
+u306@U17:/mnt/c/Windows/system32$ cat /etc/passwd | grep u306
+u306:x:1000:1000:,,,:/home/u306:/bin/bash
+
+
+請將這行用 : 拆成 7 個欄位，逐一說明每個欄位的意義：
+欄位 1（帳號名稱）：u306
+欄位 2（密碼欄位）：x
+欄位 3（UID）：1000
+欄位 4（GID）：1000
+欄位 5（描述）：,,,
+欄位 6（家目錄）：/home/u306
+欄位 7（Shell）：/bin/bash
+
+=== 任務 3：建立使用者與群組 ===
+請依序執行以下指令並貼上每步的結果：
+
+步驟 1：建立使用者 week06user（-m 建立家目錄）
+sudo useradd -m week06user
+（貼上結果，或說明「無輸出表示成功」）
+[sudo] password for u306:12345
+無輸出表示成功
+步驟 2：建立群組 week06group
+sudo groupadd week06group
+無輸出表示成功
+
+步驟 3：將 week06user 加入 week06group
+sudo usermod -aG week06group week06user
+無輸出表示成功
+
+步驟 4：驗證使用者和群組
+id week06user
+uid=1001(week06user) gid=1001(week06user) groups=1001(week06user),1002(week06group)
+
+cat /etc/group | grep week06group
+week06group:x:1002:week06user
+
+步驟 5：清理（刪除測試用的使用者和群組）
+sudo userdel -r week06user
+sudo groupdel week06group
+
+userdel: week06user mail spool (/var/mail/week06user) not found
+無輸出表示成功
