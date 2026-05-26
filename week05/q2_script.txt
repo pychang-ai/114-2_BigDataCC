@@ -1,0 +1,54 @@
+姓名：呂依裴
+學號：C112181137
+
+=== 任務 1：建立 Shell Script ===
+請用 nano 建立 ~/my_script.sh，內容如下：
+
+#!/bin/bash
+echo "========================================="
+echo "  System Information Report"
+echo "========================================="
+echo "User: $(whoami)"
+echo "Hostname: $(hostname)"
+echo "Current Date: $(date)"
+echo "Current Directory: $(pwd)"
+echo "========================================="
+echo "Disk Usage:"
+df -h | head -5
+echo "========================================="
+echo "Memory Usage:"
+free -h
+echo "========================================="
+
+=== 任務 2：設定權限並執行 ===
+chmod +x ~/my_script.sh
+（貼上 ls -l ~/my_script.sh 的結果，確認有 x 權限）
+
+student208@linux-server2:~$ chmod +x ~/my_script.sh
+ls -l ~/my_script.sh
+-rwxrwxr-x. 1 student208 student208 470 Mar 24 06:55 /home/student208/my_script.sh
+
+=== 任務 3：執行結果 ===
+./my_script.sh
+
+student208@linux-server2:~$ ~/my_script.sh
+=========================================
+  System Information Report
+=========================================
+User: student208
+Hostname: linux-server2
+Current Date: Tue Mar 24 07:02:16 UTC 2026
+Current Directory: /home/student208
+=========================================
+Disk Usage:
+Filesystem      Size  Used Avail Use% Mounted on
+overlay          30G  2.6G   28G   9% /
+tmpfs            64M     0   64M   0% /dev
+shm              64M     0   64M   0% /dev/shm
+/dev/nvme0n1p1   30G  2.6G   28G   9% /etc/hosts
+=========================================
+Memory Usage:
+               total        used        free      shared  buff/cache   available
+Mem:           7.6Gi       449Mi       6.0Gi       0.0Ki       1.2Gi       6.9Gi
+Swap:             0B          0B          0B
+=========================================

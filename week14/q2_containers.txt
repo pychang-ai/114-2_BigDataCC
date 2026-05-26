@@ -1,0 +1,116 @@
+姓名：呂依裴
+學號：C112181137
+
+=== 任務 1：啟動 nginx 容器 ===
+
+執行以下指令，在背景啟動 nginx 並對應埠號：
+docker run -d --name my-nginx -p 8080:80 nginx:alpine
+
+53404d84e37b963e3d26160f24f77fb97f818f363ffa8140341e3b44aeb6755b
+
+=== 任務 2：查看容器狀態 ===
+
+執行：docker ps
+（貼上完整輸出，確認 my-nginx 的 STATUS 是 Up，PORTS 顯示 0.0.0.0:8080->80/tcp）
+
+PS C:\Windows\system32> docker ps
+CONTAINER ID   IMAGE          COMMAND                   CREATED          STATUS          PORTS
+           NAMES
+53404d84e37b   nginx:alpine   "/docker-entrypoint.…"   51 seconds ago   Up 53 seconds   0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   my-nginx
+
+=== 任務 3：測試 nginx 服務 ===
+
+在 AWS EC2 上執行：
+curl http://localhost:8080
+
+（貼上回傳的 HTML 內容，應包含 "Welcome to nginx!"）
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+    html { color-scheme: light dark; }
+    body { width: 35em; margin: 0 auto;
+    font-family: Tahoma, Verdana, Arial, sans-serif; }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.</p>
+
+=== 任務 4：進入容器 ===
+
+執行：docker exec -it my-nginx sh
+
+進入後執行以下指令並貼上結果：
+1. hostname 
+2. ls /etc/nginx 
+3. cat /etc/nginx/nginx.conf  （查看 nginx 設定，只貼前 10 行即可）
+
+（hostname 輸出）：53404d84e37b
+
+（ls /etc/nginx 輸出）：
+ conf.d          fastcgi_params  modules         scgi_params
+fastcgi.conf    mime.types      nginx.conf      uwsgi_params
+
+輸入 exit 離開容器:
+
+user  nginx;
+worker_processes  auto;
+
+error_log  /var/log/nginx/error.log notice;
+pid        /run/nginx.pid;
+
+
+events {
+    worker_connections  1024;
+}
+
+
+http {
+    include       /etc/nginx/mime.types;
+    default_type  application/octet-stream;
+
+    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                      '$status $body_bytes_sent "$http_referer" '
+                      '"$http_user_agent" "$http_x_forwarded_for"';
+
+
+=== 任務 5：查看容器 log ===
+
+執行：docker logs my-nginx
+（貼上最後 5 行 log 輸出）
+
+2026/05/26 05:47:46 [notice] 1#1: start worker process 55
+2026/05/26 05:47:46 [notice] 1#1: start worker process 56
+2026/05/26 05:47:46 [notice] 1#1: start worker process 57
+172.17.0.1 - - [26/May/2026:05:49:46 +0000] "GET / HTTP/1.1" 200 896 "-" "Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-TW) WindowsPowerShell/5.1.26100.7920" "-"
+
+=== 任務 6：停止並刪除容器 ===
+
+docker stop my-nginx
+docker rm my-nginx
+
+執行 docker ps -a，確認 my-nginx 已移除：my-nginx
+（貼上 docker ps -a 輸出，確認清單中沒有 my-nginx）
+
+CONTAINER ID   IMAGE          COMMAND                   CREATED          STATUS                      PORTS     NAMES
+53404d84e37b   nginx:alpine   "/docker-entrypoint.…"   11 minutes ago   Exited (0) 57 seconds ago             my-nginx
+
+=== 觀念題 ===
+Q1：docker run -d 和 docker run -it 的使用時機有什麼不同？
+A1：-d (Detached)：
+
+使用時：用於背景服務（例如網頁伺服器、資料庫）。
+原因：這類程式啟動後不需要人機互動，我們希望它在後台持續運行，不要佔用目前的終端機視窗。
+-it (Interactive + TTY)：
+使用時機：用於需要與容器互動（例如測試腳本、進入 Linux Shell 操作）。
+原因：它會幫你打開一個交談式介面，讓你可以直接在容器內下指令，就像直接連線到一台電腦上一樣。
+
+Q2：-p 8080:80 的意思是什麼？如果把主機的 8080 改成 9090，應用程式的行為會有什麼不同？
+A2：
+意思這是埠號映射 (Port Mapping)。格式是 主機埠號:容器內部埠號。這行指令代表將實體主機的 8080 埠流量，導向容器內部的 80 埠。
+行為差異：
+存取方式改變：你必須在瀏覽器或 curl 改用 http://localhost:9090 才能看到網頁。
+應用程式本身不變：容器內的 Nginx 依然是在內部跑 80 埠，不需要更改任何程式設定。這說明了 Docker 能夠在不修改程式碼的情況下，靈活調整對外的連線門牌。

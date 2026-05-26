@@ -1,0 +1,57 @@
+姓名：呂依裴
+學號：C112181137
+
+=== 我使用的 AI 工具 ===
+Gemini (Google AI)
+
+=== 我使用的 Prompt ===
+「我有一個 Flask API 程式 app.py 和 requirements.txt，請幫我寫一個 Dockerfile。要考慮層快取 (Layer Caching) 優化，設定工作目錄為 /app，並在啟動時執行 python app.py。另外，請幫我預先建立 /app/data/ 和 /app/output/ 目錄。」
+
+=== AI 產出的 Dockerfile ===
+FROM python:3.11-slim
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+RUN mkdir -p /app/data /app/output
+COPY . .
+EXPOSE 5000
+CMD ["python", "app.py"]
+
+=== 逐行解釋 ===
+請用自己的話，逐行解釋 AI 產出的 Dockerfile 中每一行的用途：
+FROM python:3.11-slim → 使用輕量化 Python 3.11 環境，減少映像檔體積並提升安全性。
+WORKDIR /app → 在容器內建立並切換到 /app 資料夾，後續指令都在此執行。
+COPY requirements.txt . → 單獨先將套件清單複製進容器。
+RUN pip install --no-cache-dir -r requirements.txt → 安裝套件，--no-cache-dir 可避免留下沒用的快取檔案。
+RUN mkdir -p /app/data /app/output → 預先建立程式運作所需的資料存放目錄。
+COPY . . → 複製目前目錄下所有剩下的程式碼與檔案進入容器。
+EXPOSE 5000 → 告知使用者容器內程式預設監聽 5000 埠號，具備文件說明作用。
+CMD ["python", "app.py"] → 設定容器啟動後自動執行的指令，啟動 Flask API。
+
+=== AI 產出是否有問題？ ===
+請回答以下問題：
+
+Q1：AI 有沒有把 requirements.txt 和程式碼分開複製？（有/沒有）
+    如果沒有，這樣會有什麼問題？
+A1：有。 如果沒有分開複製，只要開發者改了一行程式碼，Docker 就會認為環境已變動，進而重新執行最花時間的 pip install。分開複製能有效利用快取，加速建置。
+
+Q2：AI 產出的 Dockerfile 中，有沒有使用 EXPOSE 指令？
+    這個腳本需要 EXPOSE 嗎？為什麼？
+A2：有使用。 雖然沒有 EXPOSE 容器也能運作（需在 docker run 手動指定轉接），但 EXPOSE 具有重要的 「文件化」 功能，能讓其他開發者一眼看出這支 API 是監聽哪個埠號。
+
+Q3：AI 有沒有建立 /app/data/ 和 /app/output/ 目錄？
+    如果沒有，容器執行時可能會出現什麼問題？如何解決？
+A3：有。 如果沒有建立，當程式試圖寫入資料到這些目錄時，會因為路徑不存在而拋出 FileNotFoundError 導致容器閃退。解決方法是在 Dockerfile 中使用 RUN mkdir -p 預先建立，或在 Python 程式碼中加入判斷並建立目錄。
+
+=== 你的修改（如果有的話） ===
+如果你覺得 AI 的輸出有問題或不夠好，寫出你修改了什麼、為什麼修改：
+AI 產出無需修改（AI 已針對快取優化與目錄建立提供正確實作）。
+
+=== 心得 ===
+Q：使用 AI 輔助撰寫 Dockerfile 和自己從頭寫相比，有什麼優缺點？
+   什麼情況下 AI 特別有幫助？什麼情況下需要特別小心驗證？
+A：
+優點：AI 速度極快，能自動避開常見的陷阱（如忘記清理 pip 快取或沒有分層優化），並能快速生成註解，對於新手來說是很好的學習參考。
+缺點：AI 有時會過度設計，或是生成一些不符合現有環境的基礎映像檔版本。
+特別有幫助的情況：當需要針對特定環境（如 Java 或 Node.js）撰寫複雜的多階段建置 (Multi-stage builds) 時，AI 能提供很好的模版。
+需要小心驗證的情況：AI 對於「檔案路徑」和「本機環境」的掌握不如人類。例如妳今天遇到的「忘記存檔」或「路徑不對」，AI 無法得知妳電腦的實際狀態，這時候還是需要人工驗證狀態。

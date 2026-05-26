@@ -1,0 +1,61 @@
+姓名：呂依裴
+學號：C112181137
+
+=== 任務 1：查看自己的身份資訊 ===
+請依序執行以下三個指令並貼上結果：
+
+whoami
+student208
+
+id
+uid=1007(student208) gid=1007(student208) groups=1007(student208)
+
+groups
+student208
+
+請回答：你的 UID 是多少？你屬於哪些群組？
+UID:1007
+群組:student208
+
+=== 任務 2：解讀 /etc/passwd ===
+執行以下指令：
+cat /etc/passwd | grep 你的帳號
+
+student208:x:1007:1007::/home/student208:/bin/bash
+
+請將這行用 : 拆成 7 個欄位，逐一說明每個欄位的意義：
+欄位 1（帳號名稱）：student208 用來登入系統的唯一名稱
+欄位 2（密碼欄位）：x 在早期 Linux 中這裡會放加密後的密碼，但為了安全性，現在密碼都移到 /etc/shadow 檔案中，這裡只留下一個 x 作為佔位符號。
+欄位 3（UID）：1007 這是「使用者識別碼 (User ID)」。系統內部其實是用這個數字來判斷檔案是誰的、你有什麼權限。
+欄位 4（GID）：1007 這是「主要群組識別碼 (Group ID)」。代表你這個帳號預設所屬的群組編號。
+欄位 5（描述）：(空白) 正式名稱是 GECOS 欄位。通常用來記錄使用者的真實姓名、辦公室分機等資訊。在你的結果中，兩個冒號之間是空的（::），代表目前沒有設定描述。
+欄位 6（家目錄）：/home/student208 這是我的「地盤」。當登入、開啟終端機或輸入 cd ~ 時，系統會自動帶你來到這個資料夾。
+欄位 7（Shell）：/bin/bash 這是你與系統溝通的「介面軟體」。bash 是目前 Linux 最主流的 Shell，負責接收並執行你輸入的指令。
+
+=== 任務 3：建立使用者與群組 ===
+請依序執行以下指令並貼上每步的結果：
+
+步驟 1：建立使用者 week06user（-m 建立家目錄）
+sudo useradd -m week06user
+useradd: user 'week06user' already exists
+
+步驟 2：建立群組 week06group
+sudo groupadd week06group
+無輸出
+
+步驟 3：將 week06user 加入 week06group
+sudo usermod -aG week06group week06user
+無輸出
+
+步驟 4：驗證使用者和群組
+id week06user
+uid=1001(week06user) gid=1001(week06user) groups=1001(week06user),1002(week06group)
+
+cat /etc/group | grep week06group
+week06group:x:1002:week06user
+
+步驟 5：清理（刪除測試用的使用者和群組）
+sudo userdel -r week06user
+sudo groupdel week06group
+
+userdel: week06user mail spool (/var/mail/week06user) not found

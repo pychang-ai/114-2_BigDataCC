@@ -1,0 +1,147 @@
+姓名：呂依裴
+學號：C112181137
+
+=== 我撰寫的 Dockerfile 內容 ===
+# 1. 使用輕量化 Python 3.11 作為基底
+FROM python:3.11-slim
+# 2. 設定工作目錄
+WORKDIR /app
+# 3. 先複製 requirements.txt 並安裝套件 (善用快取)
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+# 4. 複製其餘程式碼 (如 app.py)
+COPY . .
+# 5. 容器監聽 5000 埠
+EXPOSE 5000
+# 6. 啟動指令
+CMD ["python", "app.py"]
+
+=== docker build 輸出 ===
+（貼上 docker build 的最後 5 行，應出現 "Successfully built ..." 或 "naming to docker.io/..."）
+=> => exporting manifest sha256:a6c68c73ed91b7b1c7fea5d9f44437fe52dc758f48bdc84ec2f90a090d585f19           0.0s
+ => => exporting config sha256:47fd61049fc401e3fe00b43622ddc1d46d05aae9d74dc292c5a20e380f7aaad3             0.0s
+ => => exporting attestation manifest sha256:6f05769d999e6e4dec00d13251d8adb9b8175c09e84b89b2952c5132be6d8a7c  0.0s
+ => => exporting manifest list sha256:033c2a16de23d68e04245dc2c3b0a936e9335220393c1d6cadb9c11a79f9070f      0.0s
+ => => naming to docker.io/library/ship-api:v1                                                              0.0s
+
+=== docker images 確認 ===
+（貼上 docker images | grep ship-api 的結果，確認映像檔存在）
+ship-api:v1        033c2a16de23        203MB         49.5MB
+
+=== API 測試結果 ===
+
+curl http://localhost:8080/ 輸出：
+StatusCode        : 200
+StatusDescription : OK
+Content           : {"message":"\u9ad8\u96c4\u6e2f\u8239\u8236\u8cc7\u6599 API","total_ships":3,"version":"1.0"}
+                    
+RawContent        : HTTP/1.1 200 OK
+                    Connection: close
+                    Content-Length: 93
+                    Content-Type: application/json
+                    Date: Tue, 26 May 2026 06:38:57 GMT
+                    Server: Werkzeug/3.1.8 Python/3.11.15
+                    
+                    {"message":"\u9ad8\u96c4\u6e2f\u82...
+Forms             : {}
+Headers           : {[Connection, close], [Content-Length, 93], [Content-Type, application/json], [Date, Tue, 26 May 2026 06:38:57 GMT]...}
+Images            : {}
+InputFields       : {}
+Links             : {}
+ParsedHtml        : mshtml.HTMLDocumentClass
+RawContentLength  : 93
+
+curl http://localhost:8080/ships 輸出：
+StatusCode        : 200
+StatusDescription : OK
+Content           : [{"id":1,"name":"Ever Given","port":"Kaohsiung","tonnage":220940,"type":"Container"},{"id":2,"name":"Formosa 1","port":"Kaohsiung","tonnage":85000,"type":"
+                    Bulk"},{"id":3,"name":"Ocean Star","port":"Ta...
+RawContent        : HTTP/1.1 200 OK
+                    Connection: close
+                    Content-Length: 242
+                    Content-Type: application/json
+                    Date: Tue, 26 May 2026 06:40:17 GMT
+                    Server: Werkzeug/3.1.8 Python/3.11.15
+                    
+                    [{"id":1,"name":"Ever Given","por...
+Forms             : {}
+Headers           : {[Connection, close], [Content-Length, 242], [Content-Type, application/json], [Date, Tue, 26 May 2026 06:40:17 GMT]...}
+Images            : {}
+InputFields       : {}
+Links             : {}
+ParsedHtml        : mshtml.HTMLDocumentClass
+RawContentLength  : 242
+
+curl http://localhost:8080/ships/2 輸出：
+StatusCode        : 200
+StatusDescription : OK
+Content           : [{"id":1,"name":"Ever Given","port":"Kaohsiung","tonnage":220940,"type":"Container"},{"id":2,"name":"Formosa 1","port":"Kaohsiung","tonnage":85000,"type":"
+                    Bulk"},{"id":3,"name":"Ocean Star","port":"Ta...
+RawContent        : HTTP/1.1 200 OK
+                    Connection: close
+                    Content-Length: 242
+                    Content-Type: application/json
+                    Date: Tue, 26 May 2026 06:40:17 GMT
+                    Server: Werkzeug/3.1.8 Python/3.11.15
+                    
+                    [{"id":1,"name":"Ever Given","por...
+Forms             : {}
+Headers           : {[Connection, close], [Content-Length, 242], [Content-Type, application/json], [Date, Tue, 26 May 2026 06:40:17 GMT]...}
+Images            : {}
+InputFields       : {}
+Links             : {}
+ParsedHtml        : mshtml.HTMLDocumentClass
+RawContentLength  : 242
+
+
+
+PS C:\Users\Teacher\114-2_BigDataCC\week14> curl http://localhost:8080/ships/2                                                                                                  
+                                                                                                                                                                                
+安全性警告: 指令碼執行風險                                                                                                                                                      
+Invoke-WebRequest 會剖析網頁的內容。網頁中的指令碼程式碼可能在剖析頁面時執行。                                                                                                  
+      建議的動作:
+      使用 -UseBasicParsing 切換以避免執行指令碼程式碼執行。
+
+      是否要繼續?
+    
+[Y] 是(Y)  [A] 全部皆是(A)  [N] 否(N)  [L] 全部皆否(L)  [S] 暫停(S)  [?] 說明 (預設值為 "N"): Y
+
+
+StatusCode        : 200
+StatusDescription : OK
+Content           : {"id":2,"name":"Formosa 1","port":"Kaohsiung","tonnage":85000,"type":"Bulk"}
+                    
+RawContent        : HTTP/1.1 200 OK
+                    Connection: close
+                    Content-Length: 77
+                    Content-Type: application/json
+                    Date: Tue, 26 May 2026 06:40:44 GMT
+                    Server: Werkzeug/3.1.8 Python/3.11.15
+                    
+                    {"id":2,"name":"Formosa 1","port":...
+Forms             : {}
+Headers           : {[Connection, close], [Content-Length, 77], [Content-Type, application/json], [Date, Tue, 26 May 2026 06:40:44 GMT]...}
+Images            : {}
+InputFields       : {}
+Links             : {}
+ParsedHtml        : mshtml.HTMLDocumentClass
+RawContentLength  : 77
+
+=== 清理 ===
+docker stop ship-api
+docker rm ship-api
+
+（執行完成後貼上 docker ps -a | grep ship-api 的結果，確認已清除）
+無輸出
+
+=== 觀念題 ===
+Q1：Dockerfile 中 RUN 和 CMD 有什麼不同？分別在什麼時候執行？
+A1：
+RUN：是在 「映像檔建置階段 (Build Time)」 執行。主要用於安裝軟體套件（如 pip install）、建立目錄或設定環境。執行的結果會被永久記錄在映像檔的層（Layer）中。
+CMD：是在 「容器啟動階段 (Run Time)」 執行。它是容器啟動後的預設指令，用來告訴容器開機後要執行哪一支程式（如 python app.py）。一個 Dockerfile 通常只有最後一個 CMD 會生效。
+
+Q2：為什麼要先 COPY requirements.txt 安裝套件，再 COPY . . 複製程式碼？
+   如果反過來，每次改 app.py 時會多做什麼事？
+A2：
+原因：是為了利用 Docker 的 「快取機制 (Layer Caching)」。Docker 是由下往上一層層建置的，如果上面的層沒變，它就會直接用舊的快取。
+後果：如果反過來先 COPY . .，因為我們經常修改 app.py，只要程式碼一變動，Docker 就會認為這一層已改變，導致後面「所有」的步驟（包括耗時的 pip install）都必須強迫重新執行。這會讓每次 Build 的時間從幾秒鐘變成好幾分鐘，浪費大量頻寬與時間。
