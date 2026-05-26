@@ -1,0 +1,51 @@
+姓名：楊宗燁
+學號：C112181126
+
+=== 任務 1：建立 Shell Script ===
+請用 nano 建立 ~/my_script.sh，內容如下：
+
+#!/bin/bash
+echo "========================================="
+echo "  系統資訊報告"
+echo "========================================="
+echo "使用者：$(whoami)"
+echo "主機名稱：$(hostname)"
+echo "目前日期：$(date)"
+echo "目前目錄：$(pwd)"
+echo "========================================="
+echo "磁碟使用量："
+df -h | head -5
+echo "========================================="
+echo "記憶體使用量："
+free -h
+echo "========================================="
+
+=== 任務 2：設定權限並執行 ===
+chmod +x ~/my_script.sh
+（貼上 ls -l ~/my_script.sh 的結果，確認有 x 權限）
+-rwxrwxr-x. 1 student123 student123 486 Mar 24 08:05 /home/student123/my_script.sh
+
+=== 任務 3：執行結果 ===
+./my_script.sh
+
+（貼上完整的執行結果）
+=========================================
+  系統資訊報告
+=========================================
+使用者：student123
+主機名稱：linux-server1
+目前日期：Tue Mar 24 08:05:56 UTC 2026
+目前目錄：/home/student123
+=========================================
+磁碟使用量：
+Filesystem      Size  Used Avail Use% Mounted on
+overlay          30G  2.6G   28G   9% /
+tmpfs            64M     0   64M   0% /dev
+shm              64M     0   64M   0% /dev/shm
+/dev/nvme0n1p1   30G  2.6G   28G   9% /etc/hosts
+=========================================
+記憶體使用量：
+               total        used        free      shared  buff/cache   available
+Mem:           7.6Gi       464Mi       6.0Gi       0.0Ki       1.2Gi       6.9Gi
+Swap:             0B          0B          0B
+=========================================
