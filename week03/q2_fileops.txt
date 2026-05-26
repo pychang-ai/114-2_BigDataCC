@@ -1,0 +1,53 @@
+姓名：蔡孟洹
+學號：C112181145
+
+=== 步驟 1：mkdir week03test ===
+無輸出
+（貼上結果，無輸出則寫「無輸出」）
+
+=== 步驟 2：cd week03test ===
+student213@linux-server2:~$ cd week03test
+student213@linux-server2:~/week03test$
+
+（貼上結果）
+
+=== 步驟 3：建立三個檔案 ===
+使用的指令：student213@linux-server2:~/week03test$ touch file1.txt file2.txt file3.txt
+（寫出你用的指令）
+
+=== 步驟 4：ls -l ===
+student213@linux-server2:~/week03test$ ls -l
+total 0
+-rw-rw-r--. 1 student213 student213 0 Mar 18 08:25 file1.txt
+-rw-rw-r--. 1 student213 student213 0 Mar 18 08:25 file2.txt
+-rw-rw-r--. 1 student213 student213 0 Mar 18 08:25 file3.txt
+
+（貼上結果）
+
+=== 步驟 5：cp hello.txt hello_backup.txt ===
+無輸出
+（貼上結果）
+
+=== 步驟 6：mv vm.txt virtualization.txt ===
+無輸出
+（貼上結果）
+
+=== 步驟 7：ls -l（最終結果） ===
+student213@linux-server2:~/week03test$ ls -l
+total 0
+-rw-rw-r--. 1 student213 student213 0 Mar 18 08:25 file1.txt
+-rw-rw-r--. 1 student213 student213 0 Mar 18 08:25 file2.txt
+-rw-rw-r--. 1 student213 student213 0 Mar 18 08:25 file3.txt
+-rw-rw-r--. 1 student213 student213 0 Mar 18 08:26 hello.txt
+-rw-rw-r--. 1 student213 student213 0 Mar 18 08:26 hello_backup.txt
+-rw-rw-r--. 1 student213 student213 0 Mar 18 08:27 virtualization.txt
+
+（貼上結果）
+
+=== 問答 ===
+Q：最終目錄中有哪些檔案？和步驟 4 相比，發生了什麼變化？
+A：檔案變多了： 相比步驟 4 只有 3 個檔案（file1~3），現在增加到了 6 個。
+
+執行了「複製」(Copy)： 透過 cp 指令，我們從 hello.txt 產生了一個一模一樣的副本 hello_backup.txt。
+
+執行了「重新命名」(Rename)： 這是最明顯的變化。原本預計要有的 vm.txt 不見了，取而代之的是 virtualization.txt。這是因為 mv 指令將原本的檔案「搬移」並「改名」了
